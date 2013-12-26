@@ -1,0 +1,53 @@
+Source-Makefile: feeds/packages/libs/tiff/Makefile
+Package: libtiff
+Version: 3.9.2-1
+Depends: +zlib +libjpeg
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: TIFF library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tiff-3.9.2.tar.gz
+Type: ipkg
+Description: TIFF library
+http://www.remotesensing.org/libtiff/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libtiffxx
+Version: 3.9.2-1
+Depends: +libtiff +uclibcxx
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: TIFF library(c++ bindings)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tiff-3.9.2.tar.gz
+Type: ipkg
+Description: TIFF library(c++ bindings)
+http://www.remotesensing.org/libtiff/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tiff-utils
+Version: 3.9.2-1
+Depends: +libtiff
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: TIFF utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tiff-3.9.2.tar.gz
+Type: ipkg
+Description: TIFF utilities
+http://www.remotesensing.org/libtiff/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

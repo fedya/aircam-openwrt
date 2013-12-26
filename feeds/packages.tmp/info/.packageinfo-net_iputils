@@ -1,0 +1,93 @@
+Source-Makefile: feeds/packages/net/iputils/Makefile
+Package: iputils-arping
+Version: 20100418-2
+Depends: @!LINUX_2_4 +libsysfs
+Menu-Depends: 
+Provides: 
+Build-Depends: sysfsutils
+Section: net
+Category: Network
+Title: iputils - arping
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iputils-s20100418.tar.bz2
+Type: ipkg
+Description:   Program arping from iputils.
+  Sends ARP REQUEST to a neighbour host.
+http://www.skbuff.net/iputils
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: iputils-clockdiff
+Version: 20100418-2
+Depends: @!LINUX_2_4
+Menu-Depends: 
+Provides: 
+Build-Depends: sysfsutils
+Section: net
+Category: Network
+Title: iputils - clockdiff
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iputils-s20100418.tar.bz2
+Type: ipkg
+Description:   Program clockdiff from iputils.
+  Measures clock difference between hosts.
+http://www.skbuff.net/iputils
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: iputils-ping
+Version: 20100418-2
+Depends: @!LINUX_2_4
+Menu-Depends: 
+Provides: 
+Build-Depends: sysfsutils
+Section: net
+Category: Network
+Title: iputils - ping
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iputils-s20100418.tar.bz2
+Type: ipkg
+Description:   Program ping from iputils.
+  Sends ICMP ECHO_REQUEST to network hosts (IPv4).
+http://www.skbuff.net/iputils
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: iputils-tftpd
+Submenu: File Transfer
+Version: 20100418-2
+Depends: @!LINUX_2_4
+Menu-Depends: 
+Provides: 
+Build-Depends: sysfsutils
+Section: net
+Category: Network
+Title: iputils - tftpd
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iputils-s20100418.tar.bz2
+Type: ipkg
+Description:   Program tftpd from iputils
+  Trivial File Transfer Protocol server.
+http://www.skbuff.net/iputils
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: iputils-tracepath
+Version: 20100418-2
+Depends: @!LINUX_2_4
+Menu-Depends: 
+Provides: 
+Build-Depends: sysfsutils
+Section: net
+Category: Network
+Title: iputils - tracepath
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iputils-s20100418.tar.bz2
+Type: ipkg
+Description:   Program tracepath from iputils.
+  Traces path to a network host discovering MTU along this path (IPv4).
+http://www.skbuff.net/iputils
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

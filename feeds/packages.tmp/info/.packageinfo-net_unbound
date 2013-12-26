@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/net/unbound/Makefile
+Package: unbound
+Submenu: IP Addresses and Names
+Version: 1.4.5-3
+Depends: +libopenssl
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A validating, recursive, and caching DNS resolver
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: unbound-1.4.5.tar.gz
+Type: ipkg
+Description: A validating, recursive, and caching DNS resolver
+http://www.unbound.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

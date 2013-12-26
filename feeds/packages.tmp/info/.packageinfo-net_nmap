@@ -1,0 +1,110 @@
+Source-Makefile: feeds/packages/net/nmap/Makefile
+Package: nmap
+Submenu: NMAP Suite
+Version: 5.51-2
+Depends: +libpcap +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Variant: nossl
+Section: net
+Category: Network
+Title: Utility for network exploration or security auditing
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: nmap-5.51.tar.bz2
+Type: ipkg
+Description: Utility for network exploration or security auditing
+http://nmap.org/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: nmap-ssl
+Submenu: NMAP Suite
+Version: 5.51-2
+Depends: +libpcap +libstdcpp +libopenssl
+Menu-Depends: 
+Provides: 
+Build-Variant: ssl
+Section: net
+Category: Network
+Title: Nmap (with OpenSSL support)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: nmap-5.51.tar.bz2
+Type: ipkg
+Description: Nmap (with OpenSSL support)
+http://nmap.org/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: ncat
+Submenu: NMAP Suite
+Version: 5.51-2
+Depends: +libpcap
+Menu-Depends: 
+Provides: 
+Build-Variant: nossl
+Section: net
+Category: Network
+Title: Much-improved reimplementation of Netcat
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: nmap-5.51.tar.bz2
+Type: ipkg
+Description: Much-improved reimplementation of Netcat
+http://nmap.org/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: ncat-ssl
+Submenu: NMAP Suite
+Version: 5.51-2
+Depends: +libpcap +libopenssl
+Menu-Depends: 
+Provides: 
+Build-Variant: ssl
+Section: net
+Category: Network
+Title: Ncat (with OpenSSL support)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: nmap-5.51.tar.bz2
+Type: ipkg
+Description: Ncat (with OpenSSL support)
+http://nmap.org/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: nping
+Submenu: NMAP Suite
+Version: 5.51-2
+Depends: +libpcap +libpthread
+Menu-Depends: 
+Provides: 
+Build-Variant: nossl
+Section: net
+Category: Network
+Title: Network packet generation tool / ping utility
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: nmap-5.51.tar.bz2
+Type: ipkg
+Description: Network packet generation tool / ping utility
+http://nmap.org/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: ndiff
+Submenu: NMAP Suite
+Version: 5.51-2
+Depends: +python
+Menu-Depends: 
+Provides: 
+Build-Variant: nossl
+Section: net
+Category: Network
+Title: Utility to compare the results of Nmap scans
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: nmap-5.51.tar.bz2
+Type: ipkg
+Description: Utility to compare the results of Nmap scans
+http://nmap.org/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+

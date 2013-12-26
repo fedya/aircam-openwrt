@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,6 @@ EXTRAVERSION =
+ NAME = Erotic Pickled Herring
+ 
+ ARCH = arm
+-INSTALL_MOD_PATH = $(srctree)/../target/rootfs-cpio/ 
+ 
+ # *DOCUMENTATION*
+ # To see a list of typical targets execute "make help"

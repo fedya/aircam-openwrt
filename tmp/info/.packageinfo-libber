@@ -1,0 +1,18 @@
+Source-Makefile: package/libber/Makefile
+Package: libber
+Version: 0.4.1-1
+Depends: +libabz +libdebug
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: A Basic Encoding Rules (ITU X.690) implementation
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libber_0.4.1.tar.gz
+Type: ipkg
+Description: A Basic Encoding Rules (ITU X.690) implementation
+http://oasis.frogfoot.net/code/libber/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/xineramaproto/Makefile
+Package: xineramaproto
+Submenu: proto
+Version: 1.2-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: xineramaproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xineramaproto-1.2.tar.bz2
+Type: ipkg
+Description: xineramaproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

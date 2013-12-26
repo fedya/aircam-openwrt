@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/lib/libXv/Makefile
+Package: libXv
+Submenu: libraries
+Version: 1.0.5
+Depends: +libX11 +libXext
+Menu-Depends: 
+Provides: 
+Build-Depends: videoproto xextproto libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: libXv
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libXv-1.0.5.tar.bz2
+Type: ipkg
+Description: libXv
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

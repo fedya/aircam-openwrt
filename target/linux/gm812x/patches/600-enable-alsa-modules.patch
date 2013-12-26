@@ -1,0 +1,11 @@
+--- a/sound/core/Kconfig
++++ b/sound/core/Kconfig
+@@ -5,6 +5,8 @@ config SND_TIMER
+ config SND_PCM
+ 	tristate
+ 	select SND_TIMER
++	select SND_HWDEP
++	select SND_RAWMIDI
+ 
+ config SND_HWDEP
+ 	tristate

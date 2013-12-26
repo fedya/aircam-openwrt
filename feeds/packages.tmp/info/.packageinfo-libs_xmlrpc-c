@@ -1,0 +1,146 @@
+Source-Makefile: feeds/packages/libs/xmlrpc-c/Makefile
+Package: xmlrpc-c
+Version: advanced_r2080-1
+Depends: +xmlrpc-c-internal
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description: XML-RPC library
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-common
+Version: advanced_r2080-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - common
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description:     Programming library for writing an XML-RPC server or client in C or C++.
+    XML-RPC is a standard network protocol to allow a client program to make
+    a simple remote procedure call (RPC) type request of a server.
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-libxml2
+Version: advanced_r2080-1
+Depends: +xmlrpc-c-common +libxml2 @BROKEN
+Menu-Depends: 
+Provides: 
+Build-Variant: libxml2
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - (uses libxml2)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description:     Programming library for writing an XML-RPC server or client in C or C++.
+    XML-RPC is a standard network protocol to allow a client program to make
+    a simple remote procedure call (RPC) type request of a server. Uses external libxml2 library (quite big)
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-internal
+Version: advanced_r2080-1
+Depends: +xmlrpc-c-common
+Menu-Depends: 
+Provides: 
+Build-Variant: internal
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - (ueses internal expat variant)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description:     Programming library for writing an XML-RPC server or client in C or C++.
+    XML-RPC is a standard network protocol to allow a client program to make
+    a simple remote procedure call (RPC) type request of a server. Uses internal expat variant (stripped down)
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-server
+Version: advanced_r2080-1
+Depends: +xmlrpc-c
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description: XML-RPC library - server
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-abyss
+Version: advanced_r2080-1
+Depends: +xmlrpc-c-common
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - abyss
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description: XML-RPC library - abyss
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-server-abyss
+Version: advanced_r2080-1
+Depends: +xmlrpc-c-server +xmlrpc-c-abyss
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - abyss server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description: XML-RPC library - abyss server
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: xmlrpc-c-client
+Version: advanced_r2080-1
+Depends: +xmlrpc-c +libcurl
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: XML-RPC library - client
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xmlrpc-c-advanced_r2080.tar.gz
+Type: ipkg
+Description: XML-RPC library - client
+http://xmlrpc-c.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

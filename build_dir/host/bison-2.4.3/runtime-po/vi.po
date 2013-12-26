@@ -1,0 +1,62 @@
+# Vietnamese Translation for Bison-runtime.
+# Copyright © 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the bison package.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.4.2\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2010-08-05 21:01-0400\n"
+"PO-Revision-Date: 2010-03-22 18:06+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.8\n"
+
+#: data/glr.c:925 data/yacc.c:639
+msgid "syntax error: cannot back up"
+msgstr "lỗi cú pháp: không thể sao lưu"
+
+#: data/glr.c:1808
+msgid "syntax is ambiguous"
+msgstr "cú pháp vẫn mơ hồ"
+
+#: data/glr.c:2183 data/glr.c:2189 data/glr.c:2457 data/lalr1.cc:878
+#: data/yacc.c:1500 data/yacc.c:1528
+msgid "syntax error"
+msgstr "lỗi cú pháp"
+
+#: data/glr.c:2517 data/yacc.c:1115 data/yacc.c:1117 data/yacc.c:1293
+#: data/yacc.c:1649
+msgid "memory exhausted"
+msgstr "cạn bộ nhớ"
+
+#: data/yacc.c:927
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "lỗi cú pháp, gặp %s bất thường"
+
+#: data/yacc.c:928
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "lỗi cú pháp, gặp %s bất thường, còn mong đợi %s"
+
+#: data/yacc.c:929
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "lỗi cú pháp, gặp %s bất thường, còn mong đợi đợi %s hay %s"
+
+#: data/yacc.c:930
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "lỗi cú pháp, gặp %s bất thường, còn mong đợi %s hay %s hay %s"
+
+#: data/yacc.c:931
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr "lỗi cú pháp, gặp %s bất thường, còn mong đợi %s hay %s hay %s hay %s "

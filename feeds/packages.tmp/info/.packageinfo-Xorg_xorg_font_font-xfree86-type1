@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/font/font-xfree86-type1/Makefile
+Package: font-xfree86-type1
+Submenu: font
+Version: 1.0.0-2
+Depends: +xserver +font-util @DISPLAY_SUPPORT
+Menu-Depends: 
+Provides: 
+Section: xorg-font
+Category: Xorg
+Title: font-xfree86-type1
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: font-xfree86-type1-1.0.0.tar.bz2
+Type: ipkg
+Description: font-xfree86-type1
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

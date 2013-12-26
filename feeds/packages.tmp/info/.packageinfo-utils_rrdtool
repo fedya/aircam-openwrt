@@ -1,0 +1,71 @@
+Source-Makefile: feeds/packages/utils/rrdtool/Makefile
+Package: librrd
+Version: 1.2.30-1
+Depends:  +libart +libfreetype +libpng +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: python libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: Round Robin Database (RRD) management library (v1.2.x)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: rrdtool-1.2.30.tar.gz
+Type: ipkg
+Description: Round Robin Database (RRD) management library (v1.2.x)
+http://oss.oetiker.ch/rrdtool/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: rrdcgi
+Version: 1.2.30-1
+Depends:  +librrd +cgilib
+Menu-Depends: 
+Provides: 
+Build-Depends: python libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Round Robin Database (RRD) CGI graphing tool (v1.2.x)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: rrdtool-1.2.30.tar.gz
+Type: ipkg
+Description: Round Robin Database (RRD) CGI graphing tool (v1.2.x)
+http://oss.oetiker.ch/rrdtool/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: rrdtool
+Version: 1.2.30-1
+Depends:  +librrd
+Menu-Depends: 
+Provides: 
+Build-Depends: python libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Round Robin Database (RRD) management tools (v1.2.x)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: rrdtool-1.2.30.tar.gz
+Type: ipkg
+Description: Round Robin Database (RRD) management tools (v1.2.x)
+http://oss.oetiker.ch/rrdtool/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: python-rrd
+Submenu: Python
+Version: 1.2.30-1
+Depends:  +python-mini +librrd
+Menu-Depends: 
+Provides: 
+Build-Depends: python libtool libintl libiconv
+Section: lang
+Category: Languages
+Title: Round Robin Database (RRD) python bindings (v1.2.x)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: rrdtool-1.2.30.tar.gz
+Type: ipkg
+Description: Round Robin Database (RRD) python bindings (v1.2.x)
+http://oss.oetiker.ch/rrdtool/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,153 @@
+sed.o: sed.c sed.h ../config.h ../basicdefs.h ../lib/alloca.h \
+ /usr/include/wchar.h /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h ../lib/stdio.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
+ /usr/include/bits/wchar.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h \
+ /usr/include/xlocale.h /usr/include/locale.h /usr/include/bits/locale.h \
+ /usr/include/wctype.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include/endian.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include/byteswap.h \
+ /usr/include/byteswap.h /usr/include/bits/byteswap.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdbool.h \
+ ../lib/gettext.h /usr/include/libintl.h ../lib/string.h \
+ /usr/include/string.h /usr/include/bits/string.h \
+ /usr/include/bits/string2.h ../lib/stdlib.h /usr/include/stdlib.h \
+ /usr/include/memory.h ../lib/regex.h /usr/include/sys/types.h \
+ /usr/include/time.h /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/sigset.h /usr/include/bits/time.h \
+ /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+ /usr/include/libio.h /usr/include/_G_config.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h ../lib/unlocked-io.h utils.h \
+ /usr/include/strings.h /usr/include/bits/waitflags.h \
+ /usr/include/bits/waitstatus.h ../lib/unistd.h /usr/include/unistd.h \
+ /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+ /usr/include/bits/confname.h /usr/include/getopt.h
+
+sed.h:
+
+../config.h:
+
+../basicdefs.h:
+
+../lib/alloca.h:
+
+/usr/include/wchar.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+../lib/stdio.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/locale.h:
+
+/usr/include/bits/locale.h:
+
+/usr/include/wctype.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include/endian.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include/byteswap.h:
+
+/usr/include/byteswap.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdbool.h:
+
+../lib/gettext.h:
+
+/usr/include/libintl.h:
+
+../lib/string.h:
+
+/usr/include/string.h:
+
+/usr/include/bits/string.h:
+
+/usr/include/bits/string2.h:
+
+../lib/stdlib.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/memory.h:
+
+../lib/regex.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+../lib/unlocked-io.h:
+
+utils.h:
+
+/usr/include/strings.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+../lib/unistd.h:
+
+/usr/include/unistd.h:
+
+/usr/include/bits/posix_opt.h:
+
+/usr/include/bits/environments.h:
+
+/usr/include/bits/confname.h:
+
+/usr/include/getopt.h:

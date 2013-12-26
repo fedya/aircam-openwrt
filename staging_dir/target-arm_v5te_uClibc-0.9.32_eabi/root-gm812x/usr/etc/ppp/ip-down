@@ -1,0 +1,32 @@
+#!/bin/sh
+set_fallback_ip()
+{
+	CFG_FILE="/tmp/running.cfg"
+	if [ ! -f $CFG_FILE ]; then
+		CFG_FILE="/tmp/system.cfg"
+	fi
+	fallback_ip=$(grep "ppp\.1\.fallback=" $CFG_FILE | awk -F= '{print $2}')
+	fallback_netmask=$(grep "ppp\.1\.fallback_netmask=" $CFG_FILE | awk -F= '{print $2}')
+	[ ! -z $fallback_ip ] && ip addr add $fallback_ip/${fallback_netmask:-24} dev $DEVICE
+	return 0
+}
+
+if [ -f /etc/ppp/resolv.conf ]; then
+	if [ -f /etc/ppp/resolv.prev ]; then
+		cp -f /etc/ppp/resolv.prev /etc/resolv.conf
+	else
+		rm -f /etc/resolv.conf
+	fi
+fi
+
+set_fallback_ip
+
+rm -f /etc/ppp/info.$IFNAME
+
+if [ -x /bin/sysled ]; then
+	/bin/sysled -i 0 2>/dev/null
+fi
+
+if [ -f /etc/ppp/rssi_decode.sh ]; then
+	. /etc/ppp/rssi_decode.sh stop
+fi

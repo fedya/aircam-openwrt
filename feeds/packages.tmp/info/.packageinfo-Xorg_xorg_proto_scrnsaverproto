@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/scrnsaverproto/Makefile
+Package: scrnsaverproto
+Submenu: proto
+Version: 1.2.0-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: scrnsaverproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: scrnsaverproto-1.2.0.tar.bz2
+Type: ipkg
+Description: scrnsaverproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

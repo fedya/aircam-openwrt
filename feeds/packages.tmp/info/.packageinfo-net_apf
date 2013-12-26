@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/net/apf/Makefile
+Package: apf
+Version: 0.8.4-1
+Depends: +libopenssl
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Active port forwarder
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: apf-0.8.4.tar.gz
+Type: ipkg
+Description: Active port forwarder
+http://gray-world.net/pr_af.shtml
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

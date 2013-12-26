@@ -1,0 +1,24 @@
+Source-Makefile: feeds/packages/net/openl2tp/Makefile
+Package: openl2tp
+Submenu: VPN
+Version: 1.8-1
+Depends: +ppp +kmod-pppol2tp +portmap +libreadline +libncurses @!LINUX_2_4 +USE_UCLIBC:librpc
+Menu-Depends: 
+Provides: 
+Build-Depends: libreadline libncurses
+Section: net
+Category: Network
+Title: An L2TP (Layer 2 Tunneling Protocol) daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: openl2tp-1.8.tar.gz
+Type: ipkg
+Description:  OpenL2TP is an open source L2TP client/server, written by Katalix Systems
+ specifically for Linux. It has been designed for use as an enterprise 
+ L2TP VPN server or in commercial, Linux-based, embedded networking
+ products and is able to support hundreds of sessions, each with different
+ configuration.
+http://www.openl2tp.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

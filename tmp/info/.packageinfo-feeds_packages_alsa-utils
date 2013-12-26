@@ -1,0 +1,33 @@
+Source-Makefile: package/feeds/packages/alsa-utils/Makefile
+Package: alsa-utils
+Version: 1.0.24.2-1
+Depends: +alsa-lib +libncurses +libpthread
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: ALSA (Advanced Linux Sound Architecture) utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: alsa-utils-1.0.24.2.tar.bz2
+Type: ipkg
+Description: ALSA (Advanced Linux Sound Architecture) utilities
+http://www.alsa-project.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: alsa-utils-tests
+Version: 1.0.24.2-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: ALSA utilities test data (adds ~1.3M to image)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: alsa-utils-1.0.24.2.tar.bz2
+Type: ipkg
+Description: ALSA utilities test data (adds ~1.3M to image)
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

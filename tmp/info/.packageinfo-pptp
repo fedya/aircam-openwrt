@@ -1,0 +1,18 @@
+Source-Makefile: package/pptp/Makefile
+Package: pptp
+Version: 1.7.1-3
+Depends: +ppp +kmod-gre
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: PPTP client
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Source: pptp-1.7.1.tar.gz
+Type: ipkg
+Description:  This package contains a PPTP (Point-to-Point Tunneling Protocol) client.
+http://pptpclient.sourceforge.net/
+Jo-Philipp Wich <xm@subsignal.org>
+@@
+
+

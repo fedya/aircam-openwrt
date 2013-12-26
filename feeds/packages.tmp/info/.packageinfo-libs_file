@@ -1,0 +1,34 @@
+Source-Makefile: feeds/packages/libs/file/Makefile
+Package: file
+Version: 5.05-1
+Depends: +libmagic
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title:  utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: file-5.05.tar.gz
+Type: ipkg
+Description:  utility
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libmagic
+Version: 5.05-1
+Depends: +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title:  library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: file-5.05.tar.gz
+Type: ipkg
+Description:  library
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

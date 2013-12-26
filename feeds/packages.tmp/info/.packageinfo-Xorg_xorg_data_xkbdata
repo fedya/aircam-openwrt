@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/data/xkbdata/Makefile
+Package: xkbdata
+Submenu: data
+Version: 1.0.1-2
+Depends: +xkbcomp
+Menu-Depends: 
+Provides: 
+Section: xorg-data
+Category: Xorg
+Title: xkbdata
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xkbdata-1.0.1.tar.bz2
+Type: ipkg
+Description: xkbdata
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

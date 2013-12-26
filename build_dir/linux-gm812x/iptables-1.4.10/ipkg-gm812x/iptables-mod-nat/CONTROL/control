@@ -1,0 +1,17 @@
+Package: iptables-mod-nat
+Version: 1.4.10-2
+Depends: iptables, kmod-ipt-nat
+Provides: 
+Source: package/iptables
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 4317
+Description:  iptables extensions for basic NAT targets.
+ Includes:
+ - MASQUERADE
+ - SNAT
+ - DNAT

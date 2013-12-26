@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/gettext-full/Makefile
+Package: libintl-full
+Version: 0.18.1.1-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: GNU Internationalization library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gettext-0.18.1.1.tar.gz
+Type: ipkg
+Description: GNU Internationalization library
+http://www.gnu.org/software/gettext/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

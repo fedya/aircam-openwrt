@@ -1,0 +1,10 @@
+--- a/networking/zcip.c
++++ b/networking/zcip.c
+@@ -294,7 +294,6 @@ int zcip_main(int argc UNUSED_PARAM, cha
+ #if BB_MMU
+ 		bb_daemonize(0 /*was: DAEMON_CHDIR_ROOT*/);
+ #endif
+-		bb_info_msg("start, interface %s", argv_intf);
+ 	}
+ 
+ 	// run the dynamic address negotiation protocol,

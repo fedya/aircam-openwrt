@@ -1,0 +1,13 @@
+Package: ppp
+Version: 2.4.4-4
+Depends: kmod-ppp
+Provides: 
+Source: package/ppp
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 124605
+Description:  This package contains the PPP (Point-to-Point Protocol) daemon.

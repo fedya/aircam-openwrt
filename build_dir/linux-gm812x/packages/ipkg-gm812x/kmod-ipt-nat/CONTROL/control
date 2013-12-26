@@ -1,0 +1,15 @@
+Package: kmod-ipt-nat
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-ipt-core, kmod-ipt-conntrack
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 11449
+Description:  Netfilter (IPv4) kernel modules for basic NAT targets
+ Includes:
+ - MASQUERADE

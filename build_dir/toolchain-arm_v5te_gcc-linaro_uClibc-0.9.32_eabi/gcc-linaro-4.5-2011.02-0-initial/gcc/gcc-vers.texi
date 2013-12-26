@@ -1,0 +1,5 @@
+@set version-GCC 4.5.2
+@clear DEVELOPMENT
+@set srcdir /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc
+@set VERSION_PACKAGE (Linaro GCC 4.5-2011.02-0) 
+@set BUGURL @uref{https://dev.openwrt.org/}

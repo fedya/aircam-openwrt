@@ -1,0 +1,10 @@
+This file describes the brief log for ftssp010_spi.c and ftssp010_spi.h.
+They are Grain Media's SPI controller driver.
+
+Copyright (C) 2010
+
+========================================================================
+
+version 0.0.1 20100825
+    * first workable version
+

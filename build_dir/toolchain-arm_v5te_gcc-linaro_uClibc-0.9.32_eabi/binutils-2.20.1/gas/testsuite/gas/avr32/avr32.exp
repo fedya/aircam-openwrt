@@ -1,0 +1,23 @@
+# AVR32 assembler testsuite. -*- Tcl -*-
+
+if [istarget avr32-*-*] {
+    run_dump_test "hwrd-lwrd"
+    run_dump_test "pcrel"
+    run_dump_test "aliases"
+    run_dump_test "dwarf2"
+    run_dump_test "pic_reloc"
+    run_dump_test "fpinsn"
+    run_dump_test "pico"
+    run_dump_test "lda_pic"
+    run_dump_test "lda_pic_linkrelax"
+    run_dump_test "lda_nopic"
+    run_dump_test "lda_nopic_linkrelax"
+    run_dump_test "call_pic"
+    run_dump_test "call_pic_linkrelax"
+    run_dump_test "call_nopic"
+    run_dump_test "call_nopic_linkrelax"
+    run_dump_test "jmptable"
+    run_dump_test "jmptable_linkrelax"
+    run_dump_test "symdiff"
+    run_dump_test "symdiff_linkrelax"
+}

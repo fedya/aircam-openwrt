@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/app/xkbcomp/Makefile
+Package: xkbcomp
+Submenu: app
+Version: 1.1.1-2
+Depends: +libX11 +libxkbfile
+Menu-Depends: 
+Provides: 
+Section: xorg-app
+Category: Xorg
+Title: xkbcomp
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xkbcomp-1.1.1.tar.bz2
+Type: ipkg
+Description: xkbcomp
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

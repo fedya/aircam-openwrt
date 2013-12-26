@@ -1,0 +1,34 @@
+Source-Makefile: feeds/packages/net/tor/Makefile
+Package: tor
+Version: 0.2.1.30-1
+Depends: +libevent +libopenssl +libpthread +librt
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: An anonymous Internet communication system
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tor-0.2.1.30.tar.gz
+Type: ipkg
+Description: An anonymous Internet communication system
+https://www.torproject.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tor-geoip
+Version: 0.2.1.30-1
+Depends: +tor
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: GeoIP db for tor
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tor-0.2.1.30.tar.gz
+Type: ipkg
+Description: GeoIP db for tor
+https://www.torproject.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

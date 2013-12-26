@@ -1,0 +1,52 @@
+# This file is a shell script that caches the results of configure
+# tests run on this system so they can be shared between configure
+# scripts and configure runs, see configure's option --config-cache.
+# It is not useful on other systems.  If it contains results you don't
+# want to keep, you may remove or edit it.
+#
+# config.status only pays attention to the cache file if you give it
+# the --recheck option to rerun configure.
+#
+# `ac_cv_env_foo' variables (set or unset) will be overridden when
+# loading this file, other *unset* `ac_cv_foo' will be assigned the
+# following values.
+
+ac_cv_build=${ac_cv_build=x86_64-redhat-linux-gnu}
+ac_cv_c_compiler_gnu=${ac_cv_c_compiler_gnu=yes}
+ac_cv_env_CC_set=set
+ac_cv_env_CC_value=' /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/xgcc -B/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/lib/ -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/include -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include   '
+ac_cv_env_CFLAGS_set=set
+ac_cv_env_CFLAGS_value='-O2 -pipe -march=armv5te -msoft-float -fno-caller-saves -fhonour-copts -msoft-float'
+ac_cv_env_CPPFLAGS_set=set
+ac_cv_env_CPPFLAGS_value=
+ac_cv_env_CPP_set=
+ac_cv_env_CPP_value=
+ac_cv_env_LDFLAGS_set=set
+ac_cv_env_LDFLAGS_value=
+ac_cv_env_LIBS_set=
+ac_cv_env_LIBS_value=
+ac_cv_env_build_alias_set=set
+ac_cv_env_build_alias_value=x86_64-redhat-linux
+ac_cv_env_host_alias_set=set
+ac_cv_env_host_alias_value=arm-openwrt-linux-uclibcgnueabi
+ac_cv_env_target_alias_set=set
+ac_cv_env_target_alias_value=arm-openwrt-linux-uclibcgnueabi
+ac_cv_host=${ac_cv_host=arm-openwrt-linux-uclibcgnueabi}
+ac_cv_objext=${ac_cv_objext=o}
+ac_cv_path_install=${ac_cv_path_install='/usr/bin/install -c'}
+ac_cv_prog_AR=${ac_cv_prog_AR=/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ar}
+ac_cv_prog_AWK=${ac_cv_prog_AWK=gawk}
+ac_cv_prog_CC=${ac_cv_prog_CC=' /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/xgcc -B/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/lib/ -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/include -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include   '}
+ac_cv_prog_CPP=${ac_cv_prog_CPP=' /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/xgcc -B/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/lib/ -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/include -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include    -E'}
+ac_cv_prog_LIPO=${ac_cv_prog_LIPO=arm-openwrt-linux-uclibcgnueabi-lipo}
+ac_cv_prog_NM=${ac_cv_prog_NM=/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-initial/./gcc/nm}
+ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB=/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ranlib}
+ac_cv_prog_STRIP=${ac_cv_prog_STRIP=/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/strip}
+ac_cv_prog_cc_c89=${ac_cv_prog_cc_c89=no}
+ac_cv_prog_cc_g=${ac_cv_prog_cc_g=yes}
+gcc_cv_have_cc_tls=${gcc_cv_have_cc_tls=yes}
+gcc_cv_use_emutls=${gcc_cv_use_emutls=no}
+glibcxx_cv_c99_math_tr1=${glibcxx_cv_c99_math_tr1=no}
+libgcc_cv_dfp=${libgcc_cv_dfp=no}
+libgcc_cv_fixed_point=${libgcc_cv_fixed_point=no}
+libgcc_cv_hidden_visibility_attribute=${libgcc_cv_hidden_visibility_attribute=yes}

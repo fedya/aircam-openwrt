@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/net/dsl-qos-queue/Makefile
+Package: dsl-qos-queue
+Version: 0.9.3-3
+Depends: +iptables +kmod-ipt-queue +iptables-mod-ipopt +libipq @!LINUX_2_6_25 @!LINUX_2_6_26 @!LINUX_2_6_27 @!LINUX_2_6_28
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: ADSL/ATM Bandwith management
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: dsl_qos_queue-0.9.3.tar.gz
+Type: ipkg
+Description: ADSL/ATM Bandwith management
+http://www.sonicspike.net/software/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

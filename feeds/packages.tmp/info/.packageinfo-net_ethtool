@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/ethtool/Makefile
+Package: ethtool
+Version: 2.6.38-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Display or change ethernet card settings
+Maintainer: Luka Perkov <openwrt@lukaperkov.net>
+Source: ethtool-2.6.38.tar.bz2
+Type: ipkg
+Description:  ethtool is a small utility for examining and tuning your ethernet-based
+ network interface.
+http://www.kernel.org/pub/software/network/ethtool/
+Luka Perkov <openwrt@lukaperkov.net>
+@@
+
+

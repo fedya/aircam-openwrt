@@ -1,0 +1,4 @@
+/etc/shadow
+/etc/config/
+/etc/dropbear/
+/etc/crontabs/

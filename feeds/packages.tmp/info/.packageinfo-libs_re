@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/libs/re/Makefile
+Package: libre
+Version: 0.2.0-1
+Depends: +libopenssl +libpthread
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Generic library for real-time communications with async IO support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: re-0.2.0.tar.gz
+Type: ipkg
+Description: 	Generic library for real-time communications with async IO support.
+http://www.creytiv.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

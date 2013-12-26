@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/libs/uclibc++/Makefile
+Package: uclibcxx
+Version: 0.2.2-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: C++ library for embedded systems
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: uClibc++-0.2.2.tar.bz2
+Type: ipkg
+Description: C++ library for embedded systems
+http://cxx.uclibc.org/src/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

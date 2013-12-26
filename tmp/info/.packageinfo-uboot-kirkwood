@@ -1,0 +1,53 @@
+Source-Makefile: package/uboot-kirkwood/Makefile
+Package: uboot-kirkwood-sheevaplug
+Version: 2010.09-1
+Depends: @TARGET_kirkwood
+Menu-Depends: 
+Provides: 
+Build-Variant: sheevaplug
+Section: boot
+Category: Boot Loaders
+Title: U-boot for the Sheevaplug
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: u-boot-2010.09.tar.bz2
+Type: bin
+Description: U-boot for the Sheevaplug
+http://www.denx.de/wiki/U-Boot
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uboot-kirkwood-dockstar
+Version: 2010.09-1
+Depends: @TARGET_kirkwood
+Menu-Depends: 
+Provides: 
+Build-Variant: dockstar
+Section: boot
+Category: Boot Loaders
+Title: U-boot for the Seagate Dockstar
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: u-boot-2010.09.tar.bz2
+Type: bin
+Description: U-boot for the Seagate Dockstar
+http://www.denx.de/wiki/U-Boot
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uboot-kirkwood-iconnect
+Version: 2010.09-1
+Depends: @TARGET_kirkwood
+Menu-Depends: 
+Provides: 
+Build-Variant: iconnect
+Section: boot
+Category: Boot Loaders
+Title: U-boot for the Iomega iConnect Wireless
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: u-boot-2010.09.tar.bz2
+Type: bin
+Description: U-boot for the Iomega iConnect Wireless
+http://www.denx.de/wiki/U-Boot
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

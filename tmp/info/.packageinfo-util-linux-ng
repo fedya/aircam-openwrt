@@ -1,0 +1,182 @@
+Source-Makefile: package/util-linux-ng/Makefile
+Package: fdisk
+Submenu: disc
+Version: 2.13.0.1-4
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Partition table manipulation utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains a utility for managing disk partition tables.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: cfdisk
+Submenu: disc
+Version: 2.13.0.1-4
+Depends: +libncurses
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Partition table manipulation utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains a utility for managing disk partition tables.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: sfdisk
+Submenu: disc
+Version: 2.13.0.1-4
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Partition table manipulation utility (Command-line)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains a utility for managing disk partition tables using command-line only.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: losetup
+Version: 2.13.0.1-4
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Loopback devices setup and control utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains a utility for managing loopback devices.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: mount-utils
+Version: 2.13.0.1-4
+Depends:  +libblkid +libuuid
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Devices mount/unmounting utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains utilities to mount/unmount devices.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: swap-utils
+Submenu: disc
+Version: 2.13.0.1-4
+Depends:  +libblkid +libuuid
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Swap space management utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains a collection of tools for managing swap space:
+ - mkswap
+ - swapon
+ - swapoff
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: hwclock
+Version: 2.13.0.1-4
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Utilities for managing the hardware clock
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  This package contains a utility for managing the hardware clock.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: flock
+Version: 2.13.0.1-4
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Manage file locks from shell scripts
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:   This package contains a utility for managing file locks from shell scripts.
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: setterm
+Submenu: Terminal
+Version: 2.13.0.1-4
+Depends: +libncurses
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Tool for setting terminal attributes
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:   This package contains a utility for setting terminal attributes
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: script
+Submenu: Terminal
+Version: 2.13.0.1-4
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: e2fsprogs libncurses
+Section: utils
+Category: Utilities
+Title: Make typescript of terminal session
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: util-linux-ng-2.13.0.1.tar.gz
+Type: ipkg
+Description:  Script makes a typescript of everything printed on your terminal.
+ http://linux.die.net/man/1/script
+http://www.kernel.org/pub/linux/utils/util-linux-ng/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

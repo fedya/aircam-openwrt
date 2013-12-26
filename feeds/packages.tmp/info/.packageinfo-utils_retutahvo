@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/utils/retutahvo/Makefile
+Package: retutahvo
+Version: 1
+Depends: @TARGET_omap24xx
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Retu/Tahvo userspace tool
+Maintainer: Michael Buesch <mb@bu3sch.de>
+Source: 
+Type: ipkg
+Description: 	Nokia n810 Retu/Tahvo userspace tool.
+	Warning: Do not use this, if you don't know what you're doing.
+	This tool can physically damage the n810.
+Michael Buesch <mb@bu3sch.de>
+@@
+
+

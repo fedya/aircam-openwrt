@@ -1,0 +1,15 @@
+menu "Grain Media GPIO controller"
+config GPIO_GM8181
+        tristate "GM8181 GPIO controller"
+        default y
+        depends on PLATFORM_GM8181
+        help
+          Enable GM8181 GPIO controller's function
+
+config GPIO_GM8126
+        tristate "GM8126 GPIO controller"
+        default y
+        depends on PLATFORM_GM8126
+        help
+          Enable GM8126 GPIO controller's function
+endmenu

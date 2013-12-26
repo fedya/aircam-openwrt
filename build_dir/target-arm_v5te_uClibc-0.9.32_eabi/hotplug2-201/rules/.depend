@@ -1,0 +1,15 @@
+command.o: command.c command.h ../common.h ../uevent.h ../seqnum.h \
+ ../xmemutils.h execution_ctx.h
+condition.o: condition.c condition.h
+execution.o: execution.c execution.h command.h ../common.h ../uevent.h \
+ ../seqnum.h ../xmemutils.h execution_ctx.h condition.h expression.h \
+ command-list.h ruleset.h rule.h ../settings.h ../rules/ruleset.h \
+ ../workers/loader.h ../workers/worker.h ../workers/../uevent.h \
+ ../workers/../settings.h
+expression.o: expression.c expression.h command.h ../common.h ../uevent.h \
+ ../seqnum.h ../xmemutils.h execution_ctx.h command-list.h
+rule.o: rule.c rule.h condition.h expression.h command.h ../common.h \
+ ../uevent.h ../seqnum.h ../xmemutils.h execution_ctx.h command-list.h
+ruleset.o: ruleset.c ruleset.h rule.h condition.h expression.h command.h \
+ ../common.h ../uevent.h ../seqnum.h ../xmemutils.h execution_ctx.h \
+ command-list.h

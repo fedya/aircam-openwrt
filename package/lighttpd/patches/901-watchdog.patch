@@ -1,0 +1,33 @@
+--- a/src/connections.c
++++ b/src/connections.c
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <fcntl.h>
+ #include <assert.h>
++#include <signal.h>
+ 
+ #ifdef USE_OPENSSL
+ # include <openssl/ssl.h>
+@@ -40,6 +41,9 @@ typedef struct {
+ 	        PLUGIN_DATA;
+ } plugin_data;
+ 
++#define TOTAL_CONN_COUNTER_LIMIT 1000
++static volatile int total_conn_counter = 0;
++
+ static connection *connections_get_new_connection(server *srv) {
+ 	connections *conns = srv->conns;
+ 	size_t i;
+@@ -1374,6 +1378,12 @@ connection *connection_accept(server *sr
+ 			}
+ 		}
+ #endif
++
++        if (++total_conn_counter > TOTAL_CONN_COUNTER_LIMIT) {
++            log_error_write(srv, __FILE__, __LINE__, "sd", "reached total connection count limit: ", TOTAL_CONN_COUNTER_LIMIT, ". Forcing shutdown.");
++            kill(getpid(), SIGINT);
++        }
++
+ 		return con;
+ 	}
+ }

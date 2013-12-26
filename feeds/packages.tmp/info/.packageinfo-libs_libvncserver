@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/libvncserver/Makefile
+Package: libvncserver
+Version: 0.9.7-1
+Depends: +zlib +BUILD_NLS:libiconv-full
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: libs
+Category: Libraries
+Title: VNC Server Library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: LibVNCServer-0.9.7.tar.gz
+Type: ipkg
+Description: VNC Server Library
+http://libvncserver.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

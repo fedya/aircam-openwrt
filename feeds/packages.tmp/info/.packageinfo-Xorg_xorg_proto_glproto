@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/glproto/Makefile
+Package: glproto
+Submenu: proto
+Version: 1.4.10-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: glproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: glproto-1.4.10.tar.bz2
+Type: ipkg
+Description: glproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

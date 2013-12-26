@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/net/baresip/Makefile
+Package: baresip
+Submenu: Telephony
+Version: 0.2.0-1
+Depends: +libre +libpthread 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: baresip Barebone SIP useragent
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: baresip-0.2.0.tar.gz
+Type: ipkg
+Description: baresip Barebone SIP useragent
+http://www.creytiv.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+Config:
+	source "feeds/packages/net/baresip/Config.in"
+@@
+
+

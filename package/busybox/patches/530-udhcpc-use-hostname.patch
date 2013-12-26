@@ -1,0 +1,63 @@
+--- a/networking/udhcp/dhcpc.c
++++ b/networking/udhcp/dhcpc.c
+@@ -966,6 +966,7 @@ static void client_background(void)
+ //usage:     "\n				-x 0x3d:0100BEEFC0FFEE - option 61 (client id)"
+ //usage:     "\n	-F,--fqdn NAME		Ask server to update DNS mapping for NAME"
+ //usage:     "\n	-H,-h,--hostname NAME	Send NAME as client hostname (default none)"
++//usage:     "\n	-N,--use-hostname	Send system hostname as client hostname (default no)"
+ //usage:     "\n	-V,--vendorclass VENDOR	Vendor identifier (default 'udhcp VERSION')"
+ //usage:     "\n	-C,--clientid-none	Don't send MAC as client identifier"
+ //usage:	IF_UDHCP_VERBOSE(
+@@ -1003,6 +1004,7 @@ static void client_background(void)
+ //usage:     "\n			-x 0x3d:0100BEEFC0FFEE - option 61 (client id)"
+ //usage:     "\n	-F NAME		Ask server to update DNS mapping for NAME"
+ //usage:     "\n	-H,-h NAME	Send NAME as client hostname (default none)"
++//usage:     "\n	-N		Send system hostname as client hostname (default no)"
+ //usage:     "\n	-V VENDOR	Vendor identifier (default 'udhcp VERSION')"
+ //usage:     "\n	-C		Don't send MAC as client identifier"
+ //usage:	IF_UDHCP_VERBOSE(
+@@ -1041,6 +1043,7 @@ int udhcpc_main(int argc UNUSED_PARAM, c
+ 		"clientid-none\0"  No_argument       "C"
+ 		"vendorclass\0"    Required_argument "V"
+ 		"hostname\0"       Required_argument "H"
++		"use-hostname\0"   No_argument       "N"
+ 		"fqdn\0"           Required_argument "F"
+ 		"interface\0"      Required_argument "i"
+ 		"now\0"            No_argument       "n"
+@@ -1082,9 +1085,10 @@ int udhcpc_main(int argc UNUSED_PARAM, c
+ 		OPT_O = 1 << 16,
+ 		OPT_o = 1 << 17,
+ 		OPT_x = 1 << 18,
+-		OPT_f = 1 << 19,
++		OPT_N = 1 << 19,
++		OPT_f = 1 << 20,
+ /* The rest has variable bit positions, need to be clever */
+-		OPTBIT_f = 19,
++		OPTBIT_f = 20,
+ 		USE_FOR_MMU(             OPTBIT_b,)
+ 		IF_FEATURE_UDHCPC_ARPING(OPTBIT_a,)
+ 		IF_FEATURE_UDHCP_PORT(   OPTBIT_P,)
+@@ -1108,7 +1112,7 @@ int udhcpc_main(int argc UNUSED_PARAM, c
+ #endif
+ 		;
+ 	IF_LONG_OPTS(applet_long_options = udhcpc_longopts;)
+-	opt = getopt32(argv, "CV:H:h:F:i:np:qRr:s:T:t:SA:O:ox:f"
++	opt = getopt32(argv, "CV:H:h:F:i:np:qRr:s:T:t:SA:O:ox:Nf"
+ 		USE_FOR_MMU("b")
+ 		IF_FEATURE_UDHCPC_ARPING("a")
+ 		IF_FEATURE_UDHCP_PORT("P:")
+@@ -1126,6 +1130,14 @@ int udhcpc_main(int argc UNUSED_PARAM, c
+ 		);
+ 	if (opt & (OPT_h|OPT_H))
+ 		client_config.hostname = alloc_dhcp_option(DHCP_HOST_NAME, str_h, 0);
++	if (opt & OPT_N) {
++		char hostname[128];
++		memset(hostname, 0, sizeof(hostname));
++		if (gethostname(hostname, sizeof(hostname) - 1) == 0) {
++			bb_info_msg("Using system hostname: '%s'...", hostname);
++			client_config.hostname = alloc_dhcp_option(DHCP_HOST_NAME, hostname, 0);
++		}
++	}
+ 	if (opt & OPT_F) {
+ 		/* FQDN option format: [0x51][len][flags][0][0]<fqdn> */
+ 		client_config.fqdn = alloc_dhcp_option(DHCP_FQDN, str_F, 3);

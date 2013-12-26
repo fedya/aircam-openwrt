@@ -1,0 +1,38 @@
+Source-Makefile: feeds/packages/libs/liblo/Makefile
+Package: liblo
+Submenu: Sound
+Version: 0.26-1
+Depends: +libpthread
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: Lightweight Open Sound Control (OSC) library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: liblo-0.26.tar.gz
+Type: ipkg
+Description: Lightweight Open Sound Control (OSC) library
+http://liblo.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: liblo-utils
+Submenu: Sound
+Version: 0.26-1
+Depends: +liblo
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Lightweight Open Sound Control (OSC) utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: liblo-0.26.tar.gz
+Type: ipkg
+Description: Lightweight Open Sound Control (OSC) utilities
+http://liblo.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,162 @@
+emutls_s.o: \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/emutls.c \
+ ../.././gcc/tconfig.h ../.././gcc/auto-host.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../include/ansidecl.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/tsystem.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/include/stddef.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/include/float.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../include/filenames.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/coretypes.h \
+ ../.././gcc/tm.h ../.././gcc/options.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/dbxelf.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/elfos.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/linux.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/glibc-stdint.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/elf.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/linux-gas.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/linux-elf.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/bpabi.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/linux-eabi.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/aout.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/arm.h \
+ ../.././gcc/insn-modes.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/vxworks-dummy.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/arm-cores.def \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/defaults.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/gthr.h \
+ ../.././gcc/gthr-default.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/gthr-posix.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/pthread.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/features.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/uClibc_config.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/sys/cdefs.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/endian.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/endian.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/byteswap.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/byteswap.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/byteswap-common.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/sched.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/types.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/wordsize.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/typesizes.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/pthreadtypes.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/time.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/sched.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/time.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/uClibc_clk_tck.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/signal.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/sigset.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/setjmp.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/unistd.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/posix_opt.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/environments.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/confname.h \
+ /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/getopt.h
+
+../.././gcc/tconfig.h:
+
+../.././gcc/auto-host.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../include/ansidecl.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/tsystem.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/include/stddef.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/include/float.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../include/filenames.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/coretypes.h:
+
+../.././gcc/tm.h:
+
+../.././gcc/options.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/dbxelf.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/elfos.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/linux.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/glibc-stdint.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/elf.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/linux-gas.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/linux-elf.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/bpabi.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/linux-eabi.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/aout.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/arm.h:
+
+../.././gcc/insn-modes.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/vxworks-dummy.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/config/arm/arm-cores.def:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/defaults.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/gthr.h:
+
+../.././gcc/gthr-default.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libgcc/../gcc/gthr-posix.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/pthread.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/features.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/uClibc_config.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/sys/cdefs.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/endian.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/endian.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/byteswap.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/byteswap.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/byteswap-common.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/sched.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/types.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/wordsize.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/typesizes.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/pthreadtypes.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/time.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/sched.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/time.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/uClibc_clk_tck.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/signal.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/sigset.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/setjmp.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/unistd.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/posix_opt.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/environments.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/confname.h:
+
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include/bits/getopt.h:

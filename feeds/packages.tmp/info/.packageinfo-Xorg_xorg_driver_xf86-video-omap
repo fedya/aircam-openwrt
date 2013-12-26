@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/driver/xf86-video-omap/Makefile
+Package: xf86-video-omapfb
+Submenu: driver
+Version: 20100810-1
+Depends: +xserver-xorg
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: xorg-driver
+Category: Xorg
+Title: xf86-video-omapfb
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xf86-video-omapfb-20100810.tar.bz2
+Type: ipkg
+Description: xf86-video-omapfb
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

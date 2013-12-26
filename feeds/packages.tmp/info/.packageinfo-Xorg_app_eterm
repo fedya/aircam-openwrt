@@ -1,0 +1,36 @@
+Source-Makefile: feeds/packages/Xorg/app/eterm/Makefile
+Package: esetroot
+Submenu: terminals
+Version: 0.9.4-2
+Depends: eterm
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: xorg-extra
+Category: Xorg
+Title: esetroot
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: Eterm-0.9.4.tar.gz
+Type: ipkg
+Description: esetroot
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: eterm
+Submenu: terminals
+Version: 0.9.4-2
+Depends: +libX11 +libXcursor +imlib2 +libast +BUILD_NLS:libiconv-full
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: xorg-extra
+Category: Xorg
+Title: eterm
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: Eterm-0.9.4.tar.gz
+Type: ipkg
+Description: eterm
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

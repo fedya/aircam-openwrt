@@ -1,0 +1,36 @@
+Source-Makefile: package/pjsip/Makefile
+Package: pjsip-oss
+Version: 1.8.5-2
+Depends: +libuuid 
+Menu-Depends: 
+Provides: 
+Build-Variant: oss
+Section: lib
+Category: Libraries
+Title: pjsip-oss
+Maintainer: John Crispin <blogic@openwrt.org>
+Source: pjproject-1.8.5.tar.bz2
+Type: ipkg
+Description: pjsip-oss
+http://www.pjsip.org/
+John Crispin <blogic@openwrt.org>
+@@
+
+Package: pjsip-ltq-tapi
+Version: 1.8.5-2
+Depends: +libuuid @TARGET_lantiq +TARGET_lantiq:kmod-ltq-tapi +TARGET_lantiq:kmod-ltq-vmmc
+Menu-Depends: 
+Provides: 
+Build-Variant: ltq-tapi
+Section: lib
+Category: Libraries
+Title: pjsip-ltq-tapi
+Maintainer: John Crispin <blogic@openwrt.org>
+Source: pjproject-1.8.5.tar.bz2
+Type: ipkg
+Description: pjsip-ltq-tapi
+http://www.pjsip.org/
+John Crispin <blogic@openwrt.org>
+@@
+
+

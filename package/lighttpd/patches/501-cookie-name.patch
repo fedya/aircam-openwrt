@@ -1,0 +1,148 @@
+--- a/src/mod_airos.c
++++ b/src/mod_airos.c
+@@ -71,6 +71,7 @@ typedef struct {
+ 	buffer* login_page;
+ 	buffer* nocookie_page;
+ 	buffer* sessiondb_file;
++	buffer* cookie_name;
+ 	unsigned short session_timeout;
+ 	unsigned short redirect_https_port;
+ 	void* tdb;
+@@ -122,6 +123,7 @@ FREE_FUNC(mod_airos_free) {
+ 			array_free(s->denied);
+ 			buffer_free(s->login_page);
+ 			buffer_free(s->nocookie_page);
++			buffer_free(s->cookie_name);
+ 			buffer_free(s->sessiondb_file);
+ 
+ #ifdef HAVE_TDB_H
+@@ -141,11 +143,10 @@ FREE_FUNC(mod_airos_free) {
+ }
+ 
+ static const char SCHEME_HTTPS[] = "https://";
++static const char EQ[] = "=";
+ 
+ /* handle plugin config and check values */
+ 
+-static const char COOKIE_NAME[] = "AIROS_SESSIONID";
+-static const char COOKIE_NAME_EQ[] = "AIROS_SESSIONID=";
+ static const char COOKIE_TEST_PAGE[] = "/cookiechecker";
+ 
+ static const char CONFIG_ALLOW[] = "airos.allow";
+@@ -154,6 +155,7 @@ static const char CONFIG_CACHABLE[] = "a
+ static const char CONFIG_CACHABLE_GZ[] = "airos.cachable-gzip";
+ static const char CONFIG_LOGIN_PAGE[] = "airos.login-page";
+ static const char CONFIG_NOCOOKIE_PAGE[] = "airos.nocookie-page";
++static const char CONFIG_COOKIE_NAME[] = "airos.cookie-name";
+ static const char CONFIG_SESSIONDB_FILE[] = "airos.sessiondb-file";
+ static const char CONFIG_SESSION_TIMEOUT[] = "airos.session-timeout";
+ 
+@@ -161,6 +163,7 @@ static const char CONFIG_HTTPS_REDIRECT[
+ 
+ static const char DEFAULT_LOGIN_PAGE[] = "/login.html";
+ static const char DEFAULT_NOCOOKIE_PAGE[] = "/nocookies.html";
++static const char DEFAULT_COOKIE_NAME[] = "AIROS_SESSIONID";
+ static const unsigned short DEFAULT_SESSION_TIMEOUT = 15 * 60;
+ 
+ SETDEFAULTS_FUNC(mod_airos_set_defaults) {
+@@ -175,9 +178,10 @@ SETDEFAULTS_FUNC(mod_airos_set_defaults)
+ 		{ CONFIG_CACHABLE_GZ,       NULL, T_CONFIG_BOOLEAN, T_CONFIG_SCOPE_CONNECTION },/* 3 */
+ 		{ CONFIG_LOGIN_PAGE,		NULL, T_CONFIG_STRING, T_CONFIG_SCOPE_CONNECTION }, /* 4 */
+ 		{ CONFIG_NOCOOKIE_PAGE,		NULL, T_CONFIG_STRING, T_CONFIG_SCOPE_CONNECTION }, /* 5 */
+-		{ CONFIG_SESSIONDB_FILE,	NULL, T_CONFIG_STRING, T_CONFIG_SCOPE_CONNECTION }, /* 6 */
+-		{ CONFIG_SESSION_TIMEOUT,	NULL, T_CONFIG_SHORT, T_CONFIG_SCOPE_CONNECTION },  /* 7 */
+-		{ CONFIG_HTTPS_REDIRECT,	NULL, T_CONFIG_SHORT, T_CONFIG_SCOPE_CONNECTION },  /* 8 */
++		{ CONFIG_COOKIE_NAME,		NULL, T_CONFIG_STRING, T_CONFIG_SCOPE_CONNECTION }, /* 6 */
++		{ CONFIG_SESSIONDB_FILE,	NULL, T_CONFIG_STRING, T_CONFIG_SCOPE_CONNECTION }, /* 7 */
++		{ CONFIG_SESSION_TIMEOUT,	NULL, T_CONFIG_SHORT, T_CONFIG_SCOPE_CONNECTION },  /* 8 */
++		{ CONFIG_HTTPS_REDIRECT,	NULL, T_CONFIG_SHORT, T_CONFIG_SCOPE_CONNECTION },  /* 9 */
+ 		{ NULL, NULL, T_CONFIG_UNSET, T_CONFIG_SCOPE_UNSET }
+ 	};
+ 
+@@ -196,6 +200,7 @@ SETDEFAULTS_FUNC(mod_airos_set_defaults)
+ 		s->cachable_gz = 0;
+ 		s->login_page = buffer_init();
+ 		s->nocookie_page = buffer_init();
++		s->cookie_name = buffer_init();
+ 		s->sessiondb_file = buffer_init();
+ 		s->session_timeout = DEFAULT_SESSION_TIMEOUT;
+ 		s->redirect_https_port = 0;
+@@ -206,9 +211,10 @@ SETDEFAULTS_FUNC(mod_airos_set_defaults)
+ 		cv[3].destination = &(s->cachable_gz);
+ 		cv[4].destination = s->login_page;
+ 		cv[5].destination = s->nocookie_page;
+-		cv[6].destination = s->sessiondb_file;
+-		cv[7].destination = &(s->session_timeout);
+-		cv[8].destination = &(s->redirect_https_port);
++		cv[6].destination = s->cookie_name;
++		cv[7].destination = s->sessiondb_file;
++		cv[8].destination = &(s->session_timeout);
++		cv[9].destination = &(s->redirect_https_port);
+ 
+ 		p->config_storage[i] = s;
+ 
+@@ -224,6 +230,10 @@ SETDEFAULTS_FUNC(mod_airos_set_defaults)
+ 			buffer_append_string_len(s->nocookie_page,
+ 					SCONST_STR_LEN(DEFAULT_NOCOOKIE_PAGE));
+ 		}
++		if (buffer_is_empty(s->cookie_name)) {
++			buffer_append_string_len(s->cookie_name,
++					SCONST_STR_LEN(DEFAULT_COOKIE_NAME));
++		}
+ 		/* automatically include login and nocookie pages
+ 		 * to the allowed page list */
+ 		ds = data_string_init();
+@@ -263,6 +273,7 @@ static int mod_airos_patch_connection(se
+ 	PATCH(cachable_gz);
+ 	PATCH(login_page);
+ 	PATCH(nocookie_page);
++	PATCH(cookie_name);
+ 	PATCH(sessiondb_file);
+ 	PATCH(session_timeout);
+ 	PATCH(redirect_https_port);
+@@ -292,6 +303,8 @@ static int mod_airos_patch_connection(se
+ 				PATCH(login_page);
+ 			} else if (buffer_is_equal_string(du->key, SCONST_STR_LEN(CONFIG_NOCOOKIE_PAGE))) {
+ 				PATCH(nocookie_page);
++			} else if (buffer_is_equal_string(du->key, SCONST_STR_LEN(CONFIG_COOKIE_NAME))) {
++				PATCH(cookie_name);
+ 			} else if (buffer_is_equal_string(du->key, SCONST_STR_LEN(CONFIG_SESSIONDB_FILE))) {
+ 				PATCH(sessiondb_file);
+ 				PATCH(tdb);
+@@ -618,7 +631,8 @@ session_init(server* srv, connection* co
+ 	buffer_copy_string_hex(new_id, (char*)h, 16);
+ 
+ 	buffer_copy_string_len(ds->key, CONST_STR_LEN("Set-Cookie"));
+-	buffer_copy_string_len(ds->value, SCONST_STR_LEN(COOKIE_NAME_EQ));
++	buffer_copy_string_buffer(ds->value, p->conf.cookie_name);
++	buffer_append_string_len(ds->value, SCONST_STR_LEN(EQ));
+ 	buffer_append_string_buffer(ds->value, new_id);
+ 	buffer_append_string_len(ds->value, CONST_STR_LEN("; Path=/"));
+ 	buffer_append_string_len(ds->value, CONST_STR_LEN("; Version=1"));
+@@ -726,7 +740,7 @@ URIHANDLER_FUNC(mod_airos_uri_handler) {
+ 		buffer* value = NULL;
+ 
+ 		if (ds != NULL)
+-			value = fetch_cookie_value(COOKIE_NAME, ds->value);
++			value = fetch_cookie_value(p->conf.cookie_name->ptr, ds->value);
+ 
+ 		if (value != NULL && value->used == 33) {
+ 			got_cookie = 1;
+@@ -752,7 +766,7 @@ URIHANDLER_FUNC(mod_airos_uri_handler) {
+ 
+ 	needs_cookie = 1;
+ 	if (ds != NULL) {
+-		buffer* value = fetch_cookie_value(COOKIE_NAME, ds->value);
++		buffer* value = fetch_cookie_value(p->conf.cookie_name->ptr, ds->value);
+ 
+ 		if (value != NULL && value->used == 33) {
+ 			/* do we have this session in our DB? */
+@@ -971,7 +985,7 @@ SUBREQUEST_FUNC(mod_airos_subrequest_sta
+ 	/* TODO: optimize - use connection plugin_ctx to store session */
+ 	ds = (data_string *)array_get_element(con->request.headers, "Cookie");
+ 	if (ds != NULL) {
+-			buffer* value = fetch_cookie_value(COOKIE_NAME, ds->value);
++			buffer* value = fetch_cookie_value(p->conf.cookie_name->ptr, ds->value);
+ 
+ 			if (value != NULL && value->used == 33) {
+ 				/* do we have this session in our DB? */

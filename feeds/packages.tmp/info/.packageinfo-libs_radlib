@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/radlib/Makefile
+Package: radlib
+Version: 2.8.5-2
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: Rapid Application Development Library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: radlib-2.8.5.tar.gz
+Type: ipkg
+Description: 	radlib is a rapid application development library for unix multi-process applications
+http://www.radlib.teel.ws/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

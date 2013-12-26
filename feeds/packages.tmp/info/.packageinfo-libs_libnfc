@@ -1,0 +1,46 @@
+Source-Makefile: feeds/packages/libs/libnfc/Makefile
+Package: libnfc
+Version: 1.3.4-1
+Depends: +libpcsclite +libusb +pcscd +ccid
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: Near Field Communication (NFC) library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libnfc-1.3.4.tar.gz
+Type: ipkg
+Description:   libnfc is a free software library used to communicate with NFC 
+  capable devices or tags. It support the four main NFC modulations:
+  * ISO14443-A (NXP MIFARE),
+  * ISO14443-B,
+  * JIS X 6319-4 (Sony Felica) and
+  * Jewel Topaz (Innovision Research & Development).
+  Supported NFC hardware devices are theorically all readers based 
+  on the NXP PN53x NFC Controller.
+http://www.libnfc.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libnfc-examples
+Version: 1.3.4-1
+Depends: +libnfc
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Near Field Communication (NFC) library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libnfc-1.3.4.tar.gz
+Type: ipkg
+Description:   libnfc is provided with some examples like:
+   * tag listing
+   * relaying NFC
+   * simple UID emulation
+http://www.libnfc.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

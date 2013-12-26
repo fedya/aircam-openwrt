@@ -1,0 +1,4 @@
+usr/bin/mklibs-copy
+usr/bin/mklibs-readelf
+usr/share/man/man1/mklibs-copy.1
+usr/share/man/man1/mklibs-readelf.1

@@ -1,0 +1,9 @@
+HOST_OS:=Linux
+HOST_ARCH:=x86_64
+GNU_HOST_NAME:=x86_64-redhat-linux
+TAR:=/bin/gtar
+FIND:=/bin/find
+BASH:=/bin/bash
+FIND_L=/bin/find -L $(1)
+XARGS:=xargs -r
+PATCH:=/usr/bin/patch

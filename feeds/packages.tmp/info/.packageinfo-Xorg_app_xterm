@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/Xorg/app/xterm/Makefile
+Package: xterm
+Submenu: terminals
+Version: 242-1
+Depends: +libX11 +libncurses +libXaw
+Menu-Depends: 
+Provides: 
+Section: xorg-extra
+Category: Xorg
+Title: xterm
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xterm-242.tar.gz
+Type: ipkg
+Description: xterm
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

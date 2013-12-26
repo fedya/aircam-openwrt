@@ -1,0 +1,18 @@
+Source-Makefile: package/feeds/packages/radvd/Makefile
+Package: radvd
+Version: 1.7-1
+Depends: +kmod-ipv6
+Menu-Depends: 
+Provides: 
+Section: ipv6
+Category: IPv6
+Title: IPv6 Routing Advertisement Daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: radvd-1.7.tar.gz
+Type: ipkg
+Description: IPv6 Routing Advertisement Daemon.
+http://v6web.litech.org/radvd/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

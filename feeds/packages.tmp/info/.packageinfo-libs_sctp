@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/sctp/Makefile
+Package: sctp
+Version: 1.0.11-1
+Depends: +kmod-sctp
+Menu-Depends: 
+Provides: 
+Build-Depends: binutils libtool libintl libiconv
+Section: libs
+Category: Network
+Title: SCTP user-land library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: lksctp-tools-1.0.11.tar.gz
+Type: ipkg
+Description:  SCTP user-land library for sctp_* functions (when socket API is too limited).
+http://lksctp.sourceforge.net
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

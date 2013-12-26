@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/vips/Makefile
+Package: vips
+Version: 7.24.1-1
+Depends: +libjpeg +glib2 +libxml2 +imagemagick +libfreetype +BUILD_NLS:libintl-full
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: multimedia
+Category: Multimedia
+Title: vips
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: vips-7.24.1.tar.gz
+Type: ipkg
+Description:   An image manipulation library.
+http://www.vips.ecs.soton.ac.uk/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

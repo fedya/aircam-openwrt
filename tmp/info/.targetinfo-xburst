@@ -1,0 +1,87 @@
+Source-Makefile: target/linux/xburst/Makefile
+Target: xburst
+Target-Board: xburst
+Target-Kernel: 2.6
+Target-Name: Ingenic XBurst
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: mipsel
+Target-Arch-Packages: xburst
+Target-Features: audio display gpio jffs2 targz ubifs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for XBurst JZ47x0 based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 
+Target: xburst/qi_lb60
+Target-Board: xburst
+Target-Kernel: 2.6
+Target-Name: QI Ben Nanonote (qi_lb60)
+Target-Path: target/linux/xburst
+Target-Arch: mipsel
+Target-Arch-Packages: xburst
+Target-Features: audio display gpio jffs2 targz ubifs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for XBurst JZ47x0 based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-sound-core kmod-sound-soc-core kmod-sound-soc-jz4740 kmod-sound-soc-jz4740-codec kmod-sound-soc-qilb60 
+Target: xburst/n516
+Target-Board: xburst
+Target-Kernel: 2.6
+Target-Name: Hanvon N516 e-book reader
+Target-Path: target/linux/xburst
+Target-Arch: mipsel
+Target-Arch-Packages: xburst
+Target-Features: audio display gpio jffs2 targz ubifs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for XBurst JZ47x0 based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-sound-core kmod-sound-soc-core kmod-sound-soc-jz4740 kmod-sound-soc-jz4740-codec kmod-sound-soc-n516 
+Target: xburst/n526
+Target-Board: xburst
+Target-Kernel: 2.6
+Target-Name: Hanvon N526 e-book reader
+Target-Path: target/linux/xburst
+Target-Arch: mipsel
+Target-Arch-Packages: xburst
+Target-Features: audio display gpio jffs2 targz ubifs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for XBurst JZ47x0 based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-sound-core kmod-sound-soc-core kmod-sound-soc-jz4740 kmod-sound-soc-jz4740-codec kmod-sound-soc-n516 
+Target: xburst/id800wt
+Target-Board: xburst
+Target-Kernel: 2.6
+Target-Name: Sungale Pictureframe (id800wt)
+Target-Path: target/linux/xburst
+Target-Arch: mipsel
+Target-Arch-Packages: xburst
+Target-Features: audio display gpio jffs2 targz ubifs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for XBurst JZ47x0 based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-sound-core kmod-sound-soc-core kmod-sound-soc-jz4740 kmod-sound-soc-jz4740-codec kmod-sound-soc-id800wt 
+

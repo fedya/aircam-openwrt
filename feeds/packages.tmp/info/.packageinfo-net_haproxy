@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/haproxy/Makefile
+Package: haproxy
+Submenu: Web Servers/Proxies
+Version: 1.4.15-1
+Depends: +libpcre +libltdl
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: The Reliable, High Performance TCP/HTTP Load Balancer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: haproxy-1.4.15.tar.gz
+Type: ipkg
+Description:   Open source High Performance TCP/HTTP Load Balancer
+http://haproxy.1wt.eu/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

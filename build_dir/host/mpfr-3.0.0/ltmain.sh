@@ -1,0 +1,1 @@
+/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/share/libtool/config/ltmain.sh

@@ -1,0 +1,95 @@
+Index: boa/src/auth.c
+===================================================================
+--- boa/src/auth.c	(revision 3382)
++++ boa/src/auth.c	(revision 3518)
+@@ -291,10 +291,49 @@
+ 	return 1;
+ }
+ 
++
++static int auth_cgi(request* req, char* auth_userpass)
++{
++    struct passwd* pwdinfo;
++    struct stat st;
++
++    if (strcmp(CGI_MIME_TYPE, get_mime_type(req->pathname)))
++	return 1;
++    if (!(pwdinfo = getpwnam(auth_userpass)))
++	return 1;
++    if (stat(req->pathname, &st))
++	return 1;
++    if (pwdinfo->pw_uid == st.st_uid)
++	return 1;
++    if (pwdinfo->pw_gid == st.st_gid) {
++	if (st.st_mode & S_IXGRP)
++	    return 1;
++	return 0;
++    }
++    if (st.st_mode & S_IXOTH)
++	return 1;
++    return 0;
++}
++
++#if 0 //not used for now to not confuse browsers
++static int escape_ext(char* uri)
++{
++    if (!strncmp(get_mime_type(uri),"image/",6))
++	return 1;
++    if (!strcmp(get_mime_type(uri),"text/html"))
++	return 1;
++    if (!strcmp(get_mime_type(uri),"text/css"))
++	return 1;
++    if (!strcmp(get_mime_type(uri),"application/x-javascript"))
++	return 1;
++    return 0;
++}
++#endif
++
+ int auth_authorize(request * req)
+ {
+ 	auth_dir *current;
+-  int hash;
++	int hash;
+ 	char *pwd;
+ 	static char current_client[20];
+ 	char auth_userpass[0x80];
+@@ -338,7 +377,22 @@
+ 				}
+ 
+ 				*pwd++=0;
+-
++#if 0 //not used for now to not confuse browsers
++				if (escape_ext(req->request_uri)) {
++				    strncpy(req->user, auth_userpass, 15);
++				    req->user[15] = '\0';
++				    return 1;
++				}
++#endif
++				//Logout workaround
++				if (!strcmp(auth_userpass, "logout") &&
++				    !strcmp(req->request_uri + current->dir_len, "logout.cgi")) {
++                                    syslog(LOG_INFO, "Logout success for %s from %s\n",
++					   auth_userpass, req->remote_ip_addr);
++				    strncpy(req->user, auth_userpass, 15);
++				    req->user[15] = '\0';
++                                    return 1;
++				}
+ 				denied = auth_check_userpass(auth_userpass,pwd,current->authfile);
+ #ifdef SECURITY_COUNTS
+ 				if (strncmp(get_mime_type(req->request_uri),"image/",6))
+@@ -358,6 +412,15 @@
+ 					send_r_unauthorized(req,server_name);
+ 					return 0;
+ 				}
++
++				if (!auth_cgi(req, auth_userpass)) {
++				    	syslog(LOG_ERR, "Authentication attempt failed for %s from %s because: No exec permission\n",
++					       auth_userpass, req->remote_ip_addr);
++					bzero(current_client, sizeof(current_client));
++					send_r_unauthorized(req,server_name);
++					return 0;
++				}
++
+ 				if (strcmp(current_client, req->remote_ip_addr) != 0) {
+ 					strncpy(current_client, req->remote_ip_addr, sizeof(current_client));
+ 					syslog(LOG_INFO, "Authentication successful for %s from %s\n", auth_userpass, req->remote_ip_addr);

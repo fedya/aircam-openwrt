@@ -1,0 +1,56 @@
+Source-Makefile: feeds/packages/ipv6/miredo/Makefile
+Package: miredo-common
+Submenu: miredo: Teredo (IPv6 tunneling over UDP through NAT)
+Version: 1.2.3-1
+Depends:  +libpthread +uclibcxx +kmod-ipv6 +kmod-tun
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: ipv6
+Category: IPv6
+Title: Teredo (IPv6 tunneling over UDP through NAT) shared libraries
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: miredo-1.2.3.tar.bz2
+Type: ipkg
+Description: Teredo (IPv6 tunneling over UDP through NAT) shared libraries
+http://www.remlab.net/miredo/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: miredo-server
+Submenu: miredo: Teredo (IPv6 tunneling over UDP through NAT)
+Version: 1.2.3-1
+Depends:  +miredo-common
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: ipv6
+Category: IPv6
+Title: Teredo (IPv6 tunneling over UDP through NAT) server daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: miredo-1.2.3.tar.bz2
+Type: ipkg
+Description: Teredo (IPv6 tunneling over UDP through NAT) server daemon
+http://www.remlab.net/miredo/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: miredo-client
+Submenu: miredo: Teredo (IPv6 tunneling over UDP through NAT)
+Version: 1.2.3-1
+Depends:  +miredo-common
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: ipv6
+Category: IPv6
+Title: Teredo (IPv6 tunneling over UDP through NAT) client and relay daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: miredo-1.2.3.tar.bz2
+Type: ipkg
+Description: Teredo (IPv6 tunneling over UDP through NAT) client and relay daemon
+http://www.remlab.net/miredo/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

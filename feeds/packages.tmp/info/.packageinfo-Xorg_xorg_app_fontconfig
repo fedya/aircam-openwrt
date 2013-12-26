@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/app/fontconfig/Makefile
+Package: fontconfig
+Submenu: font-utils
+Version: 2.6.0-2
+Depends: +libexpat +libfreetype
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: xorg-util
+Category: Xorg
+Title: fontconfig
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: fontconfig-2.6.0.tar.gz
+Type: ipkg
+Description: fontconfig
+http://fontconfig.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

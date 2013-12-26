@@ -1,0 +1,19 @@
+Source-Makefile: package/fscaler/Makefile
+Package: kmod-fscaler
+Submenu: Device drivers
+Version: <LINUX_VERSION>+1.0-
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: dvr
+Section: kernel
+Category: Kernel modules
+Title: GM8126 Scaler
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  GM8126 Scaler
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

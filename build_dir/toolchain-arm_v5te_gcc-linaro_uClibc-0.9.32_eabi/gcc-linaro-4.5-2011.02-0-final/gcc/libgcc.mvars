@@ -1,0 +1,45 @@
+LIB1ASMFUNCS = _thumb1_case_sqi _thumb1_case_uqi _thumb1_case_shi _thumb1_case_uhi _thumb1_case_si _udivsi3 _divsi3 _umodsi3 _modsi3 _bb_init_func _call_via_rX _interwork_call_via_rX _lshrdi3 _ashrdi3 _ashldi3 _arm_negdf2 _arm_addsubdf3 _arm_muldivdf3 _arm_cmpdf2 _arm_unorddf2 _arm_fixdfsi _arm_fixunsdfsi _arm_truncdfsf2 _arm_negsf2 _arm_addsubsf3 _arm_muldivsf3 _arm_cmpsf2 _arm_unordsf2 _arm_fixsfsi _arm_fixunssfsi _arm_floatdidf _arm_floatdisf _arm_floatundidf _arm_floatundisf _clzsi2 _clzdi2 _aeabi_lcmp _aeabi_ulcmp _aeabi_ldivmod _aeabi_uldivmod _dvmd_lnx _clear_cache
+LIB1ASMSRC = arm/lib1funcs.asm
+LIB2FUNCS_ST = _eprintf __gcc_bcmp
+LIB2FUNCS_EXCLUDE = 
+LIBGCOV = _gcov _gcov_merge_add _gcov_merge_single _gcov_merge_delta _gcov_fork _gcov_execl _gcov_execlp _gcov_execle _gcov_execv _gcov_execvp _gcov_execve _gcov_interval_profiler _gcov_pow2_profiler _gcov_one_value_profiler _gcov_indirect_call_profiler _gcov_average_profiler _gcov_ior_profiler _gcov_merge_ior
+LIB2ADD = $(gcc_srcdir)/config/arm/bpabi.c $(gcc_srcdir)/config/arm/unaligned-funcs.c $(gcc_objdir)/addsf3.c $(gcc_objdir)/divsf3.c $(gcc_objdir)/eqsf2.c $(gcc_objdir)/gesf2.c $(gcc_objdir)/lesf2.c $(gcc_objdir)/mulsf3.c $(gcc_objdir)/negsf2.c $(gcc_objdir)/subsf3.c $(gcc_objdir)/unordsf2.c $(gcc_objdir)/fixsfsi.c $(gcc_objdir)/floatsisf.c $(gcc_objdir)/floatunsisf.c $(gcc_objdir)/adddf3.c $(gcc_objdir)/divdf3.c $(gcc_objdir)/eqdf2.c $(gcc_objdir)/gedf2.c $(gcc_objdir)/ledf2.c $(gcc_objdir)/muldf3.c $(gcc_objdir)/negdf2.c $(gcc_objdir)/subdf3.c $(gcc_objdir)/unorddf2.c $(gcc_objdir)/fixdfsi.c $(gcc_objdir)/floatsidf.c $(gcc_objdir)/floatunsidf.c $(gcc_objdir)/extendsfdf2.c $(gcc_objdir)/truncdfsf2.c
+LIB2ADD_ST = $(gcc_srcdir)/config/arm/fp16.c $(gcc_srcdir)/config/arm/linux-atomic.c 
+LIB2ADDEH = $(gcc_srcdir)/config/arm/unwind-arm.c $(gcc_srcdir)/config/arm/libunwind.S $(gcc_srcdir)/config/arm/pr-support.c $(gcc_srcdir)/unwind-c.c $(gcc_srcdir)/emutls.c 
+LIB2ADDEHSTATIC = $(gcc_srcdir)/config/arm/unwind-arm.c $(gcc_srcdir)/config/arm/libunwind.S $(gcc_srcdir)/config/arm/pr-support.c $(gcc_srcdir)/unwind-c.c $(gcc_srcdir)/emutls.c 
+LIB2ADDEHSHARED = $(gcc_srcdir)/config/arm/unwind-arm.c $(gcc_srcdir)/config/arm/libunwind.S $(gcc_srcdir)/config/arm/pr-support.c $(gcc_srcdir)/unwind-c.c $(gcc_srcdir)/emutls.c 
+LIB2_SIDITI_CONV_FUNCS = 
+LIBUNWIND =  
+SHLIBUNWIND_LINK = 
+SHLIBUNWIND_INSTALL = 
+FPBIT = 
+FPBIT_FUNCS = _pack_sf _unpack_sf _addsub_sf _mul_sf _div_sf _fpcmp_parts_sf _compare_sf _eq_sf _ne_sf _gt_sf _ge_sf _lt_sf _le_sf _unord_sf _si_to_sf _sf_to_si _negate_sf _make_sf _sf_to_df _sf_to_tf _thenan_sf _sf_to_usi _usi_to_sf
+LIB2_DIVMOD_FUNCS = _divdi3 _moddi3 _udivdi3 _umoddi3 _udiv_w_sdiv _udivmoddi4
+DPBIT = 
+DPBIT_FUNCS = _pack_df _unpack_df _addsub_df _mul_df _div_df _fpcmp_parts_df _compare_df _eq_df _ne_df _gt_df _ge_df _lt_df _le_df _unord_df _si_to_df _df_to_si _negate_df _make_df _df_to_sf _df_to_tf _thenan_df _df_to_usi _usi_to_df
+TPBIT = 
+TPBIT_FUNCS = _pack_tf _unpack_tf _addsub_tf _mul_tf _div_tf _fpcmp_parts_tf _compare_tf _eq_tf _ne_tf _gt_tf _ge_tf _lt_tf _le_tf _unord_tf _si_to_tf _tf_to_si _negate_tf _make_tf _tf_to_df _tf_to_sf _thenan_tf _tf_to_usi _usi_to_tf
+DFP_ENABLE = 
+DFP_CFLAGS=
+D32PBIT=
+D32PBIT_FUNCS=_addsub_sd _div_sd _mul_sd _plus_sd _minus_sd _eq_sd _ne_sd _lt_sd _gt_sd _le_sd _ge_sd _sd_to_si _sd_to_di _sd_to_usi _sd_to_udi _si_to_sd _di_to_sd _usi_to_sd _udi_to_sd _sd_to_sf _sd_to_df _sd_to_xf _sd_to_tf _sf_to_sd _df_to_sd _xf_to_sd _tf_to_sd _sd_to_dd _sd_to_td _unord_sd _conv_sd
+D64PBIT=
+D64PBIT_FUNCS=_addsub_dd _div_dd _mul_dd _plus_dd _minus_dd _eq_dd _ne_dd _lt_dd _gt_dd _le_dd _ge_dd _dd_to_si _dd_to_di _dd_to_usi _dd_to_udi _si_to_dd _di_to_dd _usi_to_dd _udi_to_dd _dd_to_sf _dd_to_df _dd_to_xf _dd_to_tf _sf_to_dd _df_to_dd _xf_to_dd _tf_to_dd _dd_to_sd _dd_to_td _unord_dd _conv_dd
+D128PBIT=
+D128PBIT_FUNCS=_addsub_td _div_td _mul_td _plus_td _minus_td _eq_td _ne_td _lt_td _gt_td _le_td _ge_td _td_to_si _td_to_di _td_to_usi _td_to_udi _si_to_td _di_to_td _usi_to_td _udi_to_td _td_to_sf _td_to_df _td_to_xf _td_to_tf _sf_to_td _df_to_td _xf_to_td _tf_to_td _td_to_sd _td_to_dd _unord_td _conv_td
+GCC_EXTRA_PARTS = crtbegin.o crtbeginS.o crtbeginT.o crtend.o crtendS.o
+SHLIB_LINK = $(GCC_FOR_TARGET) -O2  -O2 -pipe -march=armv5te -msoft-float -fno-caller-saves -fhonour-copts -msoft-float -DIN_GCC -DCROSS_DIRECTORY_STRUCTURE  -W -Wall -Wwrite-strings -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition  -isystem ./include  -fPIC -Wno-missing-prototypes -g -DHAVE_GTHR_DEFAULT -DIN_LIBGCC2 -D__GCC_FLOAT_NOT_NEEDED -fno-stack-protector -Dinhibit_libc -shared -nodefaultlibs -Wl,--soname=@shlib_base_name@.so.1 -Wl,--version-script=@shlib_map_file@ -o @multilib_dir@/@shlib_base_name@.so.1.tmp @multilib_flags@ @shlib_objs@ -lc && rm -f @multilib_dir@/@shlib_base_name@.so && if [ -f @multilib_dir@/@shlib_base_name@.so.1 ]; then mv -f @multilib_dir@/@shlib_base_name@.so.1 @multilib_dir@/@shlib_base_name@.so.1.backup; else true; fi && mv @multilib_dir@/@shlib_base_name@.so.1.tmp @multilib_dir@/@shlib_base_name@.so.1 && (echo "/* GNU ld script"; echo "   Use the shared library, but some functions are only in"; echo "   the static library.  */"; echo "GROUP ( @shlib_base_name@.so.1 libgcc.a )" ) > @multilib_dir@/@shlib_base_name@.so
+SHLIB_INSTALL = $(mkinstalldirs) $(DESTDIR)$(slibdir)@shlib_slibdir_qual@; /usr/bin/install -c -m 644 @multilib_dir@/@shlib_base_name@.so.1 $(DESTDIR)$(slibdir)@shlib_slibdir_qual@/@shlib_base_name@.so.1; rm -f $(DESTDIR)$(slibdir)@shlib_slibdir_qual@/@shlib_base_name@.so; /usr/bin/install -c -m 644 @multilib_dir@/@shlib_base_name@.so $(DESTDIR)$(slibdir)@shlib_slibdir_qual@/@shlib_base_name@.so
+SHLIB_EXT = .so
+SHLIB_MKMAP = $(gcc_srcdir)/mkmap-symver.awk 
+SHLIB_MKMAP_OPTS = 
+SHLIB_MAPFILES = $(gcc_srcdir)/libgcc-std.ver $(gcc_srcdir)/config/libgcc-glibc.ver $(gcc_srcdir)/config/libgcc-glibc.ver $(gcc_srcdir)/config/arm/libgcc-bpabi.ver 
+SHLIB_NM_FLAGS = -pg
+LIBGCC2_CFLAGS = -O2  -O2 -pipe -march=armv5te -msoft-float -fno-caller-saves -fhonour-copts -msoft-float -DIN_GCC -DCROSS_DIRECTORY_STRUCTURE  -W -Wall -Wwrite-strings -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition  -isystem ./include  -fPIC -Wno-missing-prototypes -g -DHAVE_GTHR_DEFAULT -DIN_LIBGCC2 -D__GCC_FLOAT_NOT_NEEDED -fno-stack-protector -Dinhibit_libc
+TARGET_LIBGCC2_CFLAGS = -fPIC -Wno-missing-prototypes
+LIBGCC_SYNC = 
+LIBGCC_SYNC_CFLAGS = 
+CRTSTUFF_CFLAGS = -O2 -O2 -pipe -march=armv5te -msoft-float -fno-caller-saves -fhonour-copts -msoft-float -DIN_GCC -DCROSS_DIRECTORY_STRUCTURE  -W -Wall -Wwrite-strings -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition  -isystem ./include  -I. -I. -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc/. -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc/../include -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc/../libcpp/include -I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include -I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include -I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include  -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc/../libdecnumber -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/gcc/../libdecnumber/dpd -I../libdecnumber   -I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include -I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include/libelf  -g0 -finhibit-size-directive -fno-inline -fno-exceptions -fno-zero-initialized-in-bss -fno-toplevel-reorder -fno-tree-vectorize -fno-stack-protector -Dinhibit_libc
+CRTSTUFF_T_CFLAGS = 
+CRTSTUFF_T_CFLAGS_S =  -fPIC
+TARGET_SYSTEM_ROOT = 

@@ -1,0 +1,214 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:582: checking whether make sets ${MAKE}
+configure:611: checking for gcc
+configure:724: checking whether the C compiler (gcc  ) works
+configure:740: gcc -o conftest    conftest.c  1>&5
+configure:766: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:771: checking whether we are using GNU C
+configure:780: gcc -E conftest.c
+configure:799: checking whether gcc accepts -g
+configure:831: checking how to run the C preprocessor
+configure:852: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:941: checking for a BSD compatible install
+configure:996: checking for ranlib
+configure:1024: checking whether ln -s works
+configure:1047: checking for ANSI C header files
+configure:1060: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1127: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:1122: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1154: checking for unistd.h
+configure:1164: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1154: checking for stdint.h
+configure:1164: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1154: checking for fcntl.h
+configure:1164: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1194: checking for elf.h
+configure:1204: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1194: checking for sys/elf.h
+configure:1204: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1200:21: error: sys/elf.h: No such file or directory
+configure: failed program was:
+#line 1199 "configure"
+#include "confdefs.h"
+#include <sys/elf.h>
+configure:1194: checking for link.h
+configure:1204: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1194: checking for sys/link.h
+configure:1204: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1200:22: error: sys/link.h: No such file or directory
+configure: failed program was:
+#line 1199 "configure"
+#include "confdefs.h"
+#include <sys/link.h>
+configure:1231: checking if gcc can compile elf.h
+configure:1248: gcc -c   conftest.c 1>&5
+configure:1282: checking for ar.h
+configure:1292: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1282: checking for libelf.h
+configure:1292: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1288:20: error: libelf.h: No such file or directory
+configure: failed program was:
+#line 1287 "configure"
+#include "confdefs.h"
+#include <libelf.h>
+configure:1282: checking for nlist.h
+configure:1292: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1288:19: error: nlist.h: No such file or directory
+configure: failed program was:
+#line 1287 "configure"
+#include "confdefs.h"
+#include <nlist.h>
+configure:1282: checking for gelf.h
+configure:1292: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1288:18: error: gelf.h: No such file or directory
+configure: failed program was:
+#line 1287 "configure"
+#include "confdefs.h"
+#include <gelf.h>
+configure:1319: checking whether to install <libelf.h>, <nlist.h> and <gelf.h>
+configure:1335: checking for working const
+configure:1389: gcc -c   conftest.c 1>&5
+configure:1410: checking for off_t
+configure:1443: checking for size_t
+configure:1477: checking size of short
+configure:1496: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:1490: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1516: checking size of int
+configure:1535: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:1529: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1555: checking size of long
+configure:1574: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:1568: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1594: checking size of long long
+configure:1613: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:1607: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1634: checking size of __int64
+configure:1653: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:1647: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1648: error: '__int64' undeclared (first use in this function)
+configure:1648: error: (Each undeclared identifier is reported only once
+configure:1648: error: for each function it appears in.)
+configure: failed program was:
+#line 1642 "configure"
+#include "confdefs.h"
+#include <stdio.h>
+main()
+{
+  FILE *f=fopen("conftestval", "w");
+  if (!f) exit(1);
+  fprintf(f, "%d\n", sizeof(__int64));
+  exit(0);
+}
+configure:1679: checking for struct Elf32_Dyn
+configure:1692: gcc -c   conftest.c 1>&5
+configure:1755: checking for struct nlist in elf.h
+configure:1768: gcc -c   conftest.c 1>&5
+configure: In function 'main':
+configure:1764: error: storage size of 'nl' isn't known
+configure: failed program was:
+#line 1761 "configure"
+#include "confdefs.h"
+#include __LIBELF_HEADER_ELF_H
+int main() {
+struct nlist nl
+; return 0; }
+configure:1790: checking for struct Elf64_Ehdr
+configure:1802: gcc -c   conftest.c 1>&5
+configure:1818: checking for Elf64_Addr
+configure:1830: gcc -c   conftest.c 1>&5
+configure:1846: checking for struct Elf64_Rel
+configure:1858: gcc -c   conftest.c 1>&5
+configure:1912: checking for Elf32_Verdef
+configure:1932: gcc -c   conftest.c 1>&5
+configure:1947: checking for Elf64_Verdef
+configure:1967: gcc -c   conftest.c 1>&5
+configure:1982: checking for SHT_SUNW_verdef
+configure:1994: gcc -c   conftest.c 1>&5
+configure: In function 'main':
+configure:1990: error: 'SHT_SUNW_verdef' undeclared (first use in this function)
+configure:1990: error: (Each undeclared identifier is reported only once
+configure:1990: error: for each function it appears in.)
+configure:1990: error: 'SHT_SUNW_verneed' undeclared (first use in this function)
+configure:1990: error: 'SHT_SUNW_versym' undeclared (first use in this function)
+configure: failed program was:
+#line 1987 "configure"
+#include "confdefs.h"
+#include __LIBELF_HEADER_ELF_H
+int main() {
+Elf32_Word x = SHT_SUNW_verdef + SHT_SUNW_verneed + SHT_SUNW_versym
+; return 0; }
+configure:2009: checking for SHT_GNU_verdef
+configure:2021: gcc -c   conftest.c 1>&5
+configure: In function 'main':
+configure:2017: warning: integer overflow in expression
+configure:2046: checking for 64-bit integer
+configure:2077: checking for 32-bit integer
+configure:2106: checking for 16-bit integer
+configure:2138: checking for unistd.h
+configure:2177: checking for getpagesize
+configure:2205: gcc -o conftest    conftest.c  1>&5
+configure:2230: checking for working mmap
+configure:2378: gcc -o conftest    conftest.c  1>&5
+configure:2309: warning: conflicting types for built-in function 'malloc'
+configure: In function 'main':
+configure:2326: warning: incompatible implicit declaration of built-in function 'exit'
+configure:2348: warning: cast from pointer to integer of different size
+configure:2403: checking for ftruncate
+configure:2431: gcc -o conftest    conftest.c  1>&5
+configure:2403: checking for memcmp
+configure:2431: gcc -o conftest    conftest.c  1>&5
+configure:2415: warning: conflicting types for built-in function 'memcmp'
+configure:2403: checking for memcpy
+configure:2431: gcc -o conftest    conftest.c  1>&5
+configure:2415: warning: conflicting types for built-in function 'memcpy'
+configure:2403: checking for memmove
+configure:2431: gcc -o conftest    conftest.c  1>&5
+configure:2415: warning: conflicting types for built-in function 'memmove'
+configure:2458: checking for memset
+configure:2486: gcc -o conftest    conftest.c  1>&5
+configure:2470: warning: conflicting types for built-in function 'memset'
+configure:2520: checking whether overlapping arrays are copied correctly
+configure:2545: gcc -o conftest    conftest.c  1>&5
+configure: In function 'main':
+configure:2540: warning: incompatible implicit declaration of built-in function 'exit'
+configure:2568: checking the coffee machine
+configure:2578: checking whether 64-bit ELF support is sufficient
+configure:2581: checking whether to include 64-bit support
+configure:2603: checking whether versioning support is sufficient
+configure:2623: checking whether to include versioning support
+configure:2661: checking whether NLS is requested
+configure:2678: checking for dgettext
+configure:2691: gcc -o conftest    conftest.c  1>&5
+configure:2709: checking for msgfmt
+configure:2969: checking for catgets
+configure:2982: gcc -o conftest    conftest.c  1>&5
+configure:3000: checking for gencat
+configure:3041: checking for gmsgfmt
+configure:3077: checking for xgettext
+configure:3128: checking for catalogs to be installed
+configure:3146: checking for gettext in -lintl
+configure:3165: gcc -o conftest    conftest.c -lintl   1>&5
+configure:3158: warning: conflicting types for built-in function 'gettext'
+/usr/bin/ld: cannot find -lintl
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 3154 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char gettext();
+
+int main() {
+gettext()
+; return 0; }
+configure:3194: checking host system type
+configure:3224: checking whether to build a shared library

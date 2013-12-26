@@ -1,0 +1,19 @@
+Source-Makefile: target/linux/coldfire/Makefile
+Target: coldfire
+Target-Board: coldfire
+Target-Kernel: 2.6
+Target-Name: Freescale Coldfire v4e
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: m68k
+Target-Arch-Packages: coldfire
+Target-Features: broken squashfs
+Target-Depends: 
+Target-Optimization: -Os -pipe -mcfv4e -fno-caller-saves
+Linux-Version: 2.6.31.14
+Linux-Release: 1
+Linux-Kernel-Arch: m68k
+Target-Description:
+	Build firmware images for ColdFire v4e boards
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall
+

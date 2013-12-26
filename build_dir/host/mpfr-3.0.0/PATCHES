@@ -1,0 +1,8 @@
+macros
+mpfr_set_ld
+mpfr_sub1
+tcan_round
+mpfr_cmp/set_ui/si
+gamma_underflow
+alloca
+mpfr_out_str

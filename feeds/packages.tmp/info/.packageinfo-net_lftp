@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/net/lftp/Makefile
+Package: lftp
+Submenu: File Transfer
+Version: 4.2.3-1
+Depends: +libncurses +libopenssl +libreadline +uclibcxx +libexpat
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: lftp
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: lftp-4.2.3.tar.xz
+Type: ipkg
+Description:   lftp is sophisticated file transfer program with command line interface. It
+  supports FTP, HTTP, FISH, SFTP and FILE (local FS) protocols. GNU Readline
+  library is used for input. BitTorrent protocol is supported as built-in
+  `torrent' command.
+http://lftp.yar.ru/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

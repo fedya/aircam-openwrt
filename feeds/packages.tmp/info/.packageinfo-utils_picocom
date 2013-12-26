@@ -1,0 +1,25 @@
+Source-Makefile: feeds/packages/utils/picocom/Makefile
+Package: picocom
+Submenu: Terminal
+Version: 1.6-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: A minimal dumb-terminal emulation program
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: picocom-1.6.tar.gz
+Type: ipkg
+Description: 	As its name suggests, picocom is a minimal dumb-terminal emulation 
+	program. It is, in principle, very much like minicom, only it's pico 
+	instead of mini! It was designed to serve as a simple, manual, modem 
+	configuration, testing, and debugging tool. It has also served (quite 
+	well) as a low-tech "terminal-window" to allow operator intervention 
+	in PPP connection scripts. It could also prove useful in many other 
+	similar tasks.
+http://code.google.com/p/picocom/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

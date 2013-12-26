@@ -1,0 +1,33 @@
+Source-Makefile: feeds/packages/net/deluge/Makefile
+Package: deluge
+Submenu: BitTorrent
+Version: 1.2.0-1
+Depends: +python +rblibtorrent +python2-chardet +pyxdg +twisted +twisted-web +pyopenssl +distribute
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: deluge-daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: deluge-1.2.0.tar.gz
+Type: ipkg
+Description:   BitTorrent client with a client/server model.
+http://deluge-torrent.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+Config:
+	config DELUGE_WITH_WEBUI
+		bool "Include the web interface"
+		select PACKAGE_mako
+		default n
+
+	config DELUGE_WITH_GTKUI
+		bool "Include the GTK interface"
+		depends PACKAGE_pygame
+		depends PACKAGE_pygobject
+		depends PACKAGE_pygtk
+		depends PACKAGE_librsvg
+		default n
+@@
+
+

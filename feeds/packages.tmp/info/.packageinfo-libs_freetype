@@ -1,0 +1,23 @@
+Source-Makefile: feeds/packages/libs/freetype/Makefile
+Package: libfreetype
+Version: 2.3.12-1
+Depends: +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv libtool libintl libiconv
+Build-Types: host
+Section: libs
+Category: Libraries
+Title: A free, high-quality and portable font engine
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freetype-2.3.12.tar.bz2
+Type: ipkg
+Description:  The FreeType project is a team of volunteers who develop free, 
+ portable and high-quality software solutions for digital typography.
+ They specifically target embedded systems and focus on bringing small, 
+ efficient and ubiquitous products.
+http://www.freetype.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

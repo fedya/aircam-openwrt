@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/elfutils/Makefile
+Package: elfutils
+Version: 0.150-1
+Depends: +BUILD_NLS:libintl-full
+Menu-Depends: 
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: libs
+Category: Libraries
+Title: ELF utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: elfutils-0.150.tar.bz2
+Type: ipkg
+Description: ELF utilities
+https://fedorahosted.org/elfutils/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,13 @@
+Package: libc
+Version: 0.9.32-71
+Depends: 
+Provides: 
+Source: package/base-files
+Section: libs
+Status: unknown hold not-installed
+Essential: yes
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 182863
+Description:  C library

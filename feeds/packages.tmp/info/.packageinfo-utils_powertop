@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/utils/powertop/Makefile
+Package: powertop
+Default: n
+Version: 1.11-1
+Depends: +libncurses +libgcc
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: PowerTOP
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: powertop-1.11.tar.gz
+Type: ipkg
+Kernel-Config: CONFIG_DEBUG_KERNEL=y CONFIG_TIMER_STATS=y
+Description: PowerTOP is a Linux tool that helps you find those programs that are misbehaving
+while your computer is idle.
+http://www.lesswatts.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/font/liberation-fonts-ttf/Makefile
+Package: liberation-fonts-ttf
+Submenu: font
+Version: 1.04-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-font
+Category: Xorg
+Title: liberation-fonts-ttf
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: liberation-fonts-1.04.tar.gz
+Type: ipkg
+Description: liberation-fonts-ttf
+https://fedorahosted.org/liberation-fonts/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

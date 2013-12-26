@@ -1,0 +1,418 @@
+Source-Makefile: feeds/packages/Xorg/lib/qt4/Makefile
+Package: qt4
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: +zlib +libstdcpp +libsqlite3
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+Config:
+	source "feeds/packages/Xorg/lib/qt4/Config.in"
+@@
+
+Package: qt4-gui
+Submenu: framework
+Version: 4.7.0-1
+Depends: qt4 +libpng +libtiff +libjpeg +libfreetype +qt4-network +FEATURE_drawing-backend_DirectFB:directfb +FEATURE_drawing-backend_libX11:libX11 +FEATURE_drawing-backend_libX11:libXext @DISPLAY_SUPPORT
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (gui)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (gui)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-demos
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-gui
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (demos)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (demos)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-examples
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-gui +qt4-svg
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (examples)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (examples)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-network
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (network)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (network)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-sqlite
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +libsqlite3
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (sqlite)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (sqlite)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-mysql
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +libmysqlclient
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (mysql)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (mysql)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-openssl
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +libopenssl
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (openssl)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (openssl)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-phonon
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-gui +qt4-xml +qt4-dbus +qt4-network
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (phonon)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (phonon)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-svg
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-gui +qt4-network
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (svg)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (svg)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-webkit
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @USE_GLIBC||@USE_EGLIBC||@UCLIBC_VERSION_0_9_32 +libsqlite3 +qt4-phonon +qt4-dbus +qt4-xml +qt4-gui +qt4-network 
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (webkit)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (webkit)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-script
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @USE_GLIBC||@USE_EGLIBC||@UCLIBC_VERSION_0_9_32 
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (script)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (script)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-scripttools
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-script +qt4-gui +qt4-network
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (scripttools)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (scripttools)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-dbus
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +libdbus +qt4-xml
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (dbus)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (dbus)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-qt3support
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-gui +qt4-xml
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (qt3support)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (qt3support)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-declarative
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 +qt4-script +qt4-xml +qt4-gui +qt4-network
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (declarative)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (declarative)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-xml
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 (xml)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 (xml)
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-drivers-mouse-tpmousedriver
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @QT4_WS_QWS
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 mousedrivers tpmousedriver
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 mousedrivers tpmousedriver
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-drivers-mouse-pcmousedriver
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @QT4_WS_QWS
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 mousedrivers pcmousedriver
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 mousedrivers pcmousedriver
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-drivers-mouse-tslibmousedriver
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @QT4_WS_QWS +tslib
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 mousedrivers tslibmousedriver
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 mousedrivers tslibmousedriver
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-drivers-gfx-directfb
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @QT4_WS_QWS @FEATURE_drawing-backend_DirectFB +FEATURE_drawing-backend_DirectFB:directfb
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 gfxdrivers directfb
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 gfxdrivers directfb
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-drivers-gfx-linuxfb
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @QT4_WS_QWS
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 gfxdrivers linuxfb
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 gfxdrivers linuxfb
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: qt4-drivers-gfx-vnc
+Submenu: framework
+Default: m if PACKAGE_qt4-gui && ALL
+Version: 4.7.0-1
+Depends: qt4 @QT4_WS_QWS
+Menu-Depends: 
+Provides: 
+Section: xorg-framework
+Category: Xorg
+Title: qt4 gfxdrivers VNC
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qt-everywhere-opensource-src-4.7.0.tar.gz
+Type: ipkg
+Description: qt4 gfxdrivers VNC
+http://qt.nokia.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

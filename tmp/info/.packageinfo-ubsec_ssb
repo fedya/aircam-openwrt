@@ -1,0 +1,18 @@
+Source-Makefile: package/ubsec_ssb/Makefile
+Package: kmod-ocf-ubsec-ssb
+Submenu: OCF Configuration
+Version: <LINUX_VERSION>+2009-02-21-1
+Depends: @TARGET_brcm47xx +kmod-crypto-core +kmod-crypto-ocf
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: BCM5365P IPSec Core driver
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description: 	This package contains the OCF driver for the BCM5365p IPSec Core
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

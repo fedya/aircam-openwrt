@@ -1,0 +1,356 @@
+diff -NurbB boa-uclinux-20051014/debian/init.d boa-ubnt/debian/init.d
+diff -NurbB boa-uclinux-20051014/Makefile boa-ubnt/Makefile
+--- boa-uclinux-20051014/Makefile	2002-09-19 06:24:12.000000000 +0200
++++ boa-ubnt/Makefile	2006-10-10 02:49:45.000000000 +0300
+@@ -1,9 +1,6 @@
+-
+-.EXPORT_ALL_VARIABLES:
+-
+ DIRS = src
+ 
+-all romfs:
++all:
+ 	for i in $(DIRS) ; do make -C $$i $@ || exit $?; done
+ 
+ clean:
+diff -NurbB boa-uclinux-20051014/src/auth.c boa-ubnt/src/auth.c
+--- boa-uclinux-20051014/src/auth.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt/src/auth.c	2006-10-10 02:49:45.000000000 +0300
+@@ -38,7 +38,6 @@
+ #ifdef EMBED
+ #include <sys/types.h>
+ #include <pwd.h>
+-#include <config/autoconf.h>
+ #endif
+ 
+ #ifdef SECURITY_COUNTS
+diff -NurbB boa-uclinux-20051014/src/boa.c boa-ubnt/src/boa.c
+--- boa-uclinux-20051014/src/boa.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt/src/boa.c	2006-10-10 02:49:45.000000000 +0300
+@@ -31,19 +31,19 @@
+ #ifdef SERVER_SSL
+ #include <openssl/ssl.h>
+ #include <openssl/err.h>
++#include <openssl/x509.h>
++#include <openssl/pkcs12.h>
+ #endif /*SERVER_SSL*/
+ 
+ int server_s;					/* boa socket */
+ 
+ #ifdef SERVER_SSL
+-#define SSL_KEYF "/etc/config/ssl_key.pem"
+-#define SSL_CERTF "/etc/config/ssl_cert.pem"
+ 	int server_ssl;				/*ssl socket */
+ 	int do_ssl = 1;					/*We want to actually perform all of the ssl stuff.*/
+ 	int do_sock = 1;				/*We may not want to actually connect to normal sockets*/
+ 	SSL_CTX *ctx;				/*SSL context information*/
+ 	SSL_METHOD *meth;			/*SSL method information*/
+-	int ssl_server_port = 443;		/*The port that the server should listen on*/
++//	int ssl_server_port = 443;		/*The port that the server should listen on*/
+ 	/*Note that per socket ssl information is stored in */
+ #ifdef INET6
+ 	struct sockaddr_in6 server_sockaddr;		/* boa ssl socket address */
+@@ -216,11 +216,9 @@
+ 	init_signals();
+ 	/* background ourself */	
+ 
+-#ifndef EMBED
+ 	if (do_fork)
+ 		if (fork())
+ 			exit(0);
+-#endif
+ 
+ 	/* close server socket on exec 
+ 	 * so cgi's can't write to it */
+@@ -559,6 +557,74 @@
+ }
+ 
+ #ifdef SERVER_SSL
++/**
++ **/
++static int load_p12(SSL_CTX* server_context,
++		    const char* certkey,
++		    const char* certpass)
++{
++	int status;
++	PKCS12 *p12;
++	FILE *file;
++	EVP_PKEY *pkey;
++	X509 *cert;
++	//STACK *ca;
++
++	//Quick check
++	if (!strstr(certkey, ".p12") || !server_context || !certkey)
++	{
++		return -1;
++	}
++
++	file = fopen(certkey, "rb");
++
++	if (file == NULL)
++	{
++		syslog(LOG_DEBUG,"Could not open certificate %s\n",
++		      certkey);
++		return -1;
++	}
++
++	p12 = d2i_PKCS12_fp(file, NULL);
++	if (p12 == NULL)
++	{
++		syslog(LOG_WARNING,"Could not load certificate %s\n", certkey);
++		syslog(LOG_DEBUG,"SSL error '%s'.\n", ERR_error_string(ERR_get_error(), 0));
++		fclose(file);
++		return -2;
++	}
++
++	status = PKCS12_parse(p12, certpass, &pkey, &cert, NULL/*&ca*/);
++	if (status != 1)
++	{
++		syslog(LOG_WARNING,"Could not parse certificate %s\n", certkey);
++		syslog(LOG_DEBUG,"SSL error '%s'.\n", ERR_error_string(ERR_get_error(), 0));
++		PKCS12_free(p12);
++		fclose(file);
++		return -3;
++	}
++
++	PKCS12_free(p12);
++	fclose(file);
++
++	status = SSL_CTX_use_PrivateKey(server_context, pkey);
++	if (status != 1)
++	{
++		syslog(LOG_WARNING,"Failed to use certificate key.\n");
++		syslog(LOG_DEBUG,"SSL error '%s'.\n", ERR_error_string(ERR_get_error(), 0));
++		return -4;
++	}
++
++	status = SSL_CTX_use_certificate(server_context, cert);
++	if (status != 1)
++	{
++		syslog(LOG_WARNING,"Failed to use certificate.\n");
++		syslog(LOG_DEBUG,"SSL error '%s'.\n", ERR_error_string(ERR_get_error(), 0));
++		return -5;
++	}
++	return 0;
++}
++
+ int
+ InitSSLStuff(void)
+ {
+@@ -620,8 +686,9 @@
+ 
+ 	/*Init all of the ssl stuff*/
+ //	i don't know why this line is commented out... i found it like that - damion may-02 
+-/*	SSL_load_error_strings();*/
++	SSL_load_error_strings();
+ 	SSLeay_add_ssl_algorithms();
++        OpenSSL_add_all_algorithms();
+ 	meth = SSLv23_server_method();
+ 	if(meth == NULL){
+ 		ERR_print_errors_fp(stderr);
+@@ -637,25 +704,28 @@
+ 		return 0;
+ 	}
+ 
+-	if (SSL_CTX_use_certificate_file(ctx, SSL_CERTF, SSL_FILETYPE_PEM) <= 0) {
+-		syslog(LOG_ALERT, "Failure reading SSL certificate file: %s",SSL_CERTF);fflush(NULL);
++	if (load_p12(ctx, cert_key_file, cert_password) < 0)
++	{
++	    if (SSL_CTX_use_certificate_file(ctx, cert_file, SSL_FILETYPE_PEM) <= 0) {
++		syslog(LOG_ALERT, "Failure reading SSL certificate file: %s",cert_file);fflush(NULL);
+ 		close(server_ssl);
+ 		return 0;
+ 	}
+-	syslog(LOG_DEBUG, "Loaded SSL certificate file: %s",SSL_CERTF);fflush(NULL);
++	    syslog(LOG_DEBUG, "Loaded SSL certificate file: %s",cert_file);fflush(NULL);
+ 
+-	if (SSL_CTX_use_PrivateKey_file(ctx, SSL_KEYF, SSL_FILETYPE_PEM) <= 0) {
+-		syslog(LOG_ALERT, "Failure reading private key file: %s",SSL_KEYF);fflush(NULL);
++	    if (SSL_CTX_use_PrivateKey_file(ctx, cert_key_file, SSL_FILETYPE_PEM) <= 0) {
++		syslog(LOG_ALERT, "Failure reading private key file: %s",cert_key_file);fflush(NULL);
+ 		close(server_ssl);
+ 		return 0;
+ 	}
+-	syslog(LOG_DEBUG, "Opened private key file: %s",SSL_KEYF);fflush(NULL);
++	    syslog(LOG_DEBUG, "Opened private key file: %s",cert_key_file);fflush(NULL);
+ 
+ 	if (!SSL_CTX_check_private_key(ctx)) {
+ 		syslog(LOG_ALERT, "Private key does not match the certificate public key");fflush(NULL);
+ 		close(server_ssl);
+ 		return 0;
+ 	}
++	}
+ 
+ 	/*load and check that the key files are appropriate.*/
+ 	syslog(LOG_NOTICE,"SSL security system enabled");
+diff -NurbB boa-uclinux-20051014/src/config.c boa-ubnt/src/config.c
+--- boa-uclinux-20051014/src/config.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt/src/config.c	2006-10-10 02:49:45.000000000 +0300
+@@ -54,6 +54,13 @@
+ #define DBG(x)
+ #endif
+ 
++#ifdef SERVER_SSL
++int ssl_server_port;
++char* cert_file;
++char* cert_key_file;
++char* cert_password;
++#endif
++
+ /* these came from config.c */
+ int server_port;
+ uid_t server_uid;
+@@ -113,6 +120,9 @@
+ #define S2A STMT_TWO_ARGS
+ 
+ struct ccommand clist[] = {
++#ifdef SERVER_SSL
++	{ "SSLPort",          S1A, c_set_int,      &ssl_server_port },
++#endif
+ 	{ "Port",             S1A, c_set_int,      &server_port },
+ 	{ "MaxConnections",   S1A, c_set_int,      &max_connections },
+ 	{ "User",             S1A, c_set_user,     NULL },
+@@ -157,7 +167,12 @@
+ 	{ "AddType",          S2A, c_add_type,     NULL },
+ 	{ "ScriptAlias",      S2A, c_add_alias,    &script_number },
+ 	{ "Redirect",         S2A, c_add_alias,    &redirect_number },
+-	{ "Alias",            S2A, c_add_alias,    &alias_number }
++	{ "Alias",            S2A, c_add_alias,    &alias_number },
++#ifdef SERVER_SSL
++	{ "CertFile" ,        S1A, c_set_string,   &cert_file},
++	{ "CertKeyFile" ,     S1A, c_set_string,   &cert_key_file},
++	{ "CertPassword" ,    S1A, c_set_string,   &cert_password},
++#endif
+ };
+ 
+ void set_server_port(int port) {
+@@ -415,8 +430,14 @@
+ 	 * by the config file in this section
+ 	 */
+ 	server_port = 80;
++#if SERVER_SSL
++	ssl_server_port = 443;		/*The port that the server should listen on*/
++	cert_file = NULL;
++	cert_key_file = strdup("/etc/persistent/private_key/srv_cnt.p12");;
++	cert_password = NULL;
++#endif
+ 	default_type = strdup("text/html");
+-	document_root = strdup("/home/httpd");
++	document_root = strdup("/usr/www");
+ 	directory_index = strdup("index.html");
+ 	server_name = strdup("");
+ 	server_admin = strdup("root@localhost");
+@@ -424,7 +445,7 @@
+ 	error_log_name = strdup("/var/log/boa.err.log");
+ 	access_log_name = strdup("/var/log/boa.access.log");
+ #endif
+-
++        ka_max = 0; //default no keep alive
+ 	if ((yyin = fopen("boa.conf", "r"))) {
+ 		if (embedparse(yyin)) {
+ 			fputs("Error parsing config files, exiting\n", stderr);
+@@ -434,7 +455,7 @@
+ 		read_file++;
+ 	}
+ 
+-	if ((yyin = fopen("/etc/config/boa.conf", "r"))) {
++	if ((yyin = fopen("/etc/boa.conf", "r"))) {
+ 		if (embedparse(yyin)) {
+ 			fputs("Error parsing config files, exiting\n", stderr);
+ 			exit(1);
+@@ -449,11 +470,11 @@
+ 	 * this,  create a boa.conf for your application.
+ 	 */
+ 	if (read_file == 0) {
+-		add_alias("/cgi-bin/", "/home/httpd/cgi-bin/", SCRIPTALIAS);
+-		auth_add("/cgi-bin/", "/etc/config/passwd");
++		add_alias("/cgi-bin/", "/usr/www/cgi-bin/", SCRIPTALIAS);
++		auth_add("/cgi-bin/", "/etc/passwd");
+ #ifdef ROOT_AUTH
+-		auth_add("/index.html", "/etc/config/passwd");
+-		auth_add("/", "/etc/config/passwd");
++		auth_add("/index.html", "/etc/passwd");
++		auth_add("/", "/etc/passwd");
+ #endif /*ROOT_AUTH*/
+ 	}
+ #ifdef OLD_CONFIG_PASSWORDS
+diff -NurbB boa-uclinux-20051014/src/defines.h boa-ubnt/src/defines.h
+--- boa-uclinux-20051014/src/defines.h	2004-02-19 06:14:17.000000000 +0200
++++ boa-ubnt/src/defines.h	2006-10-10 02:49:45.000000000 +0300
+@@ -29,7 +29,7 @@
+ 
+ #ifndef SERVER_ROOT
+ #ifdef EMBED
+-#define SERVER_ROOT "/home/httpd"
++#define SERVER_ROOT "/usr/www"
+ #else
+ #define SERVER_ROOT "/etc/boa"
+ #endif
+@@ -65,7 +65,7 @@
+ #ifdef EMBED
+ #define SOCKETBUF_SIZE				1024
+ #define MAX_HEADER_LENGTH			1024
+-#define CLIENT_STREAM_SIZE			1024
++#define CLIENT_STREAM_SIZE			2048
+ #define BUFFER_SIZE				CLIENT_STREAM_SIZE
+ #else
+ #define SOCKETBUF_SIZE				4096
+diff -NurbB boa-uclinux-20051014/src/globals.h boa-ubnt/src/globals.h
+--- boa-uclinux-20051014/src/globals.h	2004-11-16 12:31:52.000000000 +0200
++++ boa-ubnt/src/globals.h	2006-10-10 02:49:45.000000000 +0300
+@@ -237,4 +237,11 @@
+ /* nls.c */
+ extern char *local_codepage;
+ 
++#ifdef SERVER_SSL
++extern int ssl_server_port;
++extern char* cert_file;
++extern char* cert_key_file;
++extern char* cert_password;
++#endif
++
+ #endif
+diff -NurbB boa-uclinux-20051014/src/Makefile boa-ubnt/src/Makefile
+--- boa-uclinux-20051014/src/Makefile	2005-08-10 03:11:23.000000000 +0300
++++ boa-ubnt/src/Makefile	2006-10-10 02:49:45.000000000 +0300
+@@ -6,9 +6,16 @@
+ 	timestamp.o util.o
+ 
+ FLTFLAGS += -s 8192
++LIBCRYPT=-lcrypt
+ 
+ EXTRALIBS = $(LIBCRYPT)
+ 
++#CONFIG_USER_BOA_WITH_SSL=1
++#LIBSSL=-lssl
++#LIBCRYPTO=-lcrypto
++
++CFLAGS += -DEMBED
++
+ ifdef CONFIG_PROP_BOA_SECURITY_COUNT
+ CFLAGS += -DSECURITY_COUNTS
+ endif
+diff -NurbB boa-uclinux-20051014/src/syslog.h boa-ubnt/src/syslog.h
+--- boa-uclinux-20051014/src/syslog.h	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt/src/syslog.h	2006-10-10 02:49:45.000000000 +0300
+@@ -1,8 +1,6 @@
+ #ifndef __AUTHD_SYSLOG_h__
+ #define __AUTHD_SYSLOG_h__
+ 
+-#include <linux/autoconf.h>
+-#include <config/autoconf.h>
+ #include <syslog.h>
+ 
+ #ifdef SYSLOGS_AT_EMERG
+diff -NurbB boa-uclinux-20051014/src/util.c boa-ubnt/src/util.c
+--- boa-uclinux-20051014/src/util.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt/src/util.c	2006-10-10 02:49:45.000000000 +0300
+@@ -325,7 +325,7 @@
+ #if 0
+ 		fprintf(stderr, "Could not chdir to %s: aborting\n", server_root);
+ #endif
+-		syslog(LOG_ERR, "Could not chdir to server root");
++		syslog(LOG_ERR, "Could not chdir to server root '%s'", server_root);
+ 		exit(1);
+ 	}
+ 	if (server_root[0] == '/')

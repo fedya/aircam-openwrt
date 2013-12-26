@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/multimedia/minidlna/Makefile
+Package: minidlna
+Version: 1.0.19-1
+Depends: +libpthread +libexif +libjpeg +libsqlite3 +libffmpeg +@FFMPEG_MINIDLNA_SUPPORT +libid3tag +libflac +libvorbis +libuuid +BUILD_NLS:libiconv-full +BUILD_NLS:libintl-full
+Menu-Depends: 
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: multimedia
+Category: Multimedia
+Title: UPnP A/V & DLNA Media Server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: minidlna_1.0.19_src.tar.gz
+Type: ipkg
+Description:   MiniDLNA (aka ReadyDLNA) is server software with the aim of
+  being fully compliant with DLNA/UPnP-AV clients.
+http://minidlna.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

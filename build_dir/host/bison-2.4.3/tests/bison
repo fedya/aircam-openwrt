@@ -1,0 +1,8 @@
+#! /bin/bash
+# tests/bison.  Generated from bison.in by configure.
+# Wrapper around a non installed bison to make it work as an installed one.
+
+# Use the shipped files, not those installed.
+BISON_PKGDATADIR='/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/host/bison-2.4.3/data'
+export BISON_PKGDATADIR
+exec $PREBISON '/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/host/bison-2.4.3/src/bison' ${1+"$@"}

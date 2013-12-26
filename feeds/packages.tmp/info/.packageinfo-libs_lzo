@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/libs/lzo/Makefile
+Package: liblzo
+Version: 2.04-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: A real-time data compression library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: lzo-2.04.tar.gz
+Type: ipkg
+Description: LZO is a data compression library which is suitable for data de-/compression in
+real-time. This means it favours speed over compression ratio.
+http://www.oberhumer.com/opensource/lzo/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

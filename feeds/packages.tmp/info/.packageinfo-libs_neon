@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/neon/Makefile
+Package: libneon
+Version: 0.29.5-1
+Depends: +libopenssl +libexpat
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: HTTP and WebDAV client library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: neon-0.29.5.tar.gz
+Type: ipkg
+Description: HTTP and WebDAV client library
+http://www.webdav.org/neon/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

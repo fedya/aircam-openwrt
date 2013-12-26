@@ -1,0 +1,81 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+configure:
+	autoreconf -i -v
+	@exit 1
+
+build-deb/config.status: configure
+	dh_testdir
+	-mkdir build-deb
+	cd build-deb && \
+	../configure \
+		--host=$(DEB_HOST_GNU_TYPE) \
+		--build=$(DEB_BUILD_GNU_TYPE) \
+		--prefix=/usr \
+		--mandir=\$${prefix}/share/man \
+		--infodir=\$${prefix}/share/info
+
+build: build-deb-stamp
+build-deb-stamp: build-deb/config.status
+	dh_testdir
+
+	$(MAKE) -C build-deb
+
+	touch $@
+
+clean:
+	dh_testdir
+	rm -f *-stamp
+
+	-rm -rf build-*
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	$(MAKE) -C build-deb install DESTDIR=$(CURDIR)/debian/tmp
+
+	dh_install --sourcedir=debian/tmp
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs -i
+	dh_installdocs -i
+	dh_link -i
+	dh_compress -i
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs -s
+	dh_installdocs -s
+	dh_link -s
+	dh_strip -s
+	dh_compress -s
+	dh_fixperms -s
+	dh_installdeb -s
+	dh_shlibdeps -s
+	dh_gencontrol -s
+	dh_md5sums -s
+	dh_builddeb -s
+
+binary: binary-arch binary-indep
+.PHONY: binary binary-arch binary-indep build clean install

@@ -1,0 +1,107 @@
+#
+# arch/arm/mach-faraday/Kconfig
+#
+
+#
+# Faraday Platform Types Selection
+#
+choice
+	prompt "Platform Selection"
+	default PLATFORM_A320
+	depends on ARCH_FARADAY
+
+config PLATFORM_A320
+	bool "A320 evaluation board"
+	select FTINTC010
+	select FTPMU010
+	select FTTMR010
+
+config PLATFORM_A360
+	bool "A360 evaluation board"
+	select FTINTC010EX
+	select FTPMU010
+	select FTSCU000
+	select FTTMR010
+
+config PLATFORM_A369
+	bool "A369 evaluation board"
+	select FTINTC010EX
+	select FTPMU010
+	select FTPWMTMR010
+	select FTSCU010
+
+config PLATFORM_AXI
+	bool "AXI development board"
+	select FTINTC010
+	select FTTMR010
+
+config PLATFORM_FMP626A320
+	bool "A320 evaluation board with FMP626"
+	select ARM_GIC
+	select FTINTC010
+	select FTPMU010
+	select FTTMR010
+
+endchoice
+
+#
+# Platform dependent options
+#
+menu "Faraday Platform Options"
+	depends on ARCH_FARADAY
+
+source "arch/arm/mach-faraday/platform-a320/Kconfig"
+source "arch/arm/mach-faraday/platform-a360/Kconfig"
+source "arch/arm/mach-faraday/platform-a369/Kconfig"
+source "arch/arm/mach-faraday/platform-axi/Kconfig"
+source "arch/arm/mach-faraday/platform-fmp626a320/Kconfig"
+
+endmenu
+
+config FTINTC010
+	bool
+	help
+	   FTINTC010 interrupt controller
+
+config FTINTC010EX
+	bool
+	select FTINTC010
+	help
+	   newer version of FTINTC010 interrupt controller which supports up to 64 IRQ
+
+config FTPMU010
+	bool
+	help
+	  Power Management Unit
+
+config FTPWMTMR010
+	bool
+	help
+	  FTPWMTMR010 timer
+
+config FTSCU000
+	bool
+	help
+	  System Controller
+
+config FTSCU010
+	bool
+	help
+	  System Controller
+
+config FTTMR010
+	bool
+	help
+	  FTTMR010 timer
+
+config UART_CLK
+	int "UART Clock"
+	default 18432000
+	help
+	  If this options is changed, please also append "38400" to your
+	  kernel command line, e.g.:
+	  console=uart,shift,2,io,0xf9820000,38400
+
+if FTSCU010
+source arch/arm/mach-faraday/Kconfig.ftscu010
+endif

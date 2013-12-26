@@ -1,0 +1,19 @@
+Source-Makefile: target/linux/mpc85xx/Makefile
+Target: mpc85xx
+Target-Board: mpc85xx
+Target-Kernel: 2.6
+Target-Name: Freescale MPC85xx
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: powerpc
+Target-Arch-Packages: mpc85xx
+Target-Features: gpio pci pcie ramdisk spe_fpu usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -fno-caller-saves -mcpu=8540
+Linux-Version: 2.6.38.6
+Linux-Release: 1
+Linux-Kernel-Arch: powerpc
+Target-Description:
+	Build images for the Freescale MPC85xx based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall
+

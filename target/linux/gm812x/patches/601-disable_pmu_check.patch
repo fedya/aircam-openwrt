@@ -1,0 +1,11 @@
+--- a/arch/arm/mach-GM/ftpmu010.c
++++ b/arch/arm/mach-GM/ftpmu010.c
+@@ -269,7 +269,7 @@ int ftpmu010_register_reg(pmuRegInfo_t *
+                 {
+                     printk("PMU: lock_bits of %s is overlapped with %s in offset 0x%x! \n", 
+                             info->name, REGINFO_NAME(node), info->pRegArray[i].reg_off);
+-                    goto exit;
++                    //goto exit;
+                 }
+             } /* loop j */
+         }

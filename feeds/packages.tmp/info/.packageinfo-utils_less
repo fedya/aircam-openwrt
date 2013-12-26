@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/utils/less/Makefile
+Package: less
+Version: 436-1
+Depends: +libncurses
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Pager program similar to more
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: less-436.tar.gz
+Type: ipkg
+Description:   Full version of GNU less utility
+http://www.greenwoodsoftware.com/less/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

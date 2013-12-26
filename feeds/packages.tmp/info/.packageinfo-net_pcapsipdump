@@ -1,0 +1,21 @@
+Source-Makefile: feeds/packages/net/pcapsipdump/Makefile
+Package: pcapsipdump
+Submenu: Telephony
+Version: 0.1.4-2
+Depends: +libpcap +uclibcxx
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: SIP sessions dumping tool
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pcapsipdump-0.1.4.tar.gz
+Type: ipkg
+Description:         pcapsipdump is a tool for dumping SIP sessions (+RTP traffic, if available) to disk in a
+        fashion similar to "tcpdump -w" (format is exactly the same), but one file per sip session
+        (even if there is thousands of concurrect SIP sessions).
+http://sourceforge.net/projects/pcapsipdump/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

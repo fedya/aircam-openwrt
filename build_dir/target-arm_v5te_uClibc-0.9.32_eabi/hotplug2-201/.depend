@@ -1,0 +1,28 @@
+action.o: action.c action.h rules/execution.h rules/command.h \
+ rules/../common.h rules/../uevent.h rules/../seqnum.h \
+ rules/../xmemutils.h rules/execution_ctx.h rules/condition.h \
+ rules/expression.h rules/command-list.h rules/ruleset.h rules/rule.h \
+ rules/../settings.h rules/../rules/ruleset.h rules/../workers/loader.h \
+ rules/../workers/worker.h rules/../workers/../uevent.h \
+ rules/../workers/../settings.h uevent.h settings.h
+coldplug2.o: coldplug2.c coldplug2.h
+hotplug2-modwrap.o: hotplug2-modwrap.c hotplug2-modwrap.h
+hotplug2.o: hotplug2.c hotplug2.h netlink.h settings.h seqnum.h \
+ rules/ruleset.h rules/rule.h rules/condition.h rules/expression.h \
+ rules/command.h rules/../common.h rules/../uevent.h rules/../seqnum.h \
+ rules/../xmemutils.h rules/execution_ctx.h rules/command-list.h \
+ workers/loader.h workers/worker.h workers/../uevent.h \
+ workers/../settings.h uevent.h parser/parser.h \
+ parser/../rules/condition.h parser/../rules/expression.h \
+ parser/../rules/rule.h parser/../rules/ruleset.h parser/lexer.h \
+ parser/token.h parser/buffer.h parser/token_queue.h rules/execution.h \
+ rules/ruleset.h rules/../settings.h
+netlink.o: netlink.c netlink.h
+seqnum.o: seqnum.c seqnum.h
+settings.o: settings.c settings.h seqnum.h rules/ruleset.h rules/rule.h \
+ rules/condition.h rules/expression.h rules/command.h rules/../common.h \
+ rules/../uevent.h rules/../seqnum.h rules/../xmemutils.h \
+ rules/execution_ctx.h rules/command-list.h workers/loader.h \
+ workers/worker.h workers/../uevent.h workers/../settings.h
+uevent.o: uevent.c uevent.h seqnum.h xmemutils.h
+xmemutils.o: xmemutils.c

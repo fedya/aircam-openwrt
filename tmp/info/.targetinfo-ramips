@@ -1,0 +1,73 @@
+Source-Makefile: target/linux/ramips/Makefile
+Target: ramips
+Target-Board: ramips
+Target-Kernel: 2.6
+Target-Name: Ralink RT288x/RT305x
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: mipsel
+Target-Arch-Packages: ramips
+Target-Features: squashfs
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32r2 -mtune=mips32r2 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Ralink RT288x/RT305x based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall kmod-leds-gpio wpad-mini
+Target: ramips/rt288x
+Target-Board: ramips
+Target-Kernel: 2.6
+Target-Name: RT288x based boards
+Target-Path: target/linux/ramips
+Target-Arch: mipsel
+Target-Arch-Packages: ramips
+Target-Features: gpio pci squashfs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32r2 -mtune=mips32r2 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Ralink RT288x/RT305x based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall kmod-leds-gpio wpad-mini
+Target-Profile: Default
+Target-Profile-Name: Default Profile
+Target-Profile-Packages: kmod-rt2800-pci
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Default package set compatible with most boards.
+@@
+
+Target: ramips/rt305x
+Target-Board: ramips
+Target-Kernel: 2.6
+Target-Name: RT305x based boards
+Target-Path: target/linux/ramips
+Target-Arch: mipsel
+Target-Arch-Packages: ramips
+Target-Features: gpio squashfs
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32r2 -mtune=mips32r2 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Ralink RT288x/RT305x based boards.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall kmod-leds-gpio wpad-mini
+Target-Profile: Default
+Target-Profile-Name: Default Profile
+Target-Profile-Packages: kmod-rt2800-pci
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Default package set compatible with most boards.
+@@
+
+

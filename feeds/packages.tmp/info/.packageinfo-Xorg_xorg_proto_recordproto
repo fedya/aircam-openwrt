@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/recordproto/Makefile
+Package: recordproto
+Submenu: proto
+Version: 1.14-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: recordproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: recordproto-1.14.tar.bz2
+Type: ipkg
+Description: recordproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

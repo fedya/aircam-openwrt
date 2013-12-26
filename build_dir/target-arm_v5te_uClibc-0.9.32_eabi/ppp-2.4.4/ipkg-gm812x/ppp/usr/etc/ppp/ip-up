@@ -1,0 +1,49 @@
+#!/bin/sh
+remove_fallback_ip()
+{
+	CFG_FILE="/tmp/running.cfg"
+	if [ ! -f $CFG_FILE ]; then
+		CFG_FILE="/tmp/system.cfg"
+	fi
+	fallback_ip=$(grep "ppp\.1\.fallback=" $CFG_FILE | awk -F= '{print $2}')
+	fallback_netmask=$(grep "ppp\.1\.fallback_netmask=" $CFG_FILE | awk -F= '{print $2}')
+	[ ! -z $fallback_ip ] && ip addr del $fallback_ip/${fallback_netmask:-24} dev $DEVICE
+	return 0
+}
+
+if [ -f /etc/ppp/resolv.conf ]; then
+	rm -f /etc/ppp/resolv.prev
+	if [ -f /etc/resolv.conf ]; then
+		cp /etc/resolv.conf /etc/ppp/resolv.prev
+		grep domain /etc/ppp/resolv.prev > /etc/resolv.conf
+		grep search /etc/ppp/resolv.prev >> /etc/resolv.conf
+		cat /etc/ppp/resolv.conf >> /etc/resolv.conf
+	else
+		cp /etc/ppp/resolv.conf /etc/.
+	fi
+fi
+
+remove_fallback_ip
+
+# set the txqueuelen higher than crappy 3
+ifconfig $IFNAME txqueuelen 32 2>&1 > /dev/null
+
+if [ -x /bin/sysled ]; then
+	/bin/sysled -i 1 2>/dev/null
+fi
+if [ -f /etc/ppp/rssi_decode.sh ]; then
+	. /etc/ppp/rssi_decode.sh start
+fi
+
+cat > /etc/ppp/info.$IFNAME << EOF
+started = `cat /proc/uptime | cut -d '.' -f 1`
+device = $DEVICE
+ifname = $IFNAME
+name = `sed '/^name /!d; s///; s/^"//; s/"$//; q' /etc/ppp/options`
+iplocal = $IPLOCAL
+ipremote = $IPREMOTE
+dns1 = $DNS1
+dns2 = $DNS2
+peername = $PEERNAME
+linkname = $LINKNAME
+EOF

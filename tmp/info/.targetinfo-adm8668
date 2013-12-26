@@ -1,0 +1,20 @@
+Source-Makefile: target/linux/adm8668/Makefile
+Target: adm8668
+Target-Board: adm8668
+Target-Kernel: 2.6
+Target-Name: Infineon WildPass ADM8668
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: mipsel
+Target-Arch-Packages: adm8668
+Target-Features: pci squashfs
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.36.4
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Infineon WildPass (ADM8668) based routers
+	(e.g. T-Mobile branded Linksys WRTU54G-TM)
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall wpad-mini kmod-rt61-pci
+

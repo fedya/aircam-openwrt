@@ -1,0 +1,10 @@
+buffer.o: buffer.c buffer.h
+lexer.o: lexer.c lexer.h token.h buffer.h
+parser.o: parser.c parser.h ../rules/condition.h ../rules/expression.h \
+ ../rules/command.h ../rules/../common.h ../rules/../uevent.h \
+ ../rules/../seqnum.h ../rules/../xmemutils.h ../rules/execution_ctx.h \
+ ../rules/command-list.h ../rules/rule.h ../rules/condition.h \
+ ../rules/expression.h ../rules/ruleset.h ../rules/rule.h lexer.h token.h \
+ buffer.h token_queue.h
+token.o: token.c token.h buffer.h
+token_queue.o: token_queue.c token_queue.h token.h buffer.h

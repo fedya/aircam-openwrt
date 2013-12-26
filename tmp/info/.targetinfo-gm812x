@@ -1,0 +1,19 @@
+Source-Makefile: target/linux/gm812x/Makefile
+Target: gm812x
+Target-Board: gm812x
+Target-Kernel: 2.6
+Target-Name: Grain Media GM812x
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: arm
+Target-Arch-Packages: gm812x
+Target-Features: audio gpio squashfs
+Target-Depends: 
+Target-Optimization: -O2 -pipe -march=armv5te -msoft-float -fno-caller-saves
+Linux-Version: 2.6.28.fa2
+Linux-Release: 1
+Linux-Kernel-Arch: arm
+Target-Description:
+	Build images for Grain Media GM812x  based boards
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall
+

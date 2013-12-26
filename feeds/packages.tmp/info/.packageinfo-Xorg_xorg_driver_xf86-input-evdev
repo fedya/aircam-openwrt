@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/driver/xf86-input-evdev/Makefile
+Package: xf86-input-evdev
+Submenu: driver
+Version: 2.3.0-2
+Depends: +xserver-xorg
+Menu-Depends: 
+Provides: 
+Build-Depends: randrproto inputproto xproto libtool libintl libiconv
+Section: xorg-driver
+Category: Xorg
+Title: xf86-input-evdev
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xf86-input-evdev-2.3.0.tar.bz2
+Type: ipkg
+Description: xf86-input-evdev
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

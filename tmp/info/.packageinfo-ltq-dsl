@@ -1,0 +1,56 @@
+Source-Makefile: package/ltq-dsl/Makefile
+Package: kmod-ltq-dsl
+Submenu: Network Devices
+Version: <LINUX_VERSION>+3.24.4.4-2
+Depends: @TARGET_lantiq_xway +kmod-atm
+Menu-Depends: 
+Provides: 
+Section: sys
+Category: Kernel modules
+Title: Lantiq dsl driver
+Maintainer: John Crispin <blogic@openwrt.org>
+Source: drv_dsl_cpe_api_danube-3.24.4.4.tar.gz
+Type: ipkg
+Description: 	Lantiq DSL CPE API for Amazon SE, Danube and Vinax.
+http://www.lantiq.com/
+John Crispin <blogic@openwrt.org>
+@@
+Config:
+	source "package/ltq-dsl/Config.in"
+@@
+
+Package: kmod-ltq-dsl-firmware-a
+Submenu: Network Devices
+Version: 3.24.4.4-2
+Depends: @TARGET_lantiq_xway kmod-ltq-dsl
+Menu-Depends: 
+Provides: 
+Section: sys
+Category: Kernel modules
+Title: Firmware Annex-A Danube
+Maintainer: John Crispin <blogic@openwrt.org>
+Source: drv_dsl_cpe_api_danube-3.24.4.4.tar.gz
+Type: ipkg
+Description: Firmware Annex-A Danube
+http://www.lantiq.com/
+John Crispin <blogic@openwrt.org>
+@@
+
+Package: kmod-ltq-dsl-firmware-b
+Submenu: Network Devices
+Version: 3.24.4.4-2
+Depends: @TARGET_lantiq_xway kmod-ltq-dsl
+Menu-Depends: 
+Provides: 
+Section: sys
+Category: Kernel modules
+Title: Firmware Annex-B Danube
+Maintainer: John Crispin <blogic@openwrt.org>
+Source: drv_dsl_cpe_api_danube-3.24.4.4.tar.gz
+Type: ipkg
+Description: Firmware Annex-B Danube
+http://www.lantiq.com/
+John Crispin <blogic@openwrt.org>
+@@
+
+

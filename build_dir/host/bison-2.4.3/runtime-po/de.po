@@ -1,0 +1,62 @@
+# German translation for messages of GNU bison (runtime module).
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Ulrich Drepper <drepper@gnu.ai.mit.edu>, 1996.
+# Michael Piefel <piefel@informatik.hu-berlin.de>, 2002, 2003, 2004, 2005, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.3a\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2010-08-05 21:01-0400\n"
+"PO-Revision-Date: 2006-12-12 09:38+0100\n"
+"Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: data/glr.c:925 data/yacc.c:639
+msgid "syntax error: cannot back up"
+msgstr "Syntaxfehler: Kann nicht zurück gehen"
+
+#: data/glr.c:1808
+msgid "syntax is ambiguous"
+msgstr "Syntax ist mehrdeutig"
+
+#: data/glr.c:2183 data/glr.c:2189 data/glr.c:2457 data/lalr1.cc:878
+#: data/yacc.c:1500 data/yacc.c:1528
+msgid "syntax error"
+msgstr "Syntaxfehler"
+
+#: data/glr.c:2517 data/yacc.c:1115 data/yacc.c:1117 data/yacc.c:1293
+#: data/yacc.c:1649
+msgid "memory exhausted"
+msgstr "Speicher ausgeschöpft"
+
+#: data/yacc.c:927
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "Syntaxfehler, unerwartetes %s"
+
+#: data/yacc.c:928
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "Syntaxfehler, unerwartetes %s, hatte %s erwartet"
+
+#: data/yacc.c:929
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "Syntaxfehler, unerwartetes %s, hatte %s oder %s erwartet"
+
+#: data/yacc.c:930
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "Syntaxfehler, unerwartetes %s, hatte %s oder %s oder %s erwartet"
+
+#: data/yacc.c:931
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr ""
+"Syntaxfehler, unerwartetes %s, hatte %s oder %s oder %s oder %s erwartet"

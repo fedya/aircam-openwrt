@@ -1,0 +1,27 @@
+mdebug-address
+Target RejectNegative Report Undocumented Mask(DEBUG_ADDRESS)
+Debug addresses
+
+mdebug-context
+Target RejectNegative Report Undocumented Mask(DEBUG_CONTEXT)
+Debug contexts
+
+march=
+Target Report Var(ubicom32_arch_name) Init("ubicom32v4") Joined
+Specify the name of the target architecture
+
+mfdpic
+Target Report Mask(FDPIC)
+Enable Function Descriptor PIC mode
+
+minline-plt
+Target Report Mask(INLINE_PLT)
+Enable inlining of PLT in function calls
+
+mfastcall
+Target Report Mask(FASTCALL)
+Enable default fast (call) calling sequence for smaller applications
+
+mipos-abi
+Target Report Mask(IPOS_ABI)
+Enable the ipOS ABI in which D10-D13 are caller-clobbered

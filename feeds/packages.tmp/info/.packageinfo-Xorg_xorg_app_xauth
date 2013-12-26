@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/app/xauth/Makefile
+Package: xauth
+Submenu: app
+Version: 1.0.4-1
+Depends: +libX11 +libXau +libXext +libXmuu
+Menu-Depends: 
+Provides: 
+Section: xorg-app
+Category: Xorg
+Title: xauth
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xauth-1.0.4.tar.bz2
+Type: ipkg
+Description: xauth
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

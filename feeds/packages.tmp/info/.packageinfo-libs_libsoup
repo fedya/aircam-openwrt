@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/libsoup/Makefile
+Package: libsoup
+Version: 2.28.2-1
+Depends: +glib2 +libxml2 +libgnutls
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: libs
+Category: Libraries
+Title: libsoup
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libsoup-2.28.2.tar.bz2
+Type: ipkg
+Description: libsoup
+http://live.gnome.org/LibSoup
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

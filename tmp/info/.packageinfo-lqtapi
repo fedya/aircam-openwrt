@@ -1,0 +1,34 @@
+Source-Makefile: package/lqtapi/Makefile
+Package: kmod-lqtapi
+Submenu: Voice over IP
+Version: <LINUX_VERSION>+1-1
+Depends: @TARGET_lantiq_xway @BROKEN
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Tapi drivers for Lantiq SoC
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description: 	FOSS drivers for Lantiq SoC voip core
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: lqtapi-firmware-danube
+Submenu: Voice over IP
+Version: 1-1
+Depends: +kmod-lqtapi
+Menu-Depends: 
+Provides: 
+Section: sys
+Category: Kernel modules
+Title: Danube firmware
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description: Danube firmware
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/net/nzbget/Makefile
+Package: nzbget
+Submenu: NNTP
+Version: 0.7.0-2
+Depends: +libxml2 +libpar2 +libopenssl +libpthread +libncurses
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Binary newsgrabber for nzb-files
+Maintainer: Artur Wronowski <arteqw@gmail.com>
+Source: nzbget-0.7.0.tar.gz
+Type: ipkg
+Description: A command-line client/server based binary newsgrabber for nzb-files.
+http://nzbget.sourceforge.net/
+Artur Wronowski <arteqw@gmail.com>
+@@
+
+

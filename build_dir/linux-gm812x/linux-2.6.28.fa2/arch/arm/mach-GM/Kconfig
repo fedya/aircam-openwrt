@@ -1,0 +1,41 @@
+#
+# arch/arm/mach-GM/Kconfig
+#
+
+#
+# GM Platform Types Selection
+#
+choice
+	prompt "Platform Selection"
+	default PLATFORM_GM8181
+	depends on ARCH_GM
+
+config PLATFORM_GM8181
+	bool "GM8181 series platforms"
+	select FIQ
+	help
+	  GM GM8181 is a platform based on GM's ARM9 compatible processor
+
+config PLATFORM_GM8126
+ 	bool "GM8126 series platforms"
+        select FIQ
+        help
+          GM GM8126 is a platform based on GM's ARM9 compatible processor
+	
+endchoice
+
+config FORCE_MAX_ZONEORDER
+    int
+    depends on ARCH_GM
+    default "12"
+#
+# Platform dependent options
+#
+menu "GM Platform Options"
+	depends on ARCH_GM
+
+source "arch/arm/mach-GM/platform-GM8181/Kconfig"
+source "arch/arm/mach-GM/platform-GM8126/Kconfig"
+
+endmenu
+

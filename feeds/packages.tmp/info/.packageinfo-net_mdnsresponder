@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/mdnsresponder/Makefile
+Package: mdnsresponder
+Submenu: IP Addresses and Names
+Version: 214.3.2-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: mDNSResponder
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: mDNSResponder-214.3.2.tar.gz
+Type: ipkg
+Description: mDNSResponder
+http://developer.apple.com/networking/bonjour/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

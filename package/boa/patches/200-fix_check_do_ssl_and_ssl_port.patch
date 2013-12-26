@@ -1,0 +1,13 @@
+Index: boa/src/boa.c
+===================================================================
+--- boa/src/boa.c	(revision 3381)
++++ boa/src/boa.c	(revision 3382)
+@@ -157,7 +157,7 @@
+ 	create_common_env();
+ 
+ #ifdef SERVER_SSL
+-	do_ssl = do_ssl & ssl_server_port > 0;
++	do_ssl = do_ssl && (ssl_server_port > 0);
+ 
+ 	if (do_ssl) {
+ 		if (InitSSLStuff() != 1) {

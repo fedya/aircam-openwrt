@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/lib/libXdmcp/Makefile
+Package: libXdmcp
+Submenu: libraries
+Version: 1.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: xproto libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: libXdmcp
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libXdmcp-1.0.3.tar.bz2
+Type: ipkg
+Description: libXdmcp
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

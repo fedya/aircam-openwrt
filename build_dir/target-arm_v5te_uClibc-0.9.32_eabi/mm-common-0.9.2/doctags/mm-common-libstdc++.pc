@@ -1,0 +1,12 @@
+prefix=/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+pkgdatadir=${datadir}/mm-common
+
+doxytagfile=${pkgdatadir}/doctags/libstdc++.tag
+htmlrefpub=http://gcc.gnu.org/onlinedocs/libstdc++/latest-doxygen/
+
+Name: mm-common-libstdc++
+Description: GNU libstdc++ metadata module
+Version: 0.9.2
+URL: http://www.gtkmm.org/

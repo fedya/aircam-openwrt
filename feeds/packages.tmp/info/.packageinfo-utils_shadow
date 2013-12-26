@@ -1,0 +1,129 @@
+Source-Makefile: feeds/packages/utils/shadow/Makefile
+Package: shadow
+Version: 4.0.3-1
+Depends: +shadow-groupadd +shadow-groupdel +shadow-groupmod +shadow-useradd +shadow-userdel +shadow-usermod
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: The PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:   Full versions of standard shadow utilities.  Normally, you would not
+  use this package, since the functionality in BusyBox is more than
+  sufficient and much smaller.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: shadow-groupadd
+Version: 4.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Utility groupadd from the PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:     Full version of standard groupadd utility. Normally, you would not use this
+    package, since the functionality in BusyBox is more than sufficient.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: shadow-groupdel
+Version: 4.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Utility groupdel from the PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:     Full version of standard groupdel utility. Normally, you would not use this
+    package, since the functionality in BusyBox is more than sufficient.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: shadow-groupmod
+Version: 4.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Utility groupmod from the PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:     Full version of standard groupmod utility. Normally, you would not use this
+    package, since the functionality in BusyBox is more than sufficient.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: shadow-useradd
+Version: 4.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Utility useradd from the PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:     Full version of standard useradd utility. Normally, you would not use this
+    package, since the functionality in BusyBox is more than sufficient.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: shadow-userdel
+Version: 4.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Utility userdel from the PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:     Full version of standard userdel utility. Normally, you would not use this
+    package, since the functionality in BusyBox is more than sufficient.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: shadow-usermod
+Version: 4.0.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: Utility usermod from the PLD Linux shadow utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: shadow-4.0.3.tar.bz2
+Type: ipkg
+Description:     Full version of standard usermod utility. Normally, you would not use this
+    package, since the functionality in BusyBox is more than sufficient.
+http://ftp.pld-linux.org/software/shadow/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

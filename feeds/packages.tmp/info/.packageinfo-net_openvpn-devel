@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/openvpn-devel/Makefile
+Package: openvpn-devel
+Submenu: VPN
+Version: 201120-1
+Depends: +kmod-tun +kmod-ipv6 +libopenssl +liblzo +ip
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Open source VPN solution using SSL (devel version)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: openvpn-201120.tar.gz
+Type: ipkg
+Description: 	 Open source VPN solution using SSL - DEVEL VERSION, Week 201120
+http://openvpn.net
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/videoproto/Makefile
+Package: videoproto
+Submenu: proto
+Version: 2.3.0-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: videoproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: videoproto-2.3.0.tar.bz2
+Type: ipkg
+Description: videoproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

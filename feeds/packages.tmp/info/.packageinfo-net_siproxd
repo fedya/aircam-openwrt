@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/net/siproxd/Makefile
+Package: siproxd
+Submenu: Telephony
+Version: 0.7.1-3
+Depends: +libltdl +libosip2 +libpthread
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: SIP (Session Initiation Protocol) proxy
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: siproxd-0.7.1.tar.gz
+Type: ipkg
+Description: SIP (Session Initiation Protocol) proxy
+http://siproxd.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,25 @@
+Source-Makefile: feeds/packages/net/nginx/Makefile
+Package: nginx
+Menu: 1
+Submenu: Web Servers/Proxies
+Version: 0.7.67-3
+Depends: +libpcre +NGINX_SSL:libopenssl +zlib
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Nginx web server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: nginx-0.7.67.tar.gz
+Type: ipkg
+Description: 	Nginx is a free, open-source, high-performance HTTP server
+	and reverse proxy, as well as an IMAP/POP3 proxy server,
+	written by Igor Sysoev.
+http://nginx.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+Config:
+	source "feeds/packages/net/nginx/Config.in"
+@@
+
+

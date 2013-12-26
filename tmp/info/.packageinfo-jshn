@@ -1,0 +1,18 @@
+Source-Makefile: package/jshn/Makefile
+Package: jshn
+Version: 0.1-1
+Depends: +libjson
+Menu-Depends: 
+Provides: 
+Build-Depends: libubox
+Section: utils
+Category: Utilities
+Title: JSON SHell Notation
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:   Library for parsing and generating JSON from shell scripts
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

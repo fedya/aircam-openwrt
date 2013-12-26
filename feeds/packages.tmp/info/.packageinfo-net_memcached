@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/net/memcached/Makefile
+Package: memcached
+Version: 1.2.6-1
+Depends: +libevent
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: The high-performance, distributed memory object caching system
+Maintainer: Thomas Heil <heil@terminal-consulting.de>
+Source: memcached-1.2.6.tar.gz
+Type: ipkg
+Description:   Free and open source, high-performance, distributed memory object caching system
+http://memcached.org/
+Thomas Heil <heil@terminal-consulting.de>
+@@
+
+

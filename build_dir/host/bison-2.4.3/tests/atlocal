@@ -1,0 +1,44 @@
+# tests/atlocal.  Generated from atlocal.in by configure.					-*- shell-script -*-
+# Configurable variable values for Bison test suite.
+
+# Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
+# 2009, 2010 Free Software Foundation, Inc.
+
+# We need a C compiler.
+: ${CC='x86_64-redhat-linux-gcc -std=gnu99'}
+
+# We want no optimization.
+CFLAGS='-I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include  '
+
+# We need `config.h'.
+CPPFLAGS="-I$abs_top_builddir/lib -O2 -I/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/include"
+
+# Is the compiler GCC?
+GCC='yes'
+
+# The C++ compiler.
+: ${CXX='x86_64-redhat-linux-g++'}
+
+# If 'exit 77'; skip all C++ tests; otherwise ':'.
+BISON_CXX_WORKS=':'
+
+# We want no optimization with C++, too.
+CXXFLAGS='-g   '
+
+# Are special link options needed?
+LDFLAGS='-L/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/host/lib'
+
+# Are special libraries needed?
+LIBS="$abs_top_builddir/lib/libbison.a  "
+
+# Empty if no javac was found
+CONF_JAVAC=''
+
+# Empty if no Java VM was found
+CONF_JAVA=''
+
+# Empty if no xsltproc was found
+: ${XSLTPROC=''}
+
+# We need egrep.
+: ${EGREP='/bin/grep -E'}

@@ -1,0 +1,28 @@
+--- a/src/config.c
++++ b/src/config.c
+@@ -420,6 +420,8 @@ void read_config_files(void)
+   struct hostent *hostentbuf;
+ 	int	read_file = 0;
+ 
++	memset(hostnamebuf, 0, sizeof(hostnamebuf));
++	gethostname(hostnamebuf, MAX_SITENAME_LENGTH);
+ 	mime_types = strdup("/etc/mime.types");
+ 
+ #ifdef EMBED
+@@ -439,7 +441,7 @@ void read_config_files(void)
+ 	default_type = strdup("text/html");
+ 	document_root = strdup("/usr/www");
+ 	directory_index = strdup("index.html");
+-	server_name = strdup("");
++	server_name = strdup(hostnamebuf);
+ 	server_admin = strdup("root@localhost");
+ #ifdef BOA_TIME_LOG
+ 	error_log_name = strdup("/var/log/boa.err.log");
+@@ -522,7 +524,6 @@ void read_config_files(void)
+ #endif /* EMBED */
+ 
+   if (!server_name) {
+-    gethostname(hostnamebuf, MAX_SITENAME_LENGTH);
+     hostentbuf = gethostbyname(hostnamebuf);
+     if (!hostentbuf) {
+       fputs("Cannot determine hostname. Set ServerName in boa.conf.\n",

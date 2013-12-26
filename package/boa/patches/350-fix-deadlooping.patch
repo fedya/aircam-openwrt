@@ -1,0 +1,70 @@
+Index: boa/src/boa.c
+===================================================================
+--- boa/src/boa.c	(revision 4448)
++++ boa/src/boa.c	(revision 4449)
+@@ -103,6 +103,8 @@
+ {
+ 	int c;						/* command line arg */
+ 	int s_port = 80;
++	int after_select = 1; /* this should prevent fdset_update()
++							<-> process_requests() dead loop */
+ 
+ 	openlog("boa", LOG_PID, 0);
+ #ifdef SERVER_SSL
+@@ -346,11 +348,12 @@
+ 		}
+ 
+ 		/* move selected req's from request_block to request_ready */
+-		fdset_update();
++		fdset_update(after_select);
+ 
+ 		if (request_ready)
+ 		{
+ 			/* any blocked req's move from request_ready to request_block */
++			after_select = 0;
+ 			process_requests();
+ 		}
+ 		else
+@@ -369,6 +372,7 @@
+ 				max_fd = MAX(current->post_data_fd, max_fd);
+ 			}
+ 
++			after_select = 1;
+ 			if (select(max_fd + 1, &block_read_fdset, &block_write_fdset, NULL,
+ 					   (request_block ? &req_timeout : NULL)) == -1) {
+ 				if (errno == EINTR || errno == EBADF)
+@@ -404,9 +408,10 @@
+  * Description: iterate through the blocked requests, checking whether
+  * that file descriptor has been set by select.  Update the fd_set to
+  * reflect current status.
++ * param: after_select - if true, allow activating blocked requests. 
+  */
+ 
+-void fdset_update(void)
++void fdset_update(int after_select)
+ {
+ 	request *current, *next;
+ 	time_t current_time;
+@@ -477,7 +482,8 @@
+ 				break;
+ 			}
+ 		}
+-		if (FD_ISSET(sock, fds))
++		/* only do ready if we are just after select() */
++		if (FD_ISSET(sock, fds) && after_select)
+ 		{
+ #ifdef SERVER_SSL
+ 			current->ssl_operation = 0;
+Index: boa/src/boa.h
+===================================================================
+--- boa/src/boa.h	(revision 4448)
++++ boa/src/boa.h	(revision 4449)
+@@ -80,7 +80,7 @@
+ /* boa */
+ 
+ void die(int exit_code);
+-void fdset_update(void);
++void fdset_update(int after_select);
+ 
+ /* config */
+ 

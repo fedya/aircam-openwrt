@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/dmapd/Makefile
+Package: dmapd
+Version: 0.0.41-1
+Depends: +libdmapsharing +db47 +vips
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: net
+Category: Network
+Title: dmapd
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: dmapd-0.0.41.tar.gz
+Type: ipkg
+Description: dmapd
+http://www.flyn.org/projects/dmapd/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+

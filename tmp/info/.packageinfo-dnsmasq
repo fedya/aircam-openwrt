@@ -1,0 +1,18 @@
+Source-Makefile: package/dnsmasq/Makefile
+Package: dnsmasq
+Version: 2.57-2
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Base system
+Title: A lightweight DNS and DHCP server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: dnsmasq-2.57.tar.gz
+Type: ipkg
+Description:  It is intended to provide coupled DNS and DHCP service to a LAN.
+http://www.thekelleys.org.uk/dnsmasq/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

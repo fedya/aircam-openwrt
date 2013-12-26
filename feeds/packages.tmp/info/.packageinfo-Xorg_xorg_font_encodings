@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/font/encodings/Makefile
+Package: encodings
+Submenu: font
+Version: 1.0.2-2
+Depends: +xserver +font-util @DISPLAY_SUPPORT
+Menu-Depends: 
+Provides: 
+Section: xorg-font
+Category: Xorg
+Title: encodings
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: encodings-1.0.2.tar.bz2
+Type: ipkg
+Description: encodings
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

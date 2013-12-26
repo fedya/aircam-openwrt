@@ -1,0 +1,11 @@
+#
+# arch/arm/mach-faraday/platform-axi/Kconfig
+
+config CLOCK_TICK_RATE
+	int "System timer tick rate"
+	depends on PLATFORM_AXI
+	default 18000000
+	help
+	  The frequency of system clock.
+	  It is APB clock rate (AHB clock rate / 2) on AXI develop board
+

@@ -1,0 +1,1063 @@
+diff -NurbB boa-uclinux-20051014/Changelog boa-ubnt-latest/Changelog
+--- boa-uclinux-20051014/Changelog	2002-09-19 06:24:12.000000000 +0200
++++ boa-ubnt-latest/Changelog	2007-07-18 14:38:54.000000000 +0300
+@@ -1,3 +1,28 @@
++** Changes by /dev/int (Kestutis Kupciunas<support@ubnt.com> 
++					  & Darius Ivanauskas<dasilt@gmail.com>)
++	- added Cache-Control: public for static pages
++	- added Content-Disposition header support
++	- added support for one more date format of If-Modified-Since
++	- extended default HTTP request timeout to 120 seconds
++	- added no caching headers for permanent redirect
++	- refactored/fixed: boa SSL support including MatrixSSL support trough
++	  OpenSSL compatibility helper. Fixes also affects simple https operations
++	  including running state on cgi ouput waiting.
++	- implemented forced redirect to https when accessing http
++	- if either cert_file or cert_key_file isnt specified, make boa run in http
++	  only mode. That is because initialized with null files each request fails
++	  on SSL_accept, thus making impossible to reach server when
++	  SSL_FORCE_REDIRECT is active.
++	- fixed: unsigned long on _64 byte machines isnt uint32
++	- fixed: segfaults on wrong parameter wich wasn't warned because of
++	  compiler flags and void* member definition. Also fixed other compiler
++	  warnings. Fixed posible use of unitialized/unexpected variables on
++	  request timeout.
++	- fixed: changed conflicting type uint32 into universal u_int32_t
++	- HTTPS isn't enabled by default
++
++** Changes made before this are missing because source of this boa version is unknown
++	- *****
+ 
+ ** Changes from v0.93.16 to 0.93.16.x
+ 	- Changed to RCS
+diff -NurbB boa-uclinux-20051014/src/boa.c boa-ubnt-latest/src/boa.c
+--- boa-uclinux-20051014/src/boa.c	2007-08-01 11:51:56.000000000 +0300
++++ boa-ubnt-latest/src/boa.c	2007-07-09 19:31:02.000000000 +0300
+@@ -29,11 +29,12 @@
+ #include "syslog.h"
+ #include <sys/param.h>
+ #ifdef SERVER_SSL
+-#include <openssl/ssl.h>
++#ifndef MATRIX_SSL_COMPAT
+ #include <openssl/err.h>
+ #include <openssl/x509.h>
+ #include <openssl/pkcs12.h>
+-#endif /*SERVER_SSL*/
++#endif /* MATRIX_SSL_COMPAT */
++#endif /* SERVER_SSL */
+ 
+ int server_s;					/* boa socket */
+ 
+@@ -41,8 +42,12 @@
+ 	int server_ssl;				/*ssl socket */
+ 	int do_ssl = 1;					/*We want to actually perform all of the ssl stuff.*/
+ 	int do_sock = 1;				/*We may not want to actually connect to normal sockets*/
++#ifdef MATRIX_SSL_COMPAT
++	sslKeys_t *ctx;
++#else	
+ 	SSL_CTX *ctx;				/*SSL context information*/
+ 	SSL_METHOD *meth;			/*SSL method information*/
++#endif /* MATRIX_SSL_COMPAT */	
+ //	int ssl_server_port = 443;		/*The port that the server should listen on*/
+ 	/*Note that per socket ssl information is stored in */
+ #ifdef INET6
+@@ -80,7 +85,7 @@
+ static int max_fd = 0;
+ 
+ #ifdef EMBED
+-static void log_pid()
++static void log_pid(void)
+ {
+ 	FILE *f;
+ 	pid_t pid;
+@@ -152,6 +157,8 @@
+ 	create_common_env();
+ 
+ #ifdef SERVER_SSL
++	do_ssl = do_ssl & ssl_server_port > 0;
++
+ 	if (do_ssl) {
+ 		if (InitSSLStuff() != 1) {
+ 			/*TO DO - emit warning the SSL stuff will not work*/
+@@ -341,7 +348,13 @@
+ 		/* move selected req's from request_block to request_ready */
+ 		fdset_update();
+ 
+-		if (!request_ready) {
++		if (request_ready)
++		{
++			/* any blocked req's move from request_ready to request_block */
++			process_requests();
++		}
++		else
++		{
+ 			request *current;
+ 
+ 			max_fd = 0;
+@@ -382,7 +395,6 @@
+ 			} 
+ #endif /*SERVER_SSL*/
+ 		}
+-		process_requests();		/* any blocked req's move from request_ready to request_block */
+ 	}
+ }
+ 
+@@ -398,6 +410,8 @@
+ {
+ 	request *current, *next;
+ 	time_t current_time;
++	int sock = -1;
++	fd_set *fds = NULL;
+ 
+ 	current = request_block;
+ 
+@@ -422,38 +436,57 @@
+ #endif
+ 			SQUASH_KA(current);
+ 			free_request(&request_block, current);
++			current = next;
++			continue;
++#ifdef SERVER_SSL
++		}
++		else if(current->ssl && current->ssl_operation)
++		{		
++			sock = current->fd;
++			if (current->ssl_operation == SSL_ERROR_WANT_WRITE)
++			{
++				fds = &block_write_fdset; 				
++			}
++			else
++			{
++				fds = &block_read_fdset; 				
++			}
++#endif /* SERVER_SSL */
+ 		} else if (current->buffer_end) {
+-			if (FD_ISSET(current->fd, &block_write_fdset))
+-				ready_request(current);
++			/* Old behavior was clear only if set, and do nothing if not set. */
++			sock = current->fd;
++			fds = &block_write_fdset;			 				
+ 		} else {			
+ 			switch (current->status) {
+ 			case PIPE_WRITE:
+ 			case WRITE:
+-				if (FD_ISSET(current->fd, &block_write_fdset))
+-					ready_request(current);
+-				else
+-					FD_SET(current->fd, &block_write_fdset);
++				sock = current->fd;
++				fds = &block_write_fdset;			 				
+ 				break;
+ 			case PIPE_READ:
+-				if (FD_ISSET(current->data_fd, &block_read_fdset))
+-					ready_request(current);
+-				else
+-					FD_SET(current->data_fd, &block_read_fdset);
++				sock = current->data_fd;
++				fds = &block_read_fdset; 				
+ 				break;
+ 			case BODY_WRITE:
+-				if (FD_ISSET(current->post_data_fd, &block_write_fdset))
+-					ready_request(current);
+-				else
+-					FD_SET(current->post_data_fd, &block_write_fdset);
++				sock = current->post_data_fd;
++				fds = &block_write_fdset;			 				
+ 				break;
+ 			default:
+-				if (FD_ISSET(current->fd, &block_read_fdset))
+-					ready_request(current);
+-				else
+-					FD_SET(current->fd, &block_read_fdset);
++				sock = current->fd;
++				fds = &block_read_fdset; 				
+ 				break;
+ 			}			
+ 		}
++		if (FD_ISSET(sock, fds))
++		{
++#ifdef SERVER_SSL
++			current->ssl_operation = 0;
++#endif /* SERVER_SSL */
++			ready_request(current);
++			FD_CLR(sock, fds);
++		}
++		else
++			FD_SET(sock, fds);
+ 		current = next;
+ 	}
+ 
+@@ -559,6 +592,7 @@
+ #ifdef SERVER_SSL
+ /**
+  **/
++#ifndef MATRIX_SSL_COMPAT
+ static int load_p12(SSL_CTX* server_context,
+ 		    const char* certkey,
+ 		    const char* certpass)
+@@ -624,6 +658,7 @@
+ 	}
+ 	return 0;
+ }
++#endif /* MATRIX_SSL_COMPAT */
+ 
+ int
+ InitSSLStuff(void)
+@@ -686,6 +721,19 @@
+ 
+ 	/*Init all of the ssl stuff*/
+ //	i don't know why this line is commented out... i found it like that - damion may-02 
++#ifdef MATRIX_SSL_COMPAT
++	matrixSslOpen();
++	if (!cert_file || !cert_key_file ||
++		matrixSslReadKeys(&ctx, cert_file, cert_key_file, cert_password, NULL/*ca*/))
++	{
++		syslog(LOG_ALERT, "Failure reading SSL certificate files: %s, %s"
++			" using password: %s.", cert_file, cert_key_file, 
++			(cert_password ? "yes": "no"));
++		fflush(NULL);
++		close(server_ssl);
++		return 0;
++	}
++#else
+ 	SSL_load_error_strings();
+ 	SSLeay_add_ssl_algorithms();
+         OpenSSL_add_all_algorithms();
+@@ -726,7 +774,7 @@
+ 		return 0;
+ 	}
+ 	}
+-
++#endif /* MATRIX_SSL_COMPAT */
+ 	/*load and check that the key files are appropriate.*/
+ 	syslog(LOG_NOTICE,"SSL security system enabled");
+ 	return 1;
+diff -NurbB boa-uclinux-20051014/src/boa.h boa-ubnt-latest/src/boa.h
+--- boa-uclinux-20051014/src/boa.h	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt-latest/src/boa.h	2007-06-19 11:53:36.000000000 +0300
+@@ -71,7 +71,7 @@
+ /* alias */
+ 
+ void add_alias(char *fakename, char *realname, int script);
+-void chroot_aliases();
++void chroot_aliases(void);
+ int translate_uri(request * req);
+ int init_script_alias(request * req, alias * current);
+ void dump_alias(void);
+@@ -103,7 +103,7 @@
+ char *get_mime_type(char *filename);
+ char *get_home_dir(char *name);
+ char *get_virtual_host(char *name);
+-void chroot_virtual_hosts();
++void chroot_virtual_hosts(void);
+ void dump_mime(void);
+ void dump_passwd(void);
+ #ifdef USE_BROWSERMATCH
+@@ -206,6 +206,7 @@
+ int req_flush(request *req);
+ int base64decode(void *dst,char *src,int maxlen);
+ void base64encode(unsigned char *from, char *to, int len);
++int handle_io_error_return(request *req, int result);
+ 
+ /* cgi_header */
+ int process_cgi_header(request * req);
+@@ -233,7 +234,7 @@
+ #ifdef USE_AUTH
+ void auth_add(char *directory,char *file);
+ int auth_authorize(request * req);
+-void auth_check();
++void auth_check(void);
+ void nls_convert(unsigned char * buffer, unsigned char * table, long count);
+ void dump_auth(void);
+ #endif
+diff -NurbB boa-uclinux-20051014/src/cgi.c boa-ubnt-latest/src/cgi.c
+--- boa-uclinux-20051014/src/cgi.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt-latest/src/cgi.c	2006-12-14 16:44:09.000000000 +0200
+@@ -315,7 +315,7 @@
+ 		}
+ 	}
+ #ifdef EMBED
+-	if ((child_pid = vfork()) == -1) {	/* vfork unsuccessful */
++	if ((child_pid = fork()) == -1) {	/* vfork unsuccessful */
+ #else
+ 	if ((child_pid = fork()) == -1) {	/* fork unsuccessful */
+ #endif
+diff -NurbB boa-uclinux-20051014/src/cgi_header.c boa-ubnt-latest/src/cgi_header.c
+--- boa-uclinux-20051014/src/cgi_header.c	2004-11-16 12:31:52.000000000 +0200
++++ boa-ubnt-latest/src/cgi_header.c	2007-04-03 12:38:34.000000000 +0300
+@@ -123,14 +123,24 @@
+ 		if (!strncasecmp(req->header_line,"Content-type: ",14))
+ 		{
+ 			char *s;
+-
+-			s = strchr(req->header_line+14,'\r');
+-			if (s) *s = 0;
+ 			s = strchr(req->header_line+14,'\n');
+ 			if (s) *s = 0;
++			s = strchr(req->header_line+14,'\r');
++			if (s) *s = 0;
+ 			req->content_type = req->header_line+14;
++#ifdef EMBED
++			s = req->content_type + strlen(req->content_type);
++			while (*s == 0 && s < c) s++;
++			if (s < c && !strncasecmp(s,"Content-Disposition: ",21)) {
++				char* ss;
++				ss = strchr(s + 21,'\n');
++				if (ss) *ss = 0;
++				ss = strchr(s + 21,'\r');
++				if (ss) { *ss = 0; }
++				req->content_disposition = s + 21;
++			}
++#endif
+ 		}
+-
+ #ifdef EMBED
+ 		else
+ 		/* cgi didn't tell what content we were dealing with so
+diff -NurbB boa-uclinux-20051014/src/config.c boa-ubnt-latest/src/config.c
+--- boa-uclinux-20051014/src/config.c	2007-08-01 11:51:56.000000000 +0300
++++ boa-ubnt-latest/src/config.c	2007-05-17 14:34:27.000000000 +0300
+@@ -433,7 +433,7 @@
+ #if SERVER_SSL
+ 	ssl_server_port = 443;		/*The port that the server should listen on*/
+ 	cert_file = NULL;
+-	cert_key_file = strdup("/etc/persistent/private_key/srv_cnt.p12");;
++	cert_key_file = NULL;
+ 	cert_password = NULL;
+ #endif
+ 	default_type = strdup("text/html");
+diff -NurbB boa-uclinux-20051014/src/defines.h boa-ubnt-latest/src/defines.h
+--- boa-uclinux-20051014/src/defines.h	2007-08-01 11:51:56.000000000 +0300
++++ boa-ubnt-latest/src/defines.h	2007-05-30 11:15:58.000000000 +0300
+@@ -23,7 +23,6 @@
+ #ifndef _DEFINES_H
+ #define _DEFINES_H
+ 
+-#include <linux/config.h>
+ 
+ /***** Change this, or use -c on the command line to specify it *****/
+ 
+@@ -57,7 +56,6 @@
+ 
+ /***** Various stuff that you may want to tweak, but probably shouldn't *****/
+ 
+-//#define SERVER_SSL 1
+ #undef ROOT_AUTH
+ //#define CHECK_IP_MAC 1
+ #undef CHECK_IP_MAC
+@@ -86,7 +84,7 @@
+ #define AUTH_HASHTABLE_SIZE 47
+ #endif
+ 
+-#define REQUEST_TIMEOUT				60
++#define REQUEST_TIMEOUT				120
+ 
+ #define CGI_MIME_TYPE    "application/x-httpd-cgi"
+ #ifdef CONFIG_UCLINUX
+diff -NurbB boa-uclinux-20051014/src/get.c boa-ubnt-latest/src/get.c
+--- boa-uclinux-20051014/src/get.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt-latest/src/get.c	2007-06-19 11:53:36.000000000 +0300
+@@ -23,9 +23,6 @@
+ 
+ #include "syslog.h"
+ #include "boa.h"
+-#ifdef SERVER_SSL
+-#include <openssl/ssl.h>
+-#endif
+ 
+ /*
+  * Name: init_get
+@@ -124,6 +121,8 @@
+ 	}
+ 	req->filesize = statbuf.st_size;
+ 	req->last_modified = statbuf.st_mtime;
++	if (req->last_modified == 0)
++		req->last_modified = 1;
+ 
+ 	if (req->method == M_HEAD) {
+ 		send_r_request_ok(req);
+@@ -216,8 +215,10 @@
+ 	}
+ #endif /*SERVER_SSL*/
+ 	if (bytes_written == -1) {
+-		if (errno == EWOULDBLOCK || errno == EAGAIN)
++		if (handle_io_error_return(req, bytes_written))
++		{
+ 			return -1;			/* request blocked at the pipe level, but keep going */
++		}
+ 		else {
+ 			if (errno != EPIPE) {
+ 				log_error_doc(req);	/* Can generate lots of log entries, */
+diff -NurbB boa-uclinux-20051014/src/globals.h boa-ubnt-latest/src/globals.h
+--- boa-uclinux-20051014/src/globals.h	2007-08-01 11:51:56.000000000 +0300
++++ boa-ubnt-latest/src/globals.h	2007-06-19 11:53:36.000000000 +0300
+@@ -30,6 +30,13 @@
+ 
+ #include "defines.h"
+ #include "compat.h"
++#ifdef SERVER_SSL
++#ifdef MATRIX_SSL_COMPAT
++#include <matrixssl/matrixssl_helper.h>
++#else 
++#include <openssl/ssl.h>
++#endif /* MATRIX_SSL_COMPAT */
++#endif /* SERVER_SSL*/
+ 
+ struct request {				/* pending requests */
+ 	int fd;						/* client's socket fd */
+@@ -90,6 +97,7 @@
+ #endif
+ 	char *content_type;			/* env variable */
+ 	char *content_length;		/* env variable */
++	char *content_disposition;
+ #if (! defined NO_REFERER_LOG ) || (defined USE_NLS_REFERER_REDIR)
+ 	char *referer;				/* for referer.log */
+ #endif
+@@ -112,7 +120,9 @@
+ 	struct request *prev;		/* previous */
+ 
+ #ifdef SERVER_SSL
+-	void* ssl;
++	SSL* ssl;
++	int ssl_accepted;
++	int ssl_operation;
+ #endif /*SERVER_SSL*/
+ 	char user[16];			/* user's login name */
+ 
+diff -NurbB boa-uclinux-20051014/src/Makefile boa-ubnt-latest/src/Makefile
+--- boa-uclinux-20051014/src/Makefile	2007-08-01 11:51:56.000000000 +0300
++++ boa-ubnt-latest/src/Makefile	2007-05-29 17:49:19.000000000 +0300
+@@ -10,9 +10,9 @@
+ 
+ EXTRALIBS = $(LIBCRYPT)
+ 
+-#CONFIG_USER_BOA_WITH_SSL=1
+-#LIBSSL=-lssl
+-#LIBCRYPTO=-lcrypto
++LIBSSL=-lssl
++LIBCRYPTO=-lcrypto
++LIBMATRIXSSL=-lmatrixssl
+ 
+ CFLAGS += -DEMBED
+ 
+@@ -22,8 +22,16 @@
+ 
+ ifdef CONFIG_USER_BOA_WITH_SSL
+ CFLAGS += -DSERVER_SSL=1
++ifdef CONFIG_USER_BOA_WITH_MATRIX_SSL_COMPAT
++CFLAGS += -DMATRIX_SSL_COMPAT=1
++EXTRALIBS += $(LIBMATRIXSSL)
++else
+ EXTRALIBS += $(LIBSSL) $(LIBCRYPTO)
+ endif
++ifdef CONFIG_USER_FORCE_REDIRECT_SSL
++CFLAGS += -DFORCE_REDIRECT_SSL
++endif
++endif
+ 
+ ifdef CONFIG_USER_TINYLOGIN_SHADOWPASSWDS
+ CFLAGS += -DSHADOW_AUTH
+diff -NurbB boa-uclinux-20051014/src/md5.c boa-ubnt-latest/src/md5.c
+--- boa-uclinux-20051014/src/md5.c	2002-09-19 06:24:13.000000000 +0200
++++ boa-ubnt-latest/src/md5.c	2007-06-19 11:48:52.000000000 +0300
+@@ -28,11 +28,11 @@
+  */
+ void byteReverse(unsigned char *buf, unsigned longs)
+ {
+-    uint32 t;
++    u_int32_t t;
+     do {
+-	t = (uint32) ((unsigned) buf[3] << 8 | buf[2]) << 16 |
++	t = (u_int32_t) ((unsigned) buf[3] << 8 | buf[2]) << 16 |
+ 	    ((unsigned) buf[1] << 8 | buf[0]);
+-	*(uint32 *) buf = t;
++	*(u_int32_t *) buf = t;
+ 	buf += 4;
+     } while (--longs);
+ }
+@@ -59,12 +59,12 @@
+  */
+ void MD5Update(struct MD5Context *ctx, unsigned char const *buf, unsigned len)
+ {
+-    uint32 t;
++    u_int32_t t;
+ 
+     /* Update bitcount */
+ 
+     t = ctx->bits[0];
+-    if ((ctx->bits[0] = t + ((uint32) len << 3)) < t)
++    if ((ctx->bits[0] = t + ((u_int32_t) len << 3)) < t)
+ 	ctx->bits[1]++;		/* Carry from low to high */
+     ctx->bits[1] += len >> 29;
+ 
+@@ -82,7 +82,7 @@
+ 	}
+ 	memcpy(p, buf, t);
+ 	byteReverse(ctx->in, 16);
+-	MD5Transform(ctx->buf, (uint32 *) ctx->in);
++	MD5Transform(ctx->buf, (u_int32_t *) ctx->in);
+ 	buf += t;
+ 	len -= t;
+     }
+@@ -91,7 +91,7 @@
+     while (len >= 64) {
+ 	memcpy(ctx->in, buf, 64);
+ 	byteReverse(ctx->in, 16);
+-	MD5Transform(ctx->buf, (uint32 *) ctx->in);
++	MD5Transform(ctx->buf, (u_int32_t *) ctx->in);
+ 	buf += 64;
+ 	len -= 64;
+     }
+@@ -126,7 +126,7 @@
+ 	/* Two lots of padding:  Pad the first block to 64 bytes */
+ 	memset(p, 0, count);
+ 	byteReverse(ctx->in, 16);
+-	MD5Transform(ctx->buf, (uint32 *) ctx->in);
++	MD5Transform(ctx->buf, (u_int32_t *) ctx->in);
+ 
+ 	/* Now fill the next block with 56 bytes */
+ 	memset(ctx->in, 0, 56);
+@@ -137,10 +137,10 @@
+     byteReverse(ctx->in, 14);
+ 
+     /* Append length in bits and transform */
+-    ((uint32 *) ctx->in)[14] = ctx->bits[0];
+-    ((uint32 *) ctx->in)[15] = ctx->bits[1];
++    ((u_int32_t *) ctx->in)[14] = ctx->bits[0];
++    ((u_int32_t *) ctx->in)[15] = ctx->bits[1];
+ 
+-    MD5Transform(ctx->buf, (uint32 *) ctx->in);
++    MD5Transform(ctx->buf, (u_int32_t *) ctx->in);
+     byteReverse((unsigned char *) ctx->buf, 4);
+     memcpy(digest, ctx->buf, 16);
+     memset((char *) ctx, 0, sizeof(ctx));	/* In case it's sensitive */
+@@ -163,9 +163,9 @@
+  * reflect the addition of 16 longwords of new data.  MD5Update blocks
+  * the data and converts bytes into longwords for this routine.
+  */
+-void MD5Transform(uint32 buf[4], uint32 const in[16])
++void MD5Transform(u_int32_t buf[4], u_int32_t const in[16])
+ {
+-    register uint32 a, b, c, d;
++    register u_int32_t a, b, c, d;
+ 
+     a = buf[0];
+     b = buf[1];
+diff -NurbB boa-uclinux-20051014/src/md5.h boa-ubnt-latest/src/md5.h
+--- boa-uclinux-20051014/src/md5.h	2002-09-19 06:24:13.000000000 +0200
++++ boa-ubnt-latest/src/md5.h	2007-06-19 11:48:52.000000000 +0300
+@@ -1,15 +1,10 @@
+ #ifndef MD5_H
+ #define MD5_H
+-
+-#ifdef __alpha
+-typedef unsigned int uint32;
+-#else
+-typedef unsigned long uint32;
+-#endif
++#include <sys/types.h>
+ 
+ struct MD5Context {
+-	uint32 buf[4];
+-	uint32 bits[2];
++	u_int32_t buf[4];
++	u_int32_t bits[2];
+ 	unsigned char in[64];
+ };
+ 
+@@ -17,6 +12,6 @@
+ void MD5Update(struct MD5Context *context, unsigned char const *buf,
+ 	       unsigned len);
+ void MD5Final(unsigned char digest[16], struct MD5Context *context);
+-void MD5Transform(uint32 buf[4], uint32 const in[16]);
++void MD5Transform(u_int32_t buf[4], u_int32_t const in[16]);
+ 
+ #endif /* !MD5_H */
+diff -NurbB boa-uclinux-20051014/src/pipe.c boa-ubnt-latest/src/pipe.c
+--- boa-uclinux-20051014/src/pipe.c	2003-09-02 08:18:50.000000000 +0300
++++ boa-ubnt-latest/src/pipe.c	2007-06-19 11:53:36.000000000 +0300
+@@ -20,9 +20,6 @@
+  */
+ 
+ #include "boa.h"
+-#ifdef SERVER_SSL
+-#include <openssl/ssl.h>
+-#endif
+ 
+ /*
+  * Name: read_from_pipe
+@@ -135,8 +132,10 @@
+ #endif /*SERVER_SSL*/
+ 
+ 	if (bytes_written == -1) {
+-		if (errno == EWOULDBLOCK || errno == EAGAIN)
++		if (handle_io_error_return(req, bytes_written))
++		{
+ 			return -1;			/* request blocked at the pipe level, but keep going */
++		}
+ 		else {
+ #ifdef BOA_TIME_LOG
+ 			log_error_time();
+diff -NurbB boa-uclinux-20051014/src/queue.c boa-ubnt-latest/src/queue.c
+--- boa-uclinux-20051014/src/queue.c	2002-09-19 06:24:14.000000000 +0200
++++ boa-ubnt-latest/src/queue.c	2007-06-19 11:53:36.000000000 +0300
+@@ -37,25 +37,6 @@
+ {
+ 	dequeue(&request_ready, req);
+ 	enqueue(&request_block, req);
+-
+-	if (req->buffer_end) {
+-		FD_SET(req->fd, &block_write_fdset);
+-	} else {
+-		switch (req->status) {
+-		case PIPE_WRITE:
+-		case WRITE:
+-			FD_SET(req->fd, &block_write_fdset);
+-			break;
+-		case PIPE_READ:
+-			FD_SET(req->data_fd, &block_read_fdset);
+-			break;
+-		case BODY_WRITE:
+-			FD_SET(req->post_data_fd, &block_write_fdset);
+-			break;
+-		default:
+-			FD_SET(req->fd, &block_read_fdset);
+-		}
+-	}
+ }
+ 
+ /*
+@@ -68,25 +49,6 @@
+ {
+ 	dequeue(&request_block, req);
+ 	enqueue(&request_ready, req);
+-
+-	if (req->buffer_end) {
+-		FD_CLR(req->fd, &block_write_fdset);
+-	} else {
+-		switch (req->status) {
+-		case PIPE_WRITE:
+-		case WRITE:
+-			FD_CLR(req->fd, &block_write_fdset);
+-			break;
+-		case PIPE_READ:
+-			FD_CLR(req->data_fd, &block_read_fdset);
+-			break;
+-		case BODY_WRITE:
+-			FD_CLR(req->post_data_fd, &block_write_fdset);
+-			break;
+-		default:
+-			FD_CLR(req->fd, &block_read_fdset);
+-		}
+-	}
+ }
+ 
+ 
+diff -NurbB boa-uclinux-20051014/src/read.c boa-ubnt-latest/src/read.c
+--- boa-uclinux-20051014/src/read.c	2004-02-19 06:14:17.000000000 +0200
++++ boa-ubnt-latest/src/read.c	2007-06-19 11:53:36.000000000 +0300
+@@ -22,10 +22,6 @@
+ 
+ #include "boa.h"
+ 
+-#ifdef SERVER_SSL
+-#include <openssl/ssl.h>
+-#endif
+-
+ /*
+  * Name: read_header
+  * Description: Reads data from a request socket.  Manages the current
+@@ -85,8 +81,10 @@
+ 		if (bytes == -1) {
+ 			if (errno == EINTR)
+ 				return 1;
+-			if (errno == EAGAIN || errno == EWOULDBLOCK)	/* request blocked */
++			if (handle_io_error_return(req, bytes))  /* request blocked */
++			{
+ 				return -1;
++			}
+ 			else if (errno == EBADF || errno == EPIPE) {
+ 				SQUASH_KA(req);		/* force close fd */
+ 				return 0;
+@@ -183,11 +181,18 @@
+ 
+ 				if (req->content_length)
+ 					req->filesize = atoi(req->content_length);
+-				else {
++				if (!req->content_length || req->filesize <= 0)
++				{
+ #ifdef BOA_TIME_LOG
+ 					log_error_time();
++					if (req->content_length)
++                    	fprintf(stderr, "Invalid Content-Length [%s] on POST!\n",
++                            req->content_length);
++					else
+ 					fprintf(stderr, "Unknown Content-Length POST\n");
+ #endif
++					send_r_bad_request(req);
++					return 0;
+ 				}
+ 				
+ 				/* buffer + bytes is 1 past the end of the data */
+@@ -280,15 +285,8 @@
+ #endif /*SERVER_SSL*/
+ 
+ 	if (bytes_read == -1) {
+-		if (errno == EWOULDBLOCK || errno == EAGAIN) {
+-			/*
+-			 * avoid a busy loop swapping from READ/WRITE and block
+-			 * for more read data
+-			 */
+-			if (req->filesize)
++		if (handle_io_error_return(req, bytes_read)) {
+ 				return -1;
+-			req->status = BODY_WRITE;
+-			return 1;
+ 		} else {
+ 			boa_perror(req, "read body");
+ 			return 0;
+diff -NurbB boa-uclinux-20051014/src/request.c boa-ubnt-latest/src/request.c
+--- boa-uclinux-20051014/src/request.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt-latest/src/request.c	2007-06-19 11:53:36.000000000 +0300
+@@ -28,9 +28,10 @@
+ #include <netdb.h>
+ 
+ #ifdef SERVER_SSL
+-#include <openssl/ssl.h>
++#ifndef MATRIX_SSL_COMPAT
+ #include <openssl/err.h>
+-#endif
++#endif /* MATRIX_SSL_COMPAT */
++#endif /* SERVER_SSL*/
+ 
+ #ifdef INET6
+ #include <support.h>
+@@ -49,8 +50,11 @@
+ 
+ #ifdef SERVER_SSL
+ extern int server_ssl;			/*the socket to listen for ssl requests*/
++#ifdef MATRIX_SSL_COMPAT
++extern sslKeys_t *ctx;
++#else
+ extern SSL_CTX *ctx;			/*The global connection context*/
+-extern int do_ssl;				/*do ssl sockets??*/
++#endif /* MATRIX_SSL_COMPAT */
+ #endif /*SERVER_SSL*/
+ 
+ 
+@@ -110,10 +114,6 @@
+ 			die(OUT_OF_MEMORY);
+ 	}
+ 
+-#ifdef SERVER_SSL 
+-	req->ssl = NULL;
+-#endif /*SERVER_SSL*/
+-
+ 	memset(req, 0, sizeof(request) - NO_ZERO_FILL_LENGTH);
+ 
+ 	return req;
+@@ -146,11 +146,7 @@
+ 		return;
+ 	}
+ 	SSL_set_fd (conn->ssl, conn->fd);
+-	if(SSL_accept(conn->ssl) <= 0){
+-		ERR_print_errors_fp(stderr);
+-		return;
+-	}
+-	else{/*printf("SSL_accepted\n");*/}
++	conn->ssl_accepted = 0;	
+ }
+ #endif /*SERVER_SSL*/
+ 
+@@ -192,23 +188,18 @@
+ 
+ 	dequeue(list_head_addr, req);	/* dequeue from ready or block list */
+ 
+-	if (req->buffer_end)
+-		FD_CLR(req->fd, &block_write_fdset);
+-	else {
+-		switch (req->status) {
+-		case PIPE_WRITE:
+-		case WRITE:
++	if (req->fd >= 0)
++	{
++		FD_CLR(req->fd, &block_read_fdset);
+ 			FD_CLR(req->fd, &block_write_fdset);
+-			break;
+-		case PIPE_READ:
++	}
++	if (req->data_fd >= 0)
++	{
+ 			FD_CLR(req->data_fd, &block_read_fdset);
+-			break;
+-		case BODY_WRITE:
+-			FD_CLR(req->post_data_fd, &block_write_fdset);
+-			break;
+-		default:
+-			FD_CLR(req->fd, &block_read_fdset);
+ 		}
++	if (req->post_data_fd >= 0)
++	{
++		FD_CLR(req->post_data_fd, &block_write_fdset);
+ 	}
+ 
+ 	if (req->logline)			/* access log */
+@@ -274,6 +265,8 @@
+ 		req->fd = -1;
+ #ifdef SERVER_SSL
+ 		SSL_free(req->ssl);
++		req->ssl = 0;
++		req->ssl_operation = 0;
+ #endif /*SERVER_SSL*/
+ 	}
+ 
+@@ -327,15 +320,53 @@
+ 
+ void process_requests(void)
+ {
+-	int retval = 0;
++	int retval;
+ 	request *current, *trailer;
+ 
+ 	current = request_ready;
+ 
+ 	while (current) {
++		retval = -255;
++
+ #ifdef CRASHDEBUG
+ 		crashdebug_current = current;
+ #endif		
++
++#ifdef SERVER_SSL
++		if (current->ssl && !current->ssl_accepted)
++		{
++			int ssl_error;
++			retval = SSL_accept(current->ssl);
++			ssl_error = SSL_get_error(current->ssl, retval);
++			if (retval > 0)
++			{
++				current->ssl_accepted = 1;
++				retval = -255;
++			}
++			else if (retval < 0 && (ssl_error == SSL_ERROR_WANT_READ 
++				|| ssl_error == SSL_ERROR_WANT_WRITE))
++			{
++				current->ssl_operation = ssl_error;		
++				retval = -1;
++			}
++			else 
++			{
++#if 0
++#ifdef MATRIX_SSL_COMPAT
++				perror("SSL_accept");
++#else		
++				ERR_print_errors_fp(stderr);
++#endif /* MATRIX_SSL_COMPAT */
++#endif
++				retval = 0;
++			}
++		}
++
++		if (retval != -255)
++		{ /* Nothing to do here - just bypass if statement */ }
++		else
++#endif /* SERVER_SSL */
++		
+ 		if (current->buffer_end) {
+ 			req_flush(current);
+ 			if (current->status == CLOSE)
+@@ -547,6 +578,38 @@
+ 				nls_set_codepage(req);
+ #endif				
+ 				
++#ifdef SERVER_SSL
++#ifdef FORCE_REDIRECT_SSL
++	if (do_sock == 1 && !req->ssl)
++	{
++		char buffer[3 * MAX_PATH_LENGTH + 128];
++		char *colon;
++		char *host = (req->host ? req->host : server_name);
++				
++		if((colon = strchr(host, ':')))
++		{
++			*colon = '\0';
++		}				
++		if (ssl_server_port != 443)
++		{
++			snprintf(buffer, sizeof(buffer), "https://%s:%d%s", 
++				host, ssl_server_port, req->request_uri);
++		}
++		else
++		{
++			snprintf(buffer, sizeof(buffer), "https://%s%s",
++				host, req->request_uri);
++		}
++		if(colon)
++		{
++			*colon = ':';
++		}				
++		send_redirect_perm(req, buffer);
++		return 0;
++	}
++#endif /* FORCE_REDIRECT_SSL */
++#endif /* SERVER_SSL */				
++				
+ #ifdef USE_AUTH
+ 				closelog();
+ 				openlog("boa", LOG_PID, LOG_AUTHPRIV);
+@@ -747,7 +810,7 @@
+ #else
+ 	struct sockaddr_in remote_addr;		/* address */
+ #endif
+-	int remote_addrlen = sizeof(remote_addr);
++	socklen_t remote_addrlen = sizeof(remote_addr);
+ 	request *conn;				/* connection */
+ 
+ 	if (max_connections != -1 && status.connections >= max_connections)
+@@ -878,7 +941,7 @@
+ 				conn->local_ip_addr = strdup(host);
+ #else		
+ 		struct sockaddr_in salocal;
+-		int dummy;
++		socklen_t dummy;
+ 
+ 		dummy = sizeof(salocal);
+ 		if (getsockname(conn->fd, (struct sockaddr *) &salocal, &dummy) == -1){
+diff -NurbB boa-uclinux-20051014/src/response.c boa-ubnt-latest/src/response.c
+--- boa-uclinux-20051014/src/response.c	2004-11-16 12:31:51.000000000 +0200
++++ boa-ubnt-latest/src/response.c	2007-06-28 12:52:25.000000000 +0300
+@@ -68,6 +68,15 @@
+ 	req_write(req, "\r\n");
+ }
+ 
++void print_content_disposition(request* req)
++{
++	if (req->content_disposition) {
++		req_write(req, "Content-Disposition: ");
++		req_write(req, req->content_disposition);
++		req_write(req, "\r\n");
++	}
++}
++
+ void print_http_headers(request * req)
+ {
+ 
+@@ -111,6 +120,8 @@
+ 				req_write(req, req->header_line);
+ 				req_write(req, "\r\n");
+ 			}
++		if (req->content_disposition)
++			print_content_disposition(req);
+ #ifndef NO_COOKIES
+ 		if (req->cookie)
+ 		{
+@@ -123,6 +134,7 @@
+ 		print_content_type(req);
+ 		print_content_length(req);
+ 		print_last_modified(req);
++		req_write(req, "Cache-control: public\r\n");
+ 	}
+ 		req_write(req, "\r\n");	/* terminate header */
+ }
+@@ -135,6 +147,13 @@
+ 		req_write(req, "HTTP/1.0 301 Moved Permanently\r\n");
+ 		print_http_headers(req);
+ 		req_write(req, "Content-Type: text/html\r\n");
++		req_write(req, "Expires: Mon, 26 Jul 1997 05:00:00 GMT\r\n" );
++		req_write(req, "Last-Modified: ");
++		req_write_rfc822_time(req, 0);	
++		req_write(req, "\r\n");
++		req_write(req, "Cache-Control: no-store, no-cache, must-revalidate\r\n");
++		req_write(req, "Cache-Control: post-check=0, pre-check=0\r\n");
++		req_write(req, "Pragma: no-cache\r\n" );
+ 
+ 		req_write(req, "Location: ");
+ 		req_write(req, escape_string(url, e_s));
+diff -NurbB boa-uclinux-20051014/src/util.c boa-ubnt-latest/src/util.c
+--- boa-uclinux-20051014/src/util.c	2007-08-01 11:51:56.000000000 +0300
++++ boa-ubnt-latest/src/util.c	2007-06-19 11:53:36.000000000 +0300
+@@ -26,9 +26,6 @@
+ #include "boa.h"
+ #include <ctype.h>
+ #include "syslog.h"
+-#ifdef SERVER_SSL
+-#include <openssl/ssl.h>
+-#endif
+ 
+ #define HEX_TO_DECIMAL(char1, char2)	\
+   (((char1 >= 'A') ? (((char1 & 0xdf) - 'A') + 10) : (char1 - '0')) * 16) + \
+@@ -147,6 +144,7 @@
+ 	struct tm *file_gmt;
+ 	char *ims_info;
+ 	char monthname[MAX_HEADER_LENGTH + 1];
++	char dayname[8];
+ 	int day, month, year, hour, minute, second;
+ 	int comp;
+ 
+@@ -155,6 +153,8 @@
+ 	/* the pre-space in the third scanf skips whitespace for the string */
+ 	if (sscanf(ims_info, "%d %3s %d %d:%d:%d GMT",	/* RFC 1123 */
+ 		&day, monthname, &year, &hour, &minute, &second) == 6);
++	else if (sscanf(ims_info, "%3s, %d %3s %d %d:%d:%d GMT",	/* RFC 1123 + day name */
++		dayname, &day, monthname, &year, &hour, &minute, &second) == 7);
+ 	else if (sscanf(ims_info, "%d-%3s-%d %d:%d:%d GMT",  /* RFC 1036 */
+ 		 &day, monthname, &year, &hour, &minute, &second) == 6)
+ 		year += 1900;
+@@ -575,6 +575,45 @@
+ }
+ 
+ /*
++ * Name: handle_io_error_return
++ *
++ * Description: handles operation that needs to be retried, returns 0 when 
++ * operation cannot be handled(error) or 1 operation was handled.
++ */
++int handle_io_error_return(request *req, int result)
++{
++	if (result >= 0)
++	{
++		return 0;
++	}
++#ifdef SERVER_SSL	
++	if (req->ssl)
++	{
++		int ssl_error = SSL_get_error(req->ssl, result);
++		if (ssl_error == SSL_ERROR_WANT_READ)
++		{
++			req->ssl_operation = SSL_ERROR_WANT_READ;
++		}
++		else if (ssl_error == SSL_ERROR_WANT_WRITE)
++		{
++			req->ssl_operation = SSL_ERROR_WANT_WRITE;
++		}
++		else
++		{
++			return 0;
++		}
++		return 1;
++	}
++	else
++#endif /* SERVER_SSL */
++	if (errno == EWOULDBLOCK || errno == EAGAIN)
++	{
++		return 1;
++	}		
++	return 0;
++}
++
++/*
+  * Name: flush_req
+  * 
+  * Description: Sends any backlogged buffer to client.
+@@ -610,8 +649,10 @@
+ #endif /*SERVER_SSL*/
+ 		
+ 		if (bytes_written == -1) {
+-			if (errno == EWOULDBLOCK || errno == EAGAIN)
++			if (handle_io_error_return(req, bytes_written))
++			{
+ 				return -1;			/* request blocked at the pipe level, but keep going */
++			}
+ 			else {
+ 				req->buffer_start = req->buffer_end = 0;
+ #ifdef USE_NLS

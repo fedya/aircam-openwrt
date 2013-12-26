@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/libmpcdec/Makefile
+Package: libmpcdec
+Version: 1.2.6-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: Musepack decoder library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libmpcdec-1.2.6.tar.bz2
+Type: ipkg
+Description: 	Musepack decoder library
+http://www.musepack.net
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

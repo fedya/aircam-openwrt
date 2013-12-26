@@ -1,0 +1,25 @@
+Source-Makefile: feeds/packages/Xorg/app/dillo/Makefile
+Package: dillo
+Submenu: app
+Version: rcc974615ae39-1
+Depends: +libXft +libstdcpp +libpthread +zlib +fltk2 +libjpeg +libpng +BUILD_NLS:libiconv-full
+Menu-Depends: 
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: xorg-app
+Category: Xorg
+Title: Dillo2
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: dillo-rcc974615ae39.tar.gz
+Type: ipkg
+Description:   Dillo is a web browser project completely written in C.
+  Dillo aims to be a multi-platform browser alternative that
+  is small, stable, developer-friendly, usable, fast, and
+  extensible.
+
+  Note: This is the fltk2 based dillo.
+http://fltk.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

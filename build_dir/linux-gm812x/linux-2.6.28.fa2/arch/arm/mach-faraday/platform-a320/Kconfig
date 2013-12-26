@@ -1,0 +1,23 @@
+#
+# arch/arm/mach-faraday/platform-a320/Kconfig
+
+config PLATFORM_FIA321
+	bool "A321 daughter board support"
+	depends on PLATFORM_A320
+	help
+	  //TODO: help on PLATFORM_FIA321
+
+config FTPCI100
+	bool "Faraday PCI100 Support"
+	depends on PCI && PLATFORM_FIA321
+	help
+	  FTPCI100 bus driver
+
+config CLOCK_TICK_RATE
+	int "System timer tick rate"
+	depends on PLATFORM_A320
+	default 16588800
+	help
+	  The frequency of system clock.
+	  This value is used for adjusting minor time offsets.
+

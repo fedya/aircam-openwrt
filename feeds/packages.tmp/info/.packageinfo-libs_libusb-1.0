@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/libs/libusb-1.0/Makefile
+Package: libusb-1.0
+Version: 1.0.8-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: libusb-1.0
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libusb-1.0.8.tar.bz2
+Type: ipkg
+Description: libusb-1.0
+http://libusb.wiki.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

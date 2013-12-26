@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/net/mgen/Makefile
+Package: mgen
+Version: 5.01b-1
+Depends: +libpthread +uclibcxx
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Multi-Generator
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: src-mgen-5.01b.tgz
+Type: ipkg
+Description: Multi-Generator
+http://cs.itd.nrl.navy.mil/work/mgen/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

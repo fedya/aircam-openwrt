@@ -1,0 +1,53 @@
+Source-Makefile: target/linux/at91/Makefile
+Target: at91
+Target-Board: at91
+Target-Kernel: 2.6
+Target-Name: Atmel AT91
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: arm
+Target-Arch-Packages: at91
+Target-Features: gpio jffs2 squashfs targz usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -march=armv5te -mtune=arm926ej-s -fno-caller-saves
+Linux-Version: 2.6.38.6
+Linux-Release: 1
+Linux-Kernel-Arch: arm
+Target-Description:
+
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-usb-ohci
+Target: at91/netus
+Target-Board: at91
+Target-Kernel: 2.6
+Target-Name: Acmesystems NetusG20 board
+Target-Path: target/linux/at91
+Target-Arch: arm
+Target-Arch-Packages: at91
+Target-Features: gpio jffs2 squashfs targz usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -march=armv5te -mtune=arm926ej-s -fno-caller-saves
+Linux-Version: 2.6.38.6
+Linux-Release: 1
+Linux-Kernel-Arch: arm
+Target-Description:
+	Build firmware images for Acmesystems NetusG20 board
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-usb-ohci
+Target: at91/tqma9263
+Target-Board: at91
+Target-Kernel: 2.6
+Target-Name: TQ Components TQMa9263
+Target-Path: target/linux/at91
+Target-Arch: arm
+Target-Arch-Packages: at91
+Target-Features: gpio jffs2 squashfs targz usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -march=armv5te -mtune=arm926ej-s -fno-caller-saves
+Linux-Version: 2.6.38.6
+Linux-Release: 1
+Linux-Kernel-Arch: arm
+Target-Description:
+	Build firmware images for TQ Components TQMa9263 board.
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2  kmod-usb-ohci
+

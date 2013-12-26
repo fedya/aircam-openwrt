@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/utils/hdparm/Makefile
+Package: hdparm
+Submenu: disc
+Version: 9.37-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Hard disk drive configuration utilitity
+Maintainer: Luka Perkov <openwrt@lukaperkov.net>
+Source: hdparm-9.37.tar.gz
+Type: ipkg
+Description:  get/set SATA/IDE device parameters
+http://sourceforge.net/projects/hdparm/
+Luka Perkov <openwrt@lukaperkov.net>
+@@
+
+

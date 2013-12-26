@@ -1,0 +1,114 @@
+--- a/include/usage.src.h
++++ b/include/usage.src.h
+@@ -164,6 +164,7 @@ INSERT
+      "\nCommands:" \
+ 	IF_FEATURE_BRCTL_SHOW( \
+      "\n	show			Show a list of bridges" \
++     "\n	showmacs BRIDGE		Show a list of mac addrs" \
+ 	) \
+      "\n	addbr BRIDGE		Create BRIDGE" \
+      "\n	delbr BRIDGE		Delete BRIDGE" \
+--- a/networking/brctl.c
++++ b/networking/brctl.c
+@@ -67,7 +67,6 @@ static ALWAYS_INLINE unsigned long tv_to
+ 
+ 	return jif/10000;
+ }
+-# if 0
+ static void jiffies_to_tv(struct timeval *tv, unsigned long jiffies)
+ {
+ 	unsigned long long tvusec;
+@@ -76,7 +75,6 @@ static void jiffies_to_tv(struct timeval
+ 	tv->tv_sec = tvusec/1000000;
+ 	tv->tv_usec = tvusec - 1000000 * tv->tv_sec;
+ }
+-# endif
+ static unsigned long str_to_jiffies(const char *time_str)
+ {
+ 	struct timeval tv;
+@@ -94,6 +92,22 @@ static void arm_ioctl(unsigned long *arg
+ }
+ #endif
+ 
++#if ENABLE_FEATURE_BRCTL_SHOW
++static void __jiffies_to_tv(struct timeval *tv, unsigned long jiffies)
++{
++	unsigned long long tvusec;
++
++	tvusec = 10000ULL*jiffies;
++	tv->tv_sec = tvusec/1000000;
++	tv->tv_usec = tvusec - 1000000 * tv->tv_sec;
++}
++static int compare_fdbs(const void *l, const void *r) {
++	const struct __fdb_entry* fdb_l = l;
++	const struct __fdb_entry* fdb_r = r;
++
++	return memcmp(fdb_l->mac_addr, fdb_r->mac_addr, 6);
++}
++#endif
+ 
+ int brctl_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
+ int brctl_main(int argc UNUSED_PARAM, char **argv)
+@@ -105,7 +119,7 @@ int brctl_main(int argc UNUSED_PARAM, ch
+ 		"setageing\0" "setfd\0" "sethello\0" "setmaxage\0"
+ 		"setpathcost\0" "setportprio\0" "setbridgeprio\0"
+ 	)
+-	IF_FEATURE_BRCTL_SHOW("show\0");
++	IF_FEATURE_BRCTL_SHOW("showmacs\0" "show\0");
+ 
+ 	enum { ARG_addbr = 0, ARG_delbr, ARG_addif, ARG_delif
+ 		IF_FEATURE_BRCTL_FANCY(,
+@@ -114,6 +128,7 @@ int brctl_main(int argc UNUSED_PARAM, ch
+ 		   ARG_setpathcost, ARG_setportprio, ARG_setbridgeprio
+ 		)
+ 		IF_FEATURE_BRCTL_SHOW(, ARG_show)
++		IF_FEATURE_BRCTL_SHOW(, ARG_showmacs)
+ 	};
+ 
+ 	int fd;
+@@ -203,6 +218,45 @@ int brctl_main(int argc UNUSED_PARAM, ch
+ 			goto done;
+ 		}
+ 
++#if ENABLE_FEATURE_BRCTL_SHOW
++		if (key == ARG_showmacs) {
++			int n, offset;
++			struct __fdb_entry* fdb = NULL;
++
++			n = offset = 0;
++
++			strncpy(ifr.ifr_name, br, IFNAMSIZ);
++
++			/* collect fdb entries */
++			while (1) {
++				fdb = xrealloc(fdb, (offset + 128) * sizeof(struct __fdb_entry));
++				arm_ioctl(args, BRCTL_GET_FDB_ENTRIES,
++						(unsigned long)(fdb + offset), 128);
++				args[3] = offset;
++				n = xioctl(fd, SIOCDEVPRIVATE, &ifr);
++				if (n == 0)
++					break;
++				offset += n;
++			}
++			qsort(fdb, offset, sizeof(struct __fdb_entry), compare_fdbs);
++			printf("port no\tmac addr\t\tis local?\tageing timer\n");
++			for (n = 0; n < offset; ++n) {
++				const struct __fdb_entry *f = fdb + n;
++				struct timeval tv;
++				printf("%3i\t", f->port_no);
++				printf("%.2x:%.2x:%.2x:%.2x:%.2x:%.2x\t",
++						f->mac_addr[0], f->mac_addr[1], f->mac_addr[2],
++						f->mac_addr[3], f->mac_addr[4], f->mac_addr[5]);
++				printf("%s\t\t", f->is_local ? "yes" : "no");
++				__jiffies_to_tv(&tv, f->ageing_timer_value);
++				printf("%4i.%.2i", (int)tv.tv_sec,
++						(int)tv.tv_usec/10000);
++				printf("\n");
++			}
++			goto done;
++		}
++#endif
++
+ 		if (!*argv) /* all but 'addbr/delbr' need at least two arguments */
+ 			bb_show_usage();
+ 

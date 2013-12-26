@@ -1,0 +1,31 @@
+#
+# arch/arm/mach-GM/platform-GM8181/Kconfig
+
+if PLATFORM_GM8181
+
+#config SYS_CLK
+config CLOCK_TICK_RATE	
+        int "AHB System Clock"
+        default 240000000
+        help
+          Manual setting of AHB clock, must match the jumper setting on
+          the board, or the system time won't be correctly calculated.
+          Notice that even when AUTO_SYS_CLK is ON, this value is still
+          required for adjusting minor time offsets. However, the influence
+          should be within micro-second to nano-second scale.
+
+config FTINTC010EX
+	bool "FTINTC010EX supports 64 IRQs"
+	default y
+
+config MFIQ
+        bool "Multiple FIQ support"
+        help
+           There is only one FIQ supported in the Kernel, select this option if
+           you want to support multiple FIQs on the system. Please ensure your
+           FIQ handler has super low latency to the system. The default max FIQ
+           handlers is 2, it is configurable in mach-GM/include/mach/mfiq.h.
+                                                             
+endif
+
+

@@ -1,0 +1,74 @@
+--- a/arch/arm/mach-GM/platform-GM8126/platform.c
++++ b/arch/arm/mach-GM/platform-GM8126/platform.c
+@@ -288,31 +288,27 @@ static void __init gm_init_irq(void)
+ }
+ 
+ static struct mtd_partition partitions[] = {
+-    {
+-     .name = "Linux Section",           // for system usage
+-     .offset = 0xD6000,
+-     .size = 0xDC0000           // 13.75MB
+-     },
+-    {
+-     .name = "User Section",            // free for use
+-     .offset = 0xE96000,
+-     .size = MTDPART_SIZ_FULL},
+-    {
+-     .name = "Loader Section",
+-     .offset = 0x1000,
+-     .size = 0x5000},
+-    {
+-     .name = "BurnIn Section",          // for system usage
+-     .offset = 0x6000,          // Burn-in ,start addr MTD_PA_BASE
+-     .size = 0xA0000},
+-    {
+-     .name = "UBoot Section",           // for system usage
+-     .offset = 0xA6000,         // start addr MTD_PA_BASE + 0x200000
+-     .size = 0x30000},
+-    {
+-     .name = "CFG Section",           // for MAC usage
+-     .offset = 0x6E0000,
+-     .size = 0x20000},     
++	{
++		.name = "boot", // nsboot+burnin+uboot
++		.offset = 0x0,
++		.size = 0xE0000,
++	}, {
++		.name = "kernel", // Linux kernel
++		.offset = 0xE0000,
++		.size = 0x120000,
++	}, {
++		.name = "rootfs", // root filesystem
++		.offset = 0x200000,
++		.size = 0x5B0000,
++	}, {
++		.name = "cfg", // FW config
++		.offset = 0x7B0000,
++		.size = 0x40000,
++	}, {
++		.name = "eeprom", // MAC addr, product ID, etc.
++		.offset = 0x7F0000,
++		.size = 0x10000,
++	},
+ };
+ 
+ static struct flash_platform_data spi_flash_platform_data = {
+--- a/drivers/mtd/devices/winbond.c
++++ b/drivers/mtd/devices/winbond.c
+@@ -1150,6 +1150,7 @@ static int __devinit get_flash_partition
+     size_t new_user_offset = 0;
+ #endif
+ 
++#if 0 // do not touch partitions!
+     winbond_spi_flash_read(mtd, 0, sizeof(struct flash_system_header), &retlen,
+                            (u_char *) & system_header);
+ 
+@@ -1287,7 +1288,7 @@ static int __devinit get_flash_partition
+     parts[5].offset = cfg_offset;
+     parts[5].size = 2 * mtd->erasesize;    
+ #endif
+-
++#endif
+     return 0;
+ 
+   wrong_offset:

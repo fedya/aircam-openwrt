@@ -1,0 +1,37 @@
+Source-Makefile: feeds/packages/net/bmx6/Makefile
+Package: bmx6
+Menu: 1
+Submenu: Routing and Redirection
+Version: r2011031602
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: BMX6 layer 3 routing daemon
+Maintainer: Axel Neumann <neumann@cgws.de>
+Source: bmx6-r2011031602.tar.gz
+Type: ipkg
+Description: BMX6 layer 3 routing daemon supporting IPv4, IPv6, and IPv4 over IPv6 -  http://www.bmx6.net
+http://bmx6.net/
+Axel Neumann <neumann@cgws.de>
+@@
+
+Package: bmx6-uci-config
+Submenu: Routing and Redirection
+Version: r2011031602
+Depends: bmx6 +libuci
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: configuration plugin based on uci (recommended!)
+Maintainer: Axel Neumann <neumann@cgws.de>
+Source: bmx6-r2011031602.tar.gz
+Type: ipkg
+Description: configuration plugin based on uci (recommended!)
+http://bmx6.net/
+Axel Neumann <neumann@cgws.de>
+@@
+
+

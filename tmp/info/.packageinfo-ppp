@@ -1,0 +1,124 @@
+Source-Makefile: package/ppp/Makefile
+Package: ppp
+Menu: 1
+Version: 2.4.4-4
+Depends: +kmod-ppp
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: PPP daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains the PPP (Point-to-Point Protocol) daemon.
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: ppp-mod-pppoa
+Version: 2.4.4-4
+Depends: ppp +linux-atm +kmod-pppoa
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: PPPoA plugin
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains a PPPoA (PPP over ATM) plugin for ppp.
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: ppp-mod-pppoe
+Version: 2.4.4-4
+Depends: ppp +kmod-pppoe
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: PPPoE plugin
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains a PPPoE (PPP over Ethernet) plugin for ppp.
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: ppp-mod-radius
+Version: 2.4.4-4
+Depends: ppp
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: RADIUS plugin
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains a RADIUS (Remote Authentication Dial-In User 
+ Service) plugin for ppp.
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: chat
+Version: 2.4.4-4
+Depends: ppp
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: Establish conversation with a modem
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains an utility to establish conversation with other 
+ PPP servers (via a modem).
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pppdump
+Version: 2.4.4-4
+Depends: ppp
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: Read PPP record file
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains an utility to read PPP record file.
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pppstats
+Version: 2.4.4-4
+Depends: ppp
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: net
+Category: Network
+Title: Report PPP statistics
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains an utility to report PPP statistics.
+http://ppp.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

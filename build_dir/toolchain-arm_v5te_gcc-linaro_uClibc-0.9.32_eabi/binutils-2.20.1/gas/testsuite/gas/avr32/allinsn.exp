@@ -1,0 +1,5 @@
+# AVR32 assembler testsuite. -*- Tcl -*-
+
+if [istarget avr32-*-*] {
+    run_dump_test "allinsn"
+}

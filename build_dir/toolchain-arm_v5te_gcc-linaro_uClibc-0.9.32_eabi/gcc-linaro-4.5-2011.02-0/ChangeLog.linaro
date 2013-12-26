@@ -1,0 +1,3889 @@
+2011-02-04  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2011.02-0 released.
+
+	gcc/
+	* LINARO-VERSION: Update.
+
+2011-02-04  Andrew Stubbs  <ams@codesourcery.com>
+
+	Revert:
+
+	2010-01-25  Tom de Vries  <tom@codesourcery.com>
+
+	gcc/
+	* stmt.c (emit_case_bit_tests): Change prototype.
+	* stmt.c (struct case_bit_test): Add prob field.
+	* stmt.c (get_label_prob): New function.
+	* stmt.c (set_jump_prob): New function.
+	* stmt.c (emit_case_bit_tests): Use get_label_prob.
+	* stmt.c (emit_case_bit_tests): Set prob field.
+	* stmt.c (emit_case_bit_tests): Use set_jump_prob.
+	* stmt.c (expand_case): Add new args to emit_case_bit_tests invocation.
+	* testsuite/gcc.dg/switch-prob.c: Add test.
+
+2010-01-25  Tom de Vries  <tom@codesourcery.com>
+
+	gcc/
+	* stmt.c (emit_case_bit_tests): Change prototype.
+	* stmt.c (struct case_bit_test): Add prob field.
+	* stmt.c (get_label_prob): New function.
+	* stmt.c (set_jump_prob): New function.
+	* stmt.c (emit_case_bit_tests): Use get_label_prob.
+	* stmt.c (emit_case_bit_tests): Set prob field.
+	* stmt.c (emit_case_bit_tests): Use set_jump_prob.
+	* stmt.c (expand_case): Add new args to emit_case_bit_tests invocation.
+	* testsuite/gcc.dg/switch-prob.c: Add test.
+
+2010-12-13  Tom de Vries  <tom@codesourcery.com>
+
+	gcc/
+	* tree-if-switch-conversion.c: New pass.
+	* tree-pass.h (pass_if_to_switch): Declare.
+	* common.opt (ftree-if-to-switch-conversion): New switch.
+	* opts.c (decode_options): Set flag_tree_if_to_switch_conversion at -O2
+	and higher.
+	* passes.c (init_optimization_passes): Use new pass.
+	* params.def (PARAM_IF_TO_SWITCH_THRESHOLD): New param.
+	* doc/invoke.texi (-ftree-if-to-switch-conversion)
+	(if-to-switch-threshold): New item.
+	* doc/invoke.texi (Optimization Options, option -O2): Add
+	-ftree-if-to-switch-conversion.
+	* Makefile.in (OBJS-common): Add tree-if-switch-conversion.o.
+	* Makefile.in (tree-if-switch-conversion.o): New rule.
+
+2011-01-31  Ramana Radhakrishnan  <ramana.radhakrishnan@linaro.org>
+
+	Backport from FSF 4.5 branch.
+	2011-01-21  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	Backport from mainline.
+	2010-09-08  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	PR target/44392
+	* config/arm/arm.md (bswapsi2): Handle condition correctly
+	for armv6 and optimize_size.
+
+2011-01-19  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	Backport from FSF mainline
+
+	2011-01-18  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+        * config/arm/cortex-a9.md (cortex-a9-neon.md): Actually
+        include.
+        (cortex_a9_dp): Handle neon types correctly.
+
+2011-01-18  Ulrich Weigand  <uweigand@de.ibm.com>
+
+	LP: #685352
+	Backport from mainline:
+
+	2011-01-18  Jakub Jelinek  <jakub@redhat.com>
+
+	gcc/
+	PR rtl-optimization/47299
+	* expr.c (expand_expr_real_2) <case WIDEN_MULT_EXPR>: Don't use
+	subtarget.  Use normal multiplication if both operands are
+	constants.
+	* expmed.c (expand_widening_mult): Don't try to optimize constant
+	multiplication if op0 has VOIDmode.  Convert op1 constant to mode
+	before using it.
+
+	gcc/testsuite/
+	PR rtl-optimization/47299
+	* gcc.c-torture/execute/pr47299.c: New test.
+
+2011-01-10  Ken Werner  <ken.werner@de.ibm.com>
+
+	LP: #681138
+	Backport from mainline:
+
+	gcc/
+	* config/arm/sync.md (sync_clobber, sync_t2_reqd): New code attribute.
+	(arm_sync_old_<sync_optab>si, arm_sync_old_<sync_optab><mode>): Use
+	the sync_clobber and sync_t2_reqd code attributes.
+	* config/arm/arm.c (arm_output_sync_loop): Reverse the operation if
+	the t2 argument is NULL.
+
+2011-01-13  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* LINARO-VERSION: Bump version.
+
+2011-01-13  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2011.01-1 released.
+
+	gcc/
+	* LINARO-VERSION: Update.
+
+2011-01-13  Andrew Stubbs  <ams@codesourcery.com>
+
+	Revert:
+
+	2010-12-03  Yao Qi  <yao@codesourcery.com>
+
+	* config/arm/arm-ldmstm.ml: Rewrite ldm/stm RTL patterns to fix
+	regressions.
+	* config/arm/ldmstm.md: Regenreate.
+
+	2010-12-03  Yao Qi  <yao@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	2010-08-02  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/40457
+	* config/arm/arm.h (arm_regs_in_sequence): Declare.
+	* config/arm/arm-protos.h (emit_ldm_seq, emit_stm_seq,
+	load_multiple_sequence, store_multiple_sequence): Delete
+	declarations.
+	(arm_gen_load_multiple, arm_gen_store_multiple): Adjust
+	declarations.
+	* config/arm/ldmstm.md: New file.
+	* config/arm/arm.c (arm_regs_in_sequence): New array.
+	(load_multiple_sequence): Now static.  New args SAVED_ORDER,
+	CHECK_REGS.  All callers changed.
+	If SAVED_ORDER is nonnull, copy the computed order into it.
+	If CHECK_REGS is false, don't sort REGS.  Handle Thumb mode.
+	(store_multiple_sequence): Now static.  New args NOPS_TOTAL,
+	SAVED_ORDER, REG_RTXS and CHECK_REGS.  All callers changed.
+	If SAVED_ORDER is nonnull, copy the computed order into it.
+	If CHECK_REGS is false, don't sort REGS.  Set up REG_RTXS just
+	like REGS.  Handle Thumb mode.
+	(arm_gen_load_multiple_1): New function, broken out of
+	arm_gen_load_multiple.
+	(arm_gen_store_multiple_1): New function, broken out of
+	arm_gen_store_multiple.
+	(arm_gen_multiple_op): New function, with code from
+	arm_gen_load_multiple and arm_gen_store_multiple moved here.
+	(arm_gen_load_multiple, arm_gen_store_multiple): Now just
+	wrappers around arm_gen_multiple_op.  Remove argument UP, all callers
+	changed.
+	(gen_ldm_seq, gen_stm_seq, gen_const_stm_seq): New functions.
+	* config/arm/predicates.md (commutative_binary_operator): New.
+	(load_multiple_operation, store_multiple_operation): Handle more
+	variants of these patterns with different starting offsets.  Handle
+	Thumb-1.
+	* config/arm/arm.md: Include "ldmstm.md".
+	(ldmsi_postinc4, ldmsi_postinc4_thumb1, ldmsi_postinc3, ldmsi_postinc2,
+	ldmsi4, ldmsi3, ldmsi2, stmsi_postinc4, stmsi_postinc4_thumb1,
+	stmsi_postinc3, stmsi_postinc2, stmsi4, stmsi3, stmsi2 and related
+	peepholes): Delete.
+	* config/arm/ldmstm.md: New file.
+	* config/arm/arm-ldmstm.ml: New file.
+
+	* config/arm/arm.c (arm_rtx_costs_1): Remove second clause from the
+	if statement which adds extra costs to frame-related expressions.
+
+	2010-05-06  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* config/arm/arm.h (MAX_LDM_STM_OPS): New macro.
+	* config/arm/arm.c (multiple_operation_profitable_p,
+	compute_offset_order): New static functions.
+	(load_multiple_sequence, store_multiple_sequence): Use them.
+	Replace constant 4 with MAX_LDM_STM_OPS.  Compute order[0] from
+	memory offsets, not register numbers.
+	(emit_ldm_seq, emit_stm_seq): Replace constant 4 with MAX_LDM_STM_OPS.
+
+	2010-04-16  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* recog.h (struct recog_data): New field is_operator.
+	(struct insn_operand_data): New field is_operator.
+	* recog.c (extract_insn): Set recog_data.is_operator.
+	* genoutput.c (output_operand_data): Emit code to set the
+	is_operator field.
+	* reload.c (find_reloads): Use it rather than testing for an
+	empty constraint string.
+
+	2011-01-03  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* doc/tm.texi (RETURN_ADDR_REGNUM): Document.
+	* doc/md.texi (simple_return): Document pattern.
+	(return): Add a sentence to clarify.
+	* doc/rtl.texi (simple_return): Document.
+	* doc/invoke.texi (Optimize Options): Document -fshrink-wrap.
+	* common.opt (fshrink-wrap): New.
+	* opts.c (decode_options): Set it for -O2 and above.
+	* gengenrtl.c (special_rtx): PC, CC0, RETURN and SIMPLE_RETURN
+	are special.
+	* rtl.h (ANY_RETURN_P): New macro.
+	(global_rtl_index): Add GR_RETURN and GR_SIMPLE_RETURN.
+	(ret_rtx, simple_return_rtx): New macros.
+	* genemit.c (gen_exp): RETURN and SIMPLE_RETURN have unique rtxs.
+	(gen_expand, gen_split): Use ANY_RETURN_P.
+	* rtl.c (copy_rtx): RETURN and SIMPLE_RETURN are shared.
+	* emit-rtl.c (verify_rtx_sharing): Likewise.
+	(skip_consecutive_labels): Return the argument if it is a return rtx.
+	(classify_insn): Handle both kinds of return.
+	(init_emit_regs): Create global rtl for ret_rtx and simple_return_rtx.
+	* df-scan.c (df_uses_record): Handle SIMPLE_RETURN.
+	* rtl.def (SIMPLE_RETURN): New.
+	* rtlanal.c (tablejump_p): Check JUMP_LABEL for returns.
+	* final.c (final_scan_insn): Recognize both kinds of return.
+	* reorg.c (function_return_label, function_simple_return_label): New
+	static variables.
+	(end_of_function_label): Remove.
+	(simplejump_or_return_p): New static function.
+	(find_end_label): Add a new arg, KIND.  All callers changed.
+	Depending on KIND, look for a label suitable for return or
+	simple_return.
+	(make_return_insns): Make corresponding changes.
+	(get_jump_flags): Check JUMP_LABELs for returns.
+	(follow_jumps): Likewise.
+	(get_branch_condition): Check target for return patterns rather
+	than NULL.
+	(own_thread_p): Likewise for thread.
+	(steal_delay_list_from_target): Check JUMP_LABELs for returns.
+	Use simplejump_or_return_p.
+	(fill_simple_delay_slots): Likewise.
+	(optimize_skip): Likewise.
+	(fill_slots_from_thread): Likewise.
+	(relax_delay_slots): Likewise.
+	(dbr_schedule): Adjust handling of end_of_function_label for the
+	two new variables.
+	* ifcvt.c (find_if_case_1): Take care when redirecting jumps to the
+	exit block.
+	(dead_or_predicable): Change NEW_DEST arg to DEST_EDGE.  All callers
+	changed.  Ensure that the right label is passed to redirect_jump.
+	* jump.c (condjump_p, condjump_in_parallel_p, any_condjump_p,
+	returnjump_p): Handle SIMPLE_RETURNs.
+	(delete_related_insns): Check JUMP_LABEL for returns.
+	(redirect_target): New static function.
+	(redirect_exp_1): Use it.  Handle any kind of return rtx as a label
+	rather than interpreting NULL as a return.
+	(redirect_jump_1): Assert that nlabel is not NULL.
+	(redirect_jump): Likewise.
+	(redirect_jump_2): Handle any kind of return rtx as a label rather
+	than interpreting NULL as a return.
+	* dwarf2out.c (compute_barrier_args_size_1): Check JUMP_LABEL for
+	returns.
+	* function.c (emit_return_into_block): Remove useless declaration.
+	(record_hard_reg_sets, frame_required_for_rtx, gen_return_pattern,
+	requires_stack_frame_p): New static functions.
+	(emit_return_into_block): New arg SIMPLE_P.  All callers changed.
+	Generate either kind of return pattern and update the JUMP_LABEL.
+	(thread_prologue_and_epilogue_insns): Implement a form of
+	shrink-wrapping.  Ensure JUMP_LABELs for return insns are set.
+	* print-rtl.c (print_rtx): Handle returns in JUMP_LABELs.
+	* cfglayout.c (fixup_reorder_chain): Ensure JUMP_LABELs for returns
+	remain correct.
+	* resource.c (find_dead_or_set_registers): Check JUMP_LABELs for
+	returns.
+	(mark_target_live_regs): Don't pass a return rtx to next_active_insn.
+	* basic-block.h (force_nonfallthru_and_redirect): Declare.
+	* sched-vis.c (print_pattern): Add case for SIMPLE_RETURN.
+	* cfgrtl.c (force_nonfallthru_and_redirect): No longer static.  New arg
+	JUMP_LABEL.  All callers changed.  Use the label when generating
+	return insns.
+
+	* config/i386/i386.md (returns, return_str, return_cond): New
+	code_iterator and corresponding code_attrs.
+	(<return_str>return): Renamed from return and adapted.
+	(<return_str>return_internal): Likewise for return_internal.
+	(<return_str>return_internal_long): Likewise for return_internal_long.
+	(<return_str>return_pop_internal): Likewise for return_pop_internal.
+	(<return_str>return_indirect_internal): Likewise for
+	return_indirect_internal.
+	* config/i386/i386.c (ix86_expand_epilogue): Expand a simple_return as
+	the last insn.
+	(ix86_pad_returns): Handle both kinds of return rtx.
+	* config/arm/arm.c (use_simple_return_p): new function.
+	(is_jump_table): Handle returns in JUMP_LABELs.
+	(output_return_instruction): New arg SIMPLE.  All callers changed.
+	Use it to determine which kind of return to generate.
+	(arm_final_prescan_insn): Handle both kinds of return.
+	* config/arm/arm.md (returns, return_str, return_simple_p,
+	return_cond): New code_iterator and corresponding code_attrs.
+	(<return_str>return): Renamed from return and adapted.
+	(arm_<return_str>return): Renamed from arm_return and adapted.
+	(cond_<return_str>return): Renamed from cond_return and adapted.
+	(cond_<return_str>return_inverted): Renamed from cond_return_inverted
+	and adapted.
+	(epilogue): Use ret_rtx instead of gen_rtx_RETURN.
+	* config/arm/thumb2.md (thumb2_<return_str>return): Renamed from
+	thumb2_return and adapted.
+	* config/arm/arm.h (RETURN_ADDR_REGNUM): Define.
+	* config/arm/arm-protos.h (use_simple_return_p): Declare.
+	(output_return_instruction): Adjust declaration.
+	* config/mips/mips.c (mips_expand_epilogue): Generate a simple_return
+	as final insn.
+	* config/mips/mips.md (simple_return): New expander.
+	(*simple_return, simple_return_internal): New patterns.
+	* config/sh/sh.c (barrier_align): Handle return in a JUMP_LABEL.
+	(split_branches): Don't pass a null label to redirect_jump.
+
+	From mainline:
+	* vec.h (FOR_EACH_VEC_ELT, FOR_EACH_VEC_ELT_REVERSE): New macros.
+	* haifa-sched.c (find_fallthru_edge_from): Rename from
+	find_fallthru_edge.  All callers changed.
+	* sched-int.h (find_fallthru_edge_from): Rename declaration as well.
+	* basic-block.h (find_fallthru_edge): New inline function.
+
+2011-01-07  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* LINARO-VERSION: Bump version.
+
+2011-01-07  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2011.01-0 released.
+
+	gcc/
+	* LINARO-VERSION: Update.
+
+2011-01-06  Andrew Stubbs  <ams@codesourcery.com>
+
+	Merge from FSF 4.5 branch r167945 (4.5.2 release).
+
+2010-12-03  Yao Qi  <yao@codesourcery.com>
+
+	* config/arm/arm-ldmstm.ml: Rewrite ldm/stm RTL patterns to fix
+	regressions.
+	* config/arm/ldmstm.md: Regenreate.
+
+2010-12-03  Yao Qi  <yao@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	2010-08-02  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/40457
+	* config/arm/arm.h (arm_regs_in_sequence): Declare.
+	* config/arm/arm-protos.h (emit_ldm_seq, emit_stm_seq,
+	load_multiple_sequence, store_multiple_sequence): Delete
+	declarations.
+	(arm_gen_load_multiple, arm_gen_store_multiple): Adjust
+	declarations.
+	* config/arm/ldmstm.md: New file.
+	* config/arm/arm.c (arm_regs_in_sequence): New array.
+	(load_multiple_sequence): Now static.  New args SAVED_ORDER,
+	CHECK_REGS.  All callers changed.
+	If SAVED_ORDER is nonnull, copy the computed order into it.
+	If CHECK_REGS is false, don't sort REGS.  Handle Thumb mode.
+	(store_multiple_sequence): Now static.  New args NOPS_TOTAL,
+	SAVED_ORDER, REG_RTXS and CHECK_REGS.  All callers changed.
+	If SAVED_ORDER is nonnull, copy the computed order into it.
+	If CHECK_REGS is false, don't sort REGS.  Set up REG_RTXS just
+	like REGS.  Handle Thumb mode.
+	(arm_gen_load_multiple_1): New function, broken out of
+	arm_gen_load_multiple.
+	(arm_gen_store_multiple_1): New function, broken out of
+	arm_gen_store_multiple.
+	(arm_gen_multiple_op): New function, with code from
+	arm_gen_load_multiple and arm_gen_store_multiple moved here.
+	(arm_gen_load_multiple, arm_gen_store_multiple): Now just
+	wrappers around arm_gen_multiple_op.  Remove argument UP, all callers
+	changed.
+	(gen_ldm_seq, gen_stm_seq, gen_const_stm_seq): New functions.
+	* config/arm/predicates.md (commutative_binary_operator): New.
+	(load_multiple_operation, store_multiple_operation): Handle more
+	variants of these patterns with different starting offsets.  Handle
+	Thumb-1.
+	* config/arm/arm.md: Include "ldmstm.md".
+	(ldmsi_postinc4, ldmsi_postinc4_thumb1, ldmsi_postinc3, ldmsi_postinc2,
+	ldmsi4, ldmsi3, ldmsi2, stmsi_postinc4, stmsi_postinc4_thumb1,
+	stmsi_postinc3, stmsi_postinc2, stmsi4, stmsi3, stmsi2 and related
+	peepholes): Delete.
+	* config/arm/ldmstm.md: New file.
+	* config/arm/arm-ldmstm.ml: New file.
+
+	* config/arm/arm.c (arm_rtx_costs_1): Remove second clause from the
+	if statement which adds extra costs to frame-related expressions.
+
+	2010-05-06  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* config/arm/arm.h (MAX_LDM_STM_OPS): New macro.
+	* config/arm/arm.c (multiple_operation_profitable_p,
+	compute_offset_order): New static functions.
+	(load_multiple_sequence, store_multiple_sequence): Use them.
+	Replace constant 4 with MAX_LDM_STM_OPS.  Compute order[0] from
+	memory offsets, not register numbers.
+	(emit_ldm_seq, emit_stm_seq): Replace constant 4 with MAX_LDM_STM_OPS.
+
+	2010-04-16  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* recog.h (struct recog_data): New field is_operator.
+	(struct insn_operand_data): New field is_operator.
+	* recog.c (extract_insn): Set recog_data.is_operator.
+	* genoutput.c (output_operand_data): Emit code to set the
+	is_operator field.
+	* reload.c (find_reloads): Use it rather than testing for an
+	empty constraint string.
+
+2011-01-03  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* doc/tm.texi (RETURN_ADDR_REGNUM): Document.
+	* doc/md.texi (simple_return): Document pattern.
+	(return): Add a sentence to clarify.
+	* doc/rtl.texi (simple_return): Document.
+	* doc/invoke.texi (Optimize Options): Document -fshrink-wrap.
+	* common.opt (fshrink-wrap): New.
+	* opts.c (decode_options): Set it for -O2 and above.
+	* gengenrtl.c (special_rtx): PC, CC0, RETURN and SIMPLE_RETURN
+	are special.
+	* rtl.h (ANY_RETURN_P): New macro.
+	(global_rtl_index): Add GR_RETURN and GR_SIMPLE_RETURN.
+	(ret_rtx, simple_return_rtx): New macros.
+	* genemit.c (gen_exp): RETURN and SIMPLE_RETURN have unique rtxs.
+	(gen_expand, gen_split): Use ANY_RETURN_P.
+	* rtl.c (copy_rtx): RETURN and SIMPLE_RETURN are shared.
+	* emit-rtl.c (verify_rtx_sharing): Likewise.
+	(skip_consecutive_labels): Return the argument if it is a return rtx.
+	(classify_insn): Handle both kinds of return.
+	(init_emit_regs): Create global rtl for ret_rtx and simple_return_rtx.
+	* df-scan.c (df_uses_record): Handle SIMPLE_RETURN.
+	* rtl.def (SIMPLE_RETURN): New.
+	* rtlanal.c (tablejump_p): Check JUMP_LABEL for returns.
+	* final.c (final_scan_insn): Recognize both kinds of return.
+	* reorg.c (function_return_label, function_simple_return_label): New
+	static variables.
+	(end_of_function_label): Remove.
+	(simplejump_or_return_p): New static function.
+	(find_end_label): Add a new arg, KIND.  All callers changed.
+	Depending on KIND, look for a label suitable for return or
+	simple_return.
+	(make_return_insns): Make corresponding changes.
+	(get_jump_flags): Check JUMP_LABELs for returns.
+	(follow_jumps): Likewise.
+	(get_branch_condition): Check target for return patterns rather
+	than NULL.
+	(own_thread_p): Likewise for thread.
+	(steal_delay_list_from_target): Check JUMP_LABELs for returns.
+	Use simplejump_or_return_p.
+	(fill_simple_delay_slots): Likewise.
+	(optimize_skip): Likewise.
+	(fill_slots_from_thread): Likewise.
+	(relax_delay_slots): Likewise.
+	(dbr_schedule): Adjust handling of end_of_function_label for the
+	two new variables.
+	* ifcvt.c (find_if_case_1): Take care when redirecting jumps to the
+	exit block.
+	(dead_or_predicable): Change NEW_DEST arg to DEST_EDGE.  All callers
+	changed.  Ensure that the right label is passed to redirect_jump.
+	* jump.c (condjump_p, condjump_in_parallel_p, any_condjump_p,
+	returnjump_p): Handle SIMPLE_RETURNs.
+	(delete_related_insns): Check JUMP_LABEL for returns.
+	(redirect_target): New static function.
+	(redirect_exp_1): Use it.  Handle any kind of return rtx as a label
+	rather than interpreting NULL as a return.
+	(redirect_jump_1): Assert that nlabel is not NULL.
+	(redirect_jump): Likewise.
+	(redirect_jump_2): Handle any kind of return rtx as a label rather
+	than interpreting NULL as a return.
+	* dwarf2out.c (compute_barrier_args_size_1): Check JUMP_LABEL for
+	returns.
+	* function.c (emit_return_into_block): Remove useless declaration.
+	(record_hard_reg_sets, frame_required_for_rtx, gen_return_pattern,
+	requires_stack_frame_p): New static functions.
+	(emit_return_into_block): New arg SIMPLE_P.  All callers changed.
+	Generate either kind of return pattern and update the JUMP_LABEL.
+	(thread_prologue_and_epilogue_insns): Implement a form of
+	shrink-wrapping.  Ensure JUMP_LABELs for return insns are set.
+	* print-rtl.c (print_rtx): Handle returns in JUMP_LABELs.
+	* cfglayout.c (fixup_reorder_chain): Ensure JUMP_LABELs for returns
+	remain correct.
+	* resource.c (find_dead_or_set_registers): Check JUMP_LABELs for
+	returns.
+	(mark_target_live_regs): Don't pass a return rtx to next_active_insn.
+	* basic-block.h (force_nonfallthru_and_redirect): Declare.
+	* sched-vis.c (print_pattern): Add case for SIMPLE_RETURN.
+	* cfgrtl.c (force_nonfallthru_and_redirect): No longer static.  New arg
+	JUMP_LABEL.  All callers changed.  Use the label when generating
+	return insns.
+
+	* config/i386/i386.md (returns, return_str, return_cond): New
+	code_iterator and corresponding code_attrs.
+	(<return_str>return): Renamed from return and adapted.
+	(<return_str>return_internal): Likewise for return_internal.
+	(<return_str>return_internal_long): Likewise for return_internal_long.
+	(<return_str>return_pop_internal): Likewise for return_pop_internal.
+	(<return_str>return_indirect_internal): Likewise for
+	return_indirect_internal.
+	* config/i386/i386.c (ix86_expand_epilogue): Expand a simple_return as
+	the last insn.
+	(ix86_pad_returns): Handle both kinds of return rtx.
+	* config/arm/arm.c (use_simple_return_p): new function.
+	(is_jump_table): Handle returns in JUMP_LABELs.
+	(output_return_instruction): New arg SIMPLE.  All callers changed.
+	Use it to determine which kind of return to generate.
+	(arm_final_prescan_insn): Handle both kinds of return.
+	* config/arm/arm.md (returns, return_str, return_simple_p,
+	return_cond): New code_iterator and corresponding code_attrs.
+	(<return_str>return): Renamed from return and adapted.
+	(arm_<return_str>return): Renamed from arm_return and adapted.
+	(cond_<return_str>return): Renamed from cond_return and adapted.
+	(cond_<return_str>return_inverted): Renamed from cond_return_inverted
+	and adapted.
+	(epilogue): Use ret_rtx instead of gen_rtx_RETURN.
+	* config/arm/thumb2.md (thumb2_<return_str>return): Renamed from
+	thumb2_return and adapted.
+	* config/arm/arm.h (RETURN_ADDR_REGNUM): Define.
+	* config/arm/arm-protos.h (use_simple_return_p): Declare.
+	(output_return_instruction): Adjust declaration.
+	* config/mips/mips.c (mips_expand_epilogue): Generate a simple_return
+	as final insn.
+	* config/mips/mips.md (simple_return): New expander.
+	(*simple_return, simple_return_internal): New patterns.
+	* config/sh/sh.c (barrier_align): Handle return in a JUMP_LABEL.
+	(split_branches): Don't pass a null label to redirect_jump.
+
+	From mainline:
+	* vec.h (FOR_EACH_VEC_ELT, FOR_EACH_VEC_ELT_REVERSE): New macros.
+	* haifa-sched.c (find_fallthru_edge_from): Rename from
+	find_fallthru_edge.  All callers changed.
+	* sched-int.h (find_fallthru_edge_from): Rename declaration as well.
+	* basic-block.h (find_fallthru_edge): New inline function.
+
+2010-12-21  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Issue #10201
+
+	Backport from mainline:
+
+	2010-12-16  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	PR target/46883
+	gcc/
+	* config/arm/arm.md
+	(zero_extendhisi2 for register input splitter): Change
+	"register_operand" to "s_register_operand".
+	(zero_extendqisi2 for register input splitter): Same.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr46883.c: New testcase.
+
+2010-12-18  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-12-17  Andrew Stubbs  <ams@codesourcery.com>
+
+	* config/arm/arm.md (maddhisi4, *maddhidi4): Use the canonical
+	operand order for plus.
+	Drop redundant % from constraints.
+
+2010-12-17  Bernd Schmidt  <bernds@codesourcery.com>
+
+	Issue #10208
+
+	gcc/
+	* config/arm/arm.c (arm_select_cc_mode): Before calling
+	arm_select_dominance_cc_mode for AND or IOR operations, ensure
+	that op is NE or EQ.
+
+	gcc/testsuite/
+	* gcc.c-torture/compile/20101217-1.c: New test.
+
+2010-12-14  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-12-14  Jakub Jelinek  <jakub@redhat.com>
+
+	PR tree-optimization/46909
+
+	gcc/
+	* tree-ssa-ccp.c (and_var_with_comparison_1): Save partial
+	result even in the is_and case, if both partial results
+	are the same, return it.
+	(or_var_with_comparison_1): Use is_or predicate instead of
+	innercode == TRUTH_OR_EXPR test.  Save partial result
+	even in the is_or case, if both partial results are the
+	same, return it.  In the !is_or case when both partial
+	results are the same, return the partial result instead
+	of boolean_true_node.
+
+	gcc/testsuite/
+	* gcc.c-torture/execute/pr46909-1.c: New test.
+	* gcc.c-torture/execute/pr46909-2.c: New test.
+	* gcc.dg/pr46909.c: New test.
+
+2010-12-22  Ulrich Weigand  <uweigand@de.ibm.com>
+
+	LP: #693425
+	Backport from mainline:
+
+	gcc/
+	* config/spu/spu.md ("mov<mode>"): Use nonimmediate_operand
+	predicate for destination operand.
+	* config/spu/spu.c (spu_expand_mov): If move destination is an
+	invalid subreg, perform move in the subreg's inner mode instead.
+
+2010-12-21  Ulrich Weigand  <uweigand@de.ibm.com>
+
+	LP: #662324
+	Backport from mainline:
+
+	2010-12-17  Dodji Seketeli  <dodji@redhat.com>
+
+	gcc/
+	* dwarf2out.c (gen_type_die_with_usage): Do not try to emit debug
+	info for a redundant typedef that has DECL_ORIGINAL_TYPE set. Use
+	that underlying type instead.
+
+	gcc/testsuite/
+	* g++.dg/debug/dwarf2/self-ref-1.C: New test.
+	* g++.dg/debug/dwarf2/self-ref-2.C: Likewise.
+
+2010-12-21  Ulrich Weigand  <uweigand@de.ibm.com>
+
+	LP: #617384
+	Backport from mainline:
+
+	gcc/
+	* config/arm/arm.c (require_pic_register): Set INSN_LOCATOR for all
+	instructions injected into the prologue to prologue_locator.
+
+2010-12-13  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-12-10  Jakub Jelinek  <jakub@redhat.com>
+
+	PR rtl-optimization/46865
+
+	* rtl.c (rtx_equal_p_cb, rtx_equal_p): For last operand of
+	ASM_OPERANDS and ASM_INPUT if integers are different,
+	call locator_eq.
+	* jump.c (rtx_renumbered_equal_p): Likewise.
+
+	gcc/testsuite/
+	* gcc.target/i386/pr46865-1.c: New test.
+	* gcc.target/i386/pr46865-2.c: New test.
+
+2010-12-14  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* DEV-PHASE: Revert to upstream state.
+	* REVISION: Delete file.
+	* configure: Regenerate.
+	* configure.ac (PKGVERSION): Set default to a custom
+	Linaro string.
+	* LINARO-VERSION: New file.
+
+2010-12-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-12-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2010.12-0 released.
+
+	gcc/
+	* REVISION: Update.
+
+2010-12-02  Bernd Schmidt  <bernds@codesourcery.com>
+
+	Issue #10089
+
+	gcc/
+	* expr.c (store_field): Avoid a direct store if the mode is larger
+	than the size of the bit field.
+	* stor-layout.c (layout_decl): If flag_strict_volatile_bitfields,
+	treat non-volatile bit fields like volatile ones.
+	* toplev.c (process_options): Disallow combination of
+	-fstrict-volatile-bitfields and ABI versions less than 2.
+	* config/arm/arm.c (arm_option_override): Don't enable
+	flag_strict_volatile_bitfields if the ABI version is less than 2.
+	* config/h8300/h8300.c (h8300_option_override): Likewise.
+	* config/rx/rx.c (rx_option_override): Likewise.
+	* config/m32c/m32c.c (m32c_option_override): Likewise.
+	* config/sh/sh.c (sh_option_override): Likewise.
+
+	gcc/testsuite/
+	* gcc.target/arm/volatile-bitfields-4.c: New test.
+	* c-c++-common/abi-bf.c: New test.
+
+2010-11-26  Tom de Vries  <tom@codesourcery.com>
+
+	gcc/
+	* gcc/ee.c: New file.
+	* gcc/tree-pass.h (pass_ee): Declare.
+	* gcc/opts.c (decode_options): Set flag_ee at -O2.
+	* gcc/timevar.def (TV_EE): New timevar.
+	* gcc/common.opt (fextension-elimination): New option.
+	* gcc/Makefile.in (ee.o): New rule.
+	* gcc/passes.c (pass_ee): Add it.
+	* gcc/testsuite/gcc.dg/extend-4.c: New test.
+	* gcc/testsuite/gcc.dg/extend-1.c: New test.
+	* gcc/testsuite/gcc.dg/extend-2.c: New test.
+	* gcc/testsuite/gcc.dg/extend-2-64.c: New test.
+	* gcc/testsuite/gcc.dg/extend-3.c: New test.
+
+2010-11-24  Maxim Kuvyrkov  <maxim@codesourcery.com>
+
+	gcc/
+	* loop-iv.c (get_biv_step): Workaround loop analysis ICE.
+
+2010-11-25  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-10-28  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (const_ok_for_arm): Support 0xXY00XY00 pattern
+	constants in thumb2.
+
+2010-11-24  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	2010-07-08  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	PR bootstrap/44768
+
+	* cfgexpand.c (estimated_stack_frame_size): Make self-contained
+	with respect to current_function_decl. Pass decl of the function.
+	* tree-inline.h (estimated_stack_frame_size): Adjust prototype.
+	* ipa-inline.c (compute_inline_parameters): Pass decl to
+	estimated_stack_frame_size.
+
+2010-11-16  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	2010-07-21  Richard Henderson  <rth@redhat.com>
+
+	gcc/
+	* config/i386/i386.c (setup_incoming_varargs_64): Emit a simple
+	comparison for avoiding xmm register saves.  Emit the xmm register
+	saves explicitly.
+	* config/i386/i386.md (UNSPEC_SSE_PROLOGUE_SAVE): Remove.
+	(UNSPEC_SSE_PROLOGUE_SAVE_LOW): Remove.
+	(sse_prologue_save, sse_prologue_save_insn1, sse_prologue_save_insn):
+	Remove patterns and the associated splitters.
+
+	2010-07-22  Richard Henderson  <rth@redhat.com>
+
+	gcc/
+	PR target/45027
+	* config/i386/i386.c (setup_incoming_varargs_64): Force the use
+	of V4SFmode for the SSE saves; increase stack alignment if needed.
+
+2010-11-16  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Re-merge, backport from mainline:
+
+	2010-07-15  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (last_label_ruid, first_index_reg, last_index_reg):
+	New static variables.
+	(reload_combine_recognize_pattern): New static function, broken out
+	of reload_combine.
+	(reload_combine): Use it.  Only initialize first_index_reg and
+	last_index_reg once.
+
+	2010-07-17  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/42235
+	gcc/
+	* postreload.c (reload_cse_move2add): Return bool, true if anything.
+	changed.  All callers changed.
+	(move2add_use_add2_insn): Likewise.
+	(move2add_use_add3_insn): Likewise.
+	(reload_cse_regs): If reload_cse_move2add changed anything, rerun
+	reload_combine.
+	(RELOAD_COMBINE_MAX_USES): Bump to 16.
+	(last_jump_ruid): New static variable.
+	(struct reg_use): New members CONTAINING_MEM and RUID.
+	(reg_state): New members ALL_OFFSETS_MATCH and REAL_STORE_RUID.
+	(reload_combine_split_one_ruid, reload_combine_split_ruids,
+	reload_combine_purge_insn_uses, reload_combine_closest_single_use
+	reload_combine_purge_reg_uses_after_ruid,
+	reload_combine_recognize_const_pattern): New static functions.
+	(reload_combine_recognize_pattern): Verify that ALL_OFFSETS_MATCH
+	is true for our reg and that we have available index regs.
+	(reload_combine_note_use): New args RUID and CONTAINING_MEM.  All
+	callers changed.  Use them to initialize fields in struct reg_use.
+	(reload_combine): Initialize last_jump_ruid.  Be careful when to
+	take PREV_INSN of the scanned insn.  Update REAL_STORE_RUID fields.
+	Call reload_combine_recognize_const_pattern.
+	(reload_combine_note_store): Update REAL_STORE_RUID field.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42235.c: New test.
+
+	2010-07-19  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (reload_combine_closest_single_use): Ignore the
+	number of uses for DEBUG_INSNs.
+	(fixup_debug_insns): New static function.
+	(reload_combine_recognize_const_pattern): Use it.  Don't let the
+	main loop be affected by DEBUG_INSNs.
+	Really disallow moving adds past a jump insn.
+	(reload_combine_recognize_pattern): Don't update use_ruid here.
+	(reload_combine_note_use): Do it here.
+	(reload_combine): Use control_flow_insn_p rather than JUMP_P.
+
+	2010-07-20  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (fixup_debug_insns): Remove arg REGNO.  New args
+	FROM and TO.  All callers changed.  Don't look for tracked uses,
+	just scan the RTL for DEBUG_INSNs and substitute.
+	(reload_combine_recognize_pattern): Call fixup_debug_insns.
+	(reload_combine): Ignore DEBUG_INSNs.
+
+	2010-07-22  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR bootstrap/44970
+	PR middle-end/45009
+	gcc/
+	* postreload.c: Include "target.h".
+	(reload_combine_closest_single_use): Don't take DEBUG_INSNs
+	into account.
+	(fixup_debug_insns): Don't copy the rtx.
+	(reload_combine_recognize_const_pattern): DEBUG_INSNs can't have uses.
+	Don't copy when replacing.  Call fixup_debug_insns in the case where
+	we merged one add with another.
+	(reload_combine_recognize_pattern): Fail if there aren't any uses.
+	Try harder to determine whether we're picking a valid index register.
+	Don't set store_ruid for an insn we're going to scan in the
+	next iteration.
+	(reload_combine): Remove unused code.
+	(reload_combine_note_use): When updating use information for
+	an old insn, ignore a use that occurs after store_ruid.
+	* Makefile.in (postreload.o): Update dependencies.
+
+	2010-07-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (reload_combine_recognize_const_pattern): Move test
+	for limiting the insn movement to the right scope.
+
+	2010-07-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (try_replace_in_use): New static function.
+	(reload_combine_recognize_const_pattern): Use it here.  Allow
+	substituting into a final add insn, and substituting into a memory
+	reference in an insn that sets the reg.
+
+2010-11-26  Andrew Stubbs  <ams@codesourcery.com>
+
+	Merge from FSF 4.5 branch r167157 (pre 4.5.2).
+
+2010-11-24  Richard Sandiford  <richard.sandiford@linaro.org>
+
+	Launchpad #618684
+
+	Backport from mainline:
+
+	2010-04-10  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* reload1.c (eliminate_regs_in_insn): Don't restore an operand
+	if doing so would replace the entire pattern.
+
+2010-11-24  Maxim Kuvyrkov  <maxim@codesourcery.com>
+
+	gcc/
+	* combine.c (subst, combine_simlify_rtx): Add new argument, use it
+	to track processing of conditionals.  Update all callers.
+	(try_combine, simplify_if_then_else): Update.
+
+2010-11-08  Yao Qi  <yao@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-08-02  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* config/arm/arm.c (arm_rtx_costs_1): Remove second clause from the
+	if statement which adds extra costs to frame-related
+	expressions.
+
+2010-11-3  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-11-02  Chung-Lin Tang <cltang@codesourcery.com>
+
+	gcc/
+	* Makefile.in (LIBGCC2_CFLAGS): Add -fno-stack-protector, to
+	explicitly disable stack protection when building libgcc.
+	(CRTSTUFF_CFLAGS): Same, for crtbegin/end.
+
+2010-10-29  Julian Brown  <julian@codesourcery.com>
+
+	Launchpad #629671
+
+	gcc/
+	* config/arm/arm.h (REG_CLASS_CONTENTS): Remove soft frame pointer
+	from CORE_REGS and GENERAL_REGS classes.
+	* config/arm/arm.md (*thumb1_movsi_insn): Ignore all parts of final
+	constraint for register preferencing.
+
+2010-11-03  Nathan Froyd  <froydnj@codesourcery.com>
+
+	Issue #10002
+
+	gcc/
+	* config/arm/arm.c (arm_legitimate_index_p): Split
+	VALID_NEON_QREG_MODE and VALID_NEON_DREG_MODE cases.  Permit
+	slightly larger constants in the latter case.
+	(thumb2_legitimate_index_p): Likewise.
+
+2010-11-09  Michael Hope  <michael.hope@linaro.org>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-11-09  Michael Hope  <michael.hope@linaro.org>
+
+	GCC Linaro 4.5-2010.11-1 released.
+
+        gcc/
+        * REVISION: Update.
+
+2010-11-09  Michael Hope  <michael.hope@linaro.org>
+
+	Revert:
+
+	Backport from mainline:
+
+	2010-07-15  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (last_label_ruid, first_index_reg, last_index_reg):
+	New static variables.
+	(reload_combine_recognize_pattern): New static function, broken out
+	of reload_combine.
+	(reload_combine): Use it.  Only initialize first_index_reg and
+	last_index_reg once.
+
+	2010-07-17  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/42235
+	gcc/
+	* postreload.c (reload_cse_move2add): Return bool, true if anything.
+	changed.  All callers changed.
+	(move2add_use_add2_insn): Likewise.
+	(move2add_use_add3_insn): Likewise.
+	(reload_cse_regs): If reload_cse_move2add changed anything, rerun
+	reload_combine.
+	(RELOAD_COMBINE_MAX_USES): Bump to 16.
+	(last_jump_ruid): New static variable.
+	(struct reg_use): New members CONTAINING_MEM and RUID.
+	(reg_state): New members ALL_OFFSETS_MATCH and REAL_STORE_RUID.
+	(reload_combine_split_one_ruid, reload_combine_split_ruids,
+	reload_combine_purge_insn_uses, reload_combine_closest_single_use
+	reload_combine_purge_reg_uses_after_ruid,
+	reload_combine_recognize_const_pattern): New static functions.
+	(reload_combine_recognize_pattern): Verify that ALL_OFFSETS_MATCH
+	is true for our reg and that we have available index regs.
+	(reload_combine_note_use): New args RUID and CONTAINING_MEM.  All
+	callers changed.  Use them to initialize fields in struct reg_use.
+	(reload_combine): Initialize last_jump_ruid.  Be careful when to
+	take PREV_INSN of the scanned insn.  Update REAL_STORE_RUID fields.
+	Call reload_combine_recognize_const_pattern.
+	(reload_combine_note_store): Update REAL_STORE_RUID field.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42235.c: New test.
+
+	2010-07-19  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (reload_combine_closest_single_use): Ignore the
+	number of uses for DEBUG_INSNs.
+	(fixup_debug_insns): New static function.
+	(reload_combine_recognize_const_pattern): Use it.  Don't let the
+	main loop be affected by DEBUG_INSNs.
+	Really disallow moving adds past a jump insn.
+	(reload_combine_recognize_pattern): Don't update use_ruid here.
+	(reload_combine_note_use): Do it here.
+	(reload_combine): Use control_flow_insn_p rather than JUMP_P.
+
+	2010-07-20  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (fixup_debug_insns): Remove arg REGNO.  New args
+	FROM and TO.  All callers changed.  Don't look for tracked uses,
+	just scan the RTL for DEBUG_INSNs and substitute.
+	(reload_combine_recognize_pattern): Call fixup_debug_insns.
+	(reload_combine): Ignore DEBUG_INSNs.
+
+	2010-07-22  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR bootstrap/44970
+	PR middle-end/45009
+	gcc/
+	* postreload.c: Include "target.h".
+	(reload_combine_closest_single_use): Don't take DEBUG_INSNs
+	into account.
+	(fixup_debug_insns): Don't copy the rtx.
+	(reload_combine_recognize_const_pattern): DEBUG_INSNs can't have uses.
+	Don't copy when replacing.  Call fixup_debug_insns in the case where
+	we merged one add with another.
+	(reload_combine_recognize_pattern): Fail if there aren't any uses.
+	Try harder to determine whether we're picking a valid index register.
+	Don't set store_ruid for an insn we're going to scan in the
+	next iteration.
+	(reload_combine): Remove unused code.
+	(reload_combine_note_use): When updating use information for
+	an old insn, ignore a use that occurs after store_ruid.
+	* Makefile.in (postreload.o): Update dependencies.
+
+	2010-07-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (reload_combine_recognize_const_pattern): Move test
+	for limiting the insn movement to the right scope.
+
+	2010-07-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (try_replace_in_use): New static function.
+	(reload_combine_recognize_const_pattern): Use it here.  Allow
+	substituting into a final add insn, and substituting into a memory
+	reference in an insn that sets the reg.
+
+2010-11-05  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-11-05  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2010.11-0 released.
+
+	gcc/
+	* REVISION: Update.
+
+2010-10-26  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-10-26  Jie Zhang  <jie@codesourcery.com>
+
+	* doc/invoke.texi: Improve documentation of
+	-fstrict-volatile-bitfields.
+
+2010-10-26  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #1259
+
+	Backport from mainline:
+
+	gcc/
+	2010-10-26  Jie Zhang  <jie@codesourcery.com>
+
+	* stor-layout.c (layout_decl): Use the field's type to
+	determine the mode and keep DECL_BIT_FIELD for a volatile
+	bit-field.
+	* config/arm/arm.c (arm_override_options): Default to
+	-fstrict-volatile-bitfields.
+
+	gcc/testsuite/
+	2010-10-26  Jie Zhang  <jie@codesourcery.com>
+
+	* gcc.target/arm/volatile-bitfields-1.c: New test.
+	* gcc.target/arm/volatile-bitfields-2.c: New test.
+	* gcc.target/arm/volatile-bitfields-3.c: New test.
+
+2010-10-25  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #1259
+
+	Backport from mainline:
+
+	gcc/
+	2010-10-22  Jie Zhang  <jie@codesourcery.com>
+
+	* expr.c (emit_group_load_1): Update calls to extract_bit_field.
+	(copy_blkmode_from_reg): Likewise.
+	(read_complex_part): Likewise.
+	(expand_expr_real_1): Calculate packedp and pass it to
+	extract_bit_field.
+	* expr.h (extract_bit_field): Update declaration.
+	* calls.c (store_unaligned_arguments_into_pseudos): Update call
+	to extract_bit_field.
+	* expmed.c (extract_fixed_bit_field): Update calls to
+	extract_fixed_bit_field.
+	(store_split_bit_field): Likewise.
+	(extract_bit_field_1): Add new argument packedp.
+	(extract_bit_field): Add new argument packedp.
+	(extract_fixed_bit_field): Add new argument packedp and let
+	packed attribute override volatile.
+	* stmt.c (expand_return): Update call to extract_bit_field.
+
+	2010-10-15  Jie Zhang  <jie@codesourcery.com>
+
+	* doc/invoke.texi: Add -fstrict-volatile-bitfields to
+	Option Summary and Index.
+
+	2010-07-13  DJ Delorie  <dj@redhat.com>
+
+	* config/h8300/h8300.c (h8300_init_once): Default to
+	-fstrict_volatile_bitfields.
+
+	* config/sh/sh.c (sh_override_options): Default to
+	-fstrict_volatile_bitfields.
+
+	* config/rx/rx.c (rx_option_override): New.
+
+	* config/m32c/m32c.c (m32c_override_options): Default to
+	-fstrict_volatile_bitfields.
+
+	2010-06-16  DJ Delorie  <dj@redhat.com>
+
+	* common.opt (-fstrict-volatile-bitfields): new.
+	* doc/invoke.texi: Document it.
+	* fold-const.c (optimize_bit_field_compare): For volatile
+	bitfields, use the field's type to determine the mode, not the
+	field's size.
+	* expr.c (expand_assignment): Likewise.
+	(get_inner_reference): Likewise.
+	(expand_expr_real_1): Likewise.
+	* expmed.c (store_fixed_bit_field): Likewise.
+	(extract_bit_field_1): Likewise.
+	(extract_fixed_bit_field): Likewise.
+
+	gcc/testsuite/
+	2010-08-19  Uros Bizjak  <ubizjak@gmail.com>
+
+	PR testsuite/45324
+	* gcc.target/i386/volatile-bitfields-1.c: Also scan movb.
+
+	2010-06-16  DJ Delorie  <dj@redhat.com>
+
+	* gcc.target/i386/volatile-bitfields-1.c: New.
+	* gcc.target/i386/volatile-bitfields-2.c: New.
+
+2010-10-25  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #9812
+
+	Backport from mainline:
+
+	gcc/
+	2010-10-25  Jie Zhang  <jie@codesourcery.com>
+	* combine.c (try_combine): If insns need to be kept around,
+	check that they can be copied in the merged instruction.
+
+	gcc/testsuite/
+	2010-10-25  Jie Zhang  <jie@codesourcery.com>
+	* g++.dg/opt/combine.c: New test.
+
+2010-10-23  Joseph Myers  <joseph@codesourcery.com>
+
+	Backport from FSF:
+
+	gcc/
+	2010-10-14  Joseph Myers  <joseph@codesourcery.com>
+
+	PR c/45969
+	* c-typeck.c (build_binary_op): Don't try to compute a semantic
+	type with excess precision for boolean operations.
+
+	gcc/testsuite/
+	2010-10-14  Joseph Myers  <joseph@codesourcery.com>
+
+	PR c/45969
+	* gcc.c-torture/compile/pr45969-1.c: New test.
+
+2010-10-20  Nathan Froyd  <froydnj@codesourcery.com>
+
+	Issue #9781
+
+	Backport from mainline:
+
+	gcc/
+	2010-10-20  Nathan Froyd  <froydnj@codesourcery.com>
+
+	* ifcvt.c (noce_emit_cmove): If both of the values are SUBREGs, try
+	emitting the conditional move in the inner mode of the SUBREG.
+
+2010-10-18  Kazu Hirata  <kazu@codesourcery.com>
+
+	Issue #9720
+	Backport from mainline:
+	gcc/
+	2010-10-07  Tejas Belagod  <tejas.belagod@arm.com>
+	* config/arm/neon.md (neon_unpack<US>_<mode>): Add 'w' to
+	constraint, add register specifier in instruction template.
+	(neon_vec_pack_trunc_<mode>): Likewise.
+	(neon_vec_<US>mult_<mode>): Add register specifier to
+	instruction template.
+
+2010-10-22  Julian Brown  <julian@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-10-18  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	gcc/testsuite/
+	* gcc.target/arm/synchronize.c: Permit dmb or mcr in assembler scan.
+
+2010-10-14  Julian Brown  <julian@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-08-18  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	gcc/
+	* config/arm/arm-protos.h (arm_expand_sync): New.
+	(arm_output_memory_barrier, arm_output_sync_insn): New.
+	(arm_sync_loop_insns): New.
+	* config/arm/arm.c (FL_ARCH7): New.
+	(FL_FOR_ARCH7): Include FL_ARCH7.
+	(arm_arch7): New.
+	(arm_print_operand): Support %C markup.
+	(arm_legitimize_sync_memory): New.
+	(arm_emit, arm_insn_count, arm_count, arm_output_asm_insn): New.
+	(arm_process_output_memory_barrier, arm_output_memory_barrier): New.
+	(arm_ldrex_suffix, arm_output_ldrex, arm_output_strex): New.
+	(arm_output_op2, arm_output_op3, arm_output_sync_loop): New.
+	(arm_get_sync_operand, FETCH_SYNC_OPERAND): New.
+	(arm_process_output_sync_insn, arm_output_sync_insn): New.
+	(arm_sync_loop_insns,arm_call_generator, arm_expand_sync): New.
+	* config/arm/arm.h (struct arm_sync_generator): New.
+	(TARGET_HAVE_DMB, TARGET_HAVE_DMB_MCR): New.
+	(TARGET_HAVE_MEMORY_BARRIER): New.
+	(TARGET_HAVE_LDREX, TARGET_HAVE_LDREXBHD): New.
+	* config/arm/arm.md: Include sync.md.
+	(UNSPEC_MEMORY_BARRIER): New.
+	(VUNSPEC_SYNC_COMPARE_AND_SWAP, VUNSPEC_SYNC_LOCK): New.
+	(VUNSPEC_SYNC_OP):New.
+	(VUNSPEC_SYNC_NEW_OP, VUNSPEC_SYNC_OLD_OP): New.
+	(sync_result, sync_memory, sync_required_value): New attributes.
+	(sync_new_value, sync_t1, sync_t2): Likewise.
+	(sync_release_barrier, sync_op): Likewise.
+	(length): Add logic to length attribute defintion to call
+	arm_sync_loop_insns when appropriate.
+	* config/arm/sync.md: New file.
+
+	2010-09-02  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	gcc/
+	* config/arm/predicates.md (arm_sync_memory_operand): New.
+	* config/arm/sync.md (arm_sync_compare_and_swapsi): Change predicate
+	to arm_sync_memory_operand and constraint to Q.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_lock_test_and_setsi): Likewise.
+	(arm_sync_lock_test_and_set<mode>): Likewise.
+	(arm_sync_new_<sync_optab>si): Likewise.
+	(arm_sync_new_nandsi): Likewise.
+	(arm_sync_new_<sync_optab><mode>): Likewise.
+	(arm_sync_new_nand<mode>): Likewise.
+	(arm_sync_old_<sync_optab>si): Likewise.
+	(arm_sync_old_nandsi): Likewise.
+	(arm_sync_old_<sync_optab><mode>): Likewise.
+	(arm_sync_old_nand<mode>): Likewise.
+
+	2010-09-13  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	gcc/
+	* config/arm/arm.md: (define_attr "conds"): Update comment.
+	* config/arm/sync.md (arm_sync_compare_and_swapsi): Change
+	conds attribute to clob.
+	(arm_sync_compare_and_swapsi): Likewise.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_lock_test_and_setsi): Likewise.
+	(arm_sync_lock_test_and_set<mode>): Likewise.
+	(arm_sync_new_<sync_optab>si): Likewise.
+	(arm_sync_new_nandsi): Likewise.
+	(arm_sync_new_<sync_optab><mode>): Likewise.
+	(arm_sync_new_nand<mode>): Likewise.
+	(arm_sync_old_<sync_optab>si): Likewise.
+	(arm_sync_old_nandsi): Likewise.
+	(arm_sync_old_<sync_optab><mode>): Likewise.
+	(arm_sync_old_nand<mode>): Likewise.
+
+	2010-09-13  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	gcc/testsuite/
+	* gcc.target/arm/sync-1.c: New.
+
+2010-10-20  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ to fix LP:660021
+	2010-10-18  Paul Brook  <paul@codesourcery.com>
+
+	* tree-vect-stmts.c (supportable_widening_operation): Check if wide
+	vector type exists.
+
+2010-10-15  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/testsuite/
+	2010-10-15  Jie Zhang  <jie@codesourcery.com>
+
+	* lib/lto.exp (lto-link-and-maybe-run): Use the default linker
+	script when relocatable linking.
+
+2010-10-15  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-10-15  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	gcc/
+	* ifcvt.c (find_active_insn_before): New function.
+	(find_active_insn_after): New function.
+	(cond_exec_process_if_block): Use new functions to replace
+	prev_active_insn() and next_active_insn().
+
+	gcc/testsuite/
+	* gcc.dg/20101010-1.c: New testcase.
+
+2010-10-13  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Issue #8615
+
+	Backport from mainline:
+
+	2010-10-12  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.h (ARM_EXPAND_ALIGNMENT): Rename from
+	DATA_ALIGNMENT and add COND parameter. Update comments above.
+	(DATA_ALIGNMENT): Use ARM_EXPAND_ALIGNMENT, with !optimize_size.
+	(LOCAL_ALIGNMENT): Use ARM_EXPAND_ALIGNMENT, with
+	!flag_conserve_stack.
+
+2010-10-15  Yao Qi  <yao@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-10-14  Yao Qi  <yao@codesourcery.com>
+
+	gcc/
+        PR target/45447
+        * config/arm/arm.c (arm_build_builtin_va_list): Assign
+        va_list_name to TYPE_STUB_DECL (va_list_type).
+
+	gcc/testsuite/
+	PR target/45447
+        * gcc.target/arm/pr45447.c: New test.
+
+2010-10-13  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-04-20  James E. Wilson  <wilson@codesourcery.com>
+
+	gcc/
+	PR rtl-optimization/43520
+	* ira-lives.c (ira_implicitly_set_insn_hard_regs): Exclude classes with
+	zero available registers.
+
+2010-10-09  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-06-03  Paul Brook  <paul@codesourcery.com>
+	* config/arm/arm.c (FL_TUNE): Define.
+	(arm_default_cpu, arm_cpu_select): Remove.
+	(all_cores): Populate core field.
+	(arm_selected_arch, arm_selected_cpu, arm_selected_tune): New.
+	(arm_find_cpu): New function.
+	(arm_handle_option): Lookup cpu/architecture names.
+	(arm_override_options): Cleanup mcpu/march/mtune handling.
+	(arm_file_start): Ditto.
+
+2010-10-08  Jie Zhang  <jie@codesourcery.com>
+
+	* config/arm/arm.c (arm_override_options): Disable
+	-fsched-interblock for Cortex-M4.
+
+2010-10-06  Julian Brown  <julian@codesourcery.com>
+
+	gcc/testsuite/
+	* gcc.dg/Warray-bounds-3.c: Add -fno-unroll-loops for ARM.
+	* gcc.dg/vect/vect.exp: Likewise, for all vect tests.
+
+2010-09-30  Jie Zhang  <jie@codesourcery.com>
+
+	gcc/testsuite/
+	* gcc.target/arm/neon-thumb2-move.c: Add
+	dg-require-effective-target arm_thumb2_ok.
+
+2010-10-01  Julian Brown  <julian@codesourcery.com>
+
+	Revert:
+
+	Backport from FSF:
+
+	gcc/
+	2010-08-18  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+	* config/arm/arm-protos.h (arm_expand_sync): New.
+	(arm_output_memory_barrier, arm_output_sync_insn): New.
+	(arm_sync_loop_insns): New.
+	* config/arm/arm.c (FL_ARCH7): New.
+	(FL_FOR_ARCH7): Include FL_ARCH7.
+	(arm_arch7): New.
+	(arm_print_operand): Support %C markup.
+	(arm_legitimize_sync_memory): New.
+	(arm_emit, arm_insn_count, arm_count, arm_output_asm_insn): New.
+	(arm_process_output_memory_barrier, arm_output_memory_barrier): New.
+	(arm_ldrex_suffix, arm_output_ldrex, arm_output_strex): New.
+	(arm_output_op2, arm_output_op3, arm_output_sync_loop): New.
+	(arm_get_sync_operand, FETCH_SYNC_OPERAND): New.
+	(arm_process_output_sync_insn, arm_output_sync_insn): New.
+	(arm_sync_loop_insns,arm_call_generator, arm_expand_sync): New.
+	* config/arm/arm.h (struct arm_sync_generator): New.
+	(TARGET_HAVE_DMB, TARGET_HAVE_DMB_MCR): New.
+	(TARGET_HAVE_MEMORY_BARRIER): New.
+	(TARGET_HAVE_LDREX, TARGET_HAVE_LDREXBHD): New.
+	* config/arm/arm.md: Include sync.md.
+	(UNSPEC_MEMORY_BARRIER): New.
+	(VUNSPEC_SYNC_COMPARE_AND_SWAP, VUNSPEC_SYNC_LOCK): New.
+	(VUNSPEC_SYNC_OP):New.
+	(VUNSPEC_SYNC_NEW_OP, VUNSPEC_SYNC_OLD_OP): New.
+	(sync_result, sync_memory, sync_required_value): New attributes.
+	(sync_new_value, sync_t1, sync_t2): Likewise.
+	(sync_release_barrier, sync_op): Likewise.
+	(length): Add logic to length attribute defintion to call
+	arm_sync_loop_insns when appropriate.
+	* config/arm/sync.md: New file.
+
+	gcc/
+	2010-09-02  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+	* config/arm/predicates.md (arm_sync_memory_operand): New.
+	* config/arm/sync.md (arm_sync_compare_and_swapsi): Change predicate
+	to arm_sync_memory_operand and constraint to Q.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_lock_test_and_setsi): Likewise.
+	(arm_sync_lock_test_and_set<mode>): Likewise.
+	(arm_sync_new_<sync_optab>si): Likewise.
+	(arm_sync_new_nandsi): Likewise.
+	(arm_sync_new_<sync_optab><mode>): Likewise.
+	(arm_sync_new_nand<mode>): Likewise.
+	(arm_sync_old_<sync_optab>si): Likewise.
+	(arm_sync_old_nandsi): Likewise.
+	(arm_sync_old_<sync_optab><mode>): Likewise.
+	(arm_sync_old_nand<mode>): Likewise.
+
+2010-09-30  Jie Zhang  <jie@codesourcery.com>
+
+	gcc/testsuite/
+
+	* c-c++-common/uninit-17.c: Adjust warning message.
+
+	Backport from mainline:
+
+	2010-07-30  Xinliang David Li  <davidxl@google.com>
+	PR tree-optimization/45121
+	* c-c++-common/uninit-17.c: Add -fno-ivops option.
+
+2010-09-28  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/testsuite/
+	2010-09-28  Jie Zhang  <jie@codesourcery.com>
+	* gcc.dg/Wcxx-compat-12.c: Add -fno-short-enums.
+
+2010-09-22  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-09-22  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	gcc/
+	* postreload.c (move2add_note_store): Add reg_symbol_ref[] checks
+	to update conditions. Fix reg_mode[] check.
+
+2010-09-20  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #9019
+
+	Backport from mainline:
+
+	gcc/
+	2010-09-20  Jie Zhang  <jie@codesourcery.com>
+	* config/arm/arm.c (arm_address_offset_is_imm): New.
+	(arm_early_store_addr_dep): New.
+	(arm_early_load_addr_dep): New.
+	* config/arm/arm-protos.h (arm_early_store_addr_dep): Declare.
+	(arm_early_load_addr_dep): Declare.
+	(arm_address_offset_is_imm): Declare.
+	* config/arm/cortex-m4.md: New file.
+	* config/arm/cortex-m4-fpu.md: New file.
+	* config/arm/arm.md: Include cortex-m4.md and cortex-m4-fpu.md.
+	(attr generic_sched): Exclude cortexm4.
+	(attr generic_vfp): Exclude cortexm4.
+
+2010-09-20  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #5256
+
+	libstdc++-v3/
+
+	Backport from mainline:
+
+	2010-05-21  Joseph Myers  <joseph@codesourcery.com>
+	* acinclude.m4 (GLIBCXX_ENABLE_CLOCALE): Use GNU locale model for
+	glibc 2.3 and later, but not uClibc, without an execution test.
+	* configure: Regenerate.
+	* doc/xml/manual/configure.xml, doc/xml/manual/prerequisites.xml,
+	doc/xml/faq.xml: Update.
+
+2010-09-17  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-07-15  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (last_label_ruid, first_index_reg, last_index_reg):
+	New static variables.
+	(reload_combine_recognize_pattern): New static function, broken out
+	of reload_combine.
+	(reload_combine): Use it.  Only initialize first_index_reg and
+	last_index_reg once.
+
+	2010-07-17  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/42235
+	gcc/
+	* postreload.c (reload_cse_move2add): Return bool, true if anything.
+	changed.  All callers changed.
+	(move2add_use_add2_insn): Likewise.
+	(move2add_use_add3_insn): Likewise.
+	(reload_cse_regs): If reload_cse_move2add changed anything, rerun
+	reload_combine.
+	(RELOAD_COMBINE_MAX_USES): Bump to 16.
+	(last_jump_ruid): New static variable.
+	(struct reg_use): New members CONTAINING_MEM and RUID.
+	(reg_state): New members ALL_OFFSETS_MATCH and REAL_STORE_RUID.
+	(reload_combine_split_one_ruid, reload_combine_split_ruids,
+	reload_combine_purge_insn_uses, reload_combine_closest_single_use
+	reload_combine_purge_reg_uses_after_ruid,
+	reload_combine_recognize_const_pattern): New static functions.
+	(reload_combine_recognize_pattern): Verify that ALL_OFFSETS_MATCH
+	is true for our reg and that we have available index regs.
+	(reload_combine_note_use): New args RUID and CONTAINING_MEM.  All
+	callers changed.  Use them to initialize fields in struct reg_use.
+	(reload_combine): Initialize last_jump_ruid.  Be careful when to
+	take PREV_INSN of the scanned insn.  Update REAL_STORE_RUID fields.
+	Call reload_combine_recognize_const_pattern.
+	(reload_combine_note_store): Update REAL_STORE_RUID field.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42235.c: New test.
+
+	2010-07-19  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (reload_combine_closest_single_use): Ignore the
+	number of uses for DEBUG_INSNs.
+	(fixup_debug_insns): New static function.
+	(reload_combine_recognize_const_pattern): Use it.  Don't let the
+	main loop be affected by DEBUG_INSNs.
+	Really disallow moving adds past a jump insn.
+	(reload_combine_recognize_pattern): Don't update use_ruid here.
+	(reload_combine_note_use): Do it here.
+	(reload_combine): Use control_flow_insn_p rather than JUMP_P.
+
+	2010-07-20  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (fixup_debug_insns): Remove arg REGNO.  New args
+	FROM and TO.  All callers changed.  Don't look for tracked uses,
+	just scan the RTL for DEBUG_INSNs and substitute.
+	(reload_combine_recognize_pattern): Call fixup_debug_insns.
+	(reload_combine): Ignore DEBUG_INSNs.
+
+	2010-07-22  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR bootstrap/44970
+	PR middle-end/45009
+	gcc/
+	* postreload.c: Include "target.h".
+	(reload_combine_closest_single_use): Don't take DEBUG_INSNs
+	into account.
+	(fixup_debug_insns): Don't copy the rtx.
+	(reload_combine_recognize_const_pattern): DEBUG_INSNs can't have uses.
+	Don't copy when replacing.  Call fixup_debug_insns in the case where
+	we merged one add with another.
+	(reload_combine_recognize_pattern): Fail if there aren't any uses.
+	Try harder to determine whether we're picking a valid index register.
+	Don't set store_ruid for an insn we're going to scan in the
+	next iteration.
+	(reload_combine): Remove unused code.
+	(reload_combine_note_use): When updating use information for
+	an old insn, ignore a use that occurs after store_ruid.
+	* Makefile.in (postreload.o): Update dependencies.
+
+	2010-07-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (reload_combine_recognize_const_pattern): Move test
+	for limiting the insn movement to the right scope.
+
+	2010-07-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* postreload.c (try_replace_in_use): New static function.
+	(reload_combine_recognize_const_pattern): Use it here.  Allow
+	substituting into a final add insn, and substituting into a memory
+	reference in an insn that sets the reg.
+
+2010-10-12  Michael Hope  <michael.hope@linaro.org>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-10-12  Michael Hope  <michael.hope@linaro.org>
+
+	GCC Linaro 4.5-2010.10-0 released.
+
+	gcc/
+	* REVISION: Update.
+
+2010-10-04  Michael Hope  <michael.hope@linaro.org>
+
+	Merge from FSF 4.5 branch r164911 (pre 4.5.2)
+
+2010-09-21  Yao Qi  <yao@codesourcery.com>
+
+	Backport from FSF to fix ICE found in LP:635409:
+	
+	2010-07-07  Bernd Schmidt  <bernds@codesourcery.com>
+	
+	gcc/
+	PR rtl-optimization/44787
+	* config/arm/arm.md (arith_shiftsi): Allow stack pointer in operand 2.
+	* config/arm/thumb2.md (thumb2_arith_shiftsi): Likewise.
+	
+	gcc/testsuite/
+	PR rtl-optimization/44787
+	* gcc.c-torture/compile/pr44788.c: New test.
+	* gcc.target/arm/pr44788.c: New test.
+	
+2010-09-16  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from FSF:
+
+	2010-09-01  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	* config/arm/neon-schedgen.ml (core): New type.
+	(allCores): List of supported cores.
+	(availability_table): Add supported cores.
+	(collate_bypasses): Accept core as a parameter.
+	(worst_case_latencies_and_bypasses): Accept core as a
+	 parameter.
+	(emit_insn_reservations): Accept core as a parameter.
+	Use tuneStr and coreStr to get tune attribute and prefix
+	for functional units.
+	(emit_bypasses): Accept core name and use it.
+	(calculate_per_core_availability_table): New.
+	(filter_core): New.
+	(calculate_core_availability_table): New.
+	(main): Use calculate_core_availablity_table.
+	* config/arm/cortex-a8-neon.md: Update copyright year.
+	Regenerated from ml file and merged in.
+	(neon_mrrc, neon_mrc): Rename to cortex_a8_neon_mrrc and
+	cortex_a8_neon_mrc.
+
+	2010-09-10  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	* config/arm/neon-schedgen.ml (allCores): Add support for
+	Cortex-A9.
+	* config/arm/cortex-a9-neon.md: New and partially generated.
+	* config/arm/cortex-a9.md (cortex_a9_dp): Adjust for Neon.
+
+2010-09-15  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Issue #9441
+
+	Backport from mainline:
+
+	2010-06-25  Bernd Schmidt  <bernds@codesourcery.com>
+
+	With large parts from Jim Wilson:
+	PR target/43902
+
+	gcc/
+	* tree-pretty-print.c (dump_generic_node, op_code_prio): Add
+	WIDEN_MULT_PLUS_EXPR and WIDEN_MULT_MINUS_EXPR.
+	* optabs.c (optab_for_tree_code): Likewise.
+	(expand_widen_pattern_expr): Likewise.
+	* tree-ssa-math-opts.c (convert_mult_to_widen): New function, broken
+	out of execute_optimize_widening_mul.
+	(convert_plusminus_to_widen): New function.
+	(execute_optimize_widening_mul): Use the two new functions.
+	* expr.c (expand_expr_real_2): Add support for GIMPLE_TERNARY_RHS.
+	Remove code to generate widening multiply-accumulate.  Add support
+	for WIDEN_MULT_PLUS_EXPR and WIDEN_MULT_MINUS_EXPR.
+	* gimple-pretty-print.c (dump_ternary_rhs): New function.
+	(dump_gimple_assign): Call it when appropriate.
+	* tree.def (WIDEN_MULT_PLUS_EXPR, WIDEN_MULT_MINUS_EXPR): New codes.
+	* cfgexpand.c (gimple_assign_rhs_to_tree): Likewise.
+	(expand_gimple_stmt_1): Likewise.
+	(expand_debug_expr): Support WIDEN_MULT_PLUS_EXPR and
+	WIDEN_MULT_MINUS_EXPR.
+	* tree-ssa-operands.c (get_expr_operands): Likewise.
+	* tree-inline.c (estimate_operator_cost): Likewise.
+	* gimple.c (extract_ops_from_tree_1): Renamed from
+	extract_ops_from_tree.  Add new arg for a third operand; fill it.
+	(gimple_build_assign_stat): Support operations with three operands.
+	(gimple_build_assign_with_ops_stat): Likewise.
+	(gimple_assign_set_rhs_from_tree): Likewise.
+	(gimple_assign_set_rhs_with_ops_1): Renamed from
+	gimple_assign_set_rhs_with_ops.  Add new arg for a third operand.
+	(get_gimple_rhs_num_ops): Support GIMPLE_TERNARY_RHS.
+	(get_gimple_rhs_num_ops): Handle WIDEN_MULT_PLUS_EXPR and
+	WIDEN_MULT_MINUS_EXPR.
+	* gimple.h (enum gimple_rhs_class): Add GIMPLE_TERNARY_RHS.
+	(extract_ops_from_tree_1): Adjust declaration.
+	(gimple_assign_set_rhs_with_ops_1): Likewise.
+	(gimple_build_assign_with_ops): Pass NULL for last operand.
+	(gimple_build_assign_with_ops3): New macro.
+	(gimple_assign_rhs3, gimple_assign_rhs3_ptr, gimple_assign_set_rhs3,
+	gimple_assign_set_rhs_with_ops, extract_ops_from_tree): New inline
+	functions.
+	* tree-cfg.c (verify_gimple_assign_ternary): New static function.
+	(verify_gimple_assign): Call it.
+	* doc/gimple.texi (Manipulating operands): Document GIMPLE_TERNARY_RHS.
+	(Tuple specific accessors, subsection GIMPLE_ASSIGN): Document new
+	functions for dealing with three-operand statements.
+	* tree.c (commutative_ternary_tree_code): New function.
+	* tree.h (commutative_ternary_tree_code): Declare it.
+	* tree-vrp.c (gimple_assign_nonnegative_warnv_p): Return false for
+	ternary statements.
+	(gimple_assign_nonzero_warnv_p): Likewise.
+	* tree-ssa-sccvn.c (stmt_has_constants): Handle GIMPLE_TERNARY_RHS.
+	* tree-ssa-ccp.c (get_rhs_assign_op_for_ccp): New static function.
+	(ccp_fold): Use it.  Handle GIMPLE_TERNARY_RHS.
+	* tree-ssa-dom.c (enum expr_kind): Add EXPR_TERNARY.
+	(struct hashtable_expr): New member ternary in the union.
+	(initialize_hash_element): Handle GIMPLE_TERNARY_RHS.
+	(hashable_expr_equal_p): Fix indentation.  Handle EXPR_TERNARY.
+	(iterative_hash_hashable_expr): Likewise.
+	(print_expr_hash_elt): Handle EXPR_TERNARY.
+	* gimple-fold.c (fold_gimple_assign): Handle GIMPLE_TERNARY_RHS.
+	* tree-ssa-threadedge.c (fold_assignment_stmt): Remove useless break
+	statements.  Handle GIMPLE_TERNARY_RHS.
+
+	From Jim Wilson:
+	gcc/testsuite/
+	* gcc.target/mips/madd-9.c: New test.
+
+	2010-06-29  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/43902
+	gcc/
+	* config/arm/arm.md (maddsidi4, umaddsidi4): New expanders.
+	(maddhisi4): Renamed from mulhisi3addsi.  Operands renumbered.
+	(maddhidi4): Likewise.
+
+	gcc/testsuite/
+	* gcc.target/arm/wmul-1.c: Test for smlabb instead of smulbb.
+	* gcc.target/arm/wmul-3.c: New test.
+	* gcc.target/arm/wmul-4.c: New test.
+
+	2010-07-22  Richard Sandiford  <rdsandiford@googlemail.com>
+
+	gcc/
+	* tree-ssa-math-opts.c (is_widening_mult_rhs_p): New function.
+	(is_widening_mult_p): Likewise.
+	(convert_to_widen): Use them.
+	(convert_plusminus_to_widen): Likewise.  Handle fixed-point types as
+	well as integer ones.
+
+	2010-07-31  Richard Sandiford  <rdsandiford@googlemail.com>
+
+	gcc/
+	* tree-ssa-math-opts.c (convert_plusminus_to_widen): Fix type
+	used in the call to optab_for_tree_code.  Fix the second
+	is_widening_mult_p call.  Check that both unwidened operands
+	have the same sign.
+
+2010-09-15  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-09-15  Jie Zhang  <jie@codesourcery.com>
+	* config/arm/vfp.md (cmpsf_trap_vfp): Change type from
+	fcmpd to fcmps.
+
+2010-09-13  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-09-12  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.md (arm_ashldi3_1bit, arm_ashrdi3_1bit,
+	arm_lshrdi3_1bit): Put earlyclobber on the right alternative.
+
+2010-09-10  Nathan Froyd  <froydnj@codesourcery.com>
+
+	Issue #9120
+
+	gcc/
+	* gimple.c (is_gimple_min_invariant): Check for constant INDIRECT_REFs.
+
+2010-09-08  Tom de Vries  <tom@codesourcery.com>
+
+	gcc/
+	* gcc/emit-rtl.c (set_mem_attributes_minus_bitpos): Set MEM_READONLY_P
+	for static const strings.
+	* gcc/testsuite/gcc.dg/memcpy-3.c: New test.
+
+2010-09-13  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-09-13  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2010.09-1 released.
+
+	gcc/
+	* REVISION: Update.
+
+2010-09-13  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from FSF:
+
+	2010-09-13  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	* config/arm/arm.md: (define_attr "conds"): Update comment.
+	* config/arm/sync.md (arm_sync_compare_and_swapsi): Change 
+	  conds attribute to clob.
+	  (arm_sync_compare_and_swapsi): Likewise.
+	  (arm_sync_compare_and_swap<mode>): Likewise.
+	  (arm_sync_lock_test_and_setsi): Likewise.
+	  (arm_sync_lock_test_and_set<mode>): Likewise.
+	  (arm_sync_new_<sync_optab>si): Likewise.
+	  (arm_sync_new_nandsi): Likewise.
+	  (arm_sync_new_<sync_optab><mode>): Likewise.
+	  (arm_sync_new_nand<mode>): Likewise.
+	  (arm_sync_old_<sync_optab>si): Likewise.
+	  (arm_sync_old_nandsi): Likewise.
+	  (arm_sync_old_<sync_optab><mode>): Likewise.
+	  (arm_sync_old_nand<mode>): Likewise.
+
+	2010-09-13  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	* gcc.target/arm/sync-1.c: New.
+
+2010-09-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-09-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2010.09-0 released.
+
+	gcc/
+	* REVISION: Update.
+
+2010-09-09  Andrew Stubbs  <ams@codesourcery.com>
+
+	2010-09-02  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+	* config/arm/predicates.md (arm_sync_memory_operand): New.
+	* config/arm/sync.md (arm_sync_compare_and_swapsi): Change predicate
+	to arm_sync_memory_operand and constraint to Q.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_compare_and_swap<mode>): Likewise.
+	(arm_sync_lock_test_and_setsi): Likewise.
+	(arm_sync_lock_test_and_set<mode>): Likewise.
+	(arm_sync_new_<sync_optab>si): Likewise.
+	(arm_sync_new_nandsi): Likewise.
+	(arm_sync_new_<sync_optab><mode>): Likewise.
+	(arm_sync_new_nand<mode>): Likewise.
+	(arm_sync_old_<sync_optab>si): Likewise.
+	(arm_sync_old_nandsi): Likewise.
+	(arm_sync_old_<sync_optab><mode>): Likewise.
+	(arm_sync_old_nand<mode>): Likewise.
+
+2010-09-09  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-08-18  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+	* config/arm/arm-protos.h (arm_expand_sync): New.
+	(arm_output_memory_barrier, arm_output_sync_insn): New.
+	(arm_sync_loop_insns): New.
+	* config/arm/arm.c (FL_ARCH7): New.
+	(FL_FOR_ARCH7): Include FL_ARCH7.
+	(arm_arch7): New.
+	(arm_print_operand): Support %C markup.
+	(arm_legitimize_sync_memory): New.
+	(arm_emit, arm_insn_count, arm_count, arm_output_asm_insn): New.
+	(arm_process_output_memory_barrier, arm_output_memory_barrier): New.
+	(arm_ldrex_suffix, arm_output_ldrex, arm_output_strex): New.
+	(arm_output_op2, arm_output_op3, arm_output_sync_loop): New.
+	(arm_get_sync_operand, FETCH_SYNC_OPERAND): New.
+	(arm_process_output_sync_insn, arm_output_sync_insn): New.
+	(arm_sync_loop_insns,arm_call_generator, arm_expand_sync): New.
+	* config/arm/arm.h (struct arm_sync_generator): New.
+	(TARGET_HAVE_DMB, TARGET_HAVE_DMB_MCR): New.
+	(TARGET_HAVE_MEMORY_BARRIER): New.
+	(TARGET_HAVE_LDREX, TARGET_HAVE_LDREXBHD): New.
+	* config/arm/arm.md: Include sync.md.
+	(UNSPEC_MEMORY_BARRIER): New.
+	(VUNSPEC_SYNC_COMPARE_AND_SWAP, VUNSPEC_SYNC_LOCK): New.
+	(VUNSPEC_SYNC_OP):New.
+	(VUNSPEC_SYNC_NEW_OP, VUNSPEC_SYNC_OLD_OP): New.
+	(sync_result, sync_memory, sync_required_value): New attributes.
+	(sync_new_value, sync_t1, sync_t2): Likewise.
+	(sync_release_barrier, sync_op): Likewise.
+	(length): Add logic to length attribute defintion to call
+	arm_sync_loop_insns when appropriate.
+	* config/arm/sync.md: New file.
+
+2010-09-09  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-08-25  Tejas Belagod  <tejas.belagod@arm.com>
+	* config/arm/iterators.md (VU, SE, V_widen_l): New.
+	(V_unpack, US): New.
+	* config/arm/neon.md (vec_unpack<US>_hi_<mode>): Expansion for
+	vmovl.
+	(vec_unpack<US>_lo_<mode>): Likewise.
+	(neon_vec_unpack<US>_hi_<mode>): Instruction pattern for vmovl.
+	(neon_vec_unpack<US>_lo_<mode>): Likewise.
+	(vec_widen_<US>mult_lo_<mode>): Expansion for vmull.
+	(vec_widen_<US>mult_hi_<mode>): Likewise.
+	(neon_vec_<US>mult_lo_<mode>"): Instruction pattern for vmull.
+	(neon_vec_<US>mult_hi_<mode>"): Likewise.
+	(neon_unpack<US>_<mode>): Widening move intermediate step for
+	vectorizing without -mvectorize-with-neon-quad.
+	(neon_vec_<US>mult_<mode>): Widening multiply intermediate step
+	for vectorizing without -mvectorize-with-neon-quad.
+	* config/arm/predicates.md (vect_par_constant_high): Check for
+	high-half lanes of a vector.
+	(vect_par_constant_low): Check for low-half lanes of a vector.
+
+	2010-08-25  Tejas Belagod  <tejas.belagod@arm.com>
+	* lib/target-supports.exp (check_effective_target_vect_unpack):
+	Set vect_unpack supported flag to true for neon.
+
+2010-09-07  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from gcc-patches:
+	http://gcc.gnu.org/ml/gcc-patches/2010-06/msg00658.html
+
+	gcc/
+	2010-06-07  Matthias Klose  <doko@ubuntu.com>
+	PR bootstrap/43847
+	* configure.ac (--enable-plugin): Enhance for cross builds.
+	* configure: Regenerate.
+
+2010-09-06  Mark Mitchell  <mark@codesourcery.com>
+
+	Issue #9022
+
+	Backport from mainline:
+	2010-09-05  Mark Mitchell  <mark@codesourcery.com>
+	* doc/invoke.texi: Document -Wdouble-promotion.
+	* c-typeck.c (convert_arguments): Check for implicit conversions
+	from float to double.
+	(do_warn_double_promotion): New function.
+	(build_conditional_expr): Use it.
+	(build_binary_op): Likewise.
+	* c.opt (Wdouble-promotion): New.
+	2010-09-05  Mark Mitchell  <mark@codesourcery.com>
+	* gcc.dg/Wdouble-promotion.c: New.
+	2010-09-06  Mark Mitchell  <mark@codesourcery.com>
+	gcc/
+	* c-common.h (do_warn_double_promotion): Declare.
+	* c-common.c (do_warn_double_promotion): Define.
+	* c-typeck.c (do_warn_double_promotion): Remove.
+	* doc/invoke.texi (-Wdouble-promotion): Note available for C++ and
+	Objective-C++ too.
+	gcc/cp/
+	* typeck.c (cp_build_binary_op): Call do_warn_double_promotion.
+	* call.c (build_conditional_expr): Likewise.
+	(convert_arg_to_ellipsis): Likewise.
+	gcc/testsuite/
+	* g++.dg/warn/Wdouble-promotion.C: New.
+
+2010-08-31  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-04-14  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/21803
+	gcc/
+	* ifcvt.c (cond_exec_process_if_block): Look for identical sequences
+	at the start and end of the then/else blocks, and omit them from the
+	conversion.
+	* cfgcleanup.c (flow_find_cross_jump): No longer static.  Remove MODE
+	argument; all callers changed.  Pass zero to old_insns_match_p instead.
+	(flow_find_head_matching_sequence): New function.
+	(old_insns_match_p): Check REG_EH_REGION notes for calls.
+	* basic-block.h (flow_find_cross_jump,
+	flow_find_head_matching_sequence): Declare functions.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42496.c: New test.
+
+	2010-04-22  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR middle-end/29274
+	gcc/
+	* tree-pass.h (pass_optimize_widening_mul): Declare.
+	* tree-ssa-math-opts.c (execute_optimize_widening_mul,
+	gate_optimize_widening_mul): New static functions.
+	(pass_optimize_widening_mul): New.
+	* expr.c (expand_expr_real_2) <case WIDEN_MULT_EXPR>: New case.
+	<case MULT_EXPR>: Remove support for widening multiplies.
+	* tree.def (WIDEN_MULT_EXPR): Tweak comment.
+	* cfgexpand.c (expand_debug_expr) <case WIDEN_MULT_EXPR>: Use
+	simplify_gen_unary rather than directly building extensions.
+	* tree-cfg.c (verify_gimple_assign_binary): Add tests for
+	WIDEN_MULT_EXPR.
+	* expmed.c (expand_widening_mult): New function.
+	* passes.c (init_optimization_passes): Add pass_optimize_widening_mul.
+	* optabs.h (expand_widening_mult): Declare.
+
+	gcc/testsuite/
+	* gcc.target/i386/wmul-1.c: New test.
+	* gcc.target/i386/wmul-2.c: New test.
+	* gcc.target/bfin/wmul-1.c: New test.
+	* gcc.target/bfin/wmul-2.c: New test.	
+	* gcc.target/arm/wmul-1.c: New test.
+	* gcc.target/arm/wmul-2.c: New test.
+
+	2010-04-24  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR tree-optimization/41442
+	gcc/
+	* fold-const.c (merge_truthop_with_opposite_arm): New function.
+	(fold_binary_loc): Call it.
+
+	gcc/testsuite/
+	* gcc.target/i386/pr41442.c: New test.
+
+	2010-04-29  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/42895
+	gcc/
+	* doc/tm.texi (ADJUST_REG_ALLOC_ORDER): Renamed from
+	ORDER_REGS_FOR_LOCAL_ALLOC.  All instances of this macro changed.
+	(HONOR_REG_ALLOC_ORDER): Describe new macro.
+	* ira.c (setup_alloc_regs): Use ADJUST_REG_ALLOC_ORDER if defined.
+	* ira-color.c (assign_hard_reg): Take prologue/epilogue costs into
+	account only if HONOR_REG_ALLOC_ORDER is not defined.
+	* config/arm/arm.h (HONOR_REG_ALLOC_ORDER): Define.
+	* system.h (ORDER_REGS_FOR_LOCAL_ALLOC): Poison.
+
+	2010-05-04  Mikael Pettersson  <mikpe@it.uu.se>
+
+	PR bootstrap/43964
+	gcc/
+	* ira-color.c (assign_hard_reg): Declare rclass and add_cost
+	only if HONOR_REG_ALLOC_ORDER is not defined.
+
+	2010-06-04  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR rtl-optimization/39871
+	PR rtl-optimization/40615
+	PR rtl-optimization/42500
+	PR rtl-optimization/42502
+	gcc/
+	* ira.c (init_reg_equiv_memory_loc: New function.
+	(ira): Call it twice.
+	* reload.h (calculate_elim_costs_all_insns): Declare.
+	* ira-costs.c: Include "reload.h".
+	(regno_equiv_gains): New static variable.
+	(init_costs): Allocate it.
+	(finish_costs): Free it.
+	(ira_costs): Call calculate_elim_costs_all_insns.
+	(find_costs_and_classes): Take estimated elimination costs
+	into account.
+	(ira_adjust_equiv_reg_cost): New function.
+	* ira.h (ira_adjust_equiv_reg_cost): Declare it.
+	* reload1.c (init_eliminable_invariants, free_reg_equiv,
+	elimination_costs_in_insn, note_reg_elim_costly): New static functions.
+	(elim_bb): New static variable.
+	(reload): Move code out of here into init_eliminable_invariants and
+	free_reg_equiv.  Call them.
+	(calculate_elim_costs_all_insns): New function.
+	(eliminate_regs_1): Declare.  Add extra arg FOR_COSTS;
+	all callers changed.  If FOR_COSTS is true, don't call alter_reg,
+	but call note_reg_elim_costly if we turned a valid memory address
+	into an invalid one.
+	* Makefile.in (ira-costs.o): Depend on reload.h.
+
+	gcc/testsuite/
+	* gcc.target/arm/eliminate.c: New test.
+
+	2010-06-09  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (thumb2_reorg): New function.
+	(arm_reorg): Call it.
+	* config/arm/thumb2.md (define_peephole2 for flag clobbering
+	arithmetic operations): Delete.
+
+	2010-06-12  Bernd Schmidt  <bernds@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (thumb2_reorg): Fix errors in previous change.
+
+	2010-06-17  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR rtl-optimization/39871
+	gcc/
+	* reload1.c (init_eliminable_invariants): For flag_pic, disable
+	equivalences only for constants that aren't LEGITIMATE_PIC_OPERAND_P.
+	(function_invariant_p): Rule out a plus of frame or arg pointer with
+	a SYMBOL_REF.
+	* ira.c (find_reg_equiv_invariant_const): Likewise.
+
+	2010-06-18  Eric Botcazou  <ebotcazou@adacore.com>
+
+	PR rtl-optimization/40900
+	gcc/
+	* expr.c (expand_expr_real_1) <SSA_NAME>: Fix long line.  Save the
+	original expression for later reuse.
+	<expand_decl_rtl>: Use promote_function_mode to compute the signedness
+	of the promoted RTL for a SSA_NAME on the LHS of a call statement.
+
+	2010-06-18  Bernd Schmidt  <bernds@codesourcery.com>
+	gcc/testsuite/
+	* gcc.target/arm/pr40900.c: New test.
+
+	2010-06-30  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR tree-optimization/39799
+	gcc/
+	* tree-inline.c (remap_ssa_name): Initialize variable only if
+	SSA_NAME_OCCURS_IN_ABNORMAL_PHI.
+	* tree-ssa.c (warn_uninit): Avoid emitting an unnecessary message.
+
+	gcc/testsuite/
+	* c-c++-common/uninit-17.c: New test.
+
+	2010-07-25  Eric Botcazou  <ebotcazou@adacore.com>
+
+	PR target/44484
+	gcc/
+	* config/sparc/predicates.md (memory_reg_operand): Delete.
+	* config/sparc/sync.md (sync_compare_and_swap): Minor tweaks.
+	(*sync_compare_and_swap): Encode the address form in the pattern.
+	(*sync_compare_and_swapdi_v8plus): Likewise.
+
+2010-08-29  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-04-16  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/41514
+	gcc/
+	* config/arm/arm.md (cbranchsi4_insn): Renamed from "*cbranchsi4_insn".
+	If the previous insn is a cbranchsi4_insn with the same arguments,
+	omit the compare instruction.
+
+	gcc/testsuite/
+	* gcc.target/arm/thumb-comparisons.c: New test.
+
+	gcc/
+	* config/arm/arm.md (addsi3_cbranch): If destination is a high
+	register, inputs must be low registers and we need a low register
+	scratch.  Handle alternative 2 like alternative 3.
+
+	PR target/40603
+	gcc/
+	* config/arm/arm.md (cbranchqi4): New pattern.
+	* config/arm/predicates.md (const0_operand,
+	cbranchqi4_comparison_operator): New predicates.
+
+	gcc/testsuite/
+	* gcc.target/arm/thumb-cbranchqi.c: New test.
+
+	2010-04-27  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/40657
+	gcc/
+	* config/arm/arm.c (thumb1_extra_regs_pushed): New function.
+	(thumb1_expand_prologue, thumb1_output_function_prologue): Call it
+	here to determine which regs to push and how much stack to reserve.
+
+	gcc/testsuite/
+	* gcc.target/arm/thumb-stackframe.c: New test.
+
+	2010-07-02  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/42835
+	gcc/
+	* config/arm/arm-modes.def (CC_NOTB): New mode.
+	* config/arm/arm.c (get_arm_condition_code): Handle it.
+	* config/arm/thumb2.md (thumb2_compare_scc): Delete pattern.
+	* config/arm/arm.md (subsi3_compare0_c): New pattern.
+	(compare_scc): Now a define_and_split.  Add a number of extra
+	splitters before it.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42835.c: New test.
+
+	PR target/42172
+	gcc/
+	* config/arm/arm.c (thumb1_rtx_costs): Improve support for SIGN_EXTEND
+	and ZERO_EXTEND.
+	(arm_rtx_costs_1): Likewise.
+	(arm_size_rtx_costs): Use arm_rtx_costs_1 for these codes.
+	* config/arm/arm.md (is_arch6): New attribute.
+	(zero_extendhisi2, zero_extendqisi2, extendhisi2,
+	extendqisi2): Tighten the code somewhat, avoiding invalid
+	RTL to occur in the expander patterns.
+	(thumb1_zero_extendhisi2): Merge with thumb1_zero_extendhisi2_v6.
+	(thumb1_zero_extendhisi2_v6): Delete.
+	(thumb1_extendhisi2): Merge with thumb1_extendhisi2_v6.
+	(thumb1_extendhisi2_v6): Delete.
+	(thumb1_extendqisi2): Merge with thumb1_extendhisi2_v6.
+	(thumb1_extendqisi2_v6): Delete.
+	(zero_extendhisi2 for register input splitter): New.
+	(zero_extendqisi2 for register input splitter): New.
+	(thumb1_extendhisi2 for register input splitter): New.
+	(extendhisi2 for register input splitter): New.
+	(extendqisi2 for register input splitter): New.
+	(TARGET_THUMB1 extendqisi2 for memory input splitter): New.
+	(arm_zero_extendhisi2): Allow nonimmediate_operand for operand 1,
+	and add support for a register alternative requiring a split.
+	(thumb1_zero_extendqisi2): Likewise.
+	(arm_zero_extendqisi2): Likewise.
+	(arm_extendhisi2): Likewise.
+	(arm_extendqisi2): Likewise.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42172-1.c: New test.
+
+	2010-07-05  Bernd Schmidt  <bernds@codesourcery.com>
+
+	* config/arm/arm.c (get_arm_condition_code): Remove CC_NOTBmode case.
+	* arm-modes.def (CC_NOTB): Don't define.
+	* config/arm/arm.md (arm_adddi3): Generate canonical RTL.
+	(adddi_sesidi_di, adddi_zesidi_di): Likewise.
+	(LTUGEU): New code_iterator.
+	(cnb, optab): New corresponding code_attrs.
+	(addsi3_carryin_<optab>): Renamed from addsi3_carryin.  Change pattern
+	to canonical form.  Operands 1 and 2 are commutative.  Parametrize
+	using LTUGEU.
+	(addsi3_carryin_shift_<optab>): Likewise.
+	(addsi3_carryin_alt2_<optab>): Renamed from addsi3_carryin_alt2.
+	Operands 1 and 2 are commutative.  Parametrize using LTUGEU.
+	(addsi3_carryin_alt1, addsi3_carryin_alt3): Remove.
+	(subsi3_compare): Renamed from subsi3_compare0_c.  Change CC_NOTB to
+	CC.
+	(arm_subsi3_insn): Allow constants for operand 0.
+	(compare_scc peephole for eq case): New.
+	(compare_scc splitters): Change CC_NOTB to CC.
+
+	2010-07-09  Bernd Schmidt  <bernds@codesourcery.com>
+
+	PR target/40657
+	gcc/
+	* config/arm/arm.c (thumb1_extra_regs_pushed): New arg FOR_PROLOGUE.
+	All callers changed.
+	Handle the case when we're called for the epilogue.
+	(thumb_unexpanded_epilogue): Use it.
+	(thumb1_expand_epilogue): Likewise.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr40657-1.c: New test.
+	* gcc.target/arm/pr40657-2.c: New test.
+	* gcc.c-torture/execute/pr40657.c: New test.
+
+	gcc/
+	* config/arm/arm.md (addsi3_cbranch): Switch alternatives 0 and 1.
+
+	* config/arm/arm.md (Thumb-1 ldrsb peephole): New.
+
+	* config/arm/arm.md (cbranchqi4): Fix array size.
+	(addsi3_cbranch): Also andle alternative 2 like alternative 3 when
+	calculating length.
+
+2010-08-27  Paul Brook  <paul@codesourcery.com>
+
+	gcc/
+	* config/arm/thumb2.md (thumb_andsi_not_shiftsi_si,
+	thumb2_notsi_shiftsi, thumb2_notsi_shiftsi_compare0,
+	thumb2_not_shiftsi_compare0_scratch, thumb2_cmpsi_shiftsi,
+	thumb2_cmpsi_shiftsi_swp, thumb2_cmpsi_neg_shiftsi,
+	thumb2_arith_shiftsi, thumb2_arith_shiftsi_compare0,
+	thumb2_arith_shiftsi_compare0_scratch, thumb2_sub_shiftsi,
+	thumb2_sub_shiftsi_compare0, thumb2_sub_shiftsi_compare0_scratch):
+	Use const_shift_count predicate for "M" constraints.
+	* config/arm/predicates.md (const_shift_operand): Remove.
+	(const_shift_count): New.
+
+	gcc/testsuite/
+	* gcc.dg/long-long-shift-1.c: New test.
+
+2010-08-26  Paul Brook  <paul@codesourcery.com>
+
+	Merge from Sourcery G++ 4.3/4.4:
+	Issue #1510
+	2007-04-27  Paul Brook  <paul@codesourcery.com>
+	gcc/
+	* cse.c (cse_process_notes): Make sure PLUS are canonical.
+
+2010-08-26  Paul Brook  <paul@codesourcery.com>
+
+	Merge from Sourcery G++ 4.3/4.4:
+	2007-03-30  Paul Brook  <paul@codesourcery.com>
+	gcc/
+	* calls.c (store_one_arg): Check alignment of mode used for save.
+
+2010-08-26  Maciej Rozycki  <macro@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2009-02-17  Andrew Jenner  <andrew@codesourcery.com>
+	            Maciej Rozycki  <macro@codesourcery.com>
+
+	gcc/
+	* unwind.inc (_Unwind_RaiseException): Use return value of
+	uw_init_context.
+	* unwind-dw2.c (uw_init_context): Make macro an expression instead of
+	a statement.
+	(uw_init_context_1): Add return value.
+	* unwind-sjlj.c (uw_init_context): Add return value.
+
+2010-08-26  Andrew Stubbs  <ams@codesourcery.com>
+
+	Merge from Ubuntu GCC:
+
+	GCC bugzilla PR objc/41848.
+
+	gcc/
+	* objc/lang-specs.h: Work around ObjC and -fsection-anchors.
+
+	gcc/testsuite/
+	* objc/execute/forward-1.x: Update for ARM.
+
+2010-08-25  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from FSF:
+
+	2010-08-25  Julian Brown  <julian@codesourcery.com>
+
+	* config/arm/arm.c (arm_issue_rate): Return 2 for Cortex-A5.
+	* config/arm/arm.md (generic_sched): No for Cortex-A5.
+	(generic_vfp): Likewise.
+	(cortex-a5.md): Include.
+	* config/arm/cortex-a5.md: New.
+
+2010-08-25  Andrew Stubbs  <ams@codesourcery.com>
+
+	Revert:
+
+	2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	
+	2010-04-11  Julian Brown  <julian@codesourcery.com>
+
+	Issue #7326
+
+	gcc/
+	* config/arm/arm.c (arm_issue_rate): Return 2 for Cortex-A5.
+	* config/arm/arm.md (generic_sched): No for Cortex-A5.
+	(generic_vfp): Likewise.
+	(cortex-a5.md): Include.
+	* config/arm/cortex-a5.md: New.
+
+2010-08-24  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from FSF:
+
+	2010-08-07  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
+
+	* config/arm/cortex-a9.md: Rewrite VFP Pipeline description.
+	* config/arm/arm.c (arm_xscale_tune): Initialize sched_adjust_cost.
+	 (arm_fastmul_tune,arm_slowmul_tune, arm_9e_tune): Likewise.
+	 (arm_adjust_cost): Split into xscale_sched_adjust_cost and a
+	 generic part.
+	 (cortex_a9_sched_adjust_cost): New function.
+	 (xscale_sched_adjust_cost): New function.
+	* config/arm/arm-protos.h (struct tune_params): New field
+	sched_adjust_cost.
+	* config/arm/arm-cores.def: Adjust costs for cortex-a9.
+
+	2010-04-17  Richard Earnshaw  <rearnsha@arm.com>
+
+	* arm-protos.h (tune_params): New structure.
+	* arm.c (current_tune): New variable.
+	(arm_constant_limit): Delete.
+	(struct processors): Add pointer to the tune parameters.
+	(arm_slowmul_tune): New tuning option.
+	(arm_fastmul_tune, arm_xscale_tune, arm_9e_tune): Likewise.
+	(all_cores): Adjust to pick up the tuning model.
+	(arm_constant_limit): New function.
+	(arm_override_options): Select the appropriate tuning model.  Delete
+	initialization of arm_const_limit.
+	(arm_split_constant): Use the new constant-limit model.
+	(arm_rtx_costs): Pick up the current tuning model.
+	* arm.md (is_strongarm, is_xscale): Delete.
+	* arm-generic.md (load_ldsched_x, load_ldsched): Test explicitly
+	for Xscale variant architectures.
+	(mult_ldsched_strongarm, mult_ldsched): Similarly for StrongARM.
+
+2010-08-23  Andrew Stubbs  <ams@codesourcery.com>
+
+	Backport from FSF:
+
+	2010-08-07  Marcus Shawcroft  <marcus.shawcroft@arm.com>
+
+	gcc/
+	* config/arm/linux-atomic.c (SUBWORD_VAL_CAS): Instantiate with
+	'unsigned short' and 'unsigned char' instead of 'short' and 'char'.
+	(SUBWORD_BOOL_CAS): Likewise.
+	(SUBWORD_SYNC_OP): Likewise.
+	(SUBWORD_TEST_AND_SET): Likewise.
+	(FETCH_AND_OP_WORD): Parenthesise INF_OP
+	(SUBWORD_SYNC_OP): Likewise.
+	(OP_AND_FETCH_WORD): Likewise.
+
+	gcc/testsuite/
+	* lib/target-supports.exp: (check_effective_target_sync_int_long):
+	Add arm*-*-linux-gnueabi.
+	(check_effective_target_sync_char_short): Likewise.
+
+2010-08-20  Jie Zhang  <jie@codesourcery.com>
+
+	Merged from Sourcery G++ 4.4:
+
+	gcc/
+	2009-05-29  Julian Brown  <julian@codesourcery.com>
+	Merged from Sourcery G++ 4.3:
+	* config/arm/arm.md (movsi): Don't split symbol refs here.
+	(define_split): New.
+
+2010-08-18  Julian Brown  <julian@codesourcery.com>
+
+	Issue #9222
+
+	gcc/
+	* config/arm/neon.md (UNSPEC_VCLE, UNSPEC_VCLT): New constants for
+	unspecs.
+	(vcond<mode>, vcondu<mode>): New expanders.
+	(neon_vceq<mode>, neon_vcge<mode>, neon_vcgt<mode>): Support
+	comparisons with zero.
+	(neon_vcle<mode>, neon_vclt<mode>): New patterns.
+	* config/arm/constraints.md (Dz): New constraint.
+
+2010-08-18  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/testsuite/
+	2010-08-18  Jie Zhang  <jie@codesourcery.com>
+	* gcc.dg/builtin-apply2.c (STACK_ARGUMENTS_SIZE): Define to
+	20 if __ARM_PCS is defined otherwise 64.
+	(bar): Use STACK_ARGUMENTS_SIZE for the third argument
+	instead of hard coded 64.
+
+2010-08-13  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-08-13  Jie Zhang  <jie@codesourcery.com>
+	* config/arm/arm.md (cstoredf4): Only valid when
+	!TARGET_VFP_SINGLE.
+
+2010-08-12  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/testsuite/
+	2010-08-12  Jie Zhang  <jie@codesourcery.com>
+	* gcc.dg/graphite/interchange-9.c (M): Define to be 111.
+	(N): Likewise.
+	(main): Adjust accordingly.
+
+2010-08-05  Julian Brown  <julian@codesourcery.com>
+
+	Backport from mainline (candidate patch):
+
+	gcc/
+	* expr.c (expand_assignment): Add assertion to prevent emitting null
+	rtx for movmisalign pattern.
+	(expand_expr_real_1): Likewise.
+	* config/arm/arm.c (arm_builtin_support_vector_misalignment): New.
+	(TARGET_VECTORIZE_SUPPORT_VECTOR_MISALIGNMENT): New. Use above.
+	(arm_vector_alignment_reachable): New.
+	(TARGET_VECTORIZE_VECTOR_ALIGNMENT_REACHABLE): New. Use above.
+	(neon_vector_mem_operand): Disallow PRE_DEC for misaligned loads.
+	(arm_print_operand): Include alignment qualifier in %A.
+	* config/arm/neon.md (UNSPEC_MISALIGNED_ACCESS): New constant.
+	(movmisalign<mode>): New expander.
+	(movmisalign<mode>_neon_store, movmisalign<mode>_neon_load): New
+	insn patterns.
+
+	gcc/testsuite/
+	* gcc.dg/vect/vect-42.c: Use vect_element_align instead of
+	vect_hw_misalign.
+	* gcc.dg/vect/vect-60.c: Likewise.
+	* gcc.dg/vect/vect-56.c: Likewise.
+	* gcc.dg/vect/vect-93.c: Likewise.
+	* gcc.dg/vect/no-scevccp-outer-8.c: Likewise.
+	* gcc.dg/vect/vect-95.c: Likewise.
+	* gcc.dg/vect/vect-96.c: Likewise.
+	* gcc.dg/vect/vect-outer-5.c: Use quad-word vectors when available.
+	* gcc.dg/vect/slp-25.c: Likewise.
+	* gcc.dg/vect/slp-3.c: Likewise.
+	* gcc.dg/vect/vect-multitypes-1.c: Likewise.
+	* gcc.dg/vect/no-vfa-pr29145.c: Likewise.
+	* gcc.dg/vect/vect-multitypes-4.c: Likewise. Use vect_element_align.
+	* gcc.dg/vect/vect-109.c: Likewise.
+	* gcc.dg/vect/vect-peel-1.c: Likewise.
+	* gcc.dg/vect/vect-peel-2.c: Likewise.
+	* lib/target-supports.exp
+	(check_effective_target_arm_vect_no_misalign): New.
+	(check_effective_target_vect_no_align): Use above.
+	(check_effective_target_vect_element_align): New.
+	(add_options_for_quad_vectors): New.
+
+2010-08-05  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #7257
+
+	Backport from mainline:
+
+	gcc/
+	2010-08-05  Jie Zhang  <jie@codesourcery.com>
+	PR tree-optimization/45144
+	* tree-sra.c (type_consists_of_records_p): Return false
+	if the record contains bit-field.
+
+	gcc/testsuite/
+	2010-08-05  Jie Zhang  <jie@codesourcery.com>
+	PR tree-optimization/45144
+	* gcc.dg/tree-ssa/pr45144.c: New test.
+
+2010-08-04  Mark Mitchell  <mark@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/testsuite/
+	2010-08-04  Daniel Gutson  <dgutson@codesourcery.com>
+	* g++.dg/warn/miss-format-1.C: Update line number.
+
+2010-08-04  Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* config/arm/neon-testgen.ml (regexps): Allow any characters
+	in comments after assembly instructions.
+
+	gcc/testsuite/
+	* gcc.target/arm/neon/vfp-shift-a2t2.c: Allow any characters in
+	comments after assembly instructions.
+	* gcc.target/arm/neon/v*.c: Regenerate.
+
+2010-07-28  Maxim Kuvyrkov  <maxim@codesourcery.com>
+
+	Backport code hoisting improvements from mainline:
+
+	2010-07-28  Jakub Jelinek  <jakub@redhat.com>
+	PR debug/45105
+	* gcc.dg/pr45105.c: New test.
+
+	2010-07-28  Jakub Jelinek  <jakub@redhat.com>
+	PR debug/45105
+	* gcse.c (hoist_code): Use FOR_BB_INSNS macro.
+
+	2010-07-28  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/45107
+	* gcc.dg/pr45107.c: New test.
+
+	2010-07-28  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/45107
+	* gcse.c (hash_scan_set): Use max_distance for gcse-las.
+
+	2010-07-28  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/45101
+	* gcc.dg/pr45101.c: New test.
+
+	2010-07-28  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/45101
+	* gcse.c (hash_scan_set): Fix argument ordering of insert_expr_in_table
+	for gcse-las.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/40956
+	PR target/42495
+	PR middle-end/42574
+	* gcc.target/arm/pr40956.c, gcc.target/arm/pr42495.c,
+	* gcc.target/arm/pr42574.c: Add tests.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	* config/arm/arm.c (params.h): Include.
+	(arm_override_options): Tune gcse-unrestricted-cost.
+	* config/arm/t-arm (arm.o): Define dependencies.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR target/42495
+	PR middle-end/42574
+	* basic-block.h (get_dominated_to_depth): Declare.
+	* dominance.c (get_dominated_to_depth): New function, use
+	get_all_dominated_blocks as a base.
+	(get_all_dominated_blocks): Use get_dominated_to_depth.
+	* gcse.c (occr_t, VEC (occr_t, heap)): Define.
+	(hoist_exprs): Remove.
+	(alloc_code_hoist_mem, free_code_hoist_mem): Update.
+	(compute_code_hoist_vbeinout): Add debug print outs.
+	(hoist_code): Partially rewrite, simplify.  Use get_dominated_to_depth.
+	* params.def (PARAM_MAX_HOIST_DEPTH): New parameter to avoid
+	quadratic behavior.
+	* params.h (MAX_HOIST_DEPTH): New macro.
+	* doc/invoke.texi (max-hoist-depth): Document.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/40956
+	* config/arm/arm.c (thumb1_size_rtx_costs): Fix cost of simple
+	constants.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+  	PR target/42495
+  	PR middle-end/42574
+	* config/arm/arm.c (legitimize_pic_address): Use
+	gen_calculate_pic_address pattern to emit calculation of PIC address.
+	(will_be_in_index_register): New function.
+	(arm_legitimate_address_outer_p, thumb2_legitimate_address_p,)
+	(thumb1_legitimate_address_p): Use it provided !strict_p.
+	* config/arm/arm.md (calculate_pic_address): New expand and split.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR target/42495
+	PR middle-end/42574
+	* config/arm/arm.c (thumb1_size_rtx_costs): Add cost for "J" constants.
+	* config/arm/arm.md (define_split "J", define_split "K"): Make
+	IRA/reload friendly.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	* gcse.c (insert_insn_end_basic_block): Update signature, remove
+	unused checks.
+	(pre_edge_insert, hoist_code): Update.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR target/42495
+	PR middle-end/42574
+	* gcse.c (hoist_expr_reaches_here_p): Remove excessive check.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	* gcse.c (hoist_code): Generate new pseudo for every new set insn.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	PR rtl-optimization/40956
+	PR target/42495
+	PR middle-end/42574
+	* gcse.c (compute_code_hoist_vbeinout): Consider more expressions
+	for hoisting.
+	(hoist_code): Count occurences in current block too.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	* gcse.c (struct expr:max_distance): New field.
+	(doing_code_hoisting_p): New static variable.
+	(want_to_gcse_p): Change signature.  Allow constrained hoisting of
+	simple expressions, don't change behavior for PRE.  Set max_distance.
+	(insert_expr_in_table): Set new max_distance field.
+	(hash_scan_set): Update.
+	(hoist_expr_reaches_here_p): Stop search after max_distance
+	instructions.
+	(find_occr_in_bb): New static function.  Use it in ...
+	(hoist_code): Calculate sizes of basic block before any changes are
+	done.  Pass max_distance to hoist_expr_reaches_here_p.
+	(one_code_hoisting_pass): Set doing_code_hoisting_p.
+	* params.def (PARAM_GCSE_COST_DISTANCE_RATIO,)
+	(PARAM_GCSE_UNRESTRICTED_COST): New parameters.
+	* params.h (GCSE_COST_DISTANCE_RATIO, GCSE_UNRESTRICTED_COST): New
+	macros.
+	* doc/invoke.texi (gcse-cost-distance-ratio, gcse-unrestricted-cost):
+	Document.
+
+	2010-07-27  Jeff Law  <law@redhat.com>
+	    Maxim Kuvyrkov  <maxim@codesourcery.com>
+	* gcse.c (compute_transpout, transpout): Remove, move logic
+	to prune_expressions.
+	(compute_pre_data): Move pruning of trapping expressions ...
+	(prune_expressions): ... here.  New static function.
+	(compute_code_hoist_data): Use it.
+	(alloc_code_hoist_mem, free_code_hoist_mem, hoist_code): Update.
+
+	2010-07-27  Maxim Kuvyrkov  <maxim@codesourcery.com>
+	* dbgcnt.def (hoist_insn): New debug counter.
+	* gcse.c (hoist_code): Use it.
+
+2010-07-28  Julian Brown  <julian@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	gcc/
+	* config/arm/thumb2.md (*thumb2_movdf_soft_insn): Fix alternatives
+	for pool ranges.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-06-14  Paul Brook  <paul@codesourcery.com>
+
+	Issue #8879
+	gcc/
+	* config/arm/arm.c (use_vfp_abi): Add sorry() for Thumb-1
+	hard-float ABI.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	
+	2010-06-12  Jie Zhang  <jie@codesourcery.com>
+
+	gcc/
+	* config/arm/vfp.md (arm_movsi_vfp): Set neon_type correctly
+	for neon_ldr and neon_str instructions.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	
+	2010-04-11  Julian Brown  <julian@codesourcery.com>
+
+	Issue #7326
+
+	gcc/
+	* config/arm/arm.c (arm_issue_rate): Return 2 for Cortex-A5.
+	* config/arm/arm.md (generic_sched): No for Cortex-A5.
+	(generic_vfp): Likewise.
+	(cortex-a5.md): Include.
+	* config/arm/cortex-a5.md: New.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-04-12  Andrew Stubbs  <ams@codesourcery.com>
+
+	Issue #7178
+
+	gcc/
+	* config/arm/arm.c (arm_init_libfuncs): Change __gnu_f2h_ieee to
+	__aeabi_f2h, __gnu_f2h_alternative to __aeabi_f2h_alt, __gnu_h2f_ieee
+	to __aeabi_h2f, and __gnu_h2f_alternative to __aeabi_h2f_alt.
+	* config/arm/fp16.c (__gnu_f2h_internal): Change return type to
+	unsigned int. Change 'sign' variable likewise.
+	(__gnu_h2f_internal): Set to static inline.
+	Change return type to unsigned int. Change 'sign' variable likewise.
+	(ALIAS): New define.
+	(__gnu_f2h_ieee): Change unsigned short to unsigned int.
+	(__gnu_h2f_ieee): Likewise.
+	(__gnu_f2h_alternative): Likewise.
+	(__gnu_h2f_alternative): Likewise.
+	(__aeabi_f2h, __aeabi_h2f): New aliases.
+	(__aeabi_f2h_alt, __aeabi_h2f_alt): Likewise.
+	* config/arm/sfp-machine.h (__extendhfsf2): Set to __aeabi_h2f.
+	(__truncsfhf2): Set to __aeabi_f2h.
+
+	gcc/testsuite/
+	* g++.dg/ext/arm-fp16/arm-fp16-ops-5.C: Check for __aeabi_h2f
+	and __aeabi_f2h.
+	* g++.dg/ext/arm-fp16/arm-fp16-ops-6.C: Likewise.
+	* gcc.dg/torture/arm-fp16-ops-5.c: Likewise.
+	* gcc.dg/torture/arm-fp16-ops-6.c: Likewise.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	Richard Earnshaw  <rearnsha@arm.com>
+
+	gcc/
+	* doc/tm.texi (OVERLAPPING_REGISTER_NAMES): Document new macro.
+	* output.h (decode_reg_name_and_count): Declare.
+	* varasm.c (decode_reg_name_and_count): New function.
+	(decode_reg_name): Reimplement using decode_reg_name_and_count.
+	* reginfo.c (fix_register): Use decode_reg_name_and_count and 
+	iterate over all regs used.
+	* stmt.c (expand_asm_operands): Likewise.
+	* config/arm/aout.h (OVERLAPPING_REGISTER_NAMES): Define.
+	(ADDITIONAL_REGISTER_NAMES): Remove aliases that overlap
+	multiple machine registers.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-04-08  Bernd Schmidt  <bernds@codesourcery.com>
+
+	Issue #6952
+
+	gcc/
+	* ira-costs.c (record_reg_classes): Ignore alternatives that are 
+	not enabled. 
+	* config/arm/vfp.md (arm_movdi_vfp): Enable only when not tuning
+	for Cortex-A8.
+	(arm_movdi_vfp_cortexa8): New pattern.
+	* config/arm/neon.md (adddi3_neon, subdi3_neon, anddi3_neon,
+	iordi3_neon, xordi3_neon): Add alternatives to discourage Neon
+	instructions when tuning for Cortex-A8.  Set attribute "alt_tune".
+	* config/arm/arm.md (define_attr "alt_tune", define_attr "enabled"):
+	New.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-04-07  Thomas Schwinge  <thomas@codesourcery.com>
+		    Daniel Jacobowitz  <dan@codesourcery.com>
+
+	Issue #6715
+
+	PR debug/40521
+
+	gcc/
+	* dwarf2out.c (NEED_UNWIND_TABLES): Define.
+	(dwarf2out_do_frame, dwarf2out_do_cfi_asm, dwarf2out_begin_prologue)
+	(dwarf2out_frame_finish, dwarf2out_assembly_start): Use it.
+	(dwarf2out_assembly_start): Correct logic for TARGET_UNWIND_INFO.
+	* config/arm/arm.h (DWARF2_UNWIND_INFO): Remove definition.
+	* config/arm/bpabi.h (DWARF2_UNWIND_INFO): Define to zero.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	Jie Zhang  <jie@codesourcery.com>
+
+	Issue #7122
+
+	gcc/
+	* config/arm/arm.c (arm_rtx_costs_1): Adjust cost for
+	CONST_VECTOR.
+	(arm_size_rtx_costs): Likewise.
+	(thumb2_size_rtx_costs): Likewise.
+	(neon_valid_immediate): Add a case for double 0.0.
+
+	gcc/testsuite/
+	* gcc.target/arm/neon-vdup-1.c: New test case.
+	* gcc.target/arm/neon-vdup-2.c: New test case.
+	* gcc.target/arm/neon-vdup-3.c: New test case.
+	* gcc.target/arm/neon-vdup-4.c: New test case.
+	* gcc.target/arm/neon-vdup-5.c: New test case.
+	* gcc.target/arm/neon-vdup-6.c: New test case.
+	* gcc.target/arm/neon-vdup-7.c: New test case.
+	* gcc.target/arm/neon-vdup-8.c: New test case.
+	* gcc.target/arm/neon-vdup-9.c: New test case.
+	* gcc.target/arm/neon-vdup-10.c: New test case.
+	* gcc.target/arm/neon-vdup-11.c: New test case.
+	* gcc.target/arm/neon-vdup-12.c: New test case.
+	* gcc.target/arm/neon-vdup-13.c: New test case.
+	* gcc.target/arm/neon-vdup-14.c: New test case.
+	* gcc.target/arm/neon-vdup-15.c: New test case.
+	* gcc.target/arm/neon-vdup-16.c: New test case.
+	* gcc.target/arm/neon-vdup-17.c: New test case.
+	* gcc.target/arm/neon-vdup-18.c: New test case.
+	* gcc.target/arm/neon-vdup-19.c: New test case.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	Jie Zhang  <jie@codesourcery.com>
+
+	Issue #7122
+
+	gcc/
+	* config/arm/vfp.md (movdf_vfp): Add load double 0.0 case.
+	(thumb2_movdf_vfp): Likewise. Require that one of the operands be a
+	register.
+	* config/arm/constraints.md (D0): New constraint.
+	
+	gcc/testsuite/
+	* gcc.target/arm/neon-load-df0.c: New test.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-02-23  Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (thumb2_size_rtx_costs): New.
+	(arm_rtx_costs): Call above for Thumb-2.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-02-23  Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* calls.c (precompute_register_parameters): Avoid generating a
+	register move if optimizing for size.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-02-15  Julian Brown  <julian@codesourcery.com>
+
+	Issue #7486
+
+	gcc/
+	* config/arm/arm.c (arm_libcall_uses_aapcs_base)
+	(arm_init_cumulative_args): Use correct ABI for double-precision
+	helper functions in hard-float mode if only single-precision
+	arithmetic is supported in hardware.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	Julian Brown  <julian@codesourcery.com>
+	Mark Mitchell  <mark@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (arm_function_ok_for_sibcall): Only forbid
+	sibling calls for Thumb-1.
+	* config/arm/arm.h (USE_RETURN_INSN): Enable for Thumb-2.
+	* config/arm/arm.md (*call_symbol, *call_value_symbol): Use for
+	Thumb-2.
+	(*call_insn, *call_value_insn): Don't use for Thumb-2.
+	(sibcall, sibcall_value, *sibcall_insn, *sibcall_value_insn): Use
+	for Thumb-2.
+	(return): New expander.
+	(*arm_return): New name for ARM return insn.
+	* config/arm/thumb2.md (*thumb2_return): New insn pattern.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-02-04  Daniel Jacobowitz  <dan@codesourcery.com>
+
+	Issue #7197 - backtrace() through throw()
+
+	libstdc++-v3/
+	* libsupc++/eh_personality.cc (PERSONALITY_FUNCTION): For
+	ARM EABI, skip handlers for _US_VIRTUAL_UNWIND_FRAME
+	| _US_FORCE_UNWIND.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	2010-02-03  Daniel Gutson  <dgutson@codesourcery.com>
+
+	Issue #6472
+
+	gcc/
+	* config/arm/lib1funcs.asm (__ARM_ARCH__): __ARM_ARCH_7EM__
+	added to the preprocessor condition.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	gcc/
+	* config/arm/thumb2.md (*thumb2_addsi3_compare0): New.
+	(*thumb2_addsi3_compare0_scratch): New.
+	* config/arm/constraints.md (Pv): New.
+	* config/arm/arm.md (*addsi3_compare0): Remove FIXME comment. Use
+	for ARM mode only.
+	(*addsi3_compare0_scratch): Likewise.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-05-25  Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (arm_tune_cortex_a5): New.
+	(arm_override_options): Set above. Set max_insns_skipped to 1 for
+	Cortex-A5.
+	* config/arm/arm.h (arm_tune_cortex_a5): Add declaration.
+	(BRANCH_COST): Set to zero for Cortex-A5 unless optimising for
+	size.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2009-08-26  Julian Brown  <julian@codesourcery.com>
+
+	gcc/config/arm/
+	* uclinux-eabi.h (LINK_GCC_C_SEQUENCE_SPEC): Override definition
+	for uclinux.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	
+	2009-08-26  Kazu Hirata  <kazu@codesourcery.com>
+
+	Issue #6089
+	gcc/
+	* config/arm/arm.c (arm_rtx_costs_1): Don't special case for
+	Thumb-2 in the MINUS case.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	gcc/
+	* gengtype-lex.l: Add HARD_REG_SET.
+	* expr.c (expand_expr_real_1): Record writes to hard registers.
+	* function.h (rtl_data): Add asm_clobbers.
+	* ira.c (compute_regs_asm_clobbered): Use crtl->asm_clobbers.
+	(ira_setup_eliminable_regset): Remove regs_asm_clobbered.
+	Use crtl->asm_clobbers.
+
+	gcc/testsuite/
+	* gcc.target/arm/frame-pointer-1.c: New test.
+	* gcc.target/i386/pr9771-1.c: Move code out of main to allow frame
+	pointer elimination.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2009-06-23  Kazu Hirata  <kazu@codesourcery.com>
+
+	Issue #4613
+	gcc/
+	* config/arm/arm.c (arm_rtx_costs_1): Teach that the cost of MLS
+	is the same as its underlying multiplication.
+	* config/arm/arm.md (two splitters): New.
+	* config/arm/predicates.md (binary_operator): New.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2008-09-08  Daniel Jacobowitz  <dan@codesourcery.com>
+
+	gcc/
+	* config/arm/unwind-arm.c (__gnu_unwind_pr_common): Correct test
+	for barrier handlers.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	gcc/
+	* config/arm/arm.c (arm_override_options): Override alignments if
+	tuning for Cortex-A8.
+	(create_fix_barrier, arm_reorg): If aligning to jumps or loops,
+	make labels have a size.
+	* config/arm/arm.md (VUNSPEC_ALIGN16, VUNSPEC_ALIGN32): New constants.
+	(align_16, align_32): New patterns.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	
+	Mark Shinwell  <shinwell@codesourcery.com>
+
+	gcc/
+	* config/arm/vfp.md (*arm_movsi_vfp, *thumb2_movsi_vfp)
+	(*arm_movdi_vfp, *thumb2_movdi_vfp, *movsf_vfp, *thumb2_movsf_vfp)
+	(*movdf_vfp, *thumb2_movdf_vfp, *movsfcc_vfp, *thumb2_movsfcc_vfp)
+	(*movdfcc_vfp, *thumb2_movdfcc_vfp): Add neon_type.
+	* config/arm/arm.md (neon_type): Update comment.
+
+2010-08-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-08-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2010.08-1 released.
+
+	gcc/
+	*REVISION: Update.
+
+2010-08-06  Yao Qi  <yao@codesourcery.com>
+
+	LP: #612011
+	gcc/ 
+	* config/arm/arm.c (output_move_double): Fix typo generating 
+	instructions ('ldr'->'str').
+
+	gcc/testsuite/
+	* gcc.target/arm/pr45094.c: New test.
+
+2010-08-02  Ulrich Weigand  <uweigand@de.ibm.com>
+
+	LP: #604874
+	Backport from mainline:
+
+	gcc/cp/
+	PR c++/45112
+	* decl.c (duplicate_decls): Merge DECL_USER_ALIGN and DECL_PACKED.
+
+	gcc/testsuite/
+	PR c++/45112
+	* testsuite/g++.dg/pr45112.C: New test.
+
+2010-08-10  Andrew Stubbs  <ams@codesourcery.com>
+
+	Merge from FSF GCC 4.5.1.
+
+2010-08-06  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/
+	* REVISION: Bump version.
+
+2010-08-06  Andrew Stubbs  <ams@codesourcery.com>
+
+	GCC Linaro 4.5-2010.08-0 released.
+
+	gcc/
+	* REVISION: New file.
+	* DEV-PHASE: Set to "Linaro".
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Backport from FSF mainline:
+
+	Mark Shinwell  <shinwell@codesourcery.com>
+	Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* config/arm/thumb2.md (thumb2_movsi_insn): Split ldr and str
+	alternatives according to use of high and low regs.
+	* config/arm/vfp.md (thumb2_movsi_vfp): Likewise.
+	* config/arm/arm.h (CONDITIONAL_REGISTER_USAGE): Use high regs when
+	optimizing for size on Thumb-2.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	
+	http://gcc.gnu.org/ml/gcc-patches/2006-03/msg00038.html
+
+	* g++.dg/other/armv7m-1.C: New.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	http://gcc.gnu.org/ml/gcc-patches/2006-04/msg00811.html
+
+	Kazu Hirata  <kazu@codesourcery.com>
+
+	gcc/testsuite/
+	* gcc.target/arm/vfp-ldmdbd.c, gcc.target/arm/vfp-ldmdbs.c,
+	gcc.target/arm/vfp-ldmiad.c, gcc.target/arm/vfp-ldmias.c,
+	gcc.target/arm/vfp-stmdbd.c, gcc.target/arm/vfp-stmdbs.c,
+	gcc.target/arm/vfp-stmiad.c, gcc.target/arm/vfp-stmias.c: New.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	Julian Brown  <julian@codesourcery.com>
+	Mark Shinwell  <mark@codesourcery.com>
+
+	gcc/
+	* regrename.c (addresses.h): Move include of addresses.h after
+	include of flags.h.
+	* recog.c: Likewise.
+	* regcprop.c: Likewise.
+	* config/arm/arm.h (CLASS_LIKELY_SPILLED_P): Check against
+	LO_REGS only for Thumb-1.
+	(MODE_BASE_REG_CLASS): Restrict base registers to those which can
+	be used in short instructions when optimising for size on Thumb-2.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	Vladimir Prus  <vladimir@codesourcery.com>
+	Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (arm_override_options): Warn if mlow-irq-latency is
+	specified in Thumb mode.
+	(load_multiple_sequence): Return 0 if low irq latency is requested.
+	(store_multiple_sequence): Likewise.
+	(arm_gen_load_multiple): Load registers one-by-one if low irq latency
+	is requested.
+	(arm_gen_store_multiple): Likewise.
+	(vfp_output_fldmd): When low_irq_latency is non zero, pop each
+	register separately.
+	(vfp_emit_fstmd): When low_irq_latency is non zero, save each register
+	separately.
+	(arm_get_vfp_saved_size): Adjust saved register size calculation for
+	the above changes.
+	(print_pop_reg_by_ldr): New.
+	(arm_output_epilogue): Use print_pop_reg_by_ldr when low irq latency
+	is requested.
+	(emit_multi_reg_push): Push registers separately if low irq latency
+	is requested.
+	* config/arm/arm.h (TARGET_CPU_CPP_BUILTINS): Set __low_irq_latency__.
+	(low_irq_latency): Define.
+	(USE_RETURN_INSN): Don't use return insn when low irq latency is
+	requested.
+	* config/arm/lib1funcs.asm (do_pop, do_push): Define as variadic
+	macros. When __low_irq_latency__ is defined, push and pop registers
+	individually.
+	(div0): Use correct punctuation.
+	* config/arm/ieee754-df.S: Adjust syntax of using do_push.
+	* config/arm/ieee754-sf.S: Likewise.
+	* config/arm/bpabi.S: Likewise.
+	* config/arm/arm.opt (mlow-irq-latency): New option.
+	* config/arm/predicates.md (load_multiple_operation): Return false is
+	low irq latency is requested.
+	(store_multiple_operation): Likewise.
+	* config/arm/arm.md (movmemqi): Don't use it if low irq latency is
+	requested.
+	* doc/invoke.texi (-mlow-irq-latency): Add documentation.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2007-06-06  Joseph Myers  <joseph@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.h (VALID_IWMMXT_REG_MODE): Allow SImode.
+	(ARM_LEGITIMIZE_RELOAD_ADDRESS): Reduce range allowed for SImode
+	offsets with iWMMXt.
+	* config/arm/arm.c (arm_hard_regno_mode_ok): Update for change to
+	VALID_IWMMXT_REG_MODE.
+
+2010-07-26  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2007-07-05  Mark Shinwell  <shinwell@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.h (BRANCH_COST): Set to 1 when optimizing for size
+	on Thumb-2.
+
+2010-08-05  Andrew Stubbs  <ams@codesourcery.com>
+
+	gcc/testsuite/
+	* gcc.dg/vect/vect-shift-2.c: Revert all previous changes.
+	* gcc.dg/vect/vect-shift-4.c: New file.
+
+	2010-07-20  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:	
+	2009-06-16  Daniel Jacobowitz  <dan@codesourcery.com>
+	
+	Merge from Sourcery G++ 4.3:
+	2008-12-03  Daniel Jacobowitz  <dan@codesourcery.com>
+
+	gcc/testsuite/
+	* gcc.dg/vect/vect-shift-2.c, gcc.dg/vect/vect-shift-3.c: New.
+	* lib/target-supports.exp (check_effective_target_vect_shift_char): New
+	function.
+
+2010-07-24  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-04-10  Wei Guozhi  <carrot@google.com>
+
+	PR target/42601
+	gcc/
+	* config/arm/arm.c (arm_pic_static_addr): New function.
+	(legitimize_pic_address): Call arm_pic_static_addr when it detects
+	a static symbol.
+	(arm_output_addr_const_extra): Output expression for new pattern.
+	* config/arm/arm.md (UNSPEC_SYMBOL_OFFSET): New unspec symbol.
+
+	2010-07-22  Sandra Loosemore  <sandra@codesourcery.com>
+
+	PR tree-optimization/39839
+	gcc/testsuite/
+	* gcc.target/arm/pr39839.c: New test case.
+
+2010-07-24  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #9079
+
+	Backport from mainline:
+
+	gcc/
+	2010-07-23  Jie Zhang  <jie@codesourcery.com>
+	PR target/44290
+	* attribs.c (decl_attributes): Insert "noinline" and "noclone"
+	if "naked".
+	* tree-sra.c (ipa_sra_preliminary_function_checks): Return
+	false if ! tree_versionable_function_p.
+
+	gcc/testsuite/
+	2010-07-23  Jie Zhang  <jie@codesourcery.com>
+	PR target/44290
+	* gcc.dg/pr44290-1.c: New test.
+	* gcc.dg/pr44290-2.c: New test.
+
+2010-07-22  Maxim Kuvyrkov  <maxim@codesourcery.com>
+
+	Backport from FSF GCC 4.5 branch to fix PR45015:
+
+	2010-07-22  Jakub Jelinek  <jakub@redhat.com>
+	PR debug/45015
+	* var-tracking.c (adjust_mems): Ignore ASM_OPERANDS with non-zero
+	ASM_OPERANDS_OUTPUT_IDX.
+	(adjust_insn): For inline asm with multiple sets ensure first
+	ASM_OPERANDS vectors are used by all following ASM_OPERANDS in
+	the insn.
+
+	2010-07-22  Jakub Jelinek  <jakub@redhat.com>
+	PR debug/45015
+	* gcc.target/m68k/pr45015.c: New test.
+
+2010-07-20  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+	2010-06-07  Kazu Hirata  <kazu@codesourcery.com>
+
+	Issue #8535
+
+	Backport from mainline:
+	gcc/
+	2010-06-07  Kazu Hirata  <kazu@codesourcery.com>
+	PR rtl-optimization/44404
+	* auto-inc-dec.c (find_inc): Use reg_overlap_mentioned_p instead
+	of count_occurrences to see if it's safe to modify mem_insn.insn.
+
+	gcc/testsuite/
+	2010-06-07  Kazu Hirata  <kazu@codesourcery.com>
+	PR rtl-optimization/44404
+	* gcc.dg/pr44404.c: New.
+
+2010-08-03  Chung-Lin Tang  <cltang@codesourcery.com>
+
+	Backport from mainline:
+
+	gcc/
+	2010-07-28  Chung-Lin Tang  <cltang@codesourcery.com>
+	* config/arm/arm.c (arm_pcs_default): Remove static.	
+	* config/arm/arm.h (TARGET_CPU_CPP_BUILTINS): Define __ARM_PCS or
+	__ARM_PCS_VFP to indicate soft/hard-float calling convention.
+	(arm_pcs_default): Declare.
+
+2010-07-16  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #7688
+
+	Backport from mainline:
+
+	gcc/
+	2010-07-12  Jie Zhang  <jie@codesourcery.com>
+	* postreload.c (reg_symbol_ref[]): New.
+	(move2add_use_add2_insn): New.
+	(move2add_use_add3_insn): New.
+	(reload_cse_move2add): Handle SYMBOL + OFFSET case.
+	(move2add_note_store): Likewise.
+
+2010-07-15  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-02-25  Maxim Kuvyrkov  <maxim@codesourcery.com>
+
+	gcc/
+	* tree.c (initializer_zerop): Handle STRING_CST.
+
+2010-07-15  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-06-09  Sandra Loosemore  <sandra@codesourcery.com>
+
+	gcc/	
+	* tree-ssa-loop-ivopts.c (adjust_setup_cost): New function.
+	(get_computation_cost_at): Use it.
+	(determine_use_iv_cost_condition): Likewise.
+	(determine_iv_cost): Likewise.
+
+	2010-07-05  Sandra Loosemore  <sandra@codesourcery.com>
+
+	PR middle-end/42505
+
+	gcc/
+	* tree-ssa-loop-ivopts.c (determine_set_costs): Delete obsolete
+	comments about cost model.
+	(try_add_cand_for):  Add second strategy for choosing initial set
+	based on original IVs, controlled by ORIGINALP argument.
+	(get_initial_solution): Add ORIGINALP argument.
+	(find_optimal_iv_set_1): New function, split from find_optimal_iv_set.
+	(find_optimal_iv_set): Try two different strategies for choosing
+	the IV set, and return the one with lower cost.
+
+	gcc/testsuite/
+	* gcc.target/arm/pr42505.c: New test case.
+
+	2010-07-10  Sandra Loosemore  <sandra@codesourcery.com>
+
+	PR middle-end/42505
+
+	gcc/
+	* tree-inline.c (estimate_num_insns): Refactor builtin complexity
+	lookup code into....
+	* builtins.c (is_simple_builtin, is_inexpensive_builtin): ...these
+	new functions.
+	* tree.h (is_simple_builtin, is_inexpensive_builtin): Declare.
+	* cfgloopanal.c (target_clobbered_regs): Define.
+	(init_set_costs): Initialize target_clobbered_regs.
+	(estimate_reg_pressure_cost): Add call_p argument.  When true,
+	adjust the number of available registers to exclude the
+	call-clobbered registers.
+	* cfgloop.h (target_clobbered_regs): Declare.
+	(estimate_reg_pressure_cost): Adjust declaration.
+	* tree-ssa-loop-ivopts.c (struct ivopts_data): Add body_includes_call.
+	(ivopts_global_cost_for_size): Pass it to estimate_reg_pressure_cost.
+	(determine_set_costs): Dump target_clobbered_regs.
+	(loop_body_includes_call): New function.
+	(tree_ssa_iv_optimize_loop): Use it to initialize new field.
+	* loop-invariant.c (gain_for_invariant): Adjust arguments to pass
+	call_p flag through.
+	(best_gain_for_invariant): Likewise.
+	(find_invariants_to_move): Likewise.
+	(move_single_loop_invariants): Likewise, using already-computed
+	has_call field.
+
+2010-07-15  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #8497, #8893
+
+	Backport from mainline (originally from Sourcery G++ 4.4):
+
+	gcc/
+	2010-07-12  Jie Zhang  <jie@codesourcery.com>
+	* config/arm/arm.c (arm_get_frame_offsets): Don't use r3 to
+	align the stack when it's going to be saved.
+
+	gcc/testsuite/
+	2010-07-12  Jie Zhang  <jie@codesourcery.com>
+	* gcc.target/arm/interrupt-1.c: New test.
+	* gcc.target/arm/interrupt-2.c: New test.
+
+2010-07-15  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline (originally from Sourcery G++ 4.4):
+
+	gcc/
+	2010-07-07  Jie Zhang  <jie@codesourcery.com>
+	* genautomata.c (output_automata_list_min_issue_delay_code):
+	Correctly decompress min_issue_delay.
+
+2010-07-15  Jie Zhang  <jie@codesourcery.com>
+
+	Issue #8980
+
+	Backport from mainline (originally from Sourcery G++ 4.4):
+
+	gcc/
+	2010-07-03  Jie Zhang  <jie@codesourcery.com>
+	* config/arm/vfp.md (*push_multi_vfp): Use vfp_register_operand
+	as predicate for operand 1 and remove its constraint.
+	* config/arm/predicates.md (vfp_register_operand): New.
+	* config/arm/arm.md (*push_multi): Remove the constraint of
+	operand 1.
+	(*push_fp_multi): Likewise.
+
+2010-07-15  Jie Zhang  <jie@codesourcery.com>
+
+	Backport from mainline (originally from Sourcery G++ 4.4):
+
+	gcc/cp/
+	2010-04-07  Jie Zhang  <jie@codesourcery.com>
+
+	PR c++/42556
+	* typeck2.c (split_nonconstant_init_1): Drop empty CONSTRUCTOR
+	when all of its elements are non-constant and have been split out.
+
+	gcc/testsuite/
+	2010-04-07  Jie Zhang  <jie@codesourcery.com>
+
+	PR c++/42556
+	* g++.dg/init/pr42556.C: New test.
+
+2010-07-12  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+ 
+	2009-10-06  Paul Brook  <paul@codesourcery.com>
+	Issue #3869
+	gcc/
+	* target.h (gcc_target): Add warn_func_result.
+	* target-def.h (TARGET_WARN_FUNC_RESULT): Define and use.
+	* tree-cfg.h (execute_warn_function_return): Use
+	targetm.warn_func_result.
+	* config/arm/arm.c (TARGET_WARN_FUNC_RESULT): Define.
+	(arm_warn_func_result): New function.
+
+	gcc/testuite/
+	 * gcc.target/arm/naked-3.c: New test.
+
+2010-07-10  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from mainline:
+
+	2010-05-08  Sandra Loosemore  <sandra@codesourcery.com>
+
+	PR middle-end/28685
+
+	gcc/
+	* tree-ssa-reassoc.c (eliminate_redundant_comparison): New function.
+	(optimize_ops_list): Call it.
+
+	gcc/testsuite/
+	* gcc.dg/pr28685-1.c: New file.
+
+	2010-06-08  Sandra Loosemore  <sandra@codesourcery.com>
+
+	PR tree-optimization/39874
+	PR middle-end/28685
+
+	gcc/
+	* gimple.h (maybe_fold_and_comparisons, maybe_fold_or_comparisons):
+	Declare.
+	* gimple-fold.c (canonicalize_bool, same_bool_comparison_p,
+	same_bool_result_p): New.
+	(and_var_with_comparison, and_var_with_comparison_1,
+	and_comparisons_1, and_comparisons, maybe_fold_and_comparisons): New.
+	(or_var_with_comparison, or_var_with_comparison_1,
+	or_comparisons_1, or_comparisons, maybe_fold_or_comparisons): New.
+	* tree-ssa-reassoc.c (eliminate_redundant_comparison): Use
+	maybe_fold_and_comparisons or maybe_fold_or_comparisons instead
+	of combine_comparisons.
+	* tree-ssa-ifcombine.c (ifcombine_ifandif, ifcombine_iforif): Likewise.
+
+	gcc/testsuite/
+	* gcc.dg/pr39874.c: New file.
+
+2010-07-10  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2009-09-02  Daniel Jacobowitz  <dan@codesourcery.com>
+
+	libgcc/
+	* shared-object.mk (c_flags-$(base)$(objext)): New.
+	($(base)$(objext)): Use above.
+	($(base)_s$(objext)): Likewise.
+	* static-object.mk (c_flags-$(base)$(objext)): New.
+	($(base)$(objext)): Use above.
+	
+2010-07-10  Yao Qi  <yao@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2009-05-28  Julian Brown  <julian@codesourcery.com>
+
+	Merged from Sourcery G++ 4.3:
+
+	libgcc/
+	* config.host (arm*-*-linux*, arm*-*-uclinux*, arm*-*-eabi*)
+	(arm*-*-symbianelf): Add arm/t-divmod-ef to tmake_file.
+	* Makefile.in (LIB2_DIVMOD_EXCEPTION_FLAGS): Set to previous
+	default if not set by a target-specific Makefile fragment.
+	(lib2-divmod-o, lib2-divmod-s-o): Use above.
+	* config/arm/t-divmod-ef: New.
+
+2010-07-09  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2009-05-21  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Merge from Sourcery G++ 4.3:
+
+	2009-04-04  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Issue #5104
+	PR tree-optimization/39604
+
+	gcc/testsuite
+	* g++.dg/tree-ssa/sink-1.C: New.
+
+	gcc/
+	* tree_ssa-sink.c (sink_code_in_bb): Do not sink statements out
+	of a lexical block containing variable definitions.
+
+2010-07-09  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from mainline (originally on Sourcery G++ 4.4):
+
+	2010-07-02  Julian Brown  <julian@codesourcery.com>
+		    Sandra Loosemore <sandra@codesourcery.com>
+
+	PR target/43703
+
+	gcc/
+	* config/arm/vec-common.md (add<mode>3, sub<mode>3, smin<mode>3)
+	(smax<mode>3): Disable for NEON float modes when
+	flag_unsafe_math_optimizations is false.
+	* config/arm/neon.md (*add<mode>3_neon, *sub<mode>3_neon)
+	(*mul<mode>3_neon)
+	(mul<mode>3add<mode>_neon, mul<mode>3neg<mode>add<mode>_neon)
+	(reduc_splus_<mode>, reduc_smin_<mode>, reduc_smax_<mode>): Disable
+	for NEON float modes when flag_unsafe_math_optimizations is false.
+	(quad_halves_<code>v4sf): Only enable if flag_unsafe_math_optimizations
+	is true.
+	* doc/invoke.texi (ARM Options): Add note about floating point
+	vectorization requiring -funsafe-math-optimizations.
+
+	gcc/testsuite/
+	* gcc.dg/vect/vect.exp: Add -ffast-math for NEON.
+	* gcc.dg/vect/vect-reduc-6.c: Add XFAIL for NEON.
+
+2010-07-08  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from upstream (originally from Sourcery G++ 4.4):
+
+	2010-07-02  Daniel Jacobowitz  <dan@codesourcery.com>
+		    Julian Brown  <julian@codesourcery.com>
+		    Sandra Loosemore <sandra@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (arm_canonicalize_comparison): Canonicalize DImode
+	comparisons.  Adjust to take both operands.
+	(arm_select_cc_mode): Handle DImode comparisons.
+	(arm_gen_compare_reg): Generate a scratch register for DImode
+	comparisons which require one.  Use xor for Thumb equality checks.
+	(arm_const_double_by_immediates): New.
+	(arm_print_operand): Allow 'Q' and 'R' for constants.
+	(get_arm_condition_code): Handle new CC_CZmode and CC_NCVmode.
+	* config/arm/arm.h (CANONICALIZE_COMPARISON): Always use
+	arm_canonicalize_comparison.
+	* config/arm/arm-modes.def: Add CC_CZmode and CC_NCVmode.
+	* config/arm/arm-protos.h (arm_canonicalize_comparison): Update
+	prototype.
+	(arm_const_double_by_immediates): Declare.
+	* config/arm/constraints.md (Di): New constraint.
+	* config/arm/predicates.md (arm_immediate_di_operand)
+	(arm_di_operand, cmpdi_operand): New.
+	* config/arm/arm.md (cbranchdi4): Handle non-Cirrus also.
+	(*arm_cmpdi_insn, *arm_cmpdi_unsigned)
+	(*arm_cmpdi_zero, *thumb_cmpdi_zero): New insns.
+	(cstoredi4): Handle non-Cirrus also.
+
+	gcc/testsuite/
+	* gcc.c-torture/execute/20100416-1.c: New test case.
+
+2010-07-08  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from upstream (originally from Sourcery G++ 4.4):
+
+	2010-07-02  Sandra Loosemore  <sandra@codesourcery.com>
+
+	gcc/
+	* config/arm/neon.md (vec_extractv2di): Correct error in register
+	numbering to reconcile with neon_vget_lanev2di.
+
+	2010-07-02  Sandra Loosemore  <sandra@codesourcery.com>
+
+	gcc/
+	* config/arm/arm.c (neon_vdup_constant): Expand into canonical RTL
+	instead of an unspec.
+	(neon_expand_vector_init): Likewise.
+	* config/arm/neon.md (UNSPEC_VCOMBINE): Delete.
+	(UNSPEC_VDUP_LANE): Delete.
+	(UNSPEC VDUP_N): Delete.
+	(UNSPEC_VGET_HIGH): Delete.
+	(UNSPEC_VGET_LANE): Delete.
+	(UNSPEC_VGET_LOW): Delete.
+	(UNSPEC_VMVN): Delete.
+	(UNSPEC_VSET_LANE): Delete.
+	(V_double_vector_mode): New.
+	(vec_set<mode>_internal): Make code emitted match that for the
+	corresponding intrinsics.
+	(vec_setv2di_internal): Likewise.
+	(neon_vget_lanedi): Rewrite to expand into emit_move_insn.
+	(neon_vget_lanev2di): Rewrite to expand into vec_extractv2di.
+	(neon_vset_lane<mode>): Combine double and quad patterns and
+	expand into vec_set<mode>_internal instead of UNSPEC_VSET_LANE.
+	(neon_vset_lanedi): Rewrite to expand into emit_move_insn.
+	(neon_vdup_n<mode>): Rewrite RTL without unspec.
+	(neon_vdup_ndi): Rewrite as define_expand and use emit_move_insn.
+	(neon_vdup_nv2di): Rewrite RTL without unspec and merge with
+	with neon_vdup_lanev2di, adjusting the pattern from the latter
+	to be predicable for consistency.
+	(neon_vdup_lane<mode>_internal): New.
+	(neon_vdup_lane<mode>): Turn into a define_expand and rewrite
+	to avoid using an unspec.
+	(neon_vdup_lanedi): Rewrite RTL pattern to avoid unspec.
+	(neon_vdup_lanev2di): Turn into a define_expand.
+	(neon_vcombine): Rewrite pattern to eliminate UNPSEC_VCOMBINE.
+	(neon_vget_high<mode>): Replace with....
+	(neon_vget_highv16qi): New pattern using canonical RTL.
+	(neon_vget_highv8hi): Likewise.
+	(neon_vget_highv4si): Likewise.
+	(neon_vget_highv4sf): Likewise.
+	(neon_vget_highv2di): Likewise.
+	(neon_vget_low<mode>): Replace with....
+	(neon_vget_lowv16qi): New pattern using canonical RTL.
+	(neon_vget_lowv8hi): Likewise.
+	(neon_vget_lowv4si): Likewise.
+	(neon_vget_lowv4sf): Likewise.
+	(neon_vget_lowv2di): Likewise.
+
+	* config/arm/neon.ml (Vget_lane): Add No_op attribute to suppress
+	test for this emitting vmov.
+	(Vset_lane): Likewise.
+	(Vdup_n): Likewise.
+	(Vmov_n): Likewise.
+
+	* doc/arm-neon-intrinsics.texi: Regenerated.
+
+	gcc/testsuite/
+	* gcc.target/arm/neon/vdup_ns64.c: Regenerated.
+	* gcc.target/arm/neon/vdup_nu64.c: Regenerated.
+	* gcc.target/arm/neon/vdupQ_ns64.c: Regenerated.
+	* gcc.target/arm/neon/vdupQ_nu64.c: Regenerated.
+	* gcc.target/arm/neon/vmov_ns64.c: Regenerated.
+	* gcc.target/arm/neon/vmov_nu64.c: Regenerated.
+	* gcc.target/arm/neon/vmovQ_ns64.c: Regenerated.
+	* gcc.target/arm/neon/vmovQ_nu64.c: Regenerated.
+	* gcc.target/arm/neon/vget_lanes64.c: Regenerated.
+	* gcc.target/arm/neon/vget_laneu64.c: Regenerated.
+	* gcc.target/arm/neon/vset_lanes64.c: Regenerated.
+	* gcc.target/arm/neon/vset_laneu64.c: Regenerated.
+	* gcc.target/arm/neon-vdup_ns64.c: New.
+	* gcc.target/arm/neon-vdup_nu64.c: New.
+	* gcc.target/arm/neon-vdupQ_ns64.c: New.
+	* gcc.target/arm/neon-vdupQ_nu64.c: New.
+	* gcc.target/arm/neon-vdupQ_lanes64.c: New.
+	* gcc.target/arm/neon-vdupQ_laneu64.c: New.
+	* gcc.target/arm/neon-vmov_ns64.c: New.
+	* gcc.target/arm/neon-vmov_nu64.c: New.
+	* gcc.target/arm/neon-vmovQ_ns64.c: New.
+	* gcc.target/arm/neon-vmovQ_nu64.c: New.
+	* gcc.target/arm/neon-vget_lanes64.c: New.
+	* gcc.target/arm/neon-vget_laneu64.c: New.
+	* gcc.target/arm/neon-vset_lanes64.c: New.
+	* gcc.target/arm/neon-vset_laneu64.c: New.
+
+	2010-07-02  Sandra Loosemore  <sandra@codesourcery.com>
+		    Julian Brown  <julian@codesourcery.com>
+
+	gcc/
+	* config/arm/neon.md (UNSPEC_VABA): Delete.
+	(UNSPEC_VABAL): Delete.
+	(UNSPEC_VABS): Delete.
+	(UNSPEC_VMUL_N): Delete.
+	(adddi3_neon): New.
+	(subdi3_neon): New.
+	(mul<mode>3add<mode>_neon): Make the pattern named.
+	(mul<mode>3neg<mode>add<mode>_neon): Likewise.
+	(neon_vadd<mode>): Replace with define_expand, and move the remaining
+	unspec parts...
+	(neon_vadd<mode>_unspec): ...to this.
+	(neon_vmla<mode>, neon_vmla<mode>_unspec): Likewise.
+	(neon_vlms<mode>, neon_vmls<mode>_unspec): Likewise.
+	(neon_vsub<mode>, neon_vsub<mode>_unspec): Likewise.
+	(neon_vaba<mode>): Rewrite in terms of vabd.
+	(neon_vabal<mode>): Rewrite in terms of vabdl.
+	(neon_vabs<mode>): Rewrite without unspec.
+	* config/arm/arm.md (*arm_adddi3): Disable for TARGET_NEON.
+	(*arm_subdi3): Likewise.
+	* config/arm/neon.ml (Vadd, Vsub): Split out 64-bit variants and add
+	No_op attribute to disable assembly output checks.
+	* config/arm/arm_neon.h: Regenerated.
+	* doc/arm-neon-intrinsics.texi: Regenerated.
+
+	gcc/testsuite/
+	* gcc.target/arm/neon/vadds64.c: Regenerated.
+	* gcc.target/arm/neon/vaddu64.c: Regenerated.
+	* gcc.target/arm/neon/vsubs64.c: Regenerated.
+	* gcc.target/arm/neon/vsubu64.c: Regenerated.
+	* gcc.target/arm/neon-vmla-1.c: Add -ffast-math to options.
+	* gcc.target/arm/neon-vmls-1.c: Likewise.
+	* gcc.target/arm/neon-vsubs64.c: New execution test.
+	* gcc.target/arm/neon-vsubu64.c: New execution test.
+	* gcc.target/arm/neon-vadds64.c: New execution test.
+	* gcc.target/arm/neon-vaddu64.c: New execution test.
+
+2010-07-07  Sandra Loosemore  <sandra@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	2010-03-08  Paul Brook  <paul@codesourcery.com>
+
+	gcc/
+	* doc/invoke.texi: Document ARM -mcpu=cortex-m4.
+	* config/arm/arm.c (all_architectures): Change v7e-m default to
+	cortexm4.
+	* config/arm/arm-cores.def: Add cortex-m4.
+	* config/arm/arm-tune.md: Regenerate.
+
+2010-07-07 Sandra Loosemore  <sandra@codesourcery.com>
+
+	Backport from mainline (originally from Sourcery G++ 4.4):
+
+	2010-05-24  Daniel Jacobowitz  <dan@codesourcery.com>
+		    Sandra Loosemore  <sandra@codesourcery.com>
+
+	gcc/
+	* config/arm/neon-testgen.ml: Use dg-add-options arm_neon.
+	* doc/sourcebuild.texi (Effective-Target Keywords): Update arm_neon_ok
+	description.  Add arm_neon_fp16_ok.
+	(Add Options): Add arm_neon and arm_neon_fp16.
+
+	gcc/testsuite/
+	* gcc.target/arm/neon/: Regenerated test cases.
+
+	* gcc.target/arm/neon/polytypes.c,
+	gcc.target/arm/neon-vmla-1.c, gcc.target/arm/neon-vmls-1.c,
+	gcc.target/arm/neon-cond-1.c, gcc.target/arm/neon/vfp-shift-a2t2.c,
+	gcc.target/arm/neon-thumb2-move.c, gcc.dg/torture/arm-fp16-ops-8.c, 
+	gcc.dg/torture/arm-fp16-ops-7.c, g++.dg/ext/arm-fp16/arm-fp16-ops-7.C,
+	g++.dg/ext/arm-fp16/arm-fp16-ops-8.C, g++.dg/abi/mangle-neon.C: Use
+	dg-add-options arm_neon.
+
+	* gcc.target/arm/fp16-compile-vcvt.c, gcc.dg/torture/arm-fp16-ops-5.c,
+	gcc.dg/torture/arm-fp16-ops-6.c, g++.dg/ext/arm-fp16/arm-fp16-ops-5.C,
+	g++.dg/ext/arm-fp16/arm-fp16-ops-6.C: Use dg-add-options arm_neon_fp16
+	and arm_neon_fp16_ok.
+
+	* gcc.dg/vect/vect.exp, g++.dg/vect/vect.exp,
+	gfortran.dg/vect/vect.exp: Use add_options_for_arm_neon.
+
+	* lib/target-supports.exp (add_options_for_arm_neon): New.
+	(check_effective_target_arm_neon_ok_nocache): New, from
+	check_effective_target_arm_neon_ok.  Check multiple possibilities.
+	(check_effective_target_arm_neon_ok): Use
+	check_effective_target_arm_neon_ok_nocache.
+	(add_options_for_arm_neon_fp16)
+	(check_effective_target_arm_neon_fp16_ok)
+	check_effective_target_arm_neon_fp16_ok_nocache): New.
+	(check_effective_target_arm_neon_hw): Use add_options_for_arm_neon.
+
+2010-06-28  Julian Brown  <julian@codesourcery.com>
+
+	Merge from Sourcery G++ 4.4:
+
+	Daniel Jacobowitz  <dan@codesourcery.com>
+	Joseph Myers  <joseph@codesourcery.com>
+
+	gcc/
+	* doc/invoke.texi (-Wno-poison-system-directories): Document.
+	* gcc.c (LINK_COMMAND_SPEC): Pass --no-poison-system-directories
+	if -Wno-poison-system-directories and --error-poison-system-directories
+	if -Werror=poison-system-directories to linker.
+	* incpath.c: Include flags.h. Include toplev.h.
+	(merge_include_chains): If ENABLE_POISON_SYSTEM_DIRECTORIES defined
+	and flag_poison_system_directories is true, warn for use of
+	/usr/include, /usr/local/include or /usr/X11R6/include.
+	* Makefile.in (incpath.o): Depend on $(FLAGS_H) and toplev.h.
+	* common.opt (--Wno-poison-system-directories): New.
+	* configure.ac (--enable-poison-system-directories): New option.
+	* configure: Regenerate.
+	* config.in: Regenerate.

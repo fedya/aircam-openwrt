@@ -1,0 +1,48 @@
+Source-Makefile: feeds/packages/mail/msmtp/Makefile
+Package: msmtp
+Version: 1.4.23-1
+Depends:  +libopenssl
+Menu-Depends: 
+Provides: 
+Build-Variant: ssl
+Build-Depends: libtool libintl libiconv
+Section: mail
+Category: Mail
+Title: Simple sendmail SMTP forwarding (with SSL support)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: msmtp-1.4.23.tar.bz2
+Type: ipkg
+Description:  msmtp is an SMTP client. In the default mode, it transmits a mail to
+ an SMTP server (for example at a free mail provider) which does the
+ delivery. To use this program with your mail user agent (MUA), create
+ a configuration file with your mail account(s) and tell your MUA to
+ call msmtp instead of /usr/sbin/sendmail.
+ This package is built with SSL support.
+http://msmtp.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: msmtp-nossl
+Version: 1.4.23-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Variant: nossl
+Build-Depends: libtool libintl libiconv
+Section: mail
+Category: Mail
+Title: Simple sendmail SMTP forwarding (without SSL support)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: msmtp-1.4.23.tar.bz2
+Type: ipkg
+Description:  msmtp is an SMTP client. In the default mode, it transmits a mail to
+ an SMTP server (for example at a free mail provider) which does the
+ delivery. To use this program with your mail user agent (MUA), create
+ a configuration file with your mail account(s) and tell your MUA to
+ call msmtp instead of /usr/sbin/sendmail.
+ This package is built without SSL support.
+http://msmtp.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

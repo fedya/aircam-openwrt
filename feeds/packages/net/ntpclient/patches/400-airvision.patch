@@ -1,0 +1,61 @@
+--- a/ntpclient.c
++++ b/ntpclient.c
+@@ -135,6 +135,7 @@
+ 	int cross_check;
+ 	char serv_addr[4];
+ 	int noexit;
++	int airvision;
+ };
+ 
+ /* prototypes for some local routines */
+@@ -406,7 +407,7 @@
+ 		    orgtime.fine   != ntpc->time_of_send[1] ) FAIL("ORG!=sent");
+ 		if (xmttime.coarse == 0 && xmttime.fine == 0) FAIL("XMT==0");
+ 		if (delay > 65536 || delay < -65536) FAIL("abs(DELAY)>65536");
+-		if (disp  > 65536 || disp  < -65536) FAIL("abs(DISP)>65536");
++		if (!ntpc->airvision && (disp  > 65536 || disp  < -65536)) FAIL("abs(DISP)>65536");
+ 		if (stratum == 0) FAIL("STRATUM==0");  /* kiss o' death */
+ #undef FAIL
+ 	}
+@@ -614,7 +615,7 @@
+ #ifdef ENABLE_REPLAY
+ 	" [-r]"
+ #endif
+-	" [-s] [-t] [-n]\n",
++	" [-s] [-t] [-n] [-a]\n",
+ 	argv0);
+ }
+ 
+@@ -636,9 +637,10 @@
+ 	ntpc.goodness=0;
+ 	ntpc.cross_check=1;
+ 	ntpc.noexit=0;
++	ntpc.airvision=0;
+ 
+ 	for (;;) {
+-		c = getopt( argc, argv, "c:" DEBUG_OPTION "f:g:h:i:lp:q:" REPLAY_OPTION "stDn");
++		c = getopt( argc, argv, "c:" DEBUG_OPTION "f:g:h:i:lp:q:" REPLAY_OPTION "stDna");
+ 		if (c == EOF) break;
+ 		switch (c) {
+ 			case 'c':
+@@ -695,6 +697,10 @@
+ 				ntpc.noexit=1;
+ 				break;
+ 
++			case 'a':
++				ntpc.airvision=1;
++				break;
++
+ 			default:
+ 				usage(argv[0]);
+ 				exit(1);
+@@ -726,7 +732,8 @@
+ 		"  -q min_delay   %f\n"
+ 		"  -s set_clock   %d\n"
+ 		"  -x cross_check %d\n"
+-		"  -n noexit      %d\n",
++		"  -n noexit      %d\n"
++		"  -a airvision   %d\n",
+ 		ntpc.probe_count, debug, ntpc.goodness,
+ 		hostname, ntpc.cycle_time, ntpc.live, udp_local_port, min_delay,
+ 		ntpc.set_clock, ntpc.cross_check, ntpc.noexit);

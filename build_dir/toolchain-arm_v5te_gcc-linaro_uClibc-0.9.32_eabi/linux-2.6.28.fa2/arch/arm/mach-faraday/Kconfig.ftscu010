@@ -1,0 +1,248 @@
+# This shit is used to handle the brain-dead pin mux design.
+
+menu "FTSUC010 Pin MUX settings"
+
+choice
+	prompt "Function group EXTAHB"
+	default FTSCU010_PINMUX_FGEXTAHB_EXTAHB
+
+	config FTSCU010_PINMUX_FGEXTAHB_EXTAHB
+		bool "Enable extend AHB"
+
+	config FTSCU010_PINMUX_FGEXTAHB_PERIPHERALS
+		bool "Enable peripherals that use pins of extend AHB"
+
+endchoice
+
+choice
+	prompt "Function group SATA"
+	default FTSCU010_PINMUX_FGSATA_EXTAHB
+
+	config FTSCU010_PINMUX_FGSATA_EXTAHB
+		bool "Enable extend AHB pins in FG_SATA"
+
+	config FTSCU010_PINMUX_FGSATA_SATA
+		bool "Enable SATA"
+
+	config FTSCU010_PINMUX_FGSATA_EXTDMA
+		bool "Enable EXTDMA[2..3]"
+
+endchoice
+
+choice
+	prompt "Function group ISP"
+	default FTSCU010_PINMUX_FGISP_EXTAHB
+
+	config FTSCU010_PINMUX_FGISP_EXTAHB
+		bool "Enable extend AHB pins in FG_ISP"
+
+	config FTSCU010_PINMUX_FGISP_GPIO1
+		bool "Enable GPIO1[4..31]"
+
+	config FTSCU010_PINMUX_FGISP_ISP
+		bool "Enable Image Signal Processor"
+
+endchoice
+
+choice
+	prompt "Function group TS"
+	default FTSCU010_PINMUX_FGTS_EXTAHB
+
+	config FTSCU010_PINMUX_FGTS_EXTAHB
+		bool "Enable extend AHB pins in FG_TS"
+
+	config FTSCU010_PINMUX_FGTS_GPIO0
+		bool "Enable GPIO0[20..29]"
+
+	config FTSCU010_PINMUX_FGTS_TS
+		bool "Enable Transport Stream"
+
+endchoice
+
+choice
+	prompt "Function group LCD"
+	default FTSCU010_PINMUX_FGLCD_LCD_MICE
+
+	config FTSCU010_PINMUX_FGLCD_LCD
+		bool "Enable LCD and SDC0"
+
+	config FTSCU010_PINMUX_FGLCD_TV_MICE
+		bool "Enable TV encoder interface, ICE of master CPU (FA626TE) and SDC0"
+
+	config FTSCU010_PINMUX_FGLCD_LCD_MICE
+		bool "Enable LCD and ICE of master CPU (FA626TE)"
+
+endchoice
+
+choice
+	prompt "Function group EBI"
+	default FTSCU010_PINMUX_FGEBI_EBI
+
+	config FTSCU010_PINMUX_FGEBI_EBI
+		bool "Enable NOR Flash and NAND Flash"
+
+	config FTSCU010_PINMUX_FGEBI_IDE
+		bool "Enable IDE and NAND Flash"
+
+endchoice
+
+choice
+	prompt "Function group UART1"
+	default FTSCU010_PINMUX_FGUART1_EXTAHB
+
+	config FTSCU010_PINMUX_FGUART1_EXTAHB
+		bool "Enable extend AHB pins in FG_UART1"
+
+	config FTSCU010_PINMUX_FGUART1_GPIO0
+		bool "Enable GPIO0[0..1]"
+
+	config FTSCU010_PINMUX_FGUART1_UART1
+		bool "Enable UART1 w/o RTS/CTS"
+
+endchoice
+
+choice
+	prompt "Function group UART2"
+	default FTSCU010_PINMUX_FGUART2_GPIO1
+
+	config FTSCU010_PINMUX_FGUART2_GPIO1
+		bool "Enable GPIO1[24..25]"
+
+	config FTSCU010_PINMUX_FGUART2_PWM2
+		bool "Enable PWM2"
+
+	config FTSCU010_PINMUX_FGUART2_UART2
+		bool "Enable UART2 w/o RTS/CTS pins"
+
+endchoice
+
+choice
+	prompt "Function group UART3"
+	default FTSCU010_PINMUX_FGUART3_GPIO1
+
+	config FTSCU010_PINMUX_FGUART3_GPIO1
+		bool "Enable GPIO1[26..27]"
+
+	config FTSCU010_PINMUX_FGUART3_UART3
+		bool "Enable UART3 w/o RTS/CTS pins"
+
+endchoice
+
+choice
+	prompt "Function group SSP0"
+	default FTSCU010_PINMUX_FGSSP0_SSP0
+
+	config FTSCU010_PINMUX_FGSSP0_SSP0
+		bool "Enable SSP0"
+
+	config FTSCU010_PINMUX_FGSSP0_SATA
+		bool "Enable SATA and <X_SSP1_AC_RSTn> of SSP1"
+
+	config FTSCU010_PINMUX_FGSSP0_SICE
+		bool "Enable ICE of slave CPU (FA606)"
+
+endchoice
+
+choice
+	prompt "Function group SSP1"
+	default FTSCU010_PINMUX_FGSSP1_GPIO1
+
+	config FTSCU010_PINMUX_FGSSP1_GPIO1
+		bool "Enable GPIO1[28..31]"
+
+	config FTSCU010_PINMUX_FGSSP1_I2C1
+		bool "Enable I2C1, LCD clock and PWM clock"
+
+	config FTSCU010_PINMUX_FGSSP1_SSP1
+		bool "Enable SSP1"
+
+endchoice
+
+choice
+	prompt "Function group GMAC"
+	default FTSCU010_PINMUX_FGGMAC_GMAC
+
+	config FTSCU010_PINMUX_FGGMAC_GMAC
+		bool "Enable GMAC"
+
+	config FTSCU010_PINMUX_FGGMAC_MCP_ICE
+		bool "Enable MCP ICE"
+
+endchoice
+
+choice
+	prompt "Function group PWM0"
+	default FTSCU010_PINMUX_FGPWM0_EXTAHB
+
+	config FTSCU010_PINMUX_FGPWM0_EXTAHB
+		bool "Enable extend AHB pins in FG_PWM0"
+
+	config FTSCU010_PINMUX_FGPWM0_PWM0
+		bool "Enable PWM0"
+
+	config FTSCU010_PINMUX_FGPWM0_EXTDMA
+		bool "Enable EXTDMA[4]"
+
+endchoice
+
+choice
+	prompt "Function group PWM1"
+	default FTSCU010_PINMUX_FGPWM1_EXTAHB
+
+	config FTSCU010_PINMUX_FGPWM1_GPIO1
+		bool "Enable GPIO1[0..1]"
+
+	config FTSCU010_PINMUX_FGPWM1_PWM1
+		bool "Enable PWM1"
+
+	config FTSCU010_PINMUX_FGPWM1_EXTAHB
+		bool "Enable extend AHB pins in FG_PWM1"
+
+endchoice
+
+choice
+	prompt "Function group I2C1"
+	default FTSCU010_PINMUX_FGI2C1_EXTAHB
+
+	config FTSCU010_PINMUX_FGI2C1_EXTAHB
+		bool "Enable extend AHB pins in FG_I2C1"
+
+	config FTSCU010_PINMUX_FGI2C1_GPIO1
+		bool "Enable GPIO1[2..3]"
+
+	config FTSCU010_PINMUX_FGI2C1_I2C1
+		bool "Enable I2C1"
+
+endchoice
+
+choice
+	prompt "Function group GPIO0"
+	default FTSCU010_PINMUX_FGGPIO0_EXTAHB
+
+	config FTSCU010_PINMUX_FGGPIO0_EXTAHB
+		bool "Enable extend AHB pins in FG_GPIO0"
+
+	config FTSCU010_PINMUX_FGGPIO0_GPIO0
+		bool "Enable GPIO0[2..3]"
+
+	config FTSCU010_PINMUX_FGGPIO0_EXTDMA
+		bool "Enable EXTDMA[1]"
+
+endchoice
+
+choice
+	prompt "Function group KBC"
+	default FTSCU010_PINMUX_FGKBC_EXTAHB
+
+	config FTSCU010_PINMUX_FGKBC_EXTAHB
+		bool "Enable extend AHB pins in FG_KBC"
+
+	config FTSCU010_PINMUX_FGKBC_GPIO0
+		bool "Enable GPIO0[4..19]"
+
+	config FTSCU010_PINMUX_FGKBC_KBC
+		bool "Enable keyboard controller"
+
+endchoice
+
+endmenu

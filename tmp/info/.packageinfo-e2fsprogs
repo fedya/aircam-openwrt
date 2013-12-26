@@ -1,0 +1,161 @@
+Source-Makefile: package/e2fsprogs/Makefile
+Package: e2fsprogs
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: +libblkid +libuuid +libext2fs +libpthread
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Ext2/3/4 filesystem utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description:  This package contains essential ext2 filesystem utilities which consists of 
+ e2fsck, mke2fs, debugfs, dumpe2fs, tune2fs, and most of the other core ext2 
+ filesystem utilities.
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libuuid
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: DCE compatible Universally Unique Identifier library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description:  Library for generating DCE compatible Universally Unique Identifiers.
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uuidgen
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: +libuuid
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Command line utility to create a new UUID value
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description:  uuidgen program creates a new universally unique identifier (UUID) 
+ using the libuuid library. The new UUID can reasonably be considered 
+ unique among all UUIDs created on the local system, and among UUIDs 
+ created on other systems in the past and in the future.
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libblkid
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Block device id library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description:  The blkid library which allows system programs like fsck and mount to 
+ quickly and easily find block devices by filesystem UUID and LABEL.
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libext2fs
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: ext2/3/4 filesystem library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description: libext2fs is a library which can access ext2, ext3 and ext4 filesystems.
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tune2fs
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: +e2fsprogs
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Ext2 Filesystem tune utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description: Ext2 Filesystem tune utility
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: resize2fs
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: +e2fsprogs
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Ext2 Filesystem resize utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description: Ext2 Filesystem resize utility
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: badblocks
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: +e2fsprogs
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Ext2 Filesystem badblocks utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description: Ext2 Filesystem badblocks utility
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: blkid
+Submenu: Filesystem
+Version: 1.41.12-1
+Depends: +libuuid +libblkid
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Command-line utility to locate/print block device attributes
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: e2fsprogs-1.41.12.tar.gz
+Type: ipkg
+Description: Command-line utility to locate/print block device attributes
+http://e2fsprogs.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

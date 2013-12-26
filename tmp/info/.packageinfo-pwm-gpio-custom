@@ -1,0 +1,18 @@
+Source-Makefile: package/pwm-gpio-custom/Makefile
+Package: kmod-pwm-gpio-custom
+Submenu: Other modules
+Version: <LINUX_VERSION>-1
+Depends: +kmod-pwm-gpio
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Custom GPIO-based PWM device
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  Kernel module to register a custom pwm-gpio platform device.
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

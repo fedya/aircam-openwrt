@@ -1,0 +1,33 @@
+--- a/src/configfile.c
++++ b/src/configfile.c
+@@ -1145,12 +1145,14 @@ int config_read(server *srv, const char
+ 
+ 		prepends = data_array_init();
+ 
++#if 0
+ 		/* prepend default modules */
+ 		if (NULL == array_get_element(modules->value, "mod_indexfile")) {
+ 			ds = data_string_init();
+ 			buffer_copy_string_len(ds->value, CONST_STR_LEN("mod_indexfile"));
+ 			array_insert_unique(prepends->value, (data_unset *)ds);
+ 		}
++#endif
+ 
+ 		prepends = (data_array *)configparser_merge_data((data_unset *)prepends, (data_unset *)modules);
+ 		buffer_copy_string_buffer(prepends->key, modules->key);
+@@ -1158,6 +1160,7 @@ int config_read(server *srv, const char
+ 		modules->free((data_unset *)modules);
+ 		modules = prepends;
+ 
++#if 0
+ 		/* append default modules */
+ 		if (NULL == array_get_element(modules->value, "mod_dirlisting")) {
+ 			ds = data_string_init();
+@@ -1170,6 +1173,7 @@ int config_read(server *srv, const char
+ 			buffer_copy_string_len(ds->value, CONST_STR_LEN("mod_staticfile"));
+ 			array_insert_unique(modules->value, (data_unset *)ds);
+ 		}
++#endif
+ 	} else {
+ 		data_string *ds;
+ 

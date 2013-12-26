@@ -1,0 +1,488 @@
+Package: base-files
+Version: 71-unknown
+Depends: 
+Provides: 
+Source: package/base-files
+Section: base
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 31951
+Filename: base-files_71-unknown_gm812x.ipk
+Size: 32731
+MD5Sum: eb56e482e28a6e5d46a2fbfee624afaf
+Description:  This package contains a base filesystem and system scripts for OpenWrt.
+
+Package: busybox
+Version: 1.18.4-1
+Depends: 
+Provides: 
+Source: package/busybox
+Section: base
+Status: unknown ok not-installed
+Essential: yes
+Priority: optional
+Maintainer: Nicolas Thill <nico@openwrt.org>
+Architecture: gm812x
+Installed-Size: 227611
+Filename: busybox_1.18.4-1_gm812x.ipk
+Size: 227917
+MD5Sum: 799fb5a4e0916ea364627629d2f0de88
+Description:  The Swiss Army Knife of embedded Linux.
+ It slices, it dices, it makes Julian Fries.
+
+Package: dnsmasq
+Version: 2.57-2
+Depends: 
+Provides: 
+Source: package/dnsmasq
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 83908
+Filename: dnsmasq_2.57-2_gm812x.ipk
+Size: 84550
+MD5Sum: a712e7a69130b7d6a602ef7f9935bd77
+Description:  It is intended to provide coupled DNS and DHCP service to a LAN.
+
+Package: dropbear
+Version: 0.53.1-3
+Depends: 
+Provides: 
+Source: package/dropbear
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 81672
+Filename: dropbear_0.53.1-3_gm812x.ipk
+Size: 82299
+MD5Sum: 1fbfd065690b81ce695812034e720e30
+Description:  A small SSH2 server/client designed for small memory environments.
+
+Package: firewall
+Version: 2-25
+Depends: iptables, iptables-mod-conntrack, iptables-mod-nat
+Provides: 
+Source: package/firewall
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: all
+Installed-Size: 11096
+Filename: firewall_2-25_all.ipk
+Size: 11770
+MD5Sum: 97eb5e2cff79fc08dd7d3d82fb47515a
+Description:  UCI based firewall for OpenWrt
+
+Package: hotplug2
+Version: 1.0-beta-4
+Depends: 
+Provides: 
+Source: package/hotplug2
+Section: base
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 14449
+Filename: hotplug2_1.0-beta-4_gm812x.ipk
+Size: 15098
+MD5Sum: 20d7132f82af652440bdaea7e72ae891
+Description:  Hotplug2 is a trivial replacement of some of the UDev functionality
+ in a tiny pack, intended for Linux early userspace: Init RAM FS and InitRD.
+ This is an implementation of Hotplug2-1.0-beta
+
+Package: iptables-mod-conntrack
+Version: 1.4.10-2
+Depends: iptables, kmod-ipt-conntrack
+Provides: 
+Source: package/iptables
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 8391
+Filename: iptables-mod-conntrack_1.4.10-2_gm812x.ipk
+Size: 9072
+MD5Sum: 80be3116642c3b3d96b39cc72674b16c
+Description:  Basic iptables extensions for connection tracking.
+ Includes:
+ - state
+ - raw
+ - NOTRACK
+
+Package: iptables-mod-nat
+Version: 1.4.10-2
+Depends: iptables, kmod-ipt-nat
+Provides: 
+Source: package/iptables
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 4317
+Filename: iptables-mod-nat_1.4.10-2_gm812x.ipk
+Size: 4967
+MD5Sum: 6afdd36bc2271c5b832de75d9f7317f8
+Description:  iptables extensions for basic NAT targets.
+ Includes:
+ - MASQUERADE
+ - SNAT
+ - DNAT
+
+Package: iptables
+Version: 1.4.10-2
+Depends: kmod-ipt-core, libip4tc, libxtables
+Provides: 
+Source: package/iptables
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 38527
+Filename: iptables_1.4.10-2_gm812x.ipk
+Size: 39336
+MD5Sum: ccc0387f7c6cc02a045f3604720ce542
+Description:  IPv4 firewall administration tool.
+ Includes support for:
+ - comment
+ - limit
+ - LOG
+ - mac
+ - multiport
+ - REJECT
+ - TCPMSS
+
+Package: kernel
+Version: 2.6.28.fa2-1
+Depends: 
+Provides: 
+Source: package/kernel
+Section: sys
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 105
+Filename: kernel_2.6.28.fa2-1_gm812x.ipk
+Size: 677
+MD5Sum: d4b4e0e5ecf1f21756bce0bd6f97a2b7
+Description:  Virtual kernel package
+
+Package: kmod-ipt-conntrack
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-ipt-core
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 33082
+Filename: kmod-ipt-conntrack_2.6.28.fa2-1_gm812x.ipk
+Size: 33916
+MD5Sum: 3f4f4ae5c5b89e38668c47ec3966a7a9
+Description:  Netfilter (IPv4) kernel modules for connection tracking
+ Includes:
+ - conntrack
+ - defrag
+ - iptables_raw
+ - NOTRACK
+ - state
+
+Package: kmod-ipt-core
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1)
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 23165
+Filename: kmod-ipt-core_2.6.28.fa2-1_gm812x.ipk
+Size: 23951
+MD5Sum: 17326df0d916ad344150735248736595
+Description:  Netfilter core kernel modules
+ Includes:
+ - comment
+ - limit
+ - LOG
+ - mac
+ - multiport
+ - REJECT
+ - TCPMSS
+
+Package: kmod-ipt-nat
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-ipt-core, kmod-ipt-conntrack
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 11449
+Filename: kmod-ipt-nat_2.6.28.fa2-1_gm812x.ipk
+Size: 12248
+MD5Sum: 91b4fbbe60cf73d72fc77dd7fab18515
+Description:  Netfilter (IPv4) kernel modules for basic NAT targets
+ Includes:
+ - MASQUERADE
+
+Package: kmod-ipt-nathelper
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-ipt-core, kmod-ipt-nat
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 8273
+Filename: kmod-ipt-nathelper_2.6.28.fa2-1_gm812x.ipk
+Size: 9086
+MD5Sum: 54905db789eb99d071bf05289fa61101
+Description:  Default Netfilter (IPv4) Conntrack and NAT helpers
+ Includes:
+ - ftp
+ - irc
+ - tftp
+
+Package: kmod-ppp
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-crc-ccitt
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 20578
+Filename: kmod-ppp_2.6.28.fa2-1_gm812x.ipk
+Size: 21325
+MD5Sum: 35dac0a15537a99a52c6b76bed4ffe77
+Description:  Kernel modules for PPP support
+
+Package: kmod-pppoe
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-ppp
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 6871
+Filename: kmod-pppoe_2.6.28.fa2-1_gm812x.ipk
+Size: 7622
+MD5Sum: 133f5d4e11189681201b9ddd0a6a234d
+Description:  Kernel modules for PPPoE (PPP over Ethernet) support
+
+Package: libc
+Version: 0.9.32-71
+Depends: 
+Provides: 
+Source: package/base-files
+Section: libs
+Status: unknown hold not-installed
+Essential: yes
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 182863
+Filename: libc_0.9.32-71_gm812x.ipk
+Size: 183459
+MD5Sum: 6a80f29226893758ce0813478e377ade
+Description:  C library
+
+Package: libgcc
+Version: linaro-71
+Depends: 
+Provides: 
+Source: package/base-files
+Section: libs
+Status: unknown hold not-installed
+Essential: yes
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 21525
+Filename: libgcc_linaro-71_gm812x.ipk
+Size: 22050
+MD5Sum: 86524166f0ff001f84e47dd13061a685
+Description:  GCC support library
+
+Package: libip4tc
+Version: 1.4.10-2
+Depends: 
+Provides: 
+Source: package/iptables
+Section: libs
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 10461
+Filename: libip4tc_1.4.10-2_gm812x.ipk
+Size: 11070
+MD5Sum: 62c6c00f3e55135fd45471c6bfcda36b
+Description:  IPv4 firewall - shared libiptc library
+
+Package: libuci
+Version: 2011-03-27.2-1
+Depends: 
+Provides: 
+Source: package/uci
+Section: libs
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 12976
+Filename: libuci_2011-03-27.2-1_gm812x.ipk
+Size: 13623
+MD5Sum: 296602171cc93fd41f7c27d83b26e85d
+Description:  C library for the Unified Configuration Interface (UCI)
+
+Package: libxtables
+Version: 1.4.10-2
+Depends: 
+Provides: 
+Source: package/iptables
+Section: libs
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 10384
+Filename: libxtables_1.4.10-2_gm812x.ipk
+Size: 11003
+MD5Sum: b59e069df1476c06680591217d029cce
+Description:  IPv4/IPv6 firewall - shared xtables library
+
+Package: mtd
+Version: 15
+Depends: 
+Provides: 
+Source: package/mtd
+Section: utils
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 8464
+Filename: mtd_15_gm812x.ipk
+Size: 9131
+MD5Sum: 22965f0183e21207bfdf8bedc5bee1e6
+Description:  This package contains an utility useful to upgrade from other firmware or 
+ older OpenWrt releases.
+
+Package: opkg
+Version: 618-1
+Depends: 
+Provides: 
+Source: package/opkg
+Section: base
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Architecture: gm812x
+Installed-Size: 60167
+Filename: opkg_618-1_gm812x.ipk
+Size: 60929
+MD5Sum: a94478acee9c0d92deb9388201da9977
+Description:  Lightweight package management system
+ opkg is the opkg Package Management System, for handling
+ installation and removal of packages on a system. It can
+ recursively follow dependencies and download all packages
+ necessary to install a particular package.
+ 
+ opkg knows how to install both .ipk and .deb packages.
+
+Package: ppp-mod-pppoe
+Version: 2.4.4-4
+Depends: ppp, kmod-pppoe
+Provides: 
+Source: package/ppp
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 10201
+Filename: ppp-mod-pppoe_2.4.4-4_gm812x.ipk
+Size: 10804
+MD5Sum: 65421cca6ed4e9f10d1267ceb83d9fd7
+Description:  This package contains a PPPoE (PPP over Ethernet) plugin for ppp.
+
+Package: ppp
+Version: 2.4.4-4
+Depends: kmod-ppp
+Provides: 
+Source: package/ppp
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 124605
+Filename: ppp_2.4.4-4_gm812x.ipk
+Size: 125135
+MD5Sum: 69ce87b391d8b7cd5728792f04a1abc7
+Description:  This package contains the PPP (Point-to-Point Protocol) daemon.
+
+Package: uci
+Version: 2011-03-27.2-1
+Depends: libuci
+Provides: 
+Source: package/uci
+Section: base
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 6185
+Filename: uci_2011-03-27.2-1_gm812x.ipk
+Size: 6811
+MD5Sum: b2d3dd79afce7871c06301c8e53b041b
+Description:  Utility for the Unified Configuration Interface (UCI)
+

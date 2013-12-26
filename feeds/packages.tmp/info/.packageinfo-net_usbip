@@ -1,0 +1,110 @@
+Source-Makefile: feeds/packages/net/usbip/Makefile
+Package: usbip
+Version: 0.1.7-1
+Depends: @!LINUX_2_4 @USB_SUPPORT +glib2 +sysfsutils +glib2 +sysfsutils +libwrap +kmod-usbip
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: net
+Category: Network
+Title: USB-over-IP (common)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: usbip-0.1.7.tar.gz
+Type: ipkg
+Description: USB-over-IP (common)
+http://usbip.sourceforge.net/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: usbip-client
+Version: 0.1.7-1
+Depends: @!LINUX_2_4 @USB_SUPPORT +glib2 +sysfsutils usbip +kmod-usbip-client
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: net
+Category: Network
+Title: USB-over-IP (client)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: usbip-0.1.7.tar.gz
+Type: ipkg
+Description: USB-over-IP (client)
+http://usbip.sourceforge.net/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: usbip-server
+Version: 0.1.7-1
+Depends: @!LINUX_2_4 @USB_SUPPORT +glib2 +sysfsutils usbip +kmod-usbip-server
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: net
+Category: Network
+Title: USB-over-IP (server)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: usbip-0.1.7.tar.gz
+Type: ipkg
+Description: USB-over-IP (server)
+http://usbip.sourceforge.net/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: kmod-usbip
+Submenu: USB Support
+Version: <LINUX_VERSION>+0.1.7-1
+Depends: @!LINUX_2_4 @USB_SUPPORT +glib2 +sysfsutils
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: kernel
+Category: Kernel modules
+Title: USB-over-IP (kernel support)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: usbip-0.1.7.tar.gz
+Type: ipkg
+Kernel-Config: CONFIG_USB_IP_COMMON CONFIG_USB_IP_DEBUG_ENABLE=n
+Description: USB-over-IP (kernel support)
+http://usbip.sourceforge.net/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: kmod-usbip-client
+Submenu: USB Support
+Version: <LINUX_VERSION>+0.1.7-1
+Depends: @!LINUX_2_4 @USB_SUPPORT +glib2 +sysfsutils kmod-usbip
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: kernel
+Category: Kernel modules
+Title: USB-over-IP (kernel client driver)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: usbip-0.1.7.tar.gz
+Type: ipkg
+Kernel-Config: CONFIG_USB_IP_VHCI_HCD
+Description: USB-over-IP (kernel client driver)
+http://usbip.sourceforge.net/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+Package: kmod-usbip-server
+Submenu: USB Support
+Version: <LINUX_VERSION>+0.1.7-1
+Depends: @!LINUX_2_4 @USB_SUPPORT +glib2 +sysfsutils kmod-usbip
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: kernel
+Category: Kernel modules
+Title: USB-over-IP (kernel host driver)
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: usbip-0.1.7.tar.gz
+Type: ipkg
+Kernel-Config: CONFIG_USB_IP_HOST
+Description: USB-over-IP (kernel host driver)
+http://usbip.sourceforge.net/
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+

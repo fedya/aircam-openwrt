@@ -1,0 +1,18 @@
+Source-Makefile: package/boa/Makefile
+Package: boa
+Version: 0.93.17-uClinux-dist-20051014-1
+Depends: +libmatrixssl
+Menu-Depends: 
+Provides: 
+Section: base
+Category: Base system
+Title: Boa Webserver
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boa-0.93.17-uClinux-dist-20051014.tar.gz
+Type: ipkg
+Description: 	Boa is a single-tasking HTTP server.
+http://www.boa.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

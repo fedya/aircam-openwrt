@@ -1,0 +1,76 @@
+Source-Makefile: feeds/packages/multimedia/gst-plugins-ugly/Makefile
+Package: gst-mod-lame
+Version: 0.10.15-1
+Depends: @!LINUX_2_4 +libgstreamer   +lame-lib
+Menu-Depends: 
+Provides: 
+Build-Depends: gstreamer gst-plugins-base liboil !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: multimedia
+Category: Multimedia
+Title: GStreamer MP3 encoder (using LAME) plugin (ugly)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gst-plugins-ugly-0.10.15.tar.bz2
+Type: ipkg
+Description:     GStreamer open source multimedia framework
+   .
+   This package contains the GStreamer MP3 encoder (using LAME) plugin.
+http://gstreamer.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: gst-mod-mad
+Version: 0.10.15-1
+Depends: @!LINUX_2_4 +libgstreamer +libgstaudio +libgsttag  +libid3tag +libmad
+Menu-Depends: 
+Provides: 
+Build-Depends: gstreamer gst-plugins-base liboil !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: multimedia
+Category: Multimedia
+Title: GStreamer MP3 decoder (using MAD) plugin (ugly)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gst-plugins-ugly-0.10.15.tar.bz2
+Type: ipkg
+Description:     GStreamer open source multimedia framework
+   .
+   This package contains the GStreamer MP3 decoder (using MAD) plugin.
+http://gstreamer.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: gst-mod-asf
+Version: 0.10.15-1
+Depends: @!LINUX_2_4 +libgstreamer   
+Menu-Depends: 
+Provides: 
+Build-Depends: gstreamer gst-plugins-base liboil !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: multimedia
+Category: Multimedia
+Title: GStreamer ASF demuxer plugin (ugly)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gst-plugins-ugly-0.10.15.tar.bz2
+Type: ipkg
+Description:     GStreamer open source multimedia framework
+   .
+   This package contains the GStreamer ASF demuxer plugin.
+http://gstreamer.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: gst-plugins-ugly
+Version: 0.10.15-1
+Depends: @!LINUX_2_4 +gst-mod-lame +gst-mod-mad +gst-mod-asf
+Menu-Depends: 
+Provides: 
+Build-Depends: gstreamer gst-plugins-base liboil !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: multimedia
+Category: Multimedia
+Title: GStreamer plugins collection (ugly)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gst-plugins-ugly-0.10.15.tar.bz2
+Type: ipkg
+Description: GStreamer plugins collection (ugly)
+http://gstreamer.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

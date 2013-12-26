@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/xf86bigfontproto/Makefile
+Package: xf86bigfontproto
+Submenu: proto
+Version: 1.2.0-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: xf86bigfontproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xf86bigfontproto-1.2.0.tar.bz2
+Type: ipkg
+Description: xf86bigfontproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

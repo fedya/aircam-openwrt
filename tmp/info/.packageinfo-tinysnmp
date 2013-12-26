@@ -1,0 +1,92 @@
+Source-Makefile: package/tinysnmp/Makefile
+Package: tinysnmp-tools
+Version: 0.8.4-1
+Depends: +libabz +libber +libdebug +kmod-
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: TinySNMP Utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tinysnmp_0.8.4.tar.gz
+Type: ipkg
+Description: TinySNMP Utilities
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tinysnmp-agent
+Version: 0.8.4-1
+Depends: +libabz +libber +libdebug +libevent
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A lightweight SNMPv1 implementation
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tinysnmp_0.8.4.tar.gz
+Type: ipkg
+Description: A lightweight SNMPv1 implementation
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tinysnmp-module-interfaces
+Version: 0.8.4-1
+Depends: +tinysnmp-agent
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Interfaces MIB module for TinySNMP
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tinysnmp_0.8.4.tar.gz
+Type: ipkg
+Description: Interfaces MIB module for TinySNMP
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tinysnmp-module-resources
+Version: 0.8.4-1
+Depends: +tinysnmp-agent
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Frogfoot Networks Resources MIB plugin for TinySNMP
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tinysnmp_0.8.4.tar.gz
+Type: ipkg
+Description: Frogfoot Networks Resources MIB plugin for TinySNMP
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tinysnmp-module-ieee802dot11
+Version: 0.8.4-1
+Depends: +tinysnmp-agent
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: IEEE-802.11 MIB module for TinySNMP
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tinysnmp_0.8.4.tar.gz
+Type: ipkg
+Description: IEEE-802.11 MIB module for TinySNMP
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tinysnmp-module-mikrotik
+Version: 0.8.4-1
+Depends: +tinysnmp-agent
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Mikrotik MIB module for TinySNMP
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tinysnmp_0.8.4.tar.gz
+Type: ipkg
+Description: Mikrotik MIB module for TinySNMP
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

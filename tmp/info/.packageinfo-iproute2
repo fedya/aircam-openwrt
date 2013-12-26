@@ -1,0 +1,51 @@
+Source-Makefile: package/iproute2/Makefile
+Package: ip
+Submenu: Routing and Redirection
+Version: 2.6.35-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Routing control utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iproute2-2.6.35.tar.bz2
+Type: ipkg
+Description: Routing control utility
+http://linux-net.osdl.org/index.php/Iproute2
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tc
+Version: 2.6.35-3
+Depends: +kmod-sched
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Traffic control utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iproute2-2.6.35.tar.bz2
+Type: ipkg
+Description: Traffic control utility
+http://linux-net.osdl.org/index.php/Iproute2
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: genl
+Version: 2.6.35-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: General netlink utility frontend
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: iproute2-2.6.35.tar.bz2
+Type: ipkg
+Description: General netlink utility frontend
+http://linux-net.osdl.org/index.php/Iproute2
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

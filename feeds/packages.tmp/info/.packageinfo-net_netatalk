@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/netatalk/Makefile
+Package: netatalk
+Submenu: Filesystem
+Version: 2.1.3-1
+Depends: +libdb47 +libgcrypt +libopenssl +USE_UCLIBC:librpc
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: netatalk
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: netatalk-2.1.3.tar.gz
+Type: ipkg
+Description: netatalk
+http://netatalk.sourceforge.net
+W. Michael Petullo <mike@flyn.org>
+@@
+
+

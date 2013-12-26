@@ -1,0 +1,36 @@
+Source-Makefile: feeds/packages/libs/gconf2/Makefile
+Package: libgconf2
+Version: 2.24.0-1
+Depends: +orbit2 +glib2 +dbus +libdbus-glib +libxml2
+Menu-Depends: 
+Provides: 
+Build-Depends: orbit2/host intltool/host
+Section: libs
+Category: Libraries
+Title: GConf2 library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: GConf-2.24.0.tar.bz2
+Type: ipkg
+Description: GConf is a configuration database system for storing application preferences.
+http://www.gnome.org/projects/gconf/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: gconf2
+Version: 2.24.0-1
+Depends: +libgconf2
+Menu-Depends: 
+Provides: 
+Build-Depends: orbit2/host intltool/host
+Section: utils
+Category: Utilities
+Title: GConf2 command line utils
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: GConf-2.24.0.tar.bz2
+Type: ipkg
+Description: GConf is a configuration database system for storing application preferences.
+http://www.gnome.org/projects/gconf/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

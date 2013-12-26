@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/multimedia/spca5xx-view/Makefile
+Package: spca5xx-view
+Version: 1-1
+Depends: +kmod-video-spca5xx-le +libpthread
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: spca5xx streaming applicaton
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: spca5xx-view.tar.bz2
+Type: ipkg
+Description:  This package contains a streaming daemon for spca5xx based webcams 
+http://www.acmesystems.it/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

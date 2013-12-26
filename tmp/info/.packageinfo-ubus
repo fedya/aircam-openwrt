@@ -1,0 +1,50 @@
+Source-Makefile: package/ubus/Makefile
+Package: ubus
+Submenu: System
+Version: 2011-03-27-e49b34f91267449e89d3f482b7c16bbf84bf90fd
+Depends: +libubus +libblobmsg-json +ubusd
+Menu-Depends: 
+Provides: 
+Section: luci2
+Category: LuCI2
+Title: OpenWrt RPC client utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ubus-2011-03-27-e49b34f91267449e89d3f482b7c16bbf84bf90fd.tar.gz
+Type: ipkg
+Description: OpenWrt RPC client utility
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: ubusd
+Submenu: System
+Version: 2011-03-27-e49b34f91267449e89d3f482b7c16bbf84bf90fd
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: luci2
+Category: LuCI2
+Title: OpenWrt RPC daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ubus-2011-03-27-e49b34f91267449e89d3f482b7c16bbf84bf90fd.tar.gz
+Type: ipkg
+Description: OpenWrt RPC daemon
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libubus
+Submenu: Libraries
+Version: 2011-03-27-e49b34f91267449e89d3f482b7c16bbf84bf90fd
+Depends: +libubox
+Menu-Depends: 
+Provides: 
+Section: luci2
+Category: LuCI2
+Title: OpenWrt RPC client library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ubus-2011-03-27-e49b34f91267449e89d3f482b7c16bbf84bf90fd.tar.gz
+Type: ipkg
+Description: OpenWrt RPC client library
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

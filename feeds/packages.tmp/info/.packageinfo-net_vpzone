@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/net/vpzone/Makefile
+Package: vpzone
+Submenu: VPN
+Version: 0.1.2-2
+Depends: +libcares +libevent +libgnutls +kmod-ipv6 +kmod-tun
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A flexible multipurpose layer 3 VPN daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: vpzone-0.1.2.tar.bz2
+Type: ipkg
+Description: A flexible multipurpose layer 3 VPN daemon
+http://vpzone.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

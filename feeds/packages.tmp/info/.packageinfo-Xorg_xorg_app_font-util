@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/app/font-util/Makefile
+Package: font-util
+Submenu: app
+Version: 1.0.1-3
+Depends: +xserver
+Menu-Depends: 
+Provides: 
+Section: xorg-font
+Category: Xorg
+Title: misc tool to generate x fonts
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: font-util-1.0.1.tar.bz2
+Type: ipkg
+Description: misc tool to generate x fonts
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

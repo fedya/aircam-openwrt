@@ -1,0 +1,583 @@
+Index: uClibc/Rules.mak
+===================================================================
+--- uClibc.orig/Rules.mak	2013-03-21 12:05:08.650046230 +0200
++++ uClibc/Rules.mak	2013-03-21 12:09:49.880478809 +0200
+@@ -228,6 +228,7 @@
+ # No longer needed with current toolchains, but leave it here for now.
+ # If anyone is actually still using gcc 2.95 (say), they can uncomment it.
+ #    LDADD_LIBFLOAT=-lfloat
++CPU_CFLAGS-y += -mapcs
+ endif
+ endif
+ 
+Index: uClibc/include/execinfo.h
+===================================================================
+--- uClibc.orig/include/execinfo.h	2011-04-17 19:43:35.000000000 +0300
++++ uClibc/include/execinfo.h	2013-03-21 12:07:20.987192627 +0200
+@@ -42,3 +42,47 @@
+ __END_DECLS
+ 
+ #endif /* execinfo.h  */
++/* Copyright (C) 1998, 1999, 2004, 2005 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, write to the Free
++   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
++   02111-1307 USA.  */
++
++#ifndef _EXECINFO_H
++#define _EXECINFO_H 1
++
++#include <features.h>
++
++__BEGIN_DECLS
++
++/* Store up to SIZE return address of the current program state in
++   ARRAY and return the exact number of values stored.  */
++extern int backtrace (void **__array, int __size) __nonnull ((1));
++
++
++/* Return names of functions from the backtrace list in ARRAY in a newly
++   malloc()ed memory block.  */
++extern char **backtrace_symbols (void *__const *__array, int __size)
++     __THROW __nonnull ((1));
++
++
++/* This function is similar to backtrace_symbols() but it writes the result
++   immediately to a file.  */
++extern void backtrace_symbols_fd (void *__const *__array, int __size, int __fd)
++     __THROW __nonnull ((1));
++
++__END_DECLS
++
++#endif /* execinfo.h  */
+Index: uClibc/libc/sysdeps/linux/arm/backtrace.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/arm/backtrace.c	2013-03-21 12:07:20.991192662 +0200
+@@ -0,0 +1,142 @@
++/* backtrace.c for the generic platform.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * The original file was a part of the GNU C Library licensed under the LGPL
++ * Copyright (C) 1998, 2000, 2002, 2004 Free Software Foundation, Inc. 
++ * Contributed by Ulrich Drepper <drepper@cygnus.com>, 1998.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2.1 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++#include <execinfo.h>
++#include "frame.h"
++
++/*
++ * Secretly exported by uClibc or glibc.
++ */
++extern void *__libc_stack_end;
++
++
++/* 
++ * Get some notion of the current stack.  Need not be exactly the top
++ *    of the stack, just something somewhere in the current frame.  
++ */
++#ifndef CURRENT_STACK_FRAME
++#define CURRENT_STACK_FRAME  ({ char __csf; &__csf; })
++#endif
++
++
++/* 
++ * By default we assume that the stack grows downward.  
++ */
++#ifndef INNER_THAN
++#define INNER_THAN <
++#endif
++
++
++/* 
++ * By default assume the `next' pointer in struct layout points to the
++ *    next struct layout.  
++ */
++#ifndef ADVANCE_STACK_FRAME
++#define ADVANCE_STACK_FRAME(next) (struct layout *) ( next )
++#endif
++
++
++/* 
++ * By default, the frame pointer is just what we get from gcc.  
++ */
++#ifndef FIRST_FRAME_POINTER
++#define FIRST_FRAME_POINTER  __builtin_frame_address (0)
++#endif
++
++#ifndef DEBUG_PRINT_FRAME
++#define DEBUG_PRINT_FRAME(frame) {}
++#endif
++
++/*
++ * This implementation of backtrace walks the stack-frames, reads the return address and 
++ * frame pointer of next frame. 
++ *
++ * There is arguably a better way of getting around this by using GCC's __Unwind_Backtrace, 
++ * but my preliminary investigation found that it returned after calling the provided 
++ * function callback only once. For those of you who are interested in this, there is an 
++ * excellent library called libunwind (www.hpl.hp.com/research/linux/libunwind/) that gets 
++ * you a stacktrace the same way (stripped < ~40K).
++ *
++ * Do not compile with -fomit-frame-pointer, this will cause the compiler to possibly 
++ * remove the stack frames we are walking. 
++ */
++
++int __backtrace (void **array, int size)
++{
++    struct layout *current = (struct layout*)0;
++    struct layout *next    = (struct layout*)0;
++
++    void *top_frame;
++    void *top_stack;
++
++    int cnt = 0;
++    top_frame = FIRST_FRAME_POINTER;
++    top_stack = CURRENT_STACK_FRAME;
++
++    current = (struct layout*) top_frame;
++
++#ifdef DEBUG
++    printf("top_frame: 0x%08lx, top_stack: 0x%08lx\n", top_frame, top_stack);
++    DEBUG_PRINT_FRAME(current);
++#endif
++
++    /* 
++     * We skip the call to this function, it makes no sense to record it.
++     */
++    while ( cnt < size ) {
++
++        /* Make sure we don't cross the upper bound */
++        if (!current || (void *) current INNER_THAN top_stack || 
++            !((void *) current INNER_THAN __libc_stack_end)) {
++
++            break;
++        }
++
++        next = ADVANCE_STACK_FRAME(current->next);
++
++        /* Make sure next is valid and we are not in a loop */
++        if ( !next || next == current )
++            break;
++
++        /* Make sure we are moving in the right direction */
++        if ( next INNER_THAN current )
++            break;
++        
++        /* Don't record (NULL) addresses */
++        if ( !current->return_address )
++            break;
++
++#ifdef DEBUG
++        DEBUG_PRINT_FRAME(current);
++#endif
++        array[cnt++] = current->return_address;
++        current = next;
++    }
++
++    return cnt;
++}
++
++weak_alias(__backtrace, backtrace)
++
++
+Index: uClibc/libc/sysdeps/linux/arm/frame.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/arm/frame.h	2013-03-21 12:07:20.991192662 +0200
+@@ -0,0 +1,56 @@
++/* frame.h for generating stack traces on an ARM architecture.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++/*
++ * There are 4 registers pushed onto the stack if the APCS (ARM Procedure Calling Standard) compatible 
++ * frames are enabled, FP (Frame Pointer), SP (Stack Pointer), LR (Link Register), and 
++ * PC (Program Counter).
++ *
++ * LR contains the abosulute return address to where the current frame was called from, the PC holds the
++ * address of the function this frame was called from. The SP holds the previous top of stack. The FP holds
++ * the address of the previous frame.
++ *
++ * If you use optimization then, you will need to enable -mapcs or -mapcs-frame which ensures that 
++ * each function have a function prologue that pushes FP, SP, IP, and PC onto the stack. Please consult
++ * your toolchain options and processor handbook.
++ *
++ * This was tested on a Intel IXP425 platform with an Big-Endian ARM (XScale) processor). Configured for 
++ * CONFIG_GENERIC_ARM=y.
++ */
++
++struct layout {
++
++    struct layout *next;        /*! This is the FP pointing to the previous frame           */
++    void *sp;                   /*! This is the SP pointing to the top of previous frame    */
++    void *return_address;       /*! This is the RA pointing to the location to return       */
++    void *pc;                   /*! This is the PC pointing to the caller function          */
++};
++
++
++#define FIRST_FRAME_POINTER       (__builtin_frame_address(0) - 12)
++
++#define ADVANCE_STACK_FRAME(next) (struct layout *) ((int)next - 12)
++
++#define DEBUG_PRINT_FRAME(frame) \
++    printf("FP: 0x%08lx, IP: 0x%08lx, LR: 0x%08lx, PC: 0x%08lx\n", frame->next, \
++           frame->sp, frame->return_address, frame->pc)
++
++
++
+Index: uClibc/libc/sysdeps/linux/common/backtrace.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/common/backtrace.c	2013-03-21 12:07:20.991192662 +0200
+@@ -0,0 +1,38 @@
++/* backtrace.c for the generic platform.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * The original file was a part of the GNU C Library licensed under the LGPL
++ * Copyright (C) 1998, 2000, 2002, 2004 Free Software Foundation, Inc. 
++ * Contributed by Ulrich Drepper <drepper@cygnus.com>, 1998.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2.1 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++#include <execinfo.h>
++
++int __backtrace (void **array, int size)
++{   
++    /*
++     * Not implemented for common, architecture specific.
++     */
++    return -1;
++}
++
++link_warning(__backtrace, "the `backtrace()' function is a stub.  Do you really need it?")
++weak_alias(__backtrace, backtrace)
++
++
+Index: uClibc/libc/sysdeps/linux/common/backtrace_syms.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/common/backtrace_syms.c	2013-03-21 12:07:20.991192662 +0200
+@@ -0,0 +1,33 @@
++/* backtrace.c for the generic platform.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++#include <execinfo.h>
++
++
++char **__backtrace_symbols( void *__const *__array, int __size )
++{   
++    return (char**)0;
++}
++
++link_warning(__backtrace_symbols, "the `backtrace_symbols()' function is a stub.  Do you really need it?")
++weak_alias(__backtrace_symbols, backtrace_symbols)
++
++
++
+Index: uClibc/libc/sysdeps/linux/common/backtrace_symsfd.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/common/backtrace_symsfd.c	2013-03-21 12:07:20.991192662 +0200
+@@ -0,0 +1,30 @@
++/* backtrace.c for the generic platform.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++#include <execinfo.h>
++
++void __backtrace_symbols_fd (void *__const *__array, int __size, int __fd)
++{
++    return;
++}
++
++link_warning(__backtrace_symbols_fd, "the `backtrace_symbols_fd()' function is a stub.  Do you really need it?")
++weak_alias(__backtrace_symbols_fd, backtrace_symbols_fd)
++
+Index: uClibc/libc/sysdeps/linux/i386/backtrace.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/i386/backtrace.c	2013-03-21 12:07:20.995192697 +0200
+@@ -0,0 +1,142 @@
++/* backtrace.c for the generic platform.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * The original file was a part of the GNU C Library licensed under the LGPL
++ * Copyright (C) 1998, 2000, 2002, 2004 Free Software Foundation, Inc. 
++ * Contributed by Ulrich Drepper <drepper@cygnus.com>, 1998.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2.1 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++#include <execinfo.h>
++#include "frame.h"
++
++/*
++ * Secretly exported by uClibc or glibc.
++ */
++extern void *__libc_stack_end;
++
++
++/* 
++ * Get some notion of the current stack.  Need not be exactly the top
++ *    of the stack, just something somewhere in the current frame.  
++ */
++#ifndef CURRENT_STACK_FRAME
++#define CURRENT_STACK_FRAME  ({ char __csf; &__csf; })
++#endif
++
++
++/* 
++ * By default we assume that the stack grows downward.  
++ */
++#ifndef INNER_THAN
++#define INNER_THAN <
++#endif
++
++
++/* 
++ * By default assume the `next' pointer in struct layout points to the
++ *    next struct layout.  
++ */
++#ifndef ADVANCE_STACK_FRAME
++#define ADVANCE_STACK_FRAME(next) (struct layout *) ( next )
++#endif
++
++
++/* 
++ * By default, the frame pointer is just what we get from gcc.  
++ */
++#ifndef FIRST_FRAME_POINTER
++#define FIRST_FRAME_POINTER  __builtin_frame_address (0)
++#endif
++
++#ifndef DEBUG_PRINT_FRAME
++#define DEBUG_PRINT_FRAME(frame) {}
++#endif
++
++/*
++ * This implementation of backtrace walks the stack-frames, reads the return address and 
++ * frame pointer of next frame. 
++ *
++ * There is arguably a better way of getting around this by using GCC's __Unwind_Backtrace, 
++ * but my preliminary investigation found that it returned after calling the provided 
++ * function callback only once. For those of you who are interested in this, there is an 
++ * excellent library called libunwind (www.hpl.hp.com/research/linux/libunwind/) that gets 
++ * you a stacktrace the same way (stripped < ~40K).
++ *
++ * Do not compile with -fomit-frame-pointer, this will cause the compiler to possibly 
++ * remove the stack frames we are walking. 
++ */
++
++int __backtrace (void **array, int size)
++{
++    struct layout *current = (struct layout*)0;
++    struct layout *next    = (struct layout*)0;
++
++    void *top_frame;
++    void *top_stack;
++
++    int cnt = 0;
++    top_frame = FIRST_FRAME_POINTER;
++    top_stack = CURRENT_STACK_FRAME;
++
++    current = (struct layout*) top_frame;
++
++#ifdef DEBUG
++    printf("top_frame: 0x%08lx, top_stack: 0x%08lx\n", top_frame, top_stack);
++    DEBUG_PRINT_FRAME(current);
++#endif
++
++    /* 
++     * We skip the call to this function, it makes no sense to record it.
++     */
++    while ( cnt < size ) {
++
++        /* Make sure we don't cross the upper bound */
++        if (!current || (void *) current INNER_THAN top_stack || 
++            !((void *) current INNER_THAN __libc_stack_end)) {
++
++            break;
++        }
++
++        next = ADVANCE_STACK_FRAME(current->next);
++
++        /* Make sure next is valid and we are not in a loop */
++        if ( !next || next == current )
++            break;
++
++        /* Make sure we are moving in the right direction */
++        if ( next INNER_THAN current )
++            break;
++        
++        /* Don't record (NULL) addresses */
++        if ( !current->return_address )
++            break;
++
++#ifdef DEBUG
++        DEBUG_PRINT_FRAME(current);
++#endif
++        array[cnt++] = current->return_address;
++        current = next;
++    }
++
++    return cnt;
++}
++
++weak_alias(__backtrace, backtrace)
++
++
+Index: uClibc/libc/sysdeps/linux/i386/frame.h
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uClibc/libc/sysdeps/linux/i386/frame.h	2013-03-21 12:07:20.991192662 +0200
+@@ -0,0 +1,43 @@
++/* frame.h for generating stack traces on a i386/i686 architecture.
++ * 
++ * Copyright (C) 2007 Eivind Naess <enaess@watchguard.com>,
++ *                    Watchguard Technologies, Inc. http://www.watchguard.com
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Library General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this program; if not, write to the Free Software Foundation,
++ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++
++/* 
++ * The Stack Frames on an i686/i386 consists of two values, EBP (Frame Pointer) and EIP (Instruction 
++ * Pointer). The latter is the return address.
++ *
++ *          +-----------------+        +-----------------+
++ *  %ebp -> | %ebp last frame-|------> | %ebp last frame-|->...
++ *          |                 |        |                 |
++ *          | return address  |        | return address  |
++ *          +-----------------+        +-----------------+
++ */
++struct layout {
++
++    struct layout *next;        /*! Holds the previous value of EBP (Frame Pointer)         */
++    void *return_address;       /*! Holds the previous value of EIP (Return Address)        */
++};
++ 
++#define FIRST_FRAME_POINTER       (__builtin_frame_address(0))
++
++#define ADVANCE_STACK_FRAME(next) (struct layout *)((int)next)
++
++#define DEBUG_PRINT_FRAME(frame) \
++    printf("EBP: 0x%08lx, EIP: 0x%08lx\n", frame->next, frame->return_address)
++

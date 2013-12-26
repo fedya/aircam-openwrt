@@ -1,0 +1,19 @@
+Source-Makefile: target/linux/rb532/Makefile
+Target: rb532
+Target-Board: rb532
+Target-Kernel: 2.6
+Target-Name: Mikrotik RouterBoard 532
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: mipsel
+Target-Arch-Packages: rb532
+Target-Features: gpio jffs2 pci targz
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32 -mtune=mips32 -fno-caller-saves
+Linux-Version: 2.6.32.33
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall wpad-mini kmod-madwifi kmod-input-rb532
+

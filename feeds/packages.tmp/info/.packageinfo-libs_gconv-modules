@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/libs/gconv-modules/Makefile
+Package: gconv-modules
+Version: 2
+Depends: @USE_GLIBC
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: The GNU libc charset conversion modules
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  This package contains helper modules necessary to convert data between
+various charsets.
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

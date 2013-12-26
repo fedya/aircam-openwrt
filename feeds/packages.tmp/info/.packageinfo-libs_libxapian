@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/libxapian/Makefile
+Package: libxapian
+Version: 1.0.7-3
+Depends: +libstdcpp +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: libs
+Category: Libraries
+Title: xapian
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xapian-core-1.0.7.tar.gz
+Type: ipkg
+Description: xapian
+http://xapian.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

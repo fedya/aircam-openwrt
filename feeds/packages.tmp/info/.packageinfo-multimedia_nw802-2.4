@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/multimedia/nw802-2.4/Makefile
+Package: kmod-video-nw8xx
+Submenu: Video Support
+Version: <LINUX_VERSION>+0.0.99-1
+Depends: @LINUX_2_6_25||LINUX_2_6_27||LINUX_2_6_28 @USB_SUPPORT +kmod-usb-video +kmod-video-core
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: NW8xx based USB webcam support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: nw802-2.4-0.0.99.tar.bz2
+Type: ipkg
+Description:  Kernel support for NW8xx based USB cameras.
+http://nw802.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

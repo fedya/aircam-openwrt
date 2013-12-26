@@ -1,0 +1,38 @@
+Source-Makefile: feeds/packages/Xorg/xorg/lib/libXmu/Makefile
+Package: libXmu
+Submenu: libraries
+Version: 1.0.5-1
+Depends: +libXt +libXext
+Menu-Depends: 
+Provides: 
+Build-Depends: libXt libXext xextproto libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: libXmu
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libXmu-1.0.5.tar.bz2
+Type: ipkg
+Description: libXmu
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libXmuu
+Submenu: libraries
+Version: 1.0.5-1
+Depends: +libX11
+Menu-Depends: 
+Provides: 
+Build-Depends: libXt libXext xextproto libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: libXmuu
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libXmu-1.0.5.tar.bz2
+Type: ipkg
+Description: libXmuu
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/wm/matchbox-window-manager/Makefile
+Package: matchbox-window-manager
+Submenu: window manager
+Version: 1.2-1
+Depends: +libX11 +zlib +libfreetype +fontconfig +libmatchbox
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: xorg-wm
+Category: Xorg
+Title: matchbox window manager
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: matchbox-window-manager-1.2.tar.bz2
+Type: ipkg
+Description: matchbox window manager
+http://matchbox-project.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,18 @@
+Source-Makefile: package/uboot-envtools/Makefile
+Package: uboot-envtools
+Version: 20081215-2
+Depends: +zlib
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: read/modify U-Boot bootloader environment
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: uboot-envtools_20081215.orig.tar.gz
+Type: ipkg
+Description:  This package includes tools to read and modify U-Boot bootloader environment.
+http://www.denx.de/wiki/U-Boot
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

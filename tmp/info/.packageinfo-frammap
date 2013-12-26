@@ -1,0 +1,18 @@
+Source-Makefile: package/frammap/Makefile
+Package: kmod-frammap
+Submenu: Device drivers
+Version: <LINUX_VERSION>+1.1-2
+Depends: @(TARGET_gm812x)
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: GM812x Frame Mapper
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  GM812x frame mapper
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,36 @@
+Source-Makefile: feeds/packages/sound/pulseaudio/Makefile
+Package: pulseaudio
+Version: 0.9.22-2
+Depends: +libspeexdsp +libgdbm +libsndfile +libsamplerate +libltdl +libpthread +librt +alsa-lib +BUILD_NLS:libiconv-full +BUILD_NLS:libintl-full
+Menu-Depends: 
+Provides: 
+Build-Depends: intltool/host libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: sound
+Category: Sound
+Title: Network sound server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pulseaudio-0.9.22.tar.gz
+Type: ipkg
+Description: Network sound server
+http://www.pulseaudio.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pa-tools
+Version: 0.9.22-2
+Depends: +libgdbm +libsndfile +pulseaudio 
+Menu-Depends: 
+Provides: 
+Build-Depends: intltool/host libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: sound
+Category: Sound
+Title: Tools for Pulseaudio
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pulseaudio-0.9.22.tar.gz
+Type: ipkg
+Description: Tools for Pulseaudio
+http://www.pulseaudio.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,23 @@
+Source-Makefile: package/busybox/Makefile
+Package: busybox
+Menu: 1
+Version: 1.18.4-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: base
+Category: Base system
+Title: Core utilities for embedded Linux
+Maintainer: Nicolas Thill <nico@openwrt.org>
+Source: busybox-1.18.4.tar.bz2
+Type: ipkg
+Description:  The Swiss Army Knife of embedded Linux.
+ It slices, it dices, it makes Julian Fries.
+http://busybox.net/
+Nicolas Thill <nico@openwrt.org>
+@@
+Config:
+	source "package/busybox/Config.in"
+@@
+
+

@@ -1,0 +1,11 @@
+	$ rm -rf d
+	$ mkdir -p d/patches
+	$ cd d
+
+	$ mkdir sub
+	$ cd sub
+	$ quilt new here.diff
+	> Patch %{_P}here.diff is now on top
+
+	$ cd ../..
+	$ rm -rf d

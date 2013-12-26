@@ -1,0 +1,19 @@
+Source-Makefile: target/linux/goldfish/Makefile
+Target: goldfish
+Target-Board: goldfish
+Target-Kernel: 2.6
+Target-Name: Goldfish (Android Emulator)
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: arm
+Target-Arch-Packages: goldfish
+Target-Features: display
+Target-Depends: 
+Target-Optimization: -O2 -pipe -march=armv5te -mtune=xscale -fno-caller-saves
+Linux-Version: 2.6.30.10
+Linux-Release: 1
+Linux-Kernel-Arch: arm
+Target-Description:
+	Android emulator virtual platform
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 
+

@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/devel/boost-jam/Makefile
+Package: boost-jam
+Version: 3.1.17-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Types: host
+Section: devel
+Category: Development
+Title: Boost JAM
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost-jam-3.1.17.tgz
+Type: ipkg
+Build-Only: 1
+Description: Boost JAM
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

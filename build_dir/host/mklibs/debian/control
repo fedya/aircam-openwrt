@@ -1,0 +1,25 @@
+Source: mklibs
+Section: devel
+Priority: optional
+Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
+Build-Depends: debhelper (>= 5.0)
+Standards-Version: 3.8.2.0
+Uploaders: Phil Blundell <pb@debian.org>, Tollef Fog Heen <tfheen@debian.org>, Jeff Bailey <jbailey@nisa.net>, Bastian Blank <waldi@debian.org>, Steve Langasek <vorlon@debian.org>
+Vcs-Svn: svn://svn.debian.org/d-i/trunk/packages/mklibs
+
+Package: mklibs
+Architecture: all
+Depends: python, binutils, gcc, mklibs-copy (>= ${source:Version})
+Recommends: libc6-pic | libc6.1-pic | libc0.1-pic | libc0.3-pic
+Description: Shared library reduction script
+ mklibs produces cut-down shared libraries that contain only the
+ routines required by a particular set of executables.  This is
+ useful when building closed systems where disk space is at a premium,
+ such as the Debian installer.
+
+Package: mklibs-copy
+Architecture: any
+Depends: python, ${shlibs:Depends}, ${misc:Depends}
+Description: Shared library reduction script
+ mklibs-copy produces a minimal set of shared libraries that contain
+ only the libs which are required by a particular set of executables.

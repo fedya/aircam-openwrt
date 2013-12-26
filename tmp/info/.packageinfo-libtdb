@@ -1,0 +1,18 @@
+Source-Makefile: package/libtdb/Makefile
+Package: libtdb
+Version: 1.2.1-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Trivial Database
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tdb_1.2.1.orig.tar.gz
+Type: ipkg
+Description: Trivial Database
+http://tdb.samba.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

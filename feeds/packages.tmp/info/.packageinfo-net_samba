@@ -1,0 +1,54 @@
+Source-Makefile: feeds/packages/net/samba/Makefile
+Package: samba2-common
+Menu: 1
+Submenu: Filesystem
+Version: 2.0.10-6
+Depends: +libgcc
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: NetBIOS/SMB server and client shared files
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: samba-2.0.10.tar.gz
+Type: ipkg
+Description: NetBIOS/SMB server and client shared files
+http://www.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: samba2-server
+Submenu: Filesystem
+Version: 2.0.10-6
+Depends: samba2-common
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: NetBIOS/SMB file and print server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: samba-2.0.10.tar.gz
+Type: ipkg
+Description: NetBIOS/SMB file and print server
+http://www.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: samba2-client
+Submenu: Filesystem
+Version: 2.0.10-6
+Depends: samba2-common
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: NetBIOS/SMB simple client
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: samba-2.0.10.tar.gz
+Type: ipkg
+Description: NetBIOS/SMB simple client
+http://www.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

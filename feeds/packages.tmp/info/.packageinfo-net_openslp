@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/openslp/Makefile
+Package: openslp
+Version: 1.2.1-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: openslp
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: openslp-1.2.1.tar.gz
+Type: ipkg
+Description: openslp
+http://www.openslp.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

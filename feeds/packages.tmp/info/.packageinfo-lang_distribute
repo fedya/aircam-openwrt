@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/lang/distribute/Makefile
+Package: distribute
+Submenu: Python
+Version: 0.6.16-1
+Depends: +python
+Menu-Depends: 
+Provides: setuptools
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Distribute
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: distribute-0.6.16.tar.gz
+Type: ipkg
+Description:   Distribute (fork of Setuptools) is a collection of extensions to Distutils
+http://pypi.python.org/pypi/distribute
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

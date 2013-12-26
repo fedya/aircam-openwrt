@@ -1,0 +1,40 @@
+--- a/drivers/mtd/devices/winbond.c
++++ b/drivers/mtd/devices/winbond.c
+@@ -169,6 +169,11 @@
+ #define	mtd_has_partitions()	(0)
+ #endif
+ 
++/* exported EEPROM page (for Ethernet MAC address etc.) */
++#define EEPROM_PAGE_LEN 256
++u8 *gm812x_eeprom_256 = NULL;
++EXPORT_SYMBOL(gm812x_eeprom_256);
++
+ //=============================================================================
+ // System Header, size = 256 bytes
+ //=============================================================================
+@@ -1161,6 +1166,15 @@ static int __devinit get_flash_partition
+     size_t new_user_offset = 0;
+ #endif
+ 
++	/* fill the EEPROM page */
++	gm812x_eeprom_256 = kzalloc(EEPROM_PAGE_LEN, GFP_KERNEL);
++	if (gm812x_eeprom_256 == NULL)
++		printk("Failed to alloc memory for EEPROM page\n");
++#define EEPROM_OFFSET 0x7f0000
++
++    winbond_spi_flash_read(mtd, EEPROM_OFFSET, EEPROM_PAGE_LEN, &retlen,
++                           (u_char *) gm812x_eeprom_256);
++
+ #if 0 // do not touch partitions!
+     winbond_spi_flash_read(mtd, 0, sizeof(struct flash_system_header), &retlen,
+                            (u_char *) & system_header);
+@@ -1611,6 +1625,9 @@ static int __init winbond_spi_flash_init
+ 
+ static void winbond_spi_flash_exit(void)
+ {
++	if (gm812x_eeprom_256 != NULL)
++			kfree(gm812x_eeprom_256);
++
+     spi_unregister_driver(&winbond_spi_flash_driver);
+ }
+ 

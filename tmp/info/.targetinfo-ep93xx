@@ -1,0 +1,19 @@
+Source-Makefile: target/linux/ep93xx/Makefile
+Target: ep93xx
+Target-Board: ep93xx
+Target-Kernel: 2.6
+Target-Name: Cirrus Logic EP93xx
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: arm
+Target-Arch-Packages: ep93xx
+Target-Features: display ext4 gpio jffs2 squashfs targz usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -march=armv4t -fno-caller-saves
+Linux-Version: 2.6.38.6
+Linux-Release: 1
+Linux-Kernel-Arch: arm
+Target-Description:
+
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall
+

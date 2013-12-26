@@ -1,0 +1,60 @@
+# Estonian translations for bison.
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Toomas Soome <Toomas.Soome@microlink.ee>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.0b\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2010-08-05 21:01-0400\n"
+"PO-Revision-Date: 2005-08-02 08:28+0300\n"
+"Last-Translator: Toomas Soome <Toomas.Soome@microlink.ee>\n"
+"Language-Team: Estonian <et@li.org>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8-bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/glr.c:925 data/yacc.c:639
+msgid "syntax error: cannot back up"
+msgstr "süntaksi viga: ei saa toetada"
+
+#: data/glr.c:1808
+msgid "syntax is ambiguous"
+msgstr "süntaks on segane"
+
+#: data/glr.c:2183 data/glr.c:2189 data/glr.c:2457 data/lalr1.cc:878
+#: data/yacc.c:1500 data/yacc.c:1528
+msgid "syntax error"
+msgstr "süntaksi viga"
+
+#: data/glr.c:2517 data/yacc.c:1115 data/yacc.c:1117 data/yacc.c:1293
+#: data/yacc.c:1649
+msgid "memory exhausted"
+msgstr "mälu on otsas"
+
+#: data/yacc.c:927
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "süntaksi viga, ootamatu %s"
+
+#: data/yacc.c:928
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "süntaksi viga, ootamatu %s, ootasin %s"
+
+#: data/yacc.c:929
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "süntaksi viga, ootamatu %s, ootasin %s või %s"
+
+#: data/yacc.c:930
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "süntaksi viga, ootamatu %s, ootasin %s või %s või %s"
+
+#: data/yacc.c:931
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr "süntaksi viga, ootamatu %s, ootasin %s või %s või %s või %s"

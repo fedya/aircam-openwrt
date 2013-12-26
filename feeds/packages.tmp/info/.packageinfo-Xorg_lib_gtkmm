@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/lib/gtkmm/Makefile
+Package: gtkmm
+Submenu: framework
+Version: 2.16.0-1
+Depends: +gtk2 +cairomm +pangomm +glibmm
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: xorg-framework
+Category: Xorg
+Title: GTK+-2.0
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gtkmm-2.16.0.tar.bz2
+Type: ipkg
+Description: GTK+-2.0
+http://www.gtkmm.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

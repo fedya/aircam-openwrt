@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/libs/fftw3/Makefile
+Package: fftw3
+Version: 3.2.2-2
+Depends: @!avr32
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: Fast Fourier transform library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: fftw-3.2.2.tar.gz
+Type: ipkg
+Description: 	FFTW is a collection of fast C routines for computing the
+	Discrete Fourier Transform in one or more dimensions. It
+	includes complex, real, and parallel transforms, and can
+	handle arbitrary array sizes efficiently.
+http://www.fftw.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/driver/xf86-video-vesa/Makefile
+Package: xf86-video-vesa
+Submenu: driver
+Version: 2.2.1-1
+Depends: +xserver-xorg +libpciaccess @TARGET_x86
+Menu-Depends: 
+Provides: 
+Build-Depends: xproto fontsproto randrproto renderproto xextproto
+Section: xorg-driver
+Category: Xorg
+Title: xf86-video-vesa
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xf86-video-vesa-2.2.1.tar.bz2
+Type: ipkg
+Description: xf86-video-vesa
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

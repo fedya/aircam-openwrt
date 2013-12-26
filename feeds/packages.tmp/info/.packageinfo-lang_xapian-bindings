@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/lang/xapian-bindings/Makefile
+Package: python-xapian
+Submenu: Python
+Version: 1.0.7-1
+Depends: +python-mini +libxapian
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: lang
+Category: Languages
+Title: xapian python bindings
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xapian-bindings-1.0.7.tar.gz
+Type: ipkg
+Description: xapian python bindings
+http://xapian.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

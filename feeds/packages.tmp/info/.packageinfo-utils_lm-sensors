@@ -1,0 +1,50 @@
+Source-Makefile: feeds/packages/utils/lm-sensors/Makefile
+Package: lm-sensors
+Version: 3.3.0-2
+Depends: +sysfsutils +libsensors
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: lm-sensors
+Maintainer: Luka Perkov <openwrt@lukaperkov.net>
+Source: lm_sensors-3.3.0.tar.bz2
+Type: ipkg
+Description:  Utility to read hardware sensor data
+http://www.lm-sensors.org/
+Luka Perkov <openwrt@lukaperkov.net>
+@@
+
+Package: lm-sensors-detect
+Version: 3.3.0-2
+Depends: +sysfsutils +lm-sensors +perl +perlbase-essential +perlbase-fcntl +perlbase-file +perlbase-xsloader
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: lm-sensors-detect
+Maintainer: Luka Perkov <openwrt@lukaperkov.net>
+Source: lm_sensors-3.3.0.tar.bz2
+Type: ipkg
+Description:  Script to autodetect sensor hardware
+http://www.lm-sensors.org/
+Luka Perkov <openwrt@lukaperkov.net>
+@@
+
+Package: libsensors
+Version: 3.3.0-2
+Depends: +sysfsutils
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: libsensors
+Maintainer: Luka Perkov <openwrt@lukaperkov.net>
+Source: lm_sensors-3.3.0.tar.bz2
+Type: ipkg
+Description:  lm-sensors libraries
+http://www.lm-sensors.org/
+Luka Perkov <openwrt@lukaperkov.net>
+@@
+
+

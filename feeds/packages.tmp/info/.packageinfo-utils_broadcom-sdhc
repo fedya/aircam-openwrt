@@ -1,0 +1,21 @@
+Source-Makefile: feeds/packages/utils/broadcom-sdhc/Makefile
+Package: kmod-broadcom-sdhc
+Submenu: Other modules
+Version: <LINUX_VERSION>--2.0.2-1
+Depends: @TARGET_brcm_2_4
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: MMHC/SDHC card driver - Linksys WRT54G/GS/GL
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: broadcom-sdhc-2.0.2.tar.gz
+Type: ipkg
+Description: 	Driver for Linksys WRT54G/GS/GL MM/SD card modification.
+	Supports standard and high capacity cards.
+	May work for other broadcom based routers (Buffalo, etc).
+http://www.4mul8.ca/openwrt
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

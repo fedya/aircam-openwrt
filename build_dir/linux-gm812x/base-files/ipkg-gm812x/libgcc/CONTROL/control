@@ -1,0 +1,13 @@
+Package: libgcc
+Version: linaro-71
+Depends: 
+Provides: 
+Source: package/base-files
+Section: libs
+Status: unknown hold not-installed
+Essential: yes
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 21525
+Description:  GCC support library

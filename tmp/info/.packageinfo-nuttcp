@@ -1,0 +1,20 @@
+Source-Makefile: package/nuttcp/Makefile
+Package: nuttcp
+Menu: 1
+Submenu: Monitoring
+Version: 6.1.2-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Bandwidth measuring tool
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: nuttcp-6.1.2.tar.bz2
+Type: ipkg
+Description: Bandwidth measuring tool
+ftp://ftp.lcp.nrl.navy.mil/pub/nuttcp/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

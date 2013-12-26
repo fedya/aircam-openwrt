@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/admin/nagios-plugins/Makefile
+Package: nagios-plugins
+Version: 1.4.14-2
+Depends: +uclibcxx +libpq
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: admin
+Category: Administration
+Title: plugins for Nagios checks
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: nagios-plugins-1.4.14.tar.gz
+Type: ipkg
+Description: plugins for Nagios checks
+http://nagiosplug.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

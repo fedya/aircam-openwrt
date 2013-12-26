@@ -1,0 +1,81 @@
+#!/bin/sh
+
+#
+# This script computes the various flags needed to run GNU C++ testsuites
+# (compiler specific as well as library specific). 
+#
+# Written by Benjamin Kosnik <bkoz@redhat.com>
+#            Gabriel Dos Reis <gdr@codesourcery.com>
+#
+
+# Print a message saying how this script is intended to be invoked
+print_usage() {
+    cat <<EOF
+Usage: 
+    testsuite_flags --install-includes
+		    --build-includes
+		    --build-cxx
+		    --build-cc
+		    --install-cxx
+		    --cxxflags
+		    --cxxpchflags
+		    --cxxldflags
+EOF
+}
+
+# Establish configure-generated directory structure.
+BUILD_DIR=/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/arm-openwrt-linux-uclibcgnueabi/libstdc++-v3
+SRC_DIR=/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libstdc++-v3
+PREFIX_DIR=/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi
+query=$1
+
+case ${query} in
+    --install-includes)
+      INCLUDES="-I${SRC_DIR}/testsuite/util"
+      echo ${INCLUDES}
+      ;;
+    --build-includes)
+      INCLUDES="-nostdinc++ -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/arm-openwrt-linux-uclibcgnueabi/libstdc++-v3/include/arm-openwrt-linux-uclibcgnueabi -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/arm-openwrt-linux-uclibcgnueabi/libstdc++-v3/include -I/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0/libstdc++-v3/libsupc++ 
+                -I${SRC_DIR}/include/backward -I${SRC_DIR}/testsuite/util"
+      echo ${INCLUDES}
+      ;;
+    --install-cxx)
+      CXX=${PREFIX_DIR}/bin/g++
+      echo ${CXX}
+      ;;
+    --build-cxx)
+      CXX_build=" /home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/xgcc -shared-libgcc -B/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc -nostdinc++ -L/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/arm-openwrt-linux-uclibcgnueabi/libstdc++-v3/src -L/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/arm-openwrt-linux-uclibcgnueabi/libstdc++-v3/src/.libs -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/lib/ -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/include -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include   "
+      CXX=`echo "$CXX_build" | sed 's,gcc/xgcc ,gcc/g++ ,'`
+      echo ${CXX}
+      ;;
+    --build-cc)
+      CC_build="/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/xgcc -B/home/fdkit/GPL-AirCam-v1.2/openwrt/build_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/gcc-linaro-4.5-2011.02-0-final/./gcc/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/bin/ -B/home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/lib/ -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/include -isystem /home/fdkit/GPL-AirCam-v1.2/openwrt/staging_dir/toolchain-arm_v5te_gcc-linaro_uClibc-0.9.32_eabi/arm-openwrt-linux-uclibcgnueabi/sys-include   "
+      CC="$CC_build"
+      echo ${CC}
+      ;;
+    --cxxflags)
+      CXXFLAGS_default="-g -O2 -D_GLIBCXX_ASSERT -fmessage-length=0"
+      CXXFLAGS_config="-ffunction-sections -fdata-sections -O2 -pipe -march=armv5te -msoft-float -fno-caller-saves -fhonour-copts -msoft-float "
+      echo ${CXXFLAGS_default} ${CXXFLAGS_config}
+      ;;
+    --cxxparallelflags)
+      CXXFLAGS_parallel="-D_GLIBCXX_PARALLEL -fopenmp
+			 -B${BUILD_DIR}/../libgomp 
+                         -I${BUILD_DIR}/../libgomp 
+			 -L${BUILD_DIR}/../libgomp/.libs -lgomp"
+      echo ${CXXFLAGS_parallel}
+      ;;
+    --cxxpchflags)
+      PCHFLAGS="-include bits/stdc++.h"
+      echo ${PCHFLAGS}
+      ;;
+    --cxxldflags)
+      SECTIONLDFLAGS="-Wl,--gc-sections  "
+      echo ${SECTIONLDFLAGS}
+      ;;
+    *)
+      print_usage
+      ;;
+esac
+
+exit 0

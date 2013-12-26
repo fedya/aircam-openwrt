@@ -1,0 +1,18 @@
+Source-Makefile: package/libabz/Makefile
+Package: libabz
+Version: 0.6.2-1
+Depends: +libdebug
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Miscellaneous useful routines
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libabz_0.6.2.tar.gz
+Type: ipkg
+Description: Miscellaneous useful routines
+http://oasis.frogfoot.net/code/libabz/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

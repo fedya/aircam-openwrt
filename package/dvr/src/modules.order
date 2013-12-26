@@ -1,0 +1,4 @@
+kernel//usr/src/cvs/0316/arm-linux-2.6.28/module_tmp/dvr/dvr_common.ko
+kernel//usr/src/cvs/0316/arm-linux-2.6.28/module_tmp/dvr/dvr_dec.ko
+kernel//usr/src/cvs/0316/arm-linux-2.6.28/module_tmp/dvr/dvr_disp.ko
+kernel//usr/src/cvs/0316/arm-linux-2.6.28/module_tmp/dvr/dvr_enc.ko

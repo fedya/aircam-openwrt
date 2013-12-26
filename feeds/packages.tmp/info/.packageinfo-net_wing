@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/net/wing/Makefile
+Package: wing
+Version: 20110329-2
+Depends: +kmod-tun +libpcap +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: wing/host
+Build-Types: host
+Section: net
+Category: Network
+Title: Wireless mesh networking toolkit
+Maintainer: Roberto Riggio <roberto.riggio@create-net.org>
+Source: wing-20110329.tar.bz2
+Type: ipkg
+Description: Wireless mesh networking toolkit
+http://www.wing-project.org/
+Roberto Riggio <roberto.riggio@create-net.org>
+@@
+
+

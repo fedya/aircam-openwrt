@@ -1,0 +1,18 @@
+Source-Makefile: package/php2/Makefile
+Package: php2
+Version: 2.0.1-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: PHP2 Web Scripting Language
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: php-2.0.1.tar.gz
+Type: ipkg
+Description: 	PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML.
+http://museum.php.net/php2/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

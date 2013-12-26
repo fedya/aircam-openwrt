@@ -1,0 +1,32 @@
+Source-Makefile: package/libubox/Makefile
+Package: libubox
+Version: 2011-03-27-89122a2c1e7f891c3ae2e8ed562d0df562d8a0f6
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Basic utility library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libubox-2011-03-27-89122a2c1e7f891c3ae2e8ed562d0df562d8a0f6.tar.gz
+Type: ipkg
+Description: Basic utility library
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libblobmsg-json
+Version: 2011-03-27-89122a2c1e7f891c3ae2e8ed562d0df562d8a0f6
+Depends: +libjson
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: blobmsg <-> json conversion library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libubox-2011-03-27-89122a2c1e7f891c3ae2e8ed562d0df562d8a0f6.tar.gz
+Type: ipkg
+Description: blobmsg <-> json conversion library
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

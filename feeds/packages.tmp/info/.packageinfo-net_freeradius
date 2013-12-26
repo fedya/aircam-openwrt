@@ -1,0 +1,428 @@
+Source-Makefile: feeds/packages/net/freeradius/Makefile
+Package: freeradius
+Menu: 1
+Version: 1.1.8-2
+Depends: +libltdl +libopenssl +libpthread +libreadline
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A flexible RADIUS server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: A flexible RADIUS server
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-democerts
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Demo certificates to test the server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Demo certificates to test the server
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-chap
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: CHAP module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: CHAP module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-detail
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Detailed accounting module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Detailed accounting module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Base EAP module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Base EAP module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap-gtc
+Version: 1.1.8-2
+Depends: freeradius-mod-eap
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EAP/GTC module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EAP/GTC module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap-md5
+Version: 1.1.8-2
+Depends: freeradius-mod-eap
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EAP/MD5 module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EAP/MD5 module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap-mschapv2
+Version: 1.1.8-2
+Depends: freeradius-mod-eap
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EAP/MS-CHAPv2 module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EAP/MS-CHAPv2 module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap-peap
+Version: 1.1.8-2
+Depends: freeradius-mod-eap
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EAP/PEAP module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EAP/PEAP module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap-tls
+Version: 1.1.8-2
+Depends: freeradius-mod-eap
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EAP/TLS module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EAP/TLS module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-eap-ttls
+Version: 1.1.8-2
+Depends: freeradius-mod-eap-tls
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EAP/TTLS module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EAP/TTLS module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-exec
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: EXEC module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: EXEC module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-attr-rewrite
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: ATTR rewrite module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: ATTR rewrite module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-files
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Module using local files for authorization
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Module using local files for authorization
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-ldap
+Version: 1.1.8-2
+Depends: freeradius +libopenldap
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: LDAP module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: LDAP module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-mschap
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: MS-CHAP and MS-CHAPv2 module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: MS-CHAP and MS-CHAPv2 module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-pap
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: PAP module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: PAP module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-preprocess
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Request pre-processing module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Request pre-processing module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-realm
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Realms handling module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Realms handling module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-sql
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Base SQL module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Base SQL module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-sql-mysql
+Version: 1.1.8-2
+Depends: freeradius-mod-sql +libmysqlclient
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: MySQL module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: MySQL module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-sql-pgsql
+Version: 1.1.8-2
+Depends: freeradius-mod-sql +libpq
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: PostgreSQL module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: PostgreSQL module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-sqlcounter
+Version: 1.1.8-2
+Depends: freeradius-mod-sql
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Generic SQL Counter module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Generic SQL Counter module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-mod-radutmp
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Radius UTMP module
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Radius UTMP module
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: freeradius-utils
+Version: 1.1.8-2
+Depends: freeradius
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: Misc. client utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: freeradius-1.1.8.tar.bz2
+Type: ipkg
+Description: Misc. client utilities
+http://freeradius.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

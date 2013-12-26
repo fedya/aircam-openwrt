@@ -1,0 +1,21 @@
+Source-Makefile: package/lighttpd/Makefile
+Package: lighttpd
+Menu: 1
+Submenu: Web
+Version: 1.4.31-1
+Depends: +libopenssl +libtdb +mod-airos-helpers
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A flexible and lightweight web server
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: lighttpd-1.4.31.tar.bz2
+Type: ipkg
+Description: A flexible and lightweight web server
+http://www.lighttpd.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

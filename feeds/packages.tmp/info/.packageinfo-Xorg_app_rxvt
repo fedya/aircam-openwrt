@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/app/rxvt/Makefile
+Package: rxvt
+Submenu: app
+Version: 2.7.10-2
+Depends: +libX11 +libXext +libXau +libXtst +imlib2
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: xorg-app
+Category: Xorg
+Title: rxvt
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: rxvt-2.7.10.tar.gz
+Type: ipkg
+Description: rxvt
+http://rxvt.sourceforge.net
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/lib/libXvMC/Makefile
+Package: libXvMC
+Submenu: libraries
+Version: 1.0.5-1
+Depends: +libXext +libXv +libX11
+Menu-Depends: 
+Provides: 
+Build-Depends: videoproto xextproto libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: libXvMC
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libXvMC-1.0.5.tar.bz2
+Type: ipkg
+Description: libXvMC
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

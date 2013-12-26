@@ -1,0 +1,56 @@
+Source-Makefile: package/uhttpd/Makefile
+Package: uhttpd
+Menu: 1
+Submenu: Web Servers/Proxies
+Version: 22
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libcyassl liblua
+Section: net
+Category: Network
+Title: uHTTPd - tiny, single threaded HTTP server
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Source: 
+Type: ipkg
+Description:  uHTTPd is a tiny single threaded HTTP server with TLS, CGI and Lua
+ support. It is intended as a drop-in replacement for the Busybox
+ HTTP daemon.
+Jo-Philipp Wich <xm@subsignal.org>
+@@
+
+Package: uhttpd-mod-tls
+Submenu: Web Servers/Proxies
+Version: 22
+Depends: uhttpd +libcyassl
+Menu-Depends: 
+Provides: 
+Build-Depends: libcyassl liblua
+Section: net
+Category: Network
+Title: uHTTPd - tiny, single threaded HTTP server (TLS plugin)
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Source: 
+Type: ipkg
+Description:  The TLS plugin adds HTTPS support to uHTTPd.
+Jo-Philipp Wich <xm@subsignal.org>
+@@
+
+Package: uhttpd-mod-lua
+Submenu: Web Servers/Proxies
+Version: 22
+Depends: uhttpd +liblua
+Menu-Depends: 
+Provides: 
+Build-Depends: libcyassl liblua
+Section: net
+Category: Network
+Title: uHTTPd - tiny, single threaded HTTP server (Lua plugin)
+Maintainer: Jo-Philipp Wich <xm@subsignal.org>
+Source: 
+Type: ipkg
+Description:  The Lua plugin adds a CGI-like Lua runtime interface to uHTTPd.
+Jo-Philipp Wich <xm@subsignal.org>
+@@
+
+

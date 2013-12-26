@@ -1,0 +1,67 @@
+	$ rm -rf d
+	$ mkdir -p d/patches
+	$ cd d
+
+	$ mkdir subdir
+	$ cat > subdir/file
+	< old file
+
+	$ quilt new test.patch
+	> Patch %{P}test.patch is now on top
+
+	$ quilt add subdir/file
+	> File subdir/file added to patch %{P}test.patch
+
+	$ cat > subdir/file
+	< new contents
+
+	This creates the patches/ directory:
+
+	$ quilt refresh
+	> Refreshed patch %{P}test.patch
+
+	$ cd subdir
+	$ quilt add file2
+	> File subdir/file2 added to patch %{_P}test.patch
+
+	$ cat > file2
+	< another file
+
+	$ cat > file3
+	< yet another file
+
+	$ quilt add file3
+	> File subdir/file3 added to patch %{_P}test.patch
+
+	$ rm -f file3
+	$ quilt files -v
+	>   subdir/file
+	> + subdir/file2
+	> - subdir/file3
+
+	$ quilt diff
+	> Index: d/subdir/file
+	> ===================================================================
+	> --- d.orig/subdir/file
+	> +++ d/subdir/file
+	> @@ -1 +1 @@
+	> -old file
+	> +new contents
+	> Index: d/subdir/file2
+	> ===================================================================
+	> --- /dev/null
+	> +++ d/subdir/file2
+	> @@ -0,0 +1 @@
+	> +another file
+	> Index: d/subdir/file3
+	> ===================================================================
+	> --- d.orig/subdir/file3
+	> +++ /dev/null
+	> @@ -1 +0,0 @@
+	> -yet another file
+
+	$ quilt refresh
+	> Refreshed patch %{_P}test.patch
+
+	$ cd ../..
+	$ rm -rf d

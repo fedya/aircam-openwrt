@@ -1,0 +1,19 @@
+Source-Makefile: package/udpxy/Makefile
+Package: udpxy
+Version: 1.0-Chipmunk-16-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Multicast Relay Daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: udpxy.1.0-Chipmunk-16.tgz
+Type: ipkg
+Description: 	small-footprint UNIX/Linux daemon to relay 
+	multicast UDP traffic to client's TCP (HTTP) connection.
+http://sourceforge.net/projects/udpxy
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

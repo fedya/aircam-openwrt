@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/printproto/Makefile
+Package: printproto
+Submenu: proto
+Version: 1.0.4-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: printproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: printproto-1.0.4.tar.bz2
+Type: ipkg
+Description: printproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

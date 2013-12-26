@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/app/xine-ui/Makefile
+Package: xine-ui
+Submenu: app
+Version: 0.99.4-3
+Depends: +xine-lib +libpng +curl +libXv +libXt +libICE +libXxf86vm +libpng +libfreetype +BUILD_NLS:libiconv-full
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: xorg-app
+Category: Xorg
+Title: xine user interface
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xine-ui-0.99.4.tar.gz
+Type: ipkg
+Description: xine user interface
+http://www.xine-project.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

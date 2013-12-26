@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/libs/firewall-mod-save/Makefile
+Package: firewall-mod-save
+Version: 1.0-2
+Depends: +iptables-utils
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Preserve dynamic chains during firewall restart
+Maintainer: Daniel Dickinson <openwrt@cshore.neomailbox.net>
+Source: 
+Type: ipkg
+Description:     Uses iptables-save to save the option chain in option table (default filter)
+    as defined by the config section save in /etc/config/firewall.
+Daniel Dickinson <openwrt@cshore.neomailbox.net>
+@@
+
+

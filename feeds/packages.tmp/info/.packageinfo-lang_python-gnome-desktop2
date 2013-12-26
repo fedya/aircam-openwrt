@@ -1,0 +1,38 @@
+Source-Makefile: feeds/packages/lang/python-gnome-desktop2/Makefile
+Package: python-rsvg
+Submenu: Python
+Version: 2.22.0-1
+Depends: +python-mini python-gtk +librsvg +pycairo
+Menu-Depends: 
+Provides: 
+Build-Depends: gtk2 libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: lang
+Category: Languages
+Title: librsvg python bindings
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gnome-python-desktop-2.22.0.tar.bz2
+Type: ipkg
+Description: librsvg python bindings
+http://ftp.gnome.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: python-wnck
+Submenu: Python
+Version: 2.22.0-1
+Depends: +python-mini python-gtk +PACKAGE_python-wnck:libwnck
+Menu-Depends: 
+Provides: 
+Build-Depends: gtk2 libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: lang
+Category: Languages
+Title: libwnck python bindings
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gnome-python-desktop-2.22.0.tar.bz2
+Type: ipkg
+Description: libwnck python bindings
+http://ftp.gnome.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

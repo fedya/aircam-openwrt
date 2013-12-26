@@ -1,0 +1,36 @@
+Source-Makefile: feeds/packages/net/tcpdump/Makefile
+Package: tcpdump
+Version: 4.0.0-3
+Depends: +libpcap
+Menu-Depends: 
+Provides: 
+Build-Variant: full
+Section: net
+Category: Network
+Title: Network monitoring and data acquisition tool
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tcpdump-4.0.0.tar.gz
+Type: ipkg
+Description: Network monitoring and data acquisition tool
+http://www.tcpdump.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: tcpdump-mini
+Version: 4.0.0-3
+Depends: +libpcap
+Menu-Depends: 
+Provides: 
+Build-Variant: mini
+Section: net
+Category: Network
+Title: Network monitoring and data acquisition tool (minimal version)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: tcpdump-4.0.0.tar.gz
+Type: ipkg
+Description: Network monitoring and data acquisition tool (minimal version)
+http://www.tcpdump.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

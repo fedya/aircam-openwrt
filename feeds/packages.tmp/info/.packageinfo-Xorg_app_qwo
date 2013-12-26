@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/app/qwo/Makefile
+Package: qwo
+Submenu: app
+Version: 0.3-1
+Depends: +libX11 +libXext +libXau +libXtst +imlib2
+Menu-Depends: 
+Provides: 
+Section: xorg-app
+Category: Xorg
+Title: qwo
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: qwo-0.3.tar.gz
+Type: ipkg
+Description: qwo
+http://www.nongnu.org/qwo/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

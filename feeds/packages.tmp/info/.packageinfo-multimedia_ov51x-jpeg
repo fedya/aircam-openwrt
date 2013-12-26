@@ -1,0 +1,35 @@
+Source-Makefile: feeds/packages/multimedia/ov51x-jpeg/Makefile
+Package: ov51x-jpeg-utils
+Version: 1.5.9-1
+Depends: +kmod-video-ov51x-jpeg
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: OV51x based USB webcam utilities
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ov51x-jpeg-1.5.9.tar.gz
+Type: ipkg
+Description:  Utility programs for the video-ov51x kernel module
+http://www.rastageeks.org/ov51x-jpeg/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: kmod-video-ov51x-jpeg
+Submenu: Video Support
+Version: <LINUX_VERSION>+1.5.9-1
+Depends: @LINUX_2_6_25||LINUX_2_6_27||LINUX_2_6_28 @USB_SUPPORT +kmod-usb-core +kmod-video-core
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: OV51x based USB webcam support (JPEG)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ov51x-jpeg-1.5.9.tar.gz
+Type: ipkg
+Description:  Kernel module for OV51x based USB cameras, with in-driver JPEG support.
+http://www.rastageeks.org/ov51x-jpeg/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

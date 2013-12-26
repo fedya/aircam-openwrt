@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/hiawatha/Makefile
+Package: hiawatha
+Submenu: Web Servers/Proxies
+Version: 7.3-1
+Depends: +libpthread
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A very lightweight web server
+Maintainer: Raphaël HUCK <rhk@cksum.org>
+Source: hiawatha-7.3.tar.gz
+Type: ipkg
+Description: Hiawatha is an open source webserver with a focus on security.
+http://www.hiawatha-webserver.org/
+Raphaël HUCK <rhk@cksum.org>
+@@
+
+

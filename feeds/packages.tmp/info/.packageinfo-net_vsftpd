@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/net/vsftpd/Makefile
+Package: vsftpd
+Submenu: File Transfer
+Version: 2.3.4-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A fast and secure FTP server
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Source: vsftpd-2.3.4.tar.gz
+Type: ipkg
+Description: A fast and secure FTP server
+http://vsftpd.beasts.org/
+Cezary Jackiewicz <cezary@eko.one.pl>
+@@
+
+

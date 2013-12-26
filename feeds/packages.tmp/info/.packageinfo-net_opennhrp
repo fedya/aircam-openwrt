@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/net/opennhrp/Makefile
+Package: opennhrp
+Submenu: VPN
+Version: 0.11.3-1
+Depends: +libcares +ipsec-tools +ip +kmod-gre
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: NBMA Next Hop Resolution Protocol
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: opennhrp-0.11.3.tar.bz2
+Type: ipkg
+Description:   OpenNHRP implements NBMA Next Hop Resolution Protocol (as defined in RFC 2332).
+  It makes it possible to create dynamic multipoint VPN Linux router using NHRP,
+  GRE and IPsec. It aims to be Cisco DMVPN compatible.
+http://opennhrp.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/utils/lsof/Makefile
+Package: lsof
+Version: 4.81-2
+Depends: +USE_UCLIBC:librpc
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: LiSt Open Files - a diagnostic tool
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: lsof_4.81.dfsg.1.orig.tar.gz
+Type: ipkg
+Description: LiSt Open Files - a diagnostic tool
+http://people.freebsd.org/~abe/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

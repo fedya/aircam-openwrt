@@ -1,0 +1,24 @@
+MODULE0 = frammap
+sinclude $(PWD)/../module_conf
+SDK_MODULE_SRC := $(SDK_SRC)module/
+LINUX_SRC=$(SDK_SRC)linux-2.6.28-fa
+
+ifneq ($(KERNELRELEASE),)
+
+EXTRA_CFLAGS += -g -I$(SDK_MODULE_SRC)/include/frammap
+
+
+obj-m += $(MODULE0).o
+obj-m := $(sort $(obj-m))
+
+else
+
+PWD := $(shell pwd)
+
+modules:
+
+	$(MAKE) -C $(LINUX_SRC) M=$(PWD) modules
+
+clean:
+	$(MAKE) -C $(LINUX_SRC) M=$(PWD) clean
+endif

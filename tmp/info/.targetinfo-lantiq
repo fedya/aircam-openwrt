@@ -1,0 +1,193 @@
+Source-Makefile: target/linux/lantiq/Makefile
+Target: lantiq
+Target-Board: lantiq
+Target-Kernel: 2.6
+Target-Name: Lantiq GPON/XWAY
+Target-Path: /home/fdkit/GPL-AirCam-v1.2/openwrt
+Target-Arch: mips
+Target-Arch-Packages: lantiq
+Target-Features: gpio jffs2 pci squashfs
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32r2 -mtune=mips32r2 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Lantiq SoC
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall
+Target: lantiq/falcon
+Target-Board: lantiq
+Target-Kernel: 2.6
+Target-Name: Falcon
+Target-Path: target/linux/lantiq
+Target-Arch: mips
+Target-Arch-Packages: lantiq
+Target-Features: gpio jffs2 squashfs
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32r2 -mtune=mips32r2 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Lantiq SoC
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall kmod-ifxos gpon-base-files kmod-leds-gpio kmod-gpon-optic-drv gpon-optic-drv kmod-gpon-onu-drv gpon-onu-drv gpon-pe-firmware gpon-omci-api gpon-omci-onu gpon-luci
+Target-Profile: Generic
+Target-Profile-Name: Generic - all boards
+Target-Profile-Packages: kmod-leds-gpio kmod-dm9000 kmod-i2c-core kmod-i2c-algo-bit kmod-i2c-gpio kmod-eeprom-at24 kmod-spi-bitbang kmod-spi-gpio kmod-eeprom-at25 gpon-dti-agent
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+
+@@
+
+Target-Profile: EASY98000
+Target-Profile-Name: EASY98000
+Target-Profile-Packages: kmod-dm9000 kmod-i2c-core kmod-i2c-algo-bit kmod-i2c-gpio kmod-eeprom-at24 kmod-spi-bitbang kmod-spi-gpio kmod-eeprom-at25
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Lantiq EASY98000 evalkit
+@@
+
+Target-Profile: EASY98020
+Target-Profile-Name: EASY98020
+Target-Profile-Packages: kmod-leds-gpio uboot-easy98020
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Lantiq EASY98020 evalkit
+@@
+
+Target: lantiq/xway
+Target-Board: lantiq
+Target-Kernel: 2.6
+Target-Name: Xway
+Target-Path: target/linux/lantiq
+Target-Arch: mips
+Target-Arch-Packages: lantiq
+Target-Features: atm gpio jffs2 pci squashfs usb
+Target-Depends: 
+Target-Optimization: -Os -pipe -mips32r2 -mtune=mips32r2 -fno-caller-saves
+Linux-Version: 2.6.37.6
+Linux-Release: 1
+Linux-Kernel-Arch: mips
+Target-Description:
+	Build firmware images for Lantiq SoC
+@@
+Default-Packages: base-files libc libgcc busybox dropbear mtd uci opkg hotplug2 dnsmasq iptables ppp ppp-mod-pppoe kmod-ipt-nathelper firewall kmod-pppoa ppp-mod-pppoa linux-atm atm-tools br2684ctl kmod-ltq-dsl ltq-dsl-app
+Target-Profile: Generic
+Target-Profile-Name: Generic - all boards
+Target-Profile-Packages: kmod-leds-gpio button-hotplug
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+
+@@
+
+Target-Profile: EASY50712
+Target-Profile-Name: EASY50712
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-leds-gpio
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Lantiq EASY50712 evalkit
+@@
+
+Target-Profile: EASY50812
+Target-Profile-Name: EASY50812
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-leds-gpio
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Lantiq EASY50812 evalkit
+@@
+
+Target-Profile: ARV3527P
+Target-Profile-Name: ARV3527P - Arcor Easybox 401
+Target-Profile-Packages: kmod-ledtrig-netdev kmod-leds-gpio kmod-button-hotplug kmod-ltq-dsl-firmware-b
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV3527P
+@@
+
+Target-Profile: ARV4510PW
+Target-Profile-Name: ARV4510PW - Wippies Homebox
+Target-Profile-Packages: kmod-usb-core kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-rt61-pci wpad-mini kmod-ltq-dsl-firmware-a
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV4518PW
+@@
+
+Target-Profile: ARV4518PW
+Target-Profile-Name: ARV4518PW - SMC7908A
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-madwifi wpad-mini kmod-ltq-dsl-firmware-a
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV4518PW
+@@
+
+Target-Profile: ARV4520PW
+Target-Profile-Name: ARV4520PW - Arcor Easybox 800
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-rt61-pci wpad-mini kmod-ltq-dsl-firmware-b 
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV4520PW
+@@
+
+Target-Profile: ARV4525PW
+Target-Profile-Name: ARV4525PW - Speedport W502V
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-madwifi wpad-mini kmod-ltq-dsl-firmware-b
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV4525PW
+@@
+
+Target-Profile: ARV452CPW
+Target-Profile-Name: ARV452CPW - Arcor Easybox 801
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-madwifi wpad-mini kmod-ltq-dsl-firmware-b
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV452CPW
+@@
+
+Target-Profile: ARV752DPW22
+Target-Profile-Name: ARV752DPW22 - Arcor Easybox 803
+Target-Profile-Packages: kmod-usb-core kmod-usb2 kmod-usb-uhci kmod-usb-dwc-otg kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-ltq-dsl-firmware-b
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV752PW22
+@@
+
+Target-Profile: ARV7518PW
+Target-Profile-Name: ARV7518PW - ASTORIA
+Target-Profile-Packages: kmod-usb-core kmod-usb-dwc-otg kmod-ledtrig-netdev kmod-ledtrig-usbdev kmod-leds-gpio kmod-button-hotplug kmod-ath9k wpad-mini ltq-dsl-firmware-a swconfig
+Target-Profile-Config: 
+
+@@
+Target-Profile-Description:
+	Package set optimized for the ARV7518PW
+@@
+
+

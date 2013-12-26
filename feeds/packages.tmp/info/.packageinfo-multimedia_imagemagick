@@ -1,0 +1,53 @@
+Source-Makefile: feeds/packages/multimedia/imagemagick/Makefile
+Package: imagemagick
+Version: 6.6.7-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: multimedia
+Category: Multimedia
+Title: imagemagick
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ImageMagick-6.6.7-3.tar.bz2
+Type: ipkg
+Description:   An image manipulation library.
+http://image_magick.veidrodis.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: imagemagick-jpeg
+Version: 6.6.7-1
+Depends: +imagemagick +libjpeg +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: multimedia
+Category: Multimedia
+Title: imagemagick (jpeg)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ImageMagick-6.6.7-3.tar.bz2
+Type: ipkg
+Description:   imagemagick JPEG module
+http://image_magick.veidrodis.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: imagemagick-png
+Version: 6.6.7-1
+Depends: +imagemagick +libpng +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: multimedia
+Category: Multimedia
+Title: imagemagick (png)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: ImageMagick-6.6.7-3.tar.bz2
+Type: ipkg
+Description:   imagemagick PNG module
+http://image_magick.veidrodis.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

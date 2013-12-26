@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/xorg/lib/libXdamage/Makefile
+Package: libXdamage
+Submenu: libraries
+Version: 1.1.2-1
+Depends: +libX11 +libXfixes
+Menu-Depends: 
+Provides: 
+Build-Depends: xproto xextproto fixesproto damageproto libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: libXdamage
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libXdamage-1.1.2.tar.bz2
+Type: ipkg
+Description: libXdamage
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

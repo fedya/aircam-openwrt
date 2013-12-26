@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/kbproto/Makefile
+Package: kbproto
+Submenu: proto
+Version: 1.0.4-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: kbproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: kbproto-1.0.4.tar.bz2
+Type: ipkg
+Description: kbproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,35 @@
+Source-Makefile: feeds/packages/net/miniupnpc/Makefile
+Package: miniupnpc
+Submenu: Firewall
+Version: 1.5-1
+Depends: +libminiupnpc
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Lightweight UPnP client
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: miniupnpc-1.5.tar.gz
+Type: ipkg
+Description: Lightweight UPnP client
+http://miniupnp.tuxfamily.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libminiupnpc
+Version: 1.5-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Lightweight UPnP library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: miniupnpc-1.5.tar.gz
+Type: ipkg
+Description: Lightweight UPnP library
+http://miniupnp.tuxfamily.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

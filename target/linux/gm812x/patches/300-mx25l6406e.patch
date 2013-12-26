@@ -1,0 +1,27 @@
+--- a/drivers/mtd/devices/winbond.c
++++ b/drivers/mtd/devices/winbond.c
+@@ -134,6 +134,7 @@
+ #define WINBOND_ID_W25Q64CV             0x4017
+ #define WINBOND_ID_W25Q128BV            0x4018
+ 
++#define MXIC_ID_MX25L6406E				0x2017
+ #define MXIC_ID_MX25L12845E             0x2018
+ #define MXIC_ID_MX25L25635E             0x2019
+ #define NUMONYX_ID_N25Q128              0xBA18
+@@ -332,6 +333,16 @@ static struct winbond_spi_flash_info win
+ 
+ static struct winbond_spi_flash_info mxic_spi_flash_info_table[] = {
+     {
++     .name = "MX25L6406E",
++     .id = MXIC_ID_MX25L6406E,
++     .byte_mode			= 3,
++     .log2_page_size = 8,       ///256bytes
++     .pages_per_sector = 16,
++     .sectors_per_block = 16,
++     .nr_blocks      = 128,
++     .nr_bytes = 0x800000 ///16 MB
++     },
++    {
+      .name = "MX25L12845E",
+      .id = MXIC_ID_MX25L12845E,
+      .byte_mode			= 3,

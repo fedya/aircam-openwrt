@@ -1,0 +1,23 @@
+#! /usr/bin/perl
+
+$ENV{"LC_ALL"} = "C";
+
+while (<>) {
+	if (/^(|-+)$/) {
+		next;
+	} elsif (/^(\S.*) - (.*@.*)$/) {
+		# print "[" . $1 . "]\n";
+		open FH, 'date -u +"* %a %b %d %Y" -d "' . $1 . '" |';
+		while (<FH>) {
+			chomp;
+			print $_ . " - " . $2 . "\n";
+		}
+		close FH;
+		next;
+	} elsif (/(- |  +)(?!\s)/) {
+		print;
+	} else {
+		print STDERR "Syntax error in line $. of changelog:\n$_\n";
+		exit 1;
+	}
+}

@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/multimedia/spcaview/Makefile
+Package: spcacat
+Version: 20071224-1
+Depends: +libpthread
+Menu-Depends: 
+Provides: 
+Section: multimedia
+Category: Multimedia
+Title: SPCA5xx webcam spcacat utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: spcaview-20071224.tar.gz
+Type: ipkg
+Description: SPCA5xx webcam spcacat utility
+http://mxhaard.free.fr/spca50x
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

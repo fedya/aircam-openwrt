@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/app/xrdb/Makefile
+Package: xrdb
+Submenu: app
+Version: 1.0.5-1
+Depends: +libX11 +libXmuu
+Menu-Depends: 
+Provides: 
+Section: xorg-app
+Category: Xorg
+Title: xrdb
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xrdb-1.0.5.tar.bz2
+Type: ipkg
+Description: xrdb
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

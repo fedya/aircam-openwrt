@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/net/ditg/Makefile
+Package: ditg
+Version: 2.7.0-Beta2
+Depends: +libpcap +libstdcpp
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: D-ITG (Distributed Internet Traffic Generator)
+Maintainer: Giovanni Di Stasi <giovanni.distasi@unina.it>
+Source: D-ITG-2.7.0-Beta2.zip
+Type: ipkg
+Description: D-ITG (Distributed Internet Traffic Generator)
+http://www.grid.unina.it/software/ITG/
+Giovanni Di Stasi <giovanni.distasi@unina.it>
+@@
+
+

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcmbzip2.a  CMakeFiles/cmbzip2.dir/blocksort.o CMakeFiles/cmbzip2.dir/huffman.o CMakeFiles/cmbzip2.dir/crctable.o CMakeFiles/cmbzip2.dir/randtable.o CMakeFiles/cmbzip2.dir/compress.o CMakeFiles/cmbzip2.dir/decompress.o CMakeFiles/cmbzip2.dir/bzlib.o
+/usr/bin/ranlib libcmbzip2.a

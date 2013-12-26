@@ -1,0 +1,13 @@
+Package: kernel
+Version: 2.6.28.fa2-1
+Depends: 
+Provides: 
+Source: package/kernel
+Section: sys
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 105
+Description:  Virtual kernel package

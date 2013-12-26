@@ -1,0 +1,37 @@
+Source-Makefile: feeds/packages/libs/libgphoto2/Makefile
+Package: libgphoto2
+Menu: 1
+Version: 2.4.9-1
+Depends: +libusb +libexif +libjpeg +libpthread +libltdl +BUILD_NLS:libiconv-full
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: libs
+Category: Libraries
+Title: The basic library of the gphoto2 program.
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libgphoto2-2.4.9.tar.bz2
+Type: ipkg
+Description: The basic library of the gphoto2 program.
+http://www.gphoto.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libgphoto2-drivers
+Version: 2.4.9-1
+Depends: libgphoto2
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: libs
+Category: Libraries
+Title: Gphoto2 drivers for various cameras
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: libgphoto2-2.4.9.tar.bz2
+Type: ipkg
+Description: Gphoto2 drivers for various cameras
+http://www.gphoto.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

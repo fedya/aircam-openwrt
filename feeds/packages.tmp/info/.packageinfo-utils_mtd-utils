@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/utils/mtd-utils/Makefile
+Package: mtd-utils
+Version: 20090227-1
+Depends: +zlib +liblzo +libuuid
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Utilities for flash info/debug
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: mtd-utils-20090227.tar.bz2
+Type: ipkg
+Description:   Utilities for manipulating memory technology devices.
+http://www.linux-mtd.infradead.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

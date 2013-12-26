@@ -1,0 +1,236 @@
+Source-Makefile: feeds/packages/admin/pmacct/Makefile
+Package: nfacctd
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: NetFlow accounting daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: NetFlow accounting daemon
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: nfacctd-mysql
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libmysqlclient
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: NetFlow accounting daemon with MySQL support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: NetFlow accounting daemon with MySQL support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: nfacctd-pgsql
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpq
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: NetFlow accounting daemon with PostreSQL support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: NetFlow accounting daemon with PostreSQL support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: nfacctd-sqlite
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libsqlite3
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: NetFlow accounting daemon with SQLite support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: NetFlow accounting daemon with SQLite support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pmacctd
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pmacctd-mysql
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap +libmysqlclient
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon with MySQL support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon with MySQL support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pmacctd-pgsql
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap +libpq
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon with PostreSQL support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon with PostreSQL support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pmacctd-sqlite
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap +libsqlite3
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon with SQLite support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon with SQLite support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: pmacct-client
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: Command-line client to gather data from the IMT plugin
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: Command-line client to gather data from the IMT plugin
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uacctd
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uacctd-mysql
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap +libmysqlclient
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon with MySQL support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon with MySQL support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uacctd-pgsql
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap +libpq
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon with PostreSQL support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon with PostreSQL support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: uacctd-sqlite
+Submenu: Pmacct suite
+Version: 0.12.5-1
+Depends:  +libpcap +libsqlite3
+Menu-Depends: 
+Provides: 
+Build-Depends: libpcap
+Section: admin
+Category: Administration
+Title: IP pcap-based accounting daemon with SQLite support
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pmacct-0.12.5.tar.gz
+Type: ipkg
+Description: IP pcap-based accounting daemon with SQLite support
+http://www.pmacct.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

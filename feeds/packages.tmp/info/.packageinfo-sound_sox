@@ -1,0 +1,23 @@
+Source-Makefile: feeds/packages/sound/sox/Makefile
+Package: sox
+Version: 14.0.1-3
+Depends: +BUILD_PATENTED:lame-lib +BUILD_PATENTED:libmad +BUILD_PATENTED:libid3tag +libvorbis +libvorbisidec +libgsm
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: sound
+Category: Sound
+Title: Sox is a general purpose sound converter/player/recorder
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: sox-14.0.1.tar.gz
+Type: ipkg
+Description: 	SoX is a command line utility that can convert various formats
+	of computer audio files in to other formats. It can also apply
+	various effects to these sound files during the conversion.
+	As an added bonus, SoX can play and record audio files on
+	several unix-style platforms.
+http://sox.sourceforge.net/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

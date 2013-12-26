@@ -1,0 +1,17 @@
+Source-Makefile: feeds/packages/utils/ucmb-tools/Makefile
+Package: ucmb-tools
+Version: 1
+Depends: +kmod-ucmb
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Microcontroller Message Bus tools
+Maintainer: Michael Buesch <mb@bu3sch.de>
+Source: 
+Type: ipkg
+Description: 	Debugging tool for UCMB
+Michael Buesch <mb@bu3sch.de>
+@@
+
+

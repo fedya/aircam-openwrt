@@ -1,0 +1,17 @@
+Package: iptables-mod-conntrack
+Version: 1.4.10-2
+Depends: iptables, kmod-ipt-conntrack
+Provides: 
+Source: package/iptables
+Section: net
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 8391
+Description:  Basic iptables extensions for connection tracking.
+ Includes:
+ - state
+ - raw
+ - NOTRACK

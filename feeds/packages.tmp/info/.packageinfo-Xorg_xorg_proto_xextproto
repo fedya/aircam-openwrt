@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/xextproto/Makefile
+Package: xextproto
+Submenu: proto
+Version: 7.1.1-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: xextproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xextproto-7.1.1.tar.bz2
+Type: ipkg
+Description: xextproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/lang/python-dbus/Makefile
+Package: dbus-python
+Submenu: Python
+Version: 0.83.0-3
+Depends: +python +python-expat +libdbus-glib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv !BUILD_NLS:libiconv !BUILD_NLS:gettext
+Section: lang
+Category: Languages
+Title: Python bindings for dbus
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: dbus-python-0.83.0.tar.gz
+Type: ipkg
+Description:   Python bindings for dbus.
+http://dbus.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

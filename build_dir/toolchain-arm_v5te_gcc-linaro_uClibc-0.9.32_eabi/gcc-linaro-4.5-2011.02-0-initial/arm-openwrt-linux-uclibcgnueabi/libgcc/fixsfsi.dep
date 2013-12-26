@@ -1,0 +1,1 @@
+fixsfsi.o: ../.././gcc/fixsfsi.c

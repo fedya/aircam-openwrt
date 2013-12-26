@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/net/bwping/Makefile
+Package: bwping
+Version: 1.2-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Open Source bandwidth measurement tool
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: bwping-1.2.tar.gz
+Type: ipkg
+Description:   BWPing
+  BWPing is a bandwidth measurement tool based on ICMP echo
+  request/reply.  It is especially well suited for lossy links. BWPing
+  does not not require any special software on the remote host (only
+  the ability to respond on ICMP echo request messages).
+http://bwping.sourceforge.net
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

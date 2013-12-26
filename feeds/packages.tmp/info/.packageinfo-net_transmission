@@ -1,0 +1,78 @@
+Source-Makefile: feeds/packages/net/transmission/Makefile
+Package: transmission-daemon
+Menu: 1
+Submenu: BitTorrent
+Version: 2.31-1
+Depends: +libcurl +libopenssl +libpthread +libevent2
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A free, lightweight BitTorrent client
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Source: transmission-2.31.tar.bz2
+Type: ipkg
+Description:  Transmission is a simple BitTorrent client.
+ It features a very simple, intuitive interface
+ on top on an efficient, cross-platform back-end.
+ This package contains the daemon itself.
+http://www.transmissionbt.com
+Cezary Jackiewicz <cezary@eko.one.pl>
+@@
+
+Package: transmission-cli
+Submenu: BitTorrent
+Version: 2.31-1
+Depends: transmission-daemon
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A free, lightweight BitTorrent client
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Source: transmission-2.31.tar.bz2
+Type: ipkg
+Description:  CLI utilities for transmission.
+http://www.transmissionbt.com
+Cezary Jackiewicz <cezary@eko.one.pl>
+@@
+
+Package: transmission-remote
+Submenu: BitTorrent
+Version: 2.31-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A free, lightweight BitTorrent client
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Source: transmission-2.31.tar.bz2
+Type: ipkg
+Description:  CLI remote interface for transmission.
+http://www.transmissionbt.com
+Cezary Jackiewicz <cezary@eko.one.pl>
+@@
+
+Package: transmission-web
+Submenu: BitTorrent
+Version: 2.31-1
+Depends: transmission-daemon
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A free, lightweight BitTorrent client
+Maintainer: Cezary Jackiewicz <cezary@eko.one.pl>
+Source: transmission-2.31.tar.bz2
+Type: ipkg
+Description:  Webinterface resources for transmission.
+http://www.transmissionbt.com
+Cezary Jackiewicz <cezary@eko.one.pl>
+@@
+
+

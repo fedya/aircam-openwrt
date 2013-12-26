@@ -1,0 +1,22 @@
+Source-Makefile: feeds/packages/net/samba3/Makefile
+Package: samba3
+Submenu: Filesystem
+Version: 3.0.24-7
+Depends: +libpthread
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: samba3
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: samba-3.0.24.tar.gz
+Type: ipkg
+Description: samba3
+http://www.samba.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+Config:
+	source "feeds/packages/net/samba3/Config.in"
+@@
+
+

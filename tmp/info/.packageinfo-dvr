@@ -1,0 +1,18 @@
+Source-Makefile: package/dvr/Makefile
+Package: kmod-dvr
+Submenu: Device drivers
+Version: <LINUX_VERSION>+1.1-2
+Depends: @(TARGET_gm812x)
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: GM812x DVR
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: 
+Type: ipkg
+Description:  GM812x DVR
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

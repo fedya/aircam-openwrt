@@ -1,0 +1,30 @@
+#ifndef __FRMAP_CONFIG_H__
+#define __FRMAP_CONFIG_H__
+
+#define CAP_BUF_NUM  8
+#define CAP_PIXEL_UNIT 2
+
+#define H264E_DEV_NUM 16
+#define H264D_DEV_NUM 16
+#define MMAP_DEV_NUM  4
+#define LCD_BUF_NUM   10  
+
+
+
+//DRAM 1, 
+#define DDR1_CONF_GRP0 (FRMCNF_FFB0_M|FRMCNF_FFB0_S1|FRMCNF_FFB0_S2\
+				        |FRMCNF_CAP0|FRMCNF_CAP1|FRMCNF_CAP2|FRMCNF_CAP3\
+				        |FRMCNF_CAP4|FRMCNF_CAP5|FRMCNF_CAP6|FRMCNF_CAP7)
+				        
+#define DDR1_CONF_GRP1  0
+
+//DRAM 2
+#define DDR2_CONF_GRP0 (FRMCNF_H264E_G2|FRMCNF_H264E_MMAP|FRMCNF_H264E_G1 \
+                        |FRMCNF_FFB1_M|FRMCNF_FFB1_S1|FRMCNF_FFB1_S2)
+                        
+#define DDR2_CONF_GRP1  0
+
+#define DDR1_CONF
+#define DDR2_CONF
+
+#endif //__FRMAP_CONFIG_H__

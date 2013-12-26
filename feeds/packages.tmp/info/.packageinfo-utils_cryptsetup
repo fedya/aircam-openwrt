@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/utils/cryptsetup/Makefile
+Package: cryptsetup
+Version: 1.3.0-1
+Depends: @!LINUX_2_4 +libblkid +libuuid +libpopt +lvm2 +libgcrypt
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Cryptsetup
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: cryptsetup-1.3.0.tar.bz2
+Type: ipkg
+Description: 	Cryptsetup-luks
+http://code.google.com/p/cryptsetup/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

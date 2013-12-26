@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/dri2proto/Makefile
+Package: dri2proto
+Submenu: proto
+Version: 2.1-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: dri2proto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: dri2proto-2.1.tar.bz2
+Type: ipkg
+Description: dri2proto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

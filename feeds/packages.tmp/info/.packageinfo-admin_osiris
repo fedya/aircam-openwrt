@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/admin/osiris/Makefile
+Package: osirisd
+Version: 4.2.3-2
+Depends: +libopenssl +libpthread
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: admin
+Category: Administration
+Title: Host integrity monitoring system (scanning agent)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: osiris-4.2.3.tar.gz
+Type: ipkg
+Description: Host integrity monitoring system (scanning agent)
+http://osiris.shmoo.com/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

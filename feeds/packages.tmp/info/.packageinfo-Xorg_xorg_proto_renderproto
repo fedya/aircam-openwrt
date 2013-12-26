@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/renderproto/Makefile
+Package: renderproto
+Submenu: proto
+Version: 0.11-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: renderproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: renderproto-0.11.tar.bz2
+Type: ipkg
+Description: renderproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

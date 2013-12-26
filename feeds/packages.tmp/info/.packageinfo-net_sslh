@@ -1,0 +1,18 @@
+Source-Makefile: feeds/packages/net/sslh/Makefile
+Package: sslh
+Version: 1.7a-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: SSL/SSH multiplexer
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: sslh-1.7a.tar.gz
+Type: ipkg
+Description: SSL/SSH multiplexer
+http://rutschle.net/tech/sslh.shtml
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

@@ -1,0 +1,275 @@
+Source-Makefile: feeds/packages/libs/boost/Makefile
+Package: boost
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (header-only)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Build-Only: 1
+Description: Boost C++ source libraries (header-only)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-date_time
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (date_time)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (date_time)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-filesystem
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (filesystem)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (filesystem)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-function_types
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (function_types)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (function_types)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-graph
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (graph)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (graph)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-iostreams
+Version: 1_38_0-1
+Depends: +libstdcpp +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (iostreams)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (iostreams)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-math
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (math)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (math)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-program_options
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (program_options)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (program_options)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-python
+Version: 1_38_0-1
+Depends: +libstdcpp +python
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (python)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (python)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-regex
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (regex)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (regex)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-serialization
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (serialization)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (serialization)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-signals
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (signals)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (signals)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-system
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (system)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (system)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-test
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (test)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (test)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-thread
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (thread)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (thread)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: boost-wave
+Version: 1_38_0-1
+Depends: +libstdcpp
+Menu-Depends: 
+Provides: 
+Build-Depends: boost-jam/host
+Section: libs
+Category: Libraries
+Title: Boost C++ source libraries (wave)
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: boost_1_38_0.tar.gz
+Type: ipkg
+Description: Boost C++ source libraries (wave)
+http://www.boost.org
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

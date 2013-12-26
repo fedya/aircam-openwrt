@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/libs/gdbm/Makefile
+Package: libgdbm
+Version: 1.8.3-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: GNU database manager
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: gdbm-1.8.3.tar.gz
+Type: ipkg
+Description: GNU database manager
+http://www.gnu.org/software/gdbm/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

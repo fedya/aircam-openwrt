@@ -1,0 +1,17 @@
+Package: kmod-ipt-nathelper
+Version: 2.6.28.fa2-1
+Depends: kernel (=2.6.28.fa2-1), kmod-ipt-core, kmod-ipt-nat
+Provides: 
+Source: package/kernel
+Section: kernel
+Status: unknown hold not-installed
+Essential: no
+Priority: optional
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Architecture: gm812x
+Installed-Size: 8273
+Description:  Default Netfilter (IPv4) Conntrack and NAT helpers
+ Includes:
+ - ftp
+ - irc
+ - tftp

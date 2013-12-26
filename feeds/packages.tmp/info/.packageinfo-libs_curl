@@ -1,0 +1,37 @@
+Source-Makefile: feeds/packages/libs/curl/Makefile
+Package: curl
+Submenu: File Transfer
+Version: 7.21.3-1
+Depends: +libcurl
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: net
+Category: Network
+Title: A client-side URL transfer utility
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: curl-7.21.3.tar.bz2
+Type: ipkg
+Description: A client-side URL transfer utility
+http://curl.haxx.se/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+Package: libcurl
+Version: 7.21.3-1
+Depends: +libopenssl +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: A client-side URL transfer library
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: curl-7.21.3.tar.bz2
+Type: ipkg
+Description: A client-side URL transfer library
+http://curl.haxx.se/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

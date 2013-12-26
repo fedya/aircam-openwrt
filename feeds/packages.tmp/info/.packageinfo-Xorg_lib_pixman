@@ -1,0 +1,20 @@
+Source-Makefile: feeds/packages/Xorg/lib/pixman/Makefile
+Package: pixman
+Submenu: libraries
+Version: 0.16.2-1
+Depends: 
+Menu-Depends: 
+Provides: 
+Build-Depends: libtool libintl libiconv
+Section: xorg-libraries
+Category: Xorg
+Title: pixman
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: pixman-0.16.2.tar.gz
+Type: ipkg
+Description: pixman
+http://cairographics.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+

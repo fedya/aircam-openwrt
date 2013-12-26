@@ -1,0 +1,19 @@
+Source-Makefile: feeds/packages/Xorg/xorg/proto/xf86dgaproto/Makefile
+Package: xf86dgaproto
+Submenu: proto
+Version: 2.1-3
+Depends: 
+Menu-Depends: 
+Provides: 
+Section: xorg-proto
+Category: Xorg
+Title: xf86dgaproto
+Maintainer: OpenWrt Developers Team <openwrt-devel@openwrt.org>
+Source: xf86dgaproto-2.1.tar.bz2
+Type: ipkg
+Description: xf86dgaproto
+http://xorg.freedesktop.org/
+OpenWrt Developers Team <openwrt-devel@openwrt.org>
+@@
+
+
